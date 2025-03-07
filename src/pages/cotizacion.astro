@@ -1,0 +1,13 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Markdown } from 'astro/components';
+
+const cotizacion = Astro.url.searchParams.get('cliente') || 'ejemplo-cliente';
+const markdown = await fetch(`https://raw.githubusercontent.com/Andromeda43/transformia-web/main/cotizaciones/${cotizacion}.md`).then(res => res.text());
+---
+
+<MainLayout title={`Cotización - ${cotizacion}`}>
+  <section class="py-10 px-6 max-w-4xl mx-auto">
+    <Markdown content={markdown} />
+  </section>
+</MainLayout>

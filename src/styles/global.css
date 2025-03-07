@@ -1,0 +1,18 @@
+@import "@fontsource/space-mono";
+@import "@fontsource/space-grotesk";
+
+:root {
+  --font-title: 'Space Mono', monospace;
+  --font-body: 'Space Grotesk', sans-serif;
+  --purple: #7A5AF5;
+  --blue: #1C7ED6;
+  --green: #34D399;
+  --dark: #212121;
+  --light: #F8F9FA;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--light);
+  color: var(--dark);
+}
