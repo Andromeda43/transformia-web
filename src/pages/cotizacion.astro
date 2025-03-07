@@ -1,13 +1,52 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import { Markdown } from 'astro/components';
-
-const cotizacion = Astro.url.searchParams.get('cliente') || 'ejemplo-cliente';
-const markdown = await fetch(`https://raw.githubusercontent.com/Andromeda43/transformia-web/main/cotizaciones/${cotizacion}.md`).then(res => res.text());
 ---
 
-<MainLayout title={`Cotización - ${cotizacion}`}>
-  <section class="py-10 px-6 max-w-4xl mx-auto">
-    <Markdown content={markdown} />
+<!--
+  Recuerda: esta página genera un único /cotizacion
+  y recibe un query param ?cliente=ejemplo-cliente
+  Ejemplo: https://transformia.dev/cotizacion?cliente=ejemplo-cliente
+-->
+<MainLayout title="Cotización Dinámica">
+  <!-- Contenedor donde insertaremos el HTML parseado -->
+  <section class="py-10 px-6 max-w-4xl mx-auto prose">
+    <div id="markdown-container">Cargando cotización...</div>
   </section>
+
+  <!-- 1) Script que carga la librería 'marked' desde un CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- 2) Script para leer ?cliente=, hacer fetch al .md y parsearlo -->
+  <script is:inline>
+    // Se ejecutará en el navegador (client-side)
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const cliente = params.get('cliente') || 'ejemplo-cliente';
+
+      // Ajusta la URL RAW con la ruta EXACTA de tu archivo .md
+      // En tu caso, la ruta que mencionas con ?token=xxx:
+      // "https://raw.githubusercontent.com/Andromeda43/transformia-web/refs/heads/main/src/cotizaciones/ejemplo-cliente.md?token=xxx"
+      // Sustituimos 'ejemplo-cliente.md' por la variable cliente:
+      const url = `https://raw.githubusercontent.com/Andromeda43/transformia-web/refs/heads/main/src/cotizaciones/${cliente}.md`;
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          document.getElementById('markdown-container').innerHTML = 
+            "No se encontró la cotización. Verifica el nombre del archivo en GitHub o el parámetro ?cliente=.";
+          return;
+        }
+        const md = await res.text();
+
+        // Usamos 'marked' para convertir MD a HTML:
+        const html = marked.parse(md);
+
+        // Inyectamos el HTML resultante en la página:
+        document.getElementById('markdown-container').innerHTML = html;
+      } catch (err) {
+        document.getElementById('markdown-container').innerHTML = 
+          "Ocurrió un error al cargar la cotización.";
+      }
+    });
+  </script>
 </MainLayout>
