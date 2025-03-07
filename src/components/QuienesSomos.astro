@@ -1,0 +1,66 @@
+---
+import RetroGrid from './RetroGrid.astro';
+---
+
+<section id="nosotros" class="bg-dark py-20 relative">
+  <RetroGrid glowPosition="bottom-left" />
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 font-mono neon-text">¿QUIÉNES SOMOS?</h2>
+      <div class="w-24 h-1 bg-neon-purple mx-auto glow-effect"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="retro-card transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+        <div class="absolute -top-3 -left-3 w-6 h-6 border border-neon-purple opacity-70"></div>
+        <div class="absolute -bottom-3 -right-3 w-6 h-6 border border-neon-purple opacity-70"></div>
+        <h3 class="text-xl font-bold mb-4 font-mono neon-text-purple">NUESTRA ESENCIA</h3>
+        <p>Transformia es el aliado que traduce tus desafíos en oportunidades de crecimiento digital.</p>
+      </div>
+      
+      <div class="retro-card transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+        <div class="absolute -top-3 -left-3 w-6 h-6 border border-neon-blue opacity-70"></div>
+        <div class="absolute -bottom-3 -right-3 w-6 h-6 border border-neon-blue opacity-70"></div>
+        <h3 class="text-xl font-bold mb-4 font-mono neon-text-blue">NUESTRA INSPIRACIÓN</h3>
+        <p>Innovamos constantemente buscando soluciones que generen valor real para nuestros clientes.</p>
+      </div>
+      
+      <div class="retro-card transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="300">
+        <div class="absolute -top-3 -left-3 w-6 h-6 border border-neon-pink opacity-70"></div>
+        <div class="absolute -bottom-3 -right-3 w-6 h-6 border border-neon-pink opacity-70"></div>
+        <h3 class="text-xl font-bold mb-4 font-mono neon-text-pink">NUESTRA MOTIVACIÓN</h3>
+        <p>Impulsamos la transformación digital para hacer más eficientes y rentables tus procesos.</p>
+      </div>
+    </div>
+    
+    <!-- Elemento decorativo -->
+    <div class="mt-20 flex justify-center relative">
+      <div class="absolute w-64 h-64 bg-neon-purple opacity-5 rounded-full blur-[50px] animate-pulse-slow"></div>
+      <div class="p-6 retro-card max-w-2xl text-center">
+        <blockquote class="text-xl italic mb-4">
+          "La innovación distingue a los líderes de los seguidores."
+        </blockquote>
+        <p class="font-mono">— Steve Jobs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .retro-card {
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.05;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.1;
+      transform: scale(1.1);
+    }
+  }
+</style>

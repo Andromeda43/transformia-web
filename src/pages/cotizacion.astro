@@ -1,16 +1,25 @@
 ---
+// src/pages/cotizacion.astro
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<!--
-  Recuerda: esta página genera un único /cotizacion
-  y recibe un query param ?cliente=ejemplo-cliente
-  Ejemplo: https://transformia.dev/cotizacion?cliente=ejemplo-cliente
+<!-- 
+  Ejemplo de uso: /cotizacion?cliente=ejemplo-cliente 
+  Buscará: https://raw.githubusercontent.com/Andromeda43/transformia-web/...
+           /src/cotizaciones/ejemplo-cliente.md
 -->
-<MainLayout title="Cotización Dinámica">
-  <!-- Contenedor donde insertaremos el HTML parseado -->
-  <section class="py-10 px-6 max-w-4xl mx-auto prose">
-    <div id="markdown-container">Cargando cotización...</div>
+
+<MainLayout title="Cotización Dinámica | Transformia">
+  <section class="py-10 px-6 max-w-4xl mx-auto" style="color: var(--color-text);">
+    <h1 
+      class="text-3xl font-bold mb-4 font-title" 
+      style="color: var(--color-accent2);"
+    >
+      Cotización
+    </h1>
+    <div id="markdown-container" class="font-body">
+      Cargando cotización...
+    </div>
   </section>
 
   <!-- 1) Script que carga la librería 'marked' desde un CDN -->
@@ -23,10 +32,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       const params = new URLSearchParams(window.location.search);
       const cliente = params.get('cliente') || 'ejemplo-cliente';
 
-      // Ajusta la URL RAW con la ruta EXACTA de tu archivo .md
-      // En tu caso, la ruta que mencionas con ?token=xxx:
-      // "https://raw.githubusercontent.com/Andromeda43/transformia-web/refs/heads/main/src/cotizaciones/ejemplo-cliente.md?token=xxx"
-      // Sustituimos 'ejemplo-cliente.md' por la variable cliente:
+      // Ajusta la URL RAW con la ruta EXACTA de tu archivo .md en GitHub:
       const url = `https://raw.githubusercontent.com/Andromeda43/transformia-web/refs/heads/main/src/cotizaciones/${cliente}.md`;
 
       try {

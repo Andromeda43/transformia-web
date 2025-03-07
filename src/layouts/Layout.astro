@@ -1,22 +1,157 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+const { title } = Astro.props;
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Transformia convierte desafíos en oportunidades digitales mediante automatización, software personalizado y data analytics.">
+  <title>{title}</title>
+  <!-- Importación de fuentes primero -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos base críticos para evitar FOUC -->
+  <style is:global>
+    :root {
+      --color-dark: #0a0a14;
+      --color-dark-blue: #141428;
+      --color-dark-purple: #1a142d;
+      --neon-purple: #b042ff;
+      --neon-blue: #4287ff;
+      --neon-pink: #ff42b0;
+      --neon-yellow: #e8ff42;
+      --neon-orange: #ff7842;
+      --grid-line: rgba(128, 90, 213, 0.2);
+      
+      --font-mono: 'Space Mono', monospace;
+      --font-sans: 'Space Grotesk', sans-serif;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      overflow-x: hidden;
+      background-color: var(--color-dark);
+      color: white;
+      font-family: var(--font-sans);
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    /* Estilos para el navbar - siempre visibles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(10, 10, 20, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(176, 66, 255, 0.2);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    
+    .navbar-logo {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--neon-purple);
+      text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+    }
+    
+    .navbar-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .navbar-link {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: var(--neon-purple);
+    }
+    
+    .navbar-contact {
+      background-color: var(--neon-purple);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-contact:hover {
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+      transform: translateY(-2px);
+    }
+    
+    /* Responsive para navbar */
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+    }
+    
+    /* Footer básico */
+    footer {
+      background-color: var(--color-dark);
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(176, 66, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar fijo -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="navbar-logo">TRANSFORMIA</a>
+      <nav class="navbar-links">
+        <a href="#servicios" class="navbar-link">Servicios</a>
+        <a href="#nosotros" class="navbar-link">Nosotros</a>
+        <a href="#soluciones" class="navbar-link">Soluciones</a>
+        <a href="#metodologia" class="navbar-link">Metodología</a>
+      </nav>
+      <a href="/contacto" class="navbar-contact">Contacto</a>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer simple -->
+  <footer>
+    <p>© {new Date().getFullYear()} Transformia. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

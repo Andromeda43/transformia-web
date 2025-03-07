@@ -7,21 +7,227 @@ const { title } = Astro.props;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Transformia convierte desafíos en oportunidades digitales mediante automatización, software personalizado y data analytics.">
+  <meta
+    name="description"
+    content="Transformia convierte desafíos en oportunidades digitales mediante automatización, software personalizado y data analytics."
+  >
   <title>{title}</title>
-  <link rel="stylesheet" href="/styles/global.css" />
+  <!-- Importamos el CSS usando importación directa de Astro -->
+  <style>
+    /* Variables CSS */
+    :root {
+      --color-dark: #0a0a14;
+      --color-dark-blue: #141428;
+      --color-dark-purple: #1a142d;
+      --neon-purple: #b042ff;
+      --neon-blue: #4287ff;
+      --neon-pink: #ff42b0;
+      --neon-yellow: #e8ff42;
+      --neon-orange: #ff7842;
+      --grid-line: rgba(128, 90, 213, 0.2);
+      
+      --font-mono: 'Space Mono', monospace;
+      --font-sans: 'Space Grotesk', sans-serif;
+    }
+
+    /* Estilos Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-dark);
+      color: white;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Utilities */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .space-x-8 > * + * {
+      margin-left: 2rem;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .font-bold {
+      font-weight: bold;
+    }
+
+    .font-mono {
+      font-family: var(--font-mono);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 10, 20, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(176, 66, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .md\:flex {
+      display: flex;
+    }
+
+    .md\:hidden {
+      display: none;
+    }
+
+    /* Neon effects */
+    .neon-text {
+      color: white;
+      text-shadow: 0 0 5px rgba(176, 66, 255, 0.7), 0 0 10px rgba(176, 66, 255, 0.5);
+    }
+
+    .nav-link {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--neon-purple);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .md\:flex {
+        display: none;
+      }
+      
+      .md\:hidden {
+        display: block;
+      }
+    }
+  </style>
+  <!-- Importamos fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="py-4 px-10 bg-purple-800 text-white">
-    <nav class="text-lg font-bold">transformia.dev</nav>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <div class="flex justify-between items-center py-4">
+        <a href="/" class="text-2xl font-bold font-mono neon-text">TRANSFORMIA</a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#servicios" class="nav-link">Servicios</a>
+          <a href="#nosotros" class="nav-link">Nosotros</a>
+          <a href="#soluciones" class="nav-link">Soluciones</a>
+          <a href="#metodologia" class="nav-link">Metodología</a>
+          <a href="/contacto" class="neon-button">Contacto</a>
+        </nav>
+        <button class="md:hidden mobile-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: white;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu (hidden by default) -->
+    <div class="mobile-menu hidden">
+      <div class="container py-4 space-y-4">
+        <a href="#servicios" class="block py-2 nav-link">Servicios</a>
+        <a href="#nosotros" class="block py-2 nav-link">Nosotros</a>
+        <a href="#soluciones" class="block py-2 nav-link">Soluciones</a>
+        <a href="#metodologia" class="block py-2 nav-link">Metodología</a>
+        <a href="/contacto" class="block py-2" style="color: var(--neon-purple);">Contacto</a>
+      </div>
+    </div>
   </header>
 
+  <!-- Contenido principal -->
   <main>
     <slot />
   </main>
 
-  <footer class="py-4 px-10 bg-gray-100 text-center">
-    © {new Date().getFullYear()} Transformia | Todos los derechos reservados.
+  <!-- Footer simple -->
+  <footer style="background-color: var(--color-dark); padding: 2rem 0; margin-top: 2rem; border-top: 1px solid rgba(176, 66, 255, 0.2);">
+    <div class="container">
+      <div style="text-align: center;">
+        <p>© {new Date().getFullYear()} Transformia. Todos los derechos reservados.</p>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Script para el menú móvil
+    document.addEventListener('DOMContentLoaded', () => {
+      const button = document.querySelector('.mobile-menu-button');
+      const menu = document.querySelector('.mobile-menu');
+      
+      if (button && menu) {
+        button.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
 </body>
 </html>

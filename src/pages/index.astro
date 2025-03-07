@@ -1,14 +1,12 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import Layout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+import QueHacemos from '../components/QueHacemos.astro';
+import QuienesSomos from '../components/QuienesSomos.astro';
+import Soluciones from '../components/Soluciones.astro';
 ---
 
-<MainLayout title="Transformia | Transformación Digital">
-  <section class="p-10 text-center">
-    <h1 class="text-4xl font-bold" style="font-family: var(--font-title)">
-      Transformia, tu aliado tecnológico
-    </h1>
-    <p class="text-xl" style="font-family: var(--font-body)">
-      Automatización inteligente, desarrollo a medida e inteligencia artificial.
-    </p>
-  </section>
-</MainLayout>
+<Layout title="Transformia - Soluciones digitales a medida">
+  <Hero />
+
+</Layout>

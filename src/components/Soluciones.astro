@@ -1,0 +1,141 @@
+---
+import RetroGrid from './RetroGrid.astro';
+---
+
+<section id="soluciones" class="bg-dark-purple py-20 relative">
+  <RetroGrid glowPosition="top-left" />
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 font-mono neon-text">SOLUCIONES / SERVICIOS</h2>
+      <div class="w-24 h-1 bg-neon-purple mx-auto glow-effect"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="solution-card" data-aos="fade-right">
+        <div class="solution-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 font-mono neon-text-purple">DESARROLLO DE SOFTWARE A MEDIDA</h3>
+        <p class="mb-6">Creamos aplicaciones personalizadas que resuelven tus problemas específicos, optimizando procesos y mejorando la experiencia de usuario.</p>
+        <a href="/servicios/desarrollo" class="solution-link">Conocer más <span>&rarr;</span></a>
+      </div>
+      
+      <div class="solution-card" data-aos="fade-left">
+        <div class="solution-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 font-mono neon-text-blue">TRANSFORMACIÓN DIGITAL Y AUTOMATIZACIÓN</h3>
+        <p class="mb-6">Modernizamos tus procesos analógicos, eliminando tareas repetitivas y potenciando la productividad de tu equipo.</p>
+        <a href="/servicios/transformacion" class="solution-link">Conocer más <span>&rarr;</span></a>
+      </div>
+      
+      <div class="solution-card" data-aos="fade-right">
+        <div class="solution-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 font-mono neon-text-pink">INTELIGENCIA ARTIFICIAL Y DATA ANALYTICS</h3>
+        <p class="mb-6">Implementamos soluciones de IA y análisis de datos para ayudarte a tomar mejores decisiones basadas en información real.</p>
+        <a href="/servicios/ia" class="solution-link">Conocer más <span>&rarr;</span></a>
+      </div>
+      
+      <div class="solution-card" data-aos="fade-left">
+        <div class="solution-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-4 font-mono neon-text-yellow">ASESORÍA EN OPTIMIZACIÓN DE PROCESOS</h3>
+        <p class="mb-6">Te ayudamos a identificar y eliminar cuellos de botella, simplificando operaciones y reduciendo costos operativos.</p>
+        <a href="/servicios/asesoria" class="solution-link">Conocer más <span>&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution-card {
+    background: rgba(20, 20, 40, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 2rem;
+    border: 1px solid rgba(176, 66, 255, 0.2);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .solution-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(176, 66, 255, 0.05) 0%, rgba(10, 10, 20, 0) 70%);
+    z-index: -1;
+  }
+  
+  .solution-card:hover {
+    border-color: var(--neon-purple);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(176, 66, 255, 0.2);
+  }
+  
+  .solution-icon {
+    margin-bottom: 1.5rem;
+    color: var(--neon-purple);
+    filter: drop-shadow(0 0 8px rgba(176, 66, 255, 0.7));
+  }
+  
+  .solution-card:nth-child(2) .solution-icon {
+    color: var(--neon-blue);
+    filter: drop-shadow(0 0 8px rgba(66, 135, 255, 0.7));
+  }
+  
+  .solution-card:nth-child(3) .solution-icon {
+    color: var(--neon-pink);
+    filter: drop-shadow(0 0 8px rgba(255, 66, 176, 0.7));
+  }
+  
+  .solution-card:nth-child(4) .solution-icon {
+    color: var(--neon-yellow);
+    filter: drop-shadow(0 0 8px rgba(232, 255, 66, 0.7));
+  }
+  
+  .solution-link {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    color: var(--neon-purple);
+    transition: all 0.3s ease;
+  }
+  
+  .solution-link span {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .solution-link:hover span {
+    transform: translateX(5px);
+  }
+  
+  .solution-card:nth-child(2) .solution-link {
+    color: var(--neon-blue);
+  }
+  
+  .solution-card:nth-child(3) .solution-link {
+    color: var(--neon-pink);
+  }
+  
+  .solution-card:nth-child(4) .solution-link {
+    color: var(--neon-yellow);
+  }
+</style>

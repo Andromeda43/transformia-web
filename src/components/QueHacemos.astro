@@ -1,0 +1,269 @@
+---
+---
+
+<section id="servicios" style="
+  position: relative;
+  padding: 5rem 0;
+  background-color: var(--color-dark-blue);
+  overflow: hidden;
+">
+  <!-- Grid Background -->
+  <div style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: 
+      linear-gradient(to right, rgba(128, 90, 213, 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-flow 15s linear infinite;
+  ">
+    <!-- Grid Glow -->
+    <div style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 75% 25%, rgba(176, 66, 255, 0.15) 0%, rgba(10, 10, 20, 0) 70%);
+    "></div>
+  </div>
+  
+  <div class="container" style="
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+    z-index: 10;
+  ">
+    <div style="text-align: center; margin-bottom: 4rem;">
+      <h2 style="
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        font-family: var(--font-mono);
+        color: white;
+        text-shadow: 0 0 5px rgba(176, 66, 255, 0.7), 0 0 10px rgba(176, 66, 255, 0.5);
+      ">¿QUÉ HACEMOS?</h2>
+      <div style="
+        width: 6rem;
+        height: 0.25rem;
+        background-color: var(--neon-purple);
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+      "></div>
+    </div>
+    
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    ">
+      <!-- Card 1: Observamos -->
+      <div style="
+        background: rgba(26, 20, 45, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 2rem;
+        border: 1px solid rgba(176, 66, 255, 0.2);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      " class="service-card">
+        <div style="
+          margin-bottom: 1.5rem;
+          color: var(--neon-purple);
+          filter: drop-shadow(0 0 8px rgba(176, 66, 255, 0.7));
+        ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </div>
+        <h3 style="
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 0.75rem;
+          font-family: var(--font-mono);
+        ">Observamos</h3>
+        <p>Analizamos tus procesos y detectamos oportunidades de mejora.</p>
+      </div>
+      
+      <!-- Card 2: Diseñamos -->
+      <div style="
+        background: rgba(26, 20, 45, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 2rem;
+        border: 1px solid rgba(66, 135, 255, 0.2);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      " class="service-card">
+        <div style="
+          margin-bottom: 1.5rem;
+          color: var(--neon-blue);
+          filter: drop-shadow(0 0 8px rgba(66, 135, 255, 0.7));
+        ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+        </div>
+        <h3 style="
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 0.75rem;
+          font-family: var(--font-mono);
+        ">Diseñamos</h3>
+        <p>Creamos soluciones personalizadas para tus necesidades específicas.</p>
+      </div>
+      
+      <!-- Card 3: Implementamos -->
+      <div style="
+        background: rgba(26, 20, 45, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 66, 176, 0.2);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      " class="service-card">
+        <div style="
+          margin-bottom: 1.5rem;
+          color: var(--neon-pink);
+          filter: drop-shadow(0 0 8px rgba(255, 66, 176, 0.7));
+        ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <h3 style="
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 0.75rem;
+          font-family: var(--font-mono);
+        ">Implementamos</h3>
+        <p>Ejecutamos las soluciones con metodologías ágiles para rápidos resultados.</p>
+      </div>
+      
+      <!-- Card 4: Acompañamos -->
+      <div style="
+        background: rgba(26, 20, 45, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 2rem;
+        border: 1px solid rgba(232, 255, 66, 0.2);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      " class="service-card">
+        <div style="
+          margin-bottom: 1.5rem;
+          color: var(--neon-yellow);
+          filter: drop-shadow(0 0 8px rgba(232, 255, 66, 0.7));
+        ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h3 style="
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 0.75rem;
+          font-family: var(--font-mono);
+        ">Acompañamos</h3>
+        <p>Te guiamos durante todo el proceso de transformación con soporte continuo.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Decorative elements -->
+  <div style="
+    position: absolute;
+    left: 5%;
+    bottom: 10%;
+    width: 6rem;
+    height: 6rem;
+    border: 1px solid var(--neon-blue);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 4s ease-in-out infinite;
+  "></div>
+  <div style="
+    position: absolute;
+    right: 8%;
+    top: 20%;
+    width: 8rem;
+    height: 8rem;
+    border: 1px solid var(--neon-pink);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 4s ease-in-out infinite;
+    animation-delay: 1s;
+  "></div>
+</section>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.05); }
+  }
+  
+  @keyframes grid-flow {
+    0% { background-position: 0px 0px; }
+    100% { background-position: 40px 40px; }
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(176, 66, 255, 0.2);
+  }
+  
+  @media (min-width: 768px) {
+    #servicios .container > div:nth-child(2) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    #servicios .container > div:nth-child(2) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
+
+<script>
+  // Hacer que las tarjetas respondan a hover
+  document.addEventListener('DOMContentLoaded', () => {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+        card.style.boxShadow = '0 10px 25px rgba(176, 66, 255, 0.2)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+        card.style.boxShadow = 'none';
+      });
+    });
+  });
+</script>
