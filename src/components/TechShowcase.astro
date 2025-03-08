@@ -2,12 +2,20 @@
 import NeuralNetwork from './NeuralNetwork.astro';
 import DigitalTransformation from './DigitalTransformation.astro';
 import AIAgent from './AIAgent.astro';
+import RealtimeDashboard from './RealtimeDashboard.astro';
 ---
 
 <div class="tech-showcase">
   <div class="showcase-container" data-active-slide="0">
     <!-- Slides de visualizaciones -->
-    
+    <div class="showcase-slides">
+      <div class="showcase-slide active" data-slide="0">
+        <div class="slide-title">
+          <h3>Análisis en Tiempo Real</h3>
+          <span class="title-accent"></span>
+        </div>
+        <RealtimeDashboard />
+      </div>
       
       <div class="showcase-slide" data-slide="1">
         <div class="slide-title">
@@ -200,12 +208,12 @@ import AIAgent from './AIAgent.astro';
     const nextBtn = document.querySelector('.next-btn');
     
     let currentSlide = 0;
-    let autoSlideInterval;
+    let autoSlideInterval: number | undefined;
     const autoSlideDelay = 12000; // Incrementado de 8s a 12s entre slides para evitar transiciones demasiado rápidas
     let isTransitioning = false; // Flag para evitar clicks múltiples durante la transición
     
     // Función para cambiar al slide especificado
-    function goToSlide(index) {
+    function goToSlide(index: number): void {
       // Evitar cambios durante la transición
       if (isTransitioning) return;
       isTransitioning = true;
@@ -232,7 +240,9 @@ import AIAgent from './AIAgent.astro';
       indicators[currentSlide].classList.add('active');
       
       // Actualizar atributo data para referencia
-      container.setAttribute('data-active-slide', currentSlide);
+      if (container) {
+        container.setAttribute('data-active-slide', currentSlide.toString());
+      }
       
       // Reiniciar temporizador para cambio automático
       resetAutoSlide();
@@ -244,27 +254,31 @@ import AIAgent from './AIAgent.astro';
     }
     
     // Función para iniciar rotación automática
-    function startAutoSlide() {
+    function startAutoSlide(): void {
       clearInterval(autoSlideInterval); // Limpiar cualquier intervalo existente
-      autoSlideInterval = setInterval(() => {
+      autoSlideInterval = window.setInterval(() => {
         goToSlide(currentSlide + 1);
       }, autoSlideDelay);
     }
     
     // Función para reiniciar temporizador de rotación
-    function resetAutoSlide() {
+    function resetAutoSlide(): void {
       clearInterval(autoSlideInterval);
       startAutoSlide();
     }
     
     // Escuchadores de eventos para botones
-    prevBtn.addEventListener('click', () => {
-      goToSlide(currentSlide - 1);
-    });
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goToSlide(currentSlide - 1);
+      });
+    }
     
-    nextBtn.addEventListener('click', () => {
-      goToSlide(currentSlide + 1);
-    });
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goToSlide(currentSlide + 1);
+      });
+    }
     
     // Escuchadores para indicadores
     indicators.forEach((indicator, index) => {
@@ -277,13 +291,15 @@ import AIAgent from './AIAgent.astro';
     startAutoSlide();
     
     // Pausar rotación al pasar el mouse por encima
-    container.addEventListener('mouseenter', () => {
-      clearInterval(autoSlideInterval);
-    });
-    
-    // Reanudar rotación al quitar el mouse
-    container.addEventListener('mouseleave', () => {
-      startAutoSlide();
-    });
+    if (container) {
+      container.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+      });
+      
+      // Reanudar rotación al quitar el mouse
+      container.addEventListener('mouseleave', () => {
+        startAutoSlide();
+      });
+    }
   });
 </script>

@@ -6,7 +6,7 @@
     <!-- Capas de la red neuronal -->
     <div class="neural-layers">
       <div class="layer input-layer">
-        <div class="layer-label">Input</div>
+        <div class="layer-label">INPUT</div>
         <div class="nodes">
           <div class="node" data-index="0"></div>
           <div class="node" data-index="1"></div>
@@ -19,7 +19,7 @@
       </div>
       
       <div class="layer hidden-layer">
-        <div class="layer-label">Hidden</div>
+        <div class="layer-label">HIDDEN</div>
         <div class="nodes">
           <div class="node" data-index="0"></div>
           <div class="node" data-index="1"></div>
@@ -34,7 +34,7 @@
       </div>
       
       <div class="layer hidden-layer">
-        <div class="layer-label">Hidden</div>
+        <div class="layer-label">HIDDEN</div>
         <div class="nodes">
           <div class="node" data-index="0"></div>
           <div class="node" data-index="1"></div>
@@ -46,7 +46,7 @@
       </div>
       
       <div class="layer output-layer">
-        <div class="layer-label">Output</div>
+        <div class="layer-label">OUTPUT</div>
         <div class="nodes">
           <div class="node" data-index="0"></div>
           <div class="node" data-index="1"></div>
@@ -67,16 +67,16 @@
   <div class="network-info">
     <div class="status-monitor">
       <div class="status-line">
-        <span class="status-label">Status:</span>
+        <span class="status-label">STATUS:</span>
         <span class="status-value running">Running</span>
       </div>
       <div class="status-line">
-        <span class="status-label">Accuracy:</span>
-        <span class="status-value accuracy">97.8%</span>
+        <span class="status-label">ACCURACY:</span>
+        <span class="status-value accuracy">96.8%</span>
       </div>
       <div class="status-line">
-        <span class="status-label">Epoch:</span>
-        <span class="status-value epoch">42/100</span>
+        <span class="status-label">EPOCH:</span>
+        <span class="status-value epoch">83/100</span>
       </div>
     </div>
     
@@ -253,12 +253,11 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    min-width: 160px;
+    min-width: 200px;
   }
 
   .status-line {
     display: flex;
-    justify-content: space-between;
     align-items: center;
   }
 
@@ -266,6 +265,9 @@
     color: rgba(176, 66, 255, 0.8);
     font-size: 0.8rem;
     text-transform: uppercase;
+    width: 100px;
+    text-align: right;
+    margin-right: 15px;
   }
 
   .status-value {
@@ -290,6 +292,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-left: 20px;
   }
 
   .console-line {
@@ -402,28 +405,31 @@
     const nodes = document.querySelectorAll('.node');
     
     // Generar conexiones SVG entre capas
-    function generateConnections() {
+    function generateConnections(): void {
+      if (!container || !connectionsContainer) return;
+      
       // Crear elemento SVG
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(svgNS, 'svg');
       svg.setAttribute('width', '100%');
       svg.setAttribute('height', '100%');
       
       // Crear elementos de definición para gradientes
-      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      const defs = document.createElementNS(svgNS, 'defs');
       
       // Gradiente para conexiones de capa de entrada a primera capa oculta
-      const gradientInput = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+      const gradientInput = document.createElementNS(svgNS, 'linearGradient');
       gradientInput.setAttribute('id', 'connection-gradient-input');
       gradientInput.setAttribute('x1', '0%');
       gradientInput.setAttribute('y1', '0%');
       gradientInput.setAttribute('x2', '100%');
       gradientInput.setAttribute('y2', '0%');
       
-      const stopInput1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      const stopInput1 = document.createElementNS(svgNS, 'stop');
       stopInput1.setAttribute('offset', '0%');
       stopInput1.setAttribute('stop-color', 'rgba(100, 200, 255, 0.6)');
       
-      const stopInput2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      const stopInput2 = document.createElementNS(svgNS, 'stop');
       stopInput2.setAttribute('offset', '100%');
       stopInput2.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
       
@@ -431,18 +437,18 @@
       gradientInput.appendChild(stopInput2);
       
       // Gradiente para conexiones entre capas ocultas
-      const gradientHidden = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+      const gradientHidden = document.createElementNS(svgNS, 'linearGradient');
       gradientHidden.setAttribute('id', 'connection-gradient-hidden');
       gradientHidden.setAttribute('x1', '0%');
       gradientHidden.setAttribute('y1', '0%');
       gradientHidden.setAttribute('x2', '100%');
       gradientHidden.setAttribute('y2', '0%');
       
-      const stopHidden1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      const stopHidden1 = document.createElementNS(svgNS, 'stop');
       stopHidden1.setAttribute('offset', '0%');
       stopHidden1.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
       
-      const stopHidden2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      const stopHidden2 = document.createElementNS(svgNS, 'stop');
       stopHidden2.setAttribute('offset', '100%');
       stopHidden2.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
       
@@ -450,18 +456,18 @@
       gradientHidden.appendChild(stopHidden2);
       
       // Gradiente para conexiones de última capa oculta a capa de salida
-      const gradientOutput = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+      const gradientOutput = document.createElementNS(svgNS, 'linearGradient');
       gradientOutput.setAttribute('id', 'connection-gradient-output');
       gradientOutput.setAttribute('x1', '0%');
       gradientOutput.setAttribute('y1', '0%');
       gradientOutput.setAttribute('x2', '100%');
       gradientOutput.setAttribute('y2', '0%');
       
-      const stopOutput1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      const stopOutput1 = document.createElementNS(svgNS, 'stop');
       stopOutput1.setAttribute('offset', '0%');
       stopOutput1.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
       
-      const stopOutput2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      const stopOutput2 = document.createElementNS(svgNS, 'stop');
       stopOutput2.setAttribute('offset', '100%');
       stopOutput2.setAttribute('stop-color', 'rgba(255, 100, 200, 0.6)');
       
@@ -483,7 +489,7 @@
         const nextNodes = nextLayer.querySelectorAll('.node');
         
         // Seleccionar el gradiente correcto según las capas
-        let gradientId;
+        let gradientId: string;
         if (i === 0) gradientId = 'connection-gradient-input';
         else if (i === layers.length - 2) gradientId = 'connection-gradient-output';
         else gradientId = 'connection-gradient-hidden';
@@ -509,11 +515,11 @@
             const y2 = nextRect.top - containerRect.top + nextRect.height / 2;
             
             // Crear línea de conexión
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', x1);
-            line.setAttribute('y1', y1);
-            line.setAttribute('x2', x2);
-            line.setAttribute('y2', y2);
+            const line = document.createElementNS(svgNS, 'line');
+            line.setAttribute('x1', x1.toString());
+            line.setAttribute('y1', y1.toString());
+            line.setAttribute('x2', x2.toString());
+            line.setAttribute('y2', y2.toString());
             line.setAttribute('stroke', `url(#${gradientId})`);
             line.setAttribute('stroke-width', '1');
             line.setAttribute('stroke-opacity', (Math.random() * 0.3 + 0.2).toString());
@@ -523,13 +529,13 @@
             
             // Opcionalmente añadir partícula de datos en movimiento para algunas conexiones
             if (Math.random() > 0.7) {
-              const dataParticle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+              const dataParticle = document.createElementNS(svgNS, 'circle');
               dataParticle.setAttribute('r', '3');
               dataParticle.setAttribute('fill', '#ffffff');
               dataParticle.setAttribute('opacity', '0.7');
               
               // Animación de movimiento de la partícula
-              const animateMotion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+              const animateMotion = document.createElementNS(svgNS, 'animateMotion');
               animateMotion.setAttribute('path', `M${x1},${y1} L${x2},${y2}`);
               animateMotion.setAttribute('dur', (Math.random() * 2 + 1) + 's');
               animateMotion.setAttribute('repeatCount', 'indefinite');
@@ -567,7 +573,7 @@
     }
     
     // Función para activar un nodo específico
-    function activateNode(node) {
+    function activateNode(node: Element) {
       // Añadir clase de activación
       node.classList.add('active');
       
@@ -578,7 +584,7 @@
     }
     
     // Función para propagar la señal a través de las capas
-    function propagateSignal(layerIndex, originNodeIndex) {
+    function propagateSignal(layerIndex: number, originNodeIndex: number) {
       // Si hemos llegado al final, terminar
       if (layerIndex >= layers.length) return;
       
@@ -625,29 +631,37 @@
       if (accuracyElement && epochElement) {
         // Simular cambios en la precisión
         setInterval(() => {
-          const currentAccuracy = parseFloat(accuracyElement.textContent);
+          const accuracyText = accuracyElement.textContent || '96.8%';
+          const currentAccuracy = parseFloat(accuracyText);
           const delta = (Math.random() - 0.5) * 0.4; // Cambio pequeño
-          const newAccuracy = Math.max(92, Math.min(99.5, currentAccuracy + delta));
+          const newAccuracy = Math.max(95.5, Math.min(98.5, currentAccuracy + delta));
           accuracyElement.textContent = newAccuracy.toFixed(1) + '%';
         }, 5000);
         
         // Simular progreso en épocas
-        let currentEpoch = parseInt(epochElement.textContent.split('/')[0]);
-        const maxEpoch = parseInt(epochElement.textContent.split('/')[1]);
+        const epochText = epochElement.textContent || '83/100';
+        let currentEpoch = parseInt(epochText.split('/')[0]);
+        const maxEpoch = parseInt(epochText.split('/')[1] || '100');
         
         const epochInterval = setInterval(() => {
           currentEpoch++;
-          epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+          if (epochElement) {
+            epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+          }
           
           if (currentEpoch >= maxEpoch) {
             clearInterval(epochInterval);
             // Reiniciar después de un tiempo
             setTimeout(() => {
               currentEpoch = 0;
-              epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+              if (epochElement) {
+                epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+              }
               setInterval(() => {
                 currentEpoch = Math.min(maxEpoch, currentEpoch + 1);
-                epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+                if (epochElement) {
+                  epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+                }
               }, 8000);
             }, 10000);
           }

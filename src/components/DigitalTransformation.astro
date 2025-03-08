@@ -2,58 +2,110 @@
 ---
 
 <div class="digital-transformation-visualization">
-    <div class="transformation-container">
-      <!-- Proceso de transformación -->
-      <div class="transformation-stages">
-        <div class="stage analog">
-          <div class="stage-header">
-            <svg class="stage-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+  <div class="transformation-container">
+    <!-- Mapa visual de transformación digital -->
+    <div class="transformation-map">
+      <!-- Primera fila - Sistemas Tradicionales e Integración -->
+      <div class="map-row">
+        <div class="map-node start-node">
+          <div class="node-icon legacy">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
               <line x1="8" y1="21" x2="16" y2="21"></line>
               <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
-            <h3>Sistemas Tradicionales</h3>
           </div>
-          <div class="stage-features">
-            <div class="feature">Procesos manuales</div>
-            <div class="feature">Sistemas aislados</div>
-            <div class="feature">Menor eficiencia</div>
-            <div class="feature">Datos limitados</div>
-          </div>
+          <div class="node-title">Sistemas Tradicionales</div>
         </div>
-        
-        <div class="connector">
-          <svg viewBox="0 0 40 24" width="40" height="24" class="arrow-icon">
-            <path d="M0 12H34M34 12L22 2M34 12L22 22" stroke="currentColor" stroke-width="2" fill="none"></path>
+
+        <div class="map-connector horizontal">
+          <svg class="arrow-right" viewBox="0 0 24 24" width="16" height="16">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"></path>
           </svg>
         </div>
-        
-        <div class="stage transform">
-          <div class="stage-header">
-            <svg class="stage-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+
+        <div class="map-node">
+          <div class="node-icon integration">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 16V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
+              <path d="M6 12h12"></path>
+              <path d="M8 8v8"></path>
+              <path d="M16 8v8"></path>
+            </svg>
+          </div>
+          <div class="node-title">Integración</div>
+        </div>
+      </div>
+
+      <!-- Segunda fila - Transformación Digital en el centro -->
+      <div class="map-row">
+        <div class="map-connector vertical right">
+          <svg class="arrow-down" viewBox="0 0 24 24" width="16" height="16">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"></path>
+          </svg>
+        </div>
+
+        <div class="map-node central-node">
+          <div class="node-icon transform">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="23 4 23 10 17 10"></polyline>
               <polyline points="1 20 1 14 7 14"></polyline>
               <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
             </svg>
-            <h3>Transformación Digital</h3>
           </div>
-          <div class="stage-features">
-            <div class="feature">Automatización</div>
-            <div class="feature">Integración</div>
-            <div class="feature">Optimización</div>
-            <div class="feature">Innovación</div>
-          </div>
+          <div class="node-title">Transformación Digital</div>
         </div>
-        
-        <div class="connector">
-          <svg viewBox="0 0 40 24" width="40" height="24" class="arrow-icon">
-            <path d="M0 12H34M34 12L22 2M34 12L22 22" stroke="currentColor" stroke-width="2" fill="none"></path>
+
+        <div class="map-connector vertical left">
+          <svg class="arrow-down" viewBox="0 0 24 24" width="16" height="16">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"></path>
           </svg>
         </div>
-        
-        <div class="stage digital">
-          <div class="stage-header">
-            <svg class="stage-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+      </div>
+
+      <!-- Tercera fila - Automatización y Datos Centralizados -->
+      <div class="map-row">
+        <div class="map-node">
+          <div class="node-icon automation">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <div class="node-title">Automatización</div>
+        </div>
+
+        <div class="map-connector horizontal">
+          <svg class="arrow-right" viewBox="0 0 24 24" width="16" height="16">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"></path>
+          </svg>
+        </div>
+
+        <div class="map-node">
+          <div class="node-icon data">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <div class="node-title">Datos Centralizados</div>
+        </div>
+      </div>
+
+      <!-- Cuarta fila - Ecosistema Digital -->
+      <div class="map-row">
+        <div class="map-connector vertical center">
+          <svg class="arrow-down" viewBox="0 0 24 24" width="16" height="16">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="map-row">
+        <div class="map-node end-node">
+          <div class="node-icon digital">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
               <rect x="9" y="9" width="6" height="6"></rect>
               <line x1="9" y1="1" x2="9" y2="4"></line>
@@ -65,522 +117,664 @@
               <line x1="1" y1="9" x2="4" y2="9"></line>
               <line x1="1" y1="14" x2="4" y2="14"></line>
             </svg>
-            <h3>Ecosistema Digital</h3>
           </div>
-          <div class="stage-features">
-            <div class="feature">Sistemas inteligentes</div>
-            <div class="feature">Datos centralizados</div>
-            <div class="feature">Escalabilidad</div>
-            <div class="feature">Mejora continua</div>
-          </div>
+          <div class="node-title">Ecosistema Digital</div>
         </div>
       </div>
-      
-      <!-- Indicadores de progreso -->
-      <div class="progress-indicators">
-        <div class="progress-bar-container">
-          <div class="progress-label">Progreso de transformación</div>
-          <div class="progress-bar">
-            <div class="progress-fill"></div>
-            <div class="progress-marker" style="left: 75%">
-              <div class="marker-label">Estado actual</div>
-            </div>
-          </div>
-        </div>
+
+      <!-- Partículas flotantes -->
+      <div class="floating-particles">
+        <div class="particle blue"></div>
+        <div class="particle purple"></div>
+        <div class="particle pink"></div>
       </div>
     </div>
-    
-    <!-- Panel de beneficios -->
-    <div class="benefits-panel">
-      <div class="benefits-title">Beneficios de la Transformación</div>
-      
-      <div class="benefits-grid">
-        <div class="benefit-item">
-          <div class="benefit-icon efficiency">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-          </div>
-          <div class="benefit-content">
-            <div class="benefit-title">Eficiencia Operativa</div>
-            <div class="benefit-value">+68%</div>
-          </div>
+
+    <!-- Barra de progreso -->
+    <div class="progress-section">
+      <div class="progress-label">Progreso de transformación</div>
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
         </div>
-        
-        <div class="benefit-item">
-          <div class="benefit-icon agility">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-            </svg>
-          </div>
-          <div class="benefit-content">
-            <div class="benefit-title">Agilidad Empresarial</div>
-            <div class="benefit-value">+53%</div>
-          </div>
-        </div>
-        
-        <div class="benefit-item">
-          <div class="benefit-icon data">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-              <line x1="12" y1="22.08" x2="12" y2="12"></line>
-            </svg>
-          </div>
-          <div class="benefit-content">
-            <div class="benefit-title">Aprovechamiento de Datos</div>
-            <div class="benefit-value">+89%</div>
-          </div>
-        </div>
-        
-        <div class="benefit-item">
-          <div class="benefit-icon customer">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 010 7.75"></path>
-            </svg>
-          </div>
-          <div class="benefit-content">
-            <div class="benefit-title">Experiencia de Cliente</div>
-            <div class="benefit-value">+45%</div>
-          </div>
+        <div class="status-marker" id="statusMarker">
+          <div class="marker-label">Estado actual</div>
         </div>
       </div>
     </div>
   </div>
   
-  <style>
-    .digital-transformation-visualization {
-      background-color: rgba(20, 20, 35, 0.85);
-      border-radius: 10px;
-      border: 1px solid rgba(176, 66, 255, 0.5);
-      overflow: hidden;
-      box-shadow: 
-        0 0 15px rgba(176, 66, 255, 0.3),
-        0 0 30px rgba(176, 66, 255, 0.1);
-      backdrop-filter: blur(10px);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      position: relative;
+  <!-- Panel de beneficios -->
+  <div class="benefits-panel">
+    <div class="benefits-title">Beneficios de la Transformación</div>
+    
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon efficiency">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="benefit-content">
+          <div class="benefit-title">Eficiencia Operativa</div>
+          <div class="benefit-value">+68%</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon agility">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+          </svg>
+        </div>
+        <div class="benefit-content">
+          <div class="benefit-title">Agilidad Empresarial</div>
+          <div class="benefit-value">+53%</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon data">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="benefit-content">
+          <div class="benefit-title">Aprovechamiento de Datos</div>
+          <div class="benefit-value">+89%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .digital-transformation-visualization {
+    background-color: rgba(20, 20, 35, 0.85);
+    border-radius: 10px;
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    overflow: hidden;
+    box-shadow: 
+      0 0 15px rgba(176, 66, 255, 0.3),
+      0 0 30px rgba(176, 66, 255, 0.1);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Contenedor principal */
+  .transformation-container {
+    position: relative;
+    height: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(30, 30, 60, 0.5) 0%, rgba(15, 15, 30, 0.7) 100%);
+  }
+
+  /* Mapa de transformación */
+  .transformation-map {
+    position: relative;
+    height: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .map-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 65px;
+  }
+
+  /* Nodos del mapa */
+  .map-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 150px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .central-node {
+    margin: 0 30px;
+  }
+
+  .start-node {
+    margin-right: auto;
+    margin-left: 5%;
+  }
+
+  .end-node {
+    margin: 0 auto;
+  }
+
+  .node-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    border: 2px solid;
+    position: relative;
+    transition: all 0.3s ease;
+    background-color: rgba(20, 20, 35, 0.7);
+  }
+
+  .node-icon::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(4px);
+  }
+
+  .node-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 5px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Colores específicos para cada nodo */
+  .legacy .node-icon {
+    border-color: #64c8ff;
+    color: #64c8ff;
+    box-shadow: 0 0 15px rgba(100, 200, 255, 0.4);
+  }
+
+  .integration .node-icon {
+    border-color: #9e8cff;
+    color: #9e8cff;
+    box-shadow: 0 0 15px rgba(158, 140, 255, 0.4);
+  }
+
+  .transform .node-icon {
+    border-color: #b042ff;
+    color: #b042ff;
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.5);
+  }
+
+  .automation .node-icon {
+    border-color: #d750d7;
+    color: #d750d7;
+    box-shadow: 0 0 15px rgba(215, 80, 215, 0.4);
+  }
+
+  .data .node-icon {
+    border-color: #fa82d2;
+    color: #fa82d2;
+    box-shadow: 0 0 15px rgba(250, 130, 210, 0.4);
+  }
+
+  .digital .node-icon {
+    border-color: #ff64c8;
+    color: #ff64c8;
+    box-shadow: 0 0 15px rgba(255, 100, 200, 0.4);
+  }
+
+  /* Efectos al pasar el mouse por encima */
+  .node-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px currentColor;
+  }
+
+  /* Conectores entre nodos */
+  .map-connector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .map-connector.horizontal {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      rgba(100, 200, 255, 0.7) 0%, 
+      rgba(176, 66, 255, 0.7) 100%);
+  }
+
+  .map-connector.vertical {
+    height: 30px;
+    width: 2px;
+    background: linear-gradient(180deg, 
+      rgba(176, 66, 255, 0.7) 0%, 
+      rgba(255, 100, 200, 0.7) 100%);
+  }
+
+  .map-connector.vertical.right {
+    align-self: flex-end;
+    margin-right: 75px;
+  }
+
+  .map-connector.vertical.left {
+    align-self: flex-start;
+    margin-left: 75px;
+  }
+
+  .map-connector.vertical.center {
+    margin: 0 auto;
+  }
+
+  .arrow-right, .arrow-down {
+    position: absolute;
+    color: rgba(176, 66, 255, 0.9);
+    animation: pulse-arrow 2s infinite;
+  }
+
+  @keyframes pulse-arrow {
+    0%, 100% {
+      opacity: 0.7;
+      transform: scale(1);
     }
-  
-    /* Contenedor principal */
-    .transformation-container {
-      position: relative;
-      height: 320px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: linear-gradient(135deg, rgba(30, 30, 60, 0.5) 0%, rgba(15, 15, 30, 0.7) 100%);
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
     }
-  
-    /* Etapas de transformación */
-    .transformation-stages {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-      gap: 5px;
-      height: 220px;
+  }
+
+  /* Partículas flotantes */
+  .floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(1px);
+    animation: float-particle 10s infinite ease-in-out;
+  }
+
+  .particle.blue {
+    background-color: #64c8ff;
+    box-shadow: 0 0 10px #64c8ff;
+    top: 15%;
+    left: 25%;
+    animation-delay: 0s;
+  }
+
+  .particle.purple {
+    background-color: #b042ff;
+    box-shadow: 0 0 10px #b042ff;
+    top: 65%;
+    left: 45%;
+    animation-delay: 3s;
+  }
+
+  .particle.pink {
+    background-color: #ff64c8;
+    box-shadow: 0 0 10px #ff64c8;
+    top: 30%;
+    left: 65%;
+    animation-delay: 6s;
+  }
+
+  @keyframes float-particle {
+    0%, 100% {
+      transform: translate(0, 0);
     }
-  
-    .stage {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background-color: rgba(30, 30, 50, 0.7);
-      border-radius: 8px;
-      border: 1px solid;
-      padding: 15px;
-      transition: all 0.3s ease;
+    25% {
+      transform: translate(20px, 10px);
     }
-  
-    .stage.analog {
-      border-color: rgba(100, 200, 255, 0.5);
-      box-shadow: 0 0 10px rgba(100, 200, 255, 0.2);
+    50% {
+      transform: translate(0, 20px);
     }
-  
-    .stage.transform {
-      border-color: rgba(250, 200, 100, 0.5);
-      box-shadow: 0 0 10px rgba(250, 200, 100, 0.2);
+    75% {
+      transform: translate(-20px, 10px);
     }
-  
-    .stage.digital {
-      border-color: rgba(255, 100, 200, 0.5);
-      box-shadow: 0 0 10px rgba(255, 100, 200, 0.2);
+  }
+
+  /* Barra de progreso */
+  .progress-section {
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .progress-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+  }
+
+  .progress-container {
+    position: relative;
+    width: 100%;
+    height: 30px;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background-color: rgba(30, 30, 50, 0.5);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 75%;
+    background: linear-gradient(90deg, rgba(100, 200, 255, 0.7) 0%, rgba(176, 66, 255, 0.7) 50%, rgba(255, 100, 200, 0.7) 100%);
+    border-radius: 4px;
+    animation: fill-progress 3s ease-out forwards;
+  }
+
+  @keyframes fill-progress {
+    0% {
+      width: 0%;
     }
-  
-    .stage-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-  
-    .stage-icon {
-      width: 30px;
-      height: 30px;
-      padding: 5px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .analog .stage-icon {
-      color: #64c8ff;
-      background-color: rgba(100, 200, 255, 0.1);
-    }
-  
-    .transform .stage-icon {
-      color: #fac864;
-      background-color: rgba(250, 200, 100, 0.1);
-    }
-  
-    .digital .stage-icon {
-      color: #ff64c8;
-      background-color: rgba(255, 100, 200, 0.1);
-    }
-  
-    .stage-header h3 {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #fff;
-      margin: 0;
-    }
-  
-    .stage-features {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex-grow: 1;
-      justify-content: center;
-    }
-  
-    .feature {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.8);
-      padding: 6px 10px;
-      border-radius: 4px;
-      background-color: rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-    }
-  
-    .feature::before {
-      content: '•';
-      margin-right: 8px;
-      font-size: 1.2em;
-      line-height: 0;
-    }
-  
-    .analog .feature::before {
-      color: #64c8ff;
-    }
-  
-    .transform .feature::before {
-      color: #fac864;
-    }
-  
-    .digital .feature::before {
-      color: #ff64c8;
-    }
-  
-    /* Conectores entre etapas */
-    .connector {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      flex-shrink: 0;
-    }
-  
-    .arrow-icon {
-      color: rgba(176, 66, 255, 0.7);
-      animation: pulse-arrow 2s infinite ease-in-out;
-    }
-  
-    @keyframes pulse-arrow {
-      0%, 100% {
-        opacity: 0.7;
-        transform: translateX(0);
-      }
-      50% {
-        opacity: 1;
-        transform: translateX(3px);
-      }
-    }
-  
-    /* Indicadores de progreso */
-    .progress-indicators {
-      margin-top: 20px;
-    }
-  
-    .progress-bar-container {
-      width: 100%;
-    }
-  
-    .progress-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 8px;
-    }
-  
-    .progress-bar {
-      height: 10px;
-      background-color: rgba(30, 30, 50, 0.5);
-      border-radius: 5px;
-      position: relative;
-    }
-  
-    .progress-fill {
-      height: 100%;
+    100% {
       width: 75%;
-      background: linear-gradient(90deg, rgba(100, 200, 255, 0.7) 0%, rgba(176, 66, 255, 0.7) 50%, rgba(255, 100, 200, 0.7) 100%);
-      border-radius: 5px;
-      animation: fill-progress 3s ease-out forwards;
     }
-  
-    @keyframes fill-progress {
-      0% {
-        width: 0%;
-      }
-      100% {
-        width: 75%;
-      }
-    }
-  
-    .progress-marker {
-      position: absolute;
-      top: -15px;
-      width: 20px;
-      height: 20px;
-      background-color: #b042ff;
-      border-radius: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
-    }
-  
-    .marker-label {
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
-      color: #fff;
-      background-color: rgba(176, 66, 255, 0.3);
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-  
-    /* Panel de beneficios */
-    .benefits-panel {
-      background-color: rgba(15, 15, 25, 0.7);
-      border-top: 1px solid rgba(176, 66, 255, 0.3);
-      padding: 15px 20px;
-    }
-  
-    .benefits-title {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 15px;
-    }
-  
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-  
-    .benefit-item {
-      background-color: rgba(30, 30, 50, 0.5);
-      border-radius: 8px;
+  }
+
+  .status-marker {
+    position: absolute;
+    top: -6px;
+    left: 75%;
+    width: 20px;
+    height: 20px;
+    background-color: #b042ff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+    z-index: 5;
+  }
+
+  .marker-label {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    color: #fff;
+    background-color: rgba(176, 66, 255, 0.5);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  /* Panel de beneficios */
+  .benefits-panel {
+    background-color: rgba(15, 15, 25, 0.7);
+    border-top: 1px solid rgba(176, 66, 255, 0.3);
+    padding: 15px 20px;
+  }
+
+  .benefits-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .benefit-item {
+    background-color: rgba(30, 30, 50, 0.5);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .benefit-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .benefit-icon.efficiency {
+    background-color: rgba(74, 239, 158, 0.1);
+    color: #4aef9e;
+  }
+
+  .benefit-icon.agility {
+    background-color: rgba(250, 200, 100, 0.1);
+    color: #fac864;
+  }
+
+  .benefit-icon.data {
+    background-color: rgba(100, 200, 255, 0.1);
+    color: #64c8ff;
+  }
+
+  .benefit-content {
+    flex-grow: 1;
+  }
+
+  .benefit-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+  }
+
+  .benefit-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* Media queries */
+  @media (max-width: 768px) {
+    .transformation-container {
       padding: 15px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      height: auto;
+      min-height: 350px;
     }
-  
-    .benefit-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    
+    .map-node {
+      width: 120px;
     }
-  
-    .benefit-icon.efficiency {
-      background-color: rgba(74, 239, 158, 0.1);
-      color: #4aef9e;
+    
+    .node-icon {
+      width: 50px;
+      height: 50px;
     }
-  
-    .benefit-icon.agility {
-      background-color: rgba(250, 200, 100, 0.1);
-      color: #fac864;
+    
+    .node-title {
+      font-size: 0.7rem;
     }
-  
-    .benefit-icon.data {
-      background-color: rgba(100, 200, 255, 0.1);
-      color: #64c8ff;
+    
+    .benefits-grid {
+      grid-template-columns: 1fr;
     }
-  
-    .benefit-icon.customer {
-      background-color: rgba(255, 100, 200, 0.1);
-      color: #ff64c8;
-    }
-  
-    .benefit-content {
-      flex-grow: 1;
-    }
-  
-    .benefit-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 5px;
-    }
-  
-    .benefit-value {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-    }
-  
-    /* Media queries */
-    @media (max-width: 768px) {
-      .transformation-container {
-        padding: 15px;
-      }
-      
-      .transformation-stages {
-        flex-direction: column;
-        gap: 15px;
-        height: auto;
-      }
-      
-      .stage {
-        width: 100%;
-      }
-      
-      .connector {
-        transform: rotate(90deg);
-        width: 100%;
-        margin: -5px 0;
-      }
-      
-      .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Función para animar elementos con efecto de entrada
-      function animateEntrance() {
-        const stages = document.querySelectorAll('.stage');
-        const benefits = document.querySelectorAll('.benefit-item');
-        
-        // Animar etapas de transformación
-        stages.forEach((stage, index) => {
-          stage.style.opacity = '0';
-          stage.style.transform = 'translateY(20px)';
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a elementos DOM
+    const progressFill = document.getElementById('progressFill');
+    const statusMarker = document.getElementById('statusMarker');
+    const nodes = document.querySelectorAll('.node-icon');
+    
+    // Función para animar la entrada de los nodos
+    function animateNodes(): void {
+      nodes.forEach((node, index) => {
+        if (node instanceof HTMLElement) {
+          node.style.opacity = '0';
+          node.style.transform = 'scale(0.5)';
           
           setTimeout(() => {
-            stage.style.transition = 'all 0.6s ease';
-            stage.style.opacity = '1';
-            stage.style.transform = 'translateY(0)';
-          }, 300 + (index * 200));
-        });
-        
-        // Animar beneficios
-        benefits.forEach((benefit, index) => {
-          benefit.style.opacity = '0';
-          benefit.style.transform = 'translateY(10px)';
-          
-          setTimeout(() => {
-            benefit.style.transition = 'all 0.4s ease';
-            benefit.style.opacity = '1';
-            benefit.style.transform = 'translateY(0)';
-          }, 1200 + (index * 100));
-        });
-      }
+            node.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            node.style.opacity = '1';
+            node.style.transform = 'scale(1)';
+          }, 300 + (index * 150));
+        }
+      });
+    }
+    
+    // Función para animar valores de beneficios
+    function animateBenefitValues(): void {
+      const benefitValues = document.querySelectorAll('.benefit-value');
       
-      // Función para animar valores de beneficios
-      function animateBenefitValues() {
-        const benefitValues = document.querySelectorAll('.benefit-value');
+      benefitValues.forEach((valueElement) => {
+        const targetValueText = valueElement.textContent || '+0%';
+        const targetValue = parseInt(targetValueText.replace(/[^0-9.-]/g, ''));
+        let startValue = 0;
+        let duration = 2000; // 2 segundos
+        let startTime: number | null = null;
         
-        benefitValues.forEach((valueElement) => {
-          const targetValue = parseInt(valueElement.textContent.replace(/[^0-9.-]/g, ''));
-          let startValue = 0;
-          let duration = 2000; // 2 segundos
-          let startTime = null;
+        function updateValue(timestamp: number): void {
+          if (!startTime) startTime = timestamp;
+          let progress = (timestamp - startTime) / duration;
           
-          function updateValue(timestamp) {
-            if (!startTime) startTime = timestamp;
-            let progress = (timestamp - startTime) / duration;
-            
-            if (progress > 1) progress = 1;
-            
-            // Función de ease-out para una animación más natural
-            progress = 1 - Math.pow(1 - progress, 3);
-            
-            const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
+          if (progress > 1) progress = 1;
+          
+          // Función de ease-out para una animación más natural
+          progress = 1 - Math.pow(1 - progress, 3);
+          
+          const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
+          if (valueElement instanceof HTMLElement) {
             valueElement.textContent = '+' + currentValue + '%';
-            
-            if (progress < 1) {
-              requestAnimationFrame(updateValue);
-            }
           }
           
-          requestAnimationFrame(updateValue);
+          if (progress < 1) {
+            requestAnimationFrame(updateValue);
+          }
+        }
+        
+        requestAnimationFrame(updateValue);
+      });
+    }
+    
+    // Función para animar la barra de progreso periódicamente
+    function animateProgressPeriodically(): void {
+      // Asegurarse de que ambos elementos existen
+      if (!progressFill || !statusMarker) return;
+      
+      // Crear función para actualizar ambos elementos con el mismo valor
+      function updateProgress(newWidth: number): void {
+        if (progressFill instanceof HTMLElement) {
+          progressFill.style.transition = 'width 2s ease';
+          progressFill.style.width = `${newWidth}%`;
+        }
+        
+        if (statusMarker instanceof HTMLElement) {
+          statusMarker.style.transition = 'left 2s ease';
+          statusMarker.style.left = `${newWidth}%`;
+        }
+      }
+      
+      // Inicialmente, establecer ambos al 75%
+      updateProgress(75);
+      
+      // Actualizar periódicamente
+      setInterval(() => {
+        // Obtener el ancho actual de la barra de progreso
+        const currentWidth = progressFill instanceof HTMLElement && progressFill.style.width 
+          ? parseInt(progressFill.style.width) 
+          : 75;
+        
+        // Generar cambio aleatorio de -3% a +3%
+        const delta = Math.random() * 6 - 3;
+        
+        // Limitar el rango de 60% a 95%
+        const newWidth = Math.max(60, Math.min(95, currentWidth + delta));
+        
+        // Actualizar ambos elementos
+        updateProgress(newWidth);
+      }, 8000); // Cada 8 segundos
+    }
+    
+    // Función para iluminar los nodos según el progreso
+    function highlightNodesByProgress(): void {
+      // Asegurarse de que progressFill existe
+      if (!progressFill) return;
+      
+      function updateNodeHighlights(progress: number): void {
+        const totalNodes = nodes.length;
+        const nodesToHighlight = Math.ceil((progress / 100) * totalNodes);
+        
+        nodes.forEach((node, index) => {
+          if (node instanceof HTMLElement) {
+            if (index < nodesToHighlight) {
+              // Nodo completado
+              node.style.transform = 'scale(1.05)';
+              node.style.boxShadow = '0 0 20px currentColor';
+              node.style.filter = 'brightness(1.2)';
+            } else {
+              // Nodo pendiente
+              node.style.transform = 'scale(1)';
+              node.style.boxShadow = '0 0 10px rgba(176, 66, 255, 0.2)';
+              node.style.filter = 'brightness(0.8)';
+            }
+          }
         });
       }
       
-      // Función para animar la barra de progreso periódicamente
-      function animateProgressPeriodically() {
-        const progressFill = document.querySelector('.progress-fill');
-        const progressMarker = document.querySelector('.progress-marker');
+      // Estado inicial
+      if (progressFill instanceof HTMLElement) {
+        const currentProgress = parseInt(progressFill.style.width) || 75;
+        updateNodeHighlights(currentProgress);
         
-        setInterval(() => {
-          // Valor actual
-          let currentWidth = parseInt(progressFill.style.width || '75');
-          
-          // Generar cambio aleatorio de -3% a +3%
-          const delta = Math.random() * 6 - 3;
-          
-          // Limitar el rango de 60% a 95%
-          let newWidth = Math.max(60, Math.min(95, currentWidth + delta));
-          
-          // Animar el cambio
-          progressFill.style.transition = 'width 2s ease';
-          progressFill.style.width = newWidth + '%';
-          
-          // Actualizar la posición del marcador
-          progressMarker.style.transition = 'left 2s ease';
-          progressMarker.style.left = newWidth + '%';
-        }, 10000); // Cada 10 segundos
+        // Observar cambios en el ancho de la barra de progreso
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+              const newProgress = parseInt(progressFill.style.width) || 75;
+              updateNodeHighlights(newProgress);
+            }
+          });
+        });
+        
+        observer.observe(progressFill, { attributes: true });
       }
-      
-      // Inicializar animaciones
-      setTimeout(() => {
-        animateEntrance();
-        setTimeout(animateBenefitValues, 1500);
-        animateProgressPeriodically();
-      }, 500);
-    });
-  </script>
+    }
+    
+    // Inicializar animaciones
+    setTimeout(() => {
+      animateNodes();
+      setTimeout(animateBenefitValues, 1500);
+      animateProgressPeriodically();
+      setTimeout(highlightNodesByProgress, 3500);
+    }, 500);
+  });
+</script>
