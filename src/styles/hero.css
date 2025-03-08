@@ -231,3 +231,8 @@
     max-width: 540px;
   }
   
+  .highlight {
+    color: #b042ff;
+    text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+    font-weight: 500;
+  }

@@ -1,0 +1,670 @@
+---
+---
+
+<div class="neural-network-visualization">
+  <div class="visualization-container">
+    <!-- Capas de la red neuronal -->
+    <div class="neural-layers">
+      <div class="layer input-layer">
+        <div class="layer-label">Input</div>
+        <div class="nodes">
+          <div class="node" data-index="0"></div>
+          <div class="node" data-index="1"></div>
+          <div class="node" data-index="2"></div>
+          <div class="node" data-index="3"></div>
+          <div class="node" data-index="4"></div>
+          <div class="node" data-index="5"></div>
+          <div class="node" data-index="6"></div>
+        </div>
+      </div>
+      
+      <div class="layer hidden-layer">
+        <div class="layer-label">Hidden</div>
+        <div class="nodes">
+          <div class="node" data-index="0"></div>
+          <div class="node" data-index="1"></div>
+          <div class="node" data-index="2"></div>
+          <div class="node" data-index="3"></div>
+          <div class="node" data-index="4"></div>
+          <div class="node" data-index="5"></div>
+          <div class="node" data-index="6"></div>
+          <div class="node" data-index="7"></div>
+          <div class="node" data-index="8"></div>
+        </div>
+      </div>
+      
+      <div class="layer hidden-layer">
+        <div class="layer-label">Hidden</div>
+        <div class="nodes">
+          <div class="node" data-index="0"></div>
+          <div class="node" data-index="1"></div>
+          <div class="node" data-index="2"></div>
+          <div class="node" data-index="3"></div>
+          <div class="node" data-index="4"></div>
+          <div class="node" data-index="5"></div>
+        </div>
+      </div>
+      
+      <div class="layer output-layer">
+        <div class="layer-label">Output</div>
+        <div class="nodes">
+          <div class="node" data-index="0"></div>
+          <div class="node" data-index="1"></div>
+          <div class="node" data-index="2"></div>
+          <div class="node" data-index="3"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Conexiones SVG (se generarán con JS) -->
+    <div class="connections-container"></div>
+    
+    <!-- Partículas de datos en movimiento -->
+    <div class="data-particles"></div>
+  </div>
+  
+  <!-- Información y estado -->
+  <div class="network-info">
+    <div class="status-monitor">
+      <div class="status-line">
+        <span class="status-label">Status:</span>
+        <span class="status-value running">Running</span>
+      </div>
+      <div class="status-line">
+        <span class="status-label">Accuracy:</span>
+        <span class="status-value accuracy">97.8%</span>
+      </div>
+      <div class="status-line">
+        <span class="status-label">Epoch:</span>
+        <span class="status-value epoch">42/100</span>
+      </div>
+    </div>
+    
+    <div class="console-output">
+      <div class="console-line"><span class="console-prompt">&gt;</span> <span class="typed-text" id="text1">Optimizando parámetros</span></div>
+      <div class="console-line"><span class="console-prompt">&gt;</span> <span class="typed-text" id="text2">Procesando datos</span></div>
+      <div class="console-line"><span class="console-prompt">&gt;</span> <span class="typed-text" id="text3">Predicciones generadas</span></div>
+      <div class="console-line"><span class="console-prompt">&gt;</span> <span class="console-cursor"></span></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .neural-network-visualization {
+    background-color: rgba(20, 20, 35, 0.85);
+    border-radius: 10px;
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    overflow: hidden;
+    box-shadow: 
+      0 0 15px rgba(176, 66, 255, 0.3),
+      0 0 30px rgba(176, 66, 255, 0.1);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .visualization-container {
+    position: relative;
+    height: 350px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Grid de fondo */
+  .visualization-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(128, 90, 213, 0.03) 0%, transparent 80%),
+      linear-gradient(to right, rgba(128, 90, 213, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px, 20px 20px;
+    z-index: 0;
+  }
+
+  /* Capas de la red neuronal */
+  .neural-layers {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+
+  .layer-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(176, 66, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+  }
+
+  .nodes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: calc(100% - 30px);
+  }
+
+  .node {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 8px rgba(176, 66, 255, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .node::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(176, 66, 255, 0.8) 0%, rgba(176, 66, 255, 0.2) 100%);
+    animation: pulse-node 3s infinite ease-in-out;
+    animation-delay: calc(var(--index, 0) * 0.3s);
+  }
+
+  .node[data-index="0"] { --index: 0; }
+  .node[data-index="1"] { --index: 1; }
+  .node[data-index="2"] { --index: 2; }
+  .node[data-index="3"] { --index: 3; }
+  .node[data-index="4"] { --index: 4; }
+  .node[data-index="5"] { --index: 5; }
+  .node[data-index="6"] { --index: 6; }
+  .node[data-index="7"] { --index: 7; }
+  .node[data-index="8"] { --index: 8; }
+
+  .input-layer .node::before {
+    background: radial-gradient(circle, rgba(100, 200, 255, 0.8) 0%, rgba(100, 200, 255, 0.2) 100%);
+  }
+
+  .output-layer .node::before {
+    background: radial-gradient(circle, rgba(255, 100, 200, 0.8) 0%, rgba(255, 100, 200, 0.2) 100%);
+  }
+
+  /* Nodo activo */
+  .node.active {
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.9);
+  }
+
+  .node.active::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(176, 66, 255, 0.4) 100%);
+    animation: none;
+    transform: scale(1.1);
+  }
+
+  .input-layer .node.active::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(100, 200, 255, 0.4) 100%);
+  }
+
+  .output-layer .node.active::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 100, 200, 0.4) 100%);
+  }
+
+  /* Contenedor de conexiones SVG */
+  .connections-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Información de red y consola */
+  .network-info {
+    padding: 15px 20px;
+    background-color: rgba(15, 15, 25, 0.7);
+    border-top: 1px solid rgba(176, 66, 255, 0.3);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .status-monitor {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 160px;
+  }
+
+  .status-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .status-label {
+    color: rgba(176, 66, 255, 0.8);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .status-value {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .status-value.running {
+    color: #4aef9e;
+  }
+
+  .status-value.accuracy {
+    color: #ffcc66;
+  }
+
+  .status-value.epoch {
+    color: #66ccff;
+  }
+
+  .console-output {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .console-line {
+    display: flex;
+    align-items: center;
+    line-height: 1.5;
+  }
+
+  .console-prompt {
+    color: #b042ff;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  .typed-text {
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(30, end) forwards;
+  }
+
+  #text1 {
+    animation-delay: 0.5s;
+  }
+
+  #text2 {
+    animation-delay: 2s;
+  }
+
+  #text3 {
+    animation-delay: 3.5s;
+  }
+
+  .console-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background-color: #b042ff;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* Animaciones */
+  @keyframes pulse-node {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+      opacity: 1;
+    }
+    to {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes blink {
+    from, to {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .visualization-container {
+      height: 280px;
+    }
+
+    .network-info {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .status-monitor {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .status-line {
+      min-width: 140px;
+    }
+
+    .node {
+      width: 14px;
+      height: 14px;
+    }
+  }
+</style>
+
+<script>
+  // Script para animar la red neuronal
+  document.addEventListener('DOMContentLoaded', () => {
+    // Elementos DOM
+    const container = document.querySelector('.neural-network-visualization');
+    const connectionsContainer = document.querySelector('.connections-container');
+    const layers = document.querySelectorAll('.layer');
+    const nodes = document.querySelectorAll('.node');
+    
+    // Generar conexiones SVG entre capas
+    function generateConnections() {
+      // Crear elemento SVG
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', '100%');
+      
+      // Crear elementos de definición para gradientes
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      
+      // Gradiente para conexiones de capa de entrada a primera capa oculta
+      const gradientInput = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+      gradientInput.setAttribute('id', 'connection-gradient-input');
+      gradientInput.setAttribute('x1', '0%');
+      gradientInput.setAttribute('y1', '0%');
+      gradientInput.setAttribute('x2', '100%');
+      gradientInput.setAttribute('y2', '0%');
+      
+      const stopInput1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopInput1.setAttribute('offset', '0%');
+      stopInput1.setAttribute('stop-color', 'rgba(100, 200, 255, 0.6)');
+      
+      const stopInput2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopInput2.setAttribute('offset', '100%');
+      stopInput2.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
+      
+      gradientInput.appendChild(stopInput1);
+      gradientInput.appendChild(stopInput2);
+      
+      // Gradiente para conexiones entre capas ocultas
+      const gradientHidden = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+      gradientHidden.setAttribute('id', 'connection-gradient-hidden');
+      gradientHidden.setAttribute('x1', '0%');
+      gradientHidden.setAttribute('y1', '0%');
+      gradientHidden.setAttribute('x2', '100%');
+      gradientHidden.setAttribute('y2', '0%');
+      
+      const stopHidden1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopHidden1.setAttribute('offset', '0%');
+      stopHidden1.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
+      
+      const stopHidden2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopHidden2.setAttribute('offset', '100%');
+      stopHidden2.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
+      
+      gradientHidden.appendChild(stopHidden1);
+      gradientHidden.appendChild(stopHidden2);
+      
+      // Gradiente para conexiones de última capa oculta a capa de salida
+      const gradientOutput = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+      gradientOutput.setAttribute('id', 'connection-gradient-output');
+      gradientOutput.setAttribute('x1', '0%');
+      gradientOutput.setAttribute('y1', '0%');
+      gradientOutput.setAttribute('x2', '100%');
+      gradientOutput.setAttribute('y2', '0%');
+      
+      const stopOutput1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopOutput1.setAttribute('offset', '0%');
+      stopOutput1.setAttribute('stop-color', 'rgba(176, 66, 255, 0.6)');
+      
+      const stopOutput2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stopOutput2.setAttribute('offset', '100%');
+      stopOutput2.setAttribute('stop-color', 'rgba(255, 100, 200, 0.6)');
+      
+      gradientOutput.appendChild(stopOutput1);
+      gradientOutput.appendChild(stopOutput2);
+      
+      // Añadir gradientes a definiciones
+      defs.appendChild(gradientInput);
+      defs.appendChild(gradientHidden);
+      defs.appendChild(gradientOutput);
+      svg.appendChild(defs);
+      
+      // Crear conexiones entre capas
+      for (let i = 0; i < layers.length - 1; i++) {
+        const currentLayer = layers[i];
+        const nextLayer = layers[i + 1];
+        
+        const currentNodes = currentLayer.querySelectorAll('.node');
+        const nextNodes = nextLayer.querySelectorAll('.node');
+        
+        // Seleccionar el gradiente correcto según las capas
+        let gradientId;
+        if (i === 0) gradientId = 'connection-gradient-input';
+        else if (i === layers.length - 2) gradientId = 'connection-gradient-output';
+        else gradientId = 'connection-gradient-hidden';
+        
+        // Crear líneas entre nodos
+        currentNodes.forEach(currentNode => {
+          const currentRect = currentNode.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+          
+          // Calcular posición del nodo actual relativa al contenedor
+          const x1 = currentRect.left - containerRect.left + currentRect.width / 2;
+          const y1 = currentRect.top - containerRect.top + currentRect.height / 2;
+          
+          // No conectar todos los nodos para evitar saturación visual
+          const connectionsCount = Math.min(nextNodes.length, 4);
+          const selectedNodes = [...nextNodes].sort(() => 0.5 - Math.random()).slice(0, connectionsCount);
+          
+          selectedNodes.forEach(nextNode => {
+            const nextRect = nextNode.getBoundingClientRect();
+            
+            // Calcular posición del nodo siguiente relativa al contenedor
+            const x2 = nextRect.left - containerRect.left + nextRect.width / 2;
+            const y2 = nextRect.top - containerRect.top + nextRect.height / 2;
+            
+            // Crear línea de conexión
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', x1);
+            line.setAttribute('y1', y1);
+            line.setAttribute('x2', x2);
+            line.setAttribute('y2', y2);
+            line.setAttribute('stroke', `url(#${gradientId})`);
+            line.setAttribute('stroke-width', '1');
+            line.setAttribute('stroke-opacity', (Math.random() * 0.3 + 0.2).toString());
+            
+            // Añadir línea al SVG
+            svg.appendChild(line);
+            
+            // Opcionalmente añadir partícula de datos en movimiento para algunas conexiones
+            if (Math.random() > 0.7) {
+              const dataParticle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+              dataParticle.setAttribute('r', '3');
+              dataParticle.setAttribute('fill', '#ffffff');
+              dataParticle.setAttribute('opacity', '0.7');
+              
+              // Animación de movimiento de la partícula
+              const animateMotion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+              animateMotion.setAttribute('path', `M${x1},${y1} L${x2},${y2}`);
+              animateMotion.setAttribute('dur', (Math.random() * 2 + 1) + 's');
+              animateMotion.setAttribute('repeatCount', 'indefinite');
+              animateMotion.setAttribute('begin', (Math.random() * 3) + 's');
+              
+              dataParticle.appendChild(animateMotion);
+              svg.appendChild(dataParticle);
+            }
+          });
+        });
+      }
+      
+      // Añadir SVG al contenedor
+      connectionsContainer.appendChild(svg);
+    }
+    
+    // Función para activar un nodo aleatorio y propagar la señal
+    function activateRandomNode() {
+      // Seleccionar una capa aleatoria excepto la última
+      const randomLayerIndex = Math.floor(Math.random() * (layers.length - 1));
+      const randomLayer = layers[randomLayerIndex];
+      
+      // Seleccionar un nodo aleatorio de esa capa
+      const layerNodes = randomLayer.querySelectorAll('.node');
+      const randomNodeIndex = Math.floor(Math.random() * layerNodes.length);
+      const randomNode = layerNodes[randomNodeIndex];
+      
+      // Activar el nodo
+      activateNode(randomNode);
+      
+      // Propagar la señal a la siguiente capa
+      setTimeout(() => {
+        propagateSignal(randomLayerIndex + 1, randomNodeIndex);
+      }, 100);
+    }
+    
+    // Función para activar un nodo específico
+    function activateNode(node) {
+      // Añadir clase de activación
+      node.classList.add('active');
+      
+      // Eliminar después de un tiempo
+      setTimeout(() => {
+        node.classList.remove('active');
+      }, 500);
+    }
+    
+    // Función para propagar la señal a través de las capas
+    function propagateSignal(layerIndex, originNodeIndex) {
+      // Si hemos llegado al final, terminar
+      if (layerIndex >= layers.length) return;
+      
+      // Obtener la capa actual
+      const currentLayer = layers[layerIndex];
+      const currentNodes = currentLayer.querySelectorAll('.node');
+      
+      // Seleccionar nodos para activar (entre 1 y 3)
+      const nodesToActivate = Math.floor(Math.random() * 3) + 1;
+      
+      for (let i = 0; i < nodesToActivate; i++) {
+        // Seleccionar un nodo aleatorio o próximo al origen para simular una red real
+        let nodeIndex;
+        if (Math.random() > 0.7) {
+          // Nodo cercano al origen
+          const offset = Math.floor(Math.random() * 3) - 1; // -1, 0, o 1
+          nodeIndex = Math.max(0, Math.min(currentNodes.length - 1, originNodeIndex + offset));
+        } else {
+          // Nodo aleatorio
+          nodeIndex = Math.floor(Math.random() * currentNodes.length);
+        }
+        
+        const node = currentNodes[nodeIndex];
+        
+        // Activar con un pequeño retraso para simular propagación
+        setTimeout(() => {
+          activateNode(node);
+          
+          // Continuar propagación a la siguiente capa
+          if (layerIndex < layers.length - 1) {
+            setTimeout(() => {
+              propagateSignal(layerIndex + 1, nodeIndex);
+            }, 100);
+          }
+        }, 50 * i);
+      }
+    }
+    
+    // Función para actualizar valores de estado periódicamente
+    function updateStatusValues() {
+      const accuracyElement = document.querySelector('.status-value.accuracy');
+      const epochElement = document.querySelector('.status-value.epoch');
+      
+      if (accuracyElement && epochElement) {
+        // Simular cambios en la precisión
+        setInterval(() => {
+          const currentAccuracy = parseFloat(accuracyElement.textContent);
+          const delta = (Math.random() - 0.5) * 0.4; // Cambio pequeño
+          const newAccuracy = Math.max(92, Math.min(99.5, currentAccuracy + delta));
+          accuracyElement.textContent = newAccuracy.toFixed(1) + '%';
+        }, 5000);
+        
+        // Simular progreso en épocas
+        let currentEpoch = parseInt(epochElement.textContent.split('/')[0]);
+        const maxEpoch = parseInt(epochElement.textContent.split('/')[1]);
+        
+        const epochInterval = setInterval(() => {
+          currentEpoch++;
+          epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+          
+          if (currentEpoch >= maxEpoch) {
+            clearInterval(epochInterval);
+            // Reiniciar después de un tiempo
+            setTimeout(() => {
+              currentEpoch = 0;
+              epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+              setInterval(() => {
+                currentEpoch = Math.min(maxEpoch, currentEpoch + 1);
+                epochElement.textContent = `${currentEpoch}/${maxEpoch}`;
+              }, 8000);
+            }, 10000);
+          }
+        }, 8000);
+      }
+    }
+    
+    // Inicializar
+    setTimeout(() => {
+      // Generar conexiones SVG cuando el componente esté listo
+      generateConnections();
+      
+      // Activar nodos aleatorios periódicamente
+      setInterval(activateRandomNode, 2000);
+      
+      // Actualizar valores de estado
+      updateStatusValues();
+    }, 1000);
+  });
+</script>

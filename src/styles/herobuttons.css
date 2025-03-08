@@ -1,0 +1,160 @@
+/* Botones Cyberpunk - Corregidos para evitar errores de duplicación */
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.cybr-btn {
+  --primary: hsl(var(--primary-hue), 85%, 60%);
+  --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
+  --primary-hue: 268;
+  --shadow-primary-hue: 280;
+  --font-size: 16px;
+  --primary-border: 1px;
+  --shadow-primary-border: 1px;
+  --clip: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  
+  font-family: 'Space Mono', monospace;
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: var(--font-size);
+  outline: transparent;
+  letter-spacing: 2px;
+  position: relative;
+  font-weight: 700;
+  border: 0;
+  min-width: 200px;
+  height: 50px;
+  line-height: 50px;
+  transition: background 0.2s;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 15px; /* Padding para evitar que el texto choque con los bordes */
+  overflow: hidden; /* Prevenir que cualquier contenido se desborde */
+}
+
+.cybr-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: var(--clip);
+  z-index: -1;
+}
+
+.cybr-btn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: var(--clip);
+  z-index: -1;
+}
+
+.cybr-btn:before {
+  background: var(--primary);
+  background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+  transform: translateX(calc(var(--border-width, 0px) * -1)) translateY(calc(var(--border-width, 0px) * -1));
+}
+
+.cybr-btn:after {
+  background: var(--shadow-primary);
+  transform: translateX(var(--border-width, 0px)) translateY(var(--border-width, 0px));
+  background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+  filter: blur(1px);
+}
+
+/* Corregido el efecto glitch en hover */
+.cybr-btn__glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--shadow-primary);
+  background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+  text-shadow: 2px 2px var(--shadow-primary), -2px -2px var(--shadow-primary);
+  clip-path: var(--clip);
+  display: none;
+  z-index: -2; /* Para que el glitch quede debajo del texto */
+  animation: glitch-btn 0.8s infinite;
+}
+
+@keyframes glitch-btn {
+  0%, 5%, 10%, 100% {
+    opacity: 0.8;
+    transform: translateX(0);
+  }
+  1% {
+    transform: translateX(-2px);
+    opacity: 0.9;
+  }
+  2% {
+    transform: translateX(2px);
+    opacity: 0.9;
+  }
+  6% {
+    transform: translateX(-2px);
+    opacity: 0.9;
+  }
+  8% {
+    transform: translateX(2px);
+    opacity: 0.9;
+  }
+}
+
+.cybr-btn:hover .cybr-btn__glitch {
+  display: block;
+}
+
+.cybr-btn:hover:before {
+  background: var(--primary-darker, hsl(var(--primary-hue), 85%, 50%));
+  transform: translateX(0) translateY(0);
+}
+
+.cybr-btn:hover:after {
+  background: var(--shadow-primary-darker, hsl(var(--shadow-primary-hue), 90%, 40%));
+  transform: translateX(0) translateY(0);
+  filter: blur(3px);
+}
+
+.cybr-btn--secondary {
+  --primary-hue: 210;
+  --shadow-primary-hue: 220;
+}
+
+.cybr-btn--secondary:before {
+  background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.2) 0%, rgba(176, 66, 255, 0.5) 100%);
+  border: 1px solid rgba(176, 66, 255, 0.6);
+}
+
+.cybr-btn--secondary:after {
+  background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.2) 0%, rgba(176, 66, 255, 0.5) 100%);
+  border: 1px solid rgba(176, 66, 255, 0.6);
+}
+
+.cybr-btn--secondary .cybr-btn__glitch {
+  background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.4) 0%, rgba(176, 66, 255, 0.8) 100%);
+}
+
+@media (max-width: 768px) {
+  .btn-container {
+    justify-content: center;
+  }
+  
+  .cybr-btn {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,707 @@
+---
+---
+
+<div class="process-automation-visualization">
+  <div class="workflow-container">
+    <!-- Panel de procesos y automatización -->
+    <div class="workflow-panel">
+      <div class="workflow-header">
+        <div class="workflow-title">
+          <svg class="workflow-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+          <h3>Automatización RPA</h3>
+        </div>
+        <div class="status-badge">En ejecución</div>
+      </div>
+      
+      <div class="workflow-diagram">
+        <!-- Nodos del proceso -->
+        <div class="process-nodes">
+          <div class="process-node input active" data-id="input-data">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="node-label">Entrada Datos</div>
+          </div>
+          
+          <div class="process-node extraction" data-id="data-extraction">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="8 17 12 21 16 17"></polyline>
+                <line x1="12" y1="12" x2="12" y2="21"></line>
+                <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>
+              </svg>
+            </div>
+            <div class="node-label">Extracción</div>
+          </div>
+          
+          <div class="process-node processing" data-id="data-processing">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <div class="node-label">Procesamiento</div>
+          </div>
+          
+          <div class="process-node decision" data-id="decision-logic">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div class="node-label">Decisión</div>
+          </div>
+          
+          <div class="process-node integration" data-id="system-integration">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 10h-4V4h-4v6H6l6 6 6-6Z"></path>
+                <path d="M2 17v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3"></path>
+              </svg>
+            </div>
+            <div class="node-label">Integración</div>
+          </div>
+          
+          <div class="process-node output" data-id="output-results">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <polyline points="13 2 13 9 20 9"></polyline>
+              </svg>
+            </div>
+            <div class="node-label">Resultados</div>
+          </div>
+        </div>
+        
+        <!-- Tokens de datos fluyendo a través del proceso -->
+        <div class="data-tokens"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Panel de métricas -->
+  <div class="automation-metrics">
+    <div class="metrics-title">Métricas de Automatización</div>
+    
+    <div class="metrics-cards">
+      <div class="metric-card time-saved">
+        <div class="metric-value">376<span class="metric-unit">h</span></div>
+        <div class="metric-label">Tiempo Ahorrado</div>
+        <div class="metric-trend up">+12%</div>
+      </div>
+      
+      <div class="metric-card efficiency">
+        <div class="metric-value">98<span class="metric-unit">%</span></div>
+        <div class="metric-label">Eficiencia</div>
+        <div class="metric-trend up">+5%</div>
+      </div>
+      
+      <div class="metric-card processes">
+        <div class="metric-value">14</div>
+        <div class="metric-label">Procesos</div>
+        <div class="metric-trend up">+2</div>
+      </div>
+      
+      <div class="metric-card errors">
+        <div class="metric-value">0.3<span class="metric-unit">%</span></div>
+        <div class="metric-label">Tasa de Error</div>
+        <div class="metric-trend down">-1.2%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .process-automation-visualization {
+    background-color: rgba(20, 20, 35, 0.85);
+    border-radius: 10px;
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    overflow: hidden;
+    box-shadow: 
+      0 0 15px rgba(176, 66, 255, 0.3),
+      0 0 30px rgba(176, 66, 255, 0.1);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Contenedor principal */
+  .workflow-container {
+    position: relative;
+    height: 320px;
+    display: flex;
+  }
+
+  /* Panel de flujo de trabajo */
+  .workflow-panel {
+    flex: 1;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(30, 30, 60, 0.5) 0%, rgba(15, 15, 30, 0.7) 100%);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .workflow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .workflow-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .workflow-icon {
+    color: #b042ff;
+  }
+
+  .workflow-title h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+
+  .status-badge {
+    background-color: rgba(74, 239, 158, 0.15);
+    color: #4aef9e;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .status-badge::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #4aef9e;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: pulse 1.5s infinite;
+  }
+
+  /* Diagrama de flujo de trabajo */
+  .workflow-diagram {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .process-nodes {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    padding: 0 5px;
+  }
+
+  .process-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 30, 50, 0.7);
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 12px 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    width: 85px;
+    height: 90px;
+    margin-top: 40px;
+  }
+
+  .node-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 8px;
+  }
+
+  .node-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    color: #fff;
+    text-align: center;
+  }
+
+  /* Estilos para diferentes tipos de nodos */
+  .process-node.input {
+    border-color: rgba(100, 200, 255, 0.5);
+  }
+  
+  .process-node.input .node-icon {
+    background-color: rgba(100, 200, 255, 0.15);
+    color: #64c8ff;
+  }
+
+  .process-node.extraction {
+    border-color: rgba(176, 66, 255, 0.5);
+  }
+  
+  .process-node.extraction .node-icon {
+    background-color: rgba(176, 66, 255, 0.15);
+    color: #b042ff;
+  }
+
+  .process-node.processing {
+    border-color: rgba(250, 200, 100, 0.5);
+  }
+  
+  .process-node.processing .node-icon {
+    background-color: rgba(250, 200, 100, 0.15);
+    color: #fac864;
+  }
+
+  .process-node.decision {
+    border-color: rgba(255, 100, 200, 0.5);
+  }
+  
+  .process-node.decision .node-icon {
+    background-color: rgba(255, 100, 200, 0.15);
+    color: #ff64c8;
+  }
+
+  .process-node.integration {
+    border-color: rgba(100, 250, 150, 0.5);
+  }
+  
+  .process-node.integration .node-icon {
+    background-color: rgba(100, 250, 150, 0.15);
+    color: #64fa96;
+  }
+
+  .process-node.output {
+    border-color: rgba(66, 135, 255, 0.5);
+  }
+  
+  .process-node.output .node-icon {
+    background-color: rgba(66, 135, 255, 0.15);
+    color: #4287ff;
+  }
+
+  /* Nodo activo */
+  .process-node.active {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px;
+  }
+
+  .process-node.input.active {
+    box-shadow: 0 0 15px rgba(100, 200, 255, 0.5);
+  }
+
+  .process-node.extraction.active {
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.5);
+  }
+
+  .process-node.processing.active {
+    box-shadow: 0 0 15px rgba(250, 200, 100, 0.5);
+  }
+
+  .process-node.decision.active {
+    box-shadow: 0 0 15px rgba(255, 100, 200, 0.5);
+  }
+
+  .process-node.integration.active {
+    box-shadow: 0 0 15px rgba(100, 250, 150, 0.5);
+  }
+
+  .process-node.output.active {
+    box-shadow: 0 0 15px rgba(66, 135, 255, 0.5);
+  }
+
+  /* Conexiones de flujo (líneas y flechas) */
+  .process-nodes::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      rgba(100, 200, 255, 0.5),
+      rgba(176, 66, 255, 0.5),
+      rgba(250, 200, 100, 0.5),
+      rgba(255, 100, 200, 0.5),
+      rgba(100, 250, 150, 0.5),
+      rgba(66, 135, 255, 0.5)
+    );
+    z-index: 0;
+  }
+
+  /* Tokens de datos que fluyen */
+  .data-tokens {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .data-token {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    top: calc(50% - 4px);
+    left: 10%;
+    z-index: 3;
+    animation: flow-animation 10s linear infinite;
+  }
+
+  @keyframes flow-animation {
+    0% {
+      left: 10%;
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
+      left: 90%;
+      opacity: 0;
+    }
+  }
+
+  /* Panel de métricas */
+  .automation-metrics {
+    background-color: rgba(15, 15, 25, 0.7);
+    border-top: 1px solid rgba(176, 66, 255, 0.3);
+    padding: 15px 20px;
+  }
+
+  .metrics-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .metrics-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+
+  .metric-card {
+    background-color: rgba(30, 30, 50, 0.5);
+    border-radius: 8px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+  }
+
+  .metric-card.time-saved::before {
+    background-color: #64c8ff;
+  }
+
+  .metric-card.efficiency::before {
+    background-color: #4aef9e;
+  }
+
+  .metric-card.processes::before {
+    background-color: #b042ff;
+  }
+
+  .metric-card.errors::before {
+    background-color: #ff6464;
+  }
+
+  .metric-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+
+  .metric-unit {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-left: 2px;
+  }
+
+  .metric-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+  }
+
+  .metric-trend {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .metric-trend.up {
+    background-color: rgba(74, 239, 158, 0.1);
+    color: #4aef9e;
+  }
+
+  .metric-trend.down {
+    background-color: rgba(255, 100, 100, 0.1);
+    color: #ff6464;
+  }
+
+  /* Animaciones */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  /* Media queries */
+  @media (max-width: 768px) {
+    .process-nodes {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .process-node {
+      width: 70px;
+      height: 85px;
+      margin: 5px;
+    }
+
+    .metrics-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Elementos DOM
+    const processNodes = document.querySelectorAll('.process-node');
+    const dataTokensContainer = document.querySelector('.data-tokens');
+    
+    // Función para crear tokens de datos que fluyen a lo largo de la línea
+    function createDataTokens() {
+      // Crear varios tokens con diferentes retrasos
+      for (let i = 0; i < 5; i++) {
+        const token = document.createElement('div');
+        token.className = 'data-token';
+        // Aplicar un retraso diferente a cada token
+        token.style.animationDelay = `${i * 2}s`;
+        dataTokensContainer.appendChild(token);
+      }
+    }
+    
+    // Función para activar nodos secuencialmente
+    function activateNodesSequence() {
+      // Tiempo entre activaciones de nodos
+      const activationDelay = 2000; // 2 segundos
+      
+      // Resetear todos los nodos
+      processNodes.forEach(node => {
+        node.classList.remove('active');
+      });
+      
+      // Activar cada nodo en secuencia
+      processNodes.forEach((node, index) => {
+        setTimeout(() => {
+          // Desactivar el nodo anterior si existe
+          if (index > 0) {
+            processNodes[index - 1].classList.remove('active');
+          }
+          
+          // Activar el nodo actual
+          node.classList.add('active');
+          
+          // Si es el último nodo, esperar y volver a empezar
+          if (index === processNodes.length - 1) {
+            setTimeout(() => {
+              node.classList.remove('active');
+              
+              // Reiniciar la secuencia después de una pausa
+              setTimeout(() => {
+                activateNodesSequence();
+              }, 1000);
+            }, activationDelay);
+          }
+        }, index * activationDelay);
+      });
+    }
+    
+    // Función para animar las métricas
+    function animateMetrics() {
+      const metricValues = document.querySelectorAll('.metric-value');
+      const metricTrends = document.querySelectorAll('.metric-trend');
+      
+      // Animación de conteo para métricas
+      metricValues.forEach((metricValue, index) => {
+        let currentText = metricValue.textContent;
+        let valueOnly = currentText.replace(/[^0-9.]/g, '');
+        let unit = currentText.replace(/[0-9.]/g, '');
+        
+        let targetValue = parseFloat(valueOnly);
+        let startValue = index === 3 ? targetValue * 3 : targetValue * 0.3; // Valores iniciales diferentes según la métrica
+        let currentValue = startValue;
+        let duration = 2000; // 2 segundos de animación
+        let startTime = null;
+        
+        // Función de animación de conteo
+        function updateCounter(timestamp) {
+          if (!startTime) startTime = timestamp;
+          let progress = Math.min((timestamp - startTime) / duration, 1);
+          
+          // Función de ease-out para un efecto más natural
+          progress = 1 - Math.pow(1 - progress, 3);
+          
+          currentValue = startValue + (targetValue - startValue) * progress;
+          
+          // Formatear según el tipo de métrica
+          if (index === 3) {
+            // Tasa de error (1 decimal)
+            metricValue.textContent = currentValue.toFixed(1) + unit;
+          } else if (index === 1) {
+            // Eficiencia (entero)
+            metricValue.textContent = Math.round(currentValue) + unit;
+          } else if (index === 2) {
+            // Procesos (entero)
+            metricValue.textContent = Math.round(currentValue);
+          } else {
+            // Tiempo ahorrado (entero)
+            metricValue.textContent = Math.round(currentValue) + unit;
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          }
+        }
+        
+        // Iniciar animación de conteo
+        requestAnimationFrame(updateCounter);
+      });
+      
+      // Animar aparición de tendencias
+      metricTrends.forEach((trend, index) => {
+        trend.style.opacity = '0';
+        trend.style.transform = 'translateY(10px)';
+        
+        setTimeout(() => {
+          trend.style.transition = 'all 0.5s ease';
+          trend.style.opacity = '1';
+          trend.style.transform = 'translateY(0)';
+        }, 2000 + (index * 100));
+      });
+    }
+    
+    // Función para actualizar valores de métricas periódicamente
+    function updateMetricsPeriodically() {
+      setInterval(() => {
+        // Obtener elementos
+        const timeValue = document.querySelector('.metric-card.time-saved .metric-value');
+        const efficiencyValue = document.querySelector('.metric-card.efficiency .metric-value');
+        const processesValue = document.querySelector('.metric-card.processes .metric-value');
+        const errorsValue = document.querySelector('.metric-card.errors .metric-value');
+        
+        // Actualizar con pequeños cambios aleatorios
+        if (timeValue) {
+          const currentTime = parseInt(timeValue.textContent);
+          const delta = Math.floor(Math.random() * 11) - 3; // -3 a +7
+          timeValue.textContent = (currentTime + delta) + 'h';
+        }
+        
+        if (efficiencyValue) {
+          const currentEff = parseInt(efficiencyValue.textContent);
+          const delta = (Math.random() * 0.6 - 0.2).toFixed(1); // -0.2 a +0.4
+          efficiencyValue.textContent = Math.min(99.9, Math.max(90, currentEff + parseFloat(delta))) + '%';
+        }
+        
+        if (processesValue) {
+          const currentProc = parseInt(processesValue.textContent);
+          // Ocasionalmente añadir o restar 1
+          if (Math.random() > 0.7) {
+            const change = Math.random() > 0.3 ? 1 : -1;
+            processesValue.textContent = Math.max(10, currentProc + change);
+          }
+        }
+        
+        if (errorsValue) {
+          const currentErr = parseFloat(errorsValue.textContent);
+          const delta = (Math.random() * 0.2 - 0.15).toFixed(1); // Más probabilidad de bajar
+          errorsValue.textContent = Math.max(0.1, Math.min(2, currentErr + parseFloat(delta))).toFixed(1) + '%';
+        }
+      }, 8000); // Actualizar cada 8 segundos
+    }
+    
+    // Función para añadir interactividad a los nodos
+    function setupNodeInteraction() {
+      processNodes.forEach(node => {
+        node.addEventListener('click', () => {
+          // Desactivar todos los nodos
+          processNodes.forEach(n => n.classList.remove('active'));
+          
+          // Activar el nodo clickeado
+          node.classList.add('active');
+          
+          // Desactivar después de un tiempo
+          setTimeout(() => {
+            node.classList.remove('active');
+          }, 2000);
+        });
+      });
+    }
+    
+    // Inicializar visualización
+    setTimeout(() => {
+      createDataTokens();
+      activateNodesSequence();
+      animateMetrics();
+      updateMetricsPeriodically();
+      setupNodeInteraction();
+    }, 500);
+  });
+</script>

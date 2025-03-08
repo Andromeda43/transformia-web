@@ -1,0 +1,297 @@
+---
+import NeuralNetwork from './NeuralNetwork.astro';
+import DigitalTransformation from './DigitalTransformation.astro';
+import AIAgent from './AIAgent.astro';
+import ProcessAutomation from './ProcessAutomation.astro';
+---
+
+<div class="tech-showcase">
+  <div class="showcase-container" data-active-slide="0">
+    <!-- Slides de visualizaciones -->
+    <div class="showcase-slides">
+      <div class="showcase-slide active" data-slide="0">
+        <div class="slide-title">
+          <h3>Automatización RPA</h3>
+          <span class="title-accent"></span>
+        </div>
+        <ProcessAutomation />
+      </div>
+      
+      <div class="showcase-slide" data-slide="1">
+        <div class="slide-title">
+          <h3>Redes Neuronales</h3>
+          <span class="title-accent"></span>
+        </div>
+        <NeuralNetwork />
+      </div>
+      
+      <div class="showcase-slide" data-slide="2">
+        <div class="slide-title">
+          <h3>Transformación Digital</h3>
+          <span class="title-accent"></span>
+        </div>
+        <DigitalTransformation />
+      </div>
+      
+      <div class="showcase-slide" data-slide="3">
+        <div class="slide-title">
+          <h3>Agentes IA</h3>
+          <span class="title-accent"></span>
+        </div>
+        <AIAgent />
+      </div>
+    </div>
+    
+    <!-- Controles de navegación -->
+    <div class="showcase-controls">
+      <button class="control-btn prev-btn" aria-label="Anterior visualización">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      
+      <div class="showcase-indicators">
+        <span class="indicator active" data-index="0"></span>
+        <span class="indicator" data-index="1"></span>
+        <span class="indicator" data-index="2"></span>
+        <span class="indicator" data-index="3"></span>
+      </div>
+      
+      <button class="control-btn next-btn" aria-label="Siguiente visualización">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tech-showcase {
+    width: 100%;
+    overflow: visible;
+    position: relative;
+  }
+  
+  .showcase-container {
+    width: 100%;
+    max-width: 700px; /* Aumentado de 600px a 700px */
+    margin: 0 auto;
+    height: 550px; /* Aumentado de 500px a 550px */
+    position: relative;
+  }
+
+  .showcase-slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .showcase-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    visibility: hidden;
+    overflow: visible;
+  }
+
+  .showcase-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+    z-index: 10;
+  }
+
+  .slide-title {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    text-transform: uppercase;
+    font-family: 'Space Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 20;
+  }
+
+  .slide-title h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+    letter-spacing: 1px;
+  }
+
+  .title-accent {
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #b042ff, rgba(176, 66, 255, 0.2));
+    margin-top: 5px;
+  }
+
+  .showcase-controls {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    gap: 20px;
+  }
+
+  .control-btn {
+    background: transparent;
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #b042ff;
+    transition: all 0.3s ease;
+  }
+
+  .control-btn:hover {
+    background: rgba(176, 66, 255, 0.1);
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+  }
+
+  .showcase-indicators {
+    display: flex;
+    gap: 10px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(176, 66, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .indicator.active {
+    background-color: #b042ff;
+    box-shadow: 0 0 8px rgba(176, 66, 255, 0.8);
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .showcase-container {
+      height: 600px;
+      overflow: visible;
+    }
+
+    .showcase-controls {
+      bottom: -40px;
+    }
+  }
+</style>
+
+<script>
+  // Controles para el showcase
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.showcase-container');
+    const slides = document.querySelectorAll('.showcase-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    let currentSlide = 0;
+    let autoSlideInterval;
+    const autoSlideDelay = 12000; // Incrementado de 8s a 12s entre slides para evitar transiciones demasiado rápidas
+    let isTransitioning = false; // Flag para evitar clicks múltiples durante la transición
+    
+    // Función para cambiar al slide especificado
+    function goToSlide(index) {
+      // Evitar cambios durante la transición
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
+      // Asegurar que el índice esté dentro del rango
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      
+      // Si estamos en el mismo slide, no hacer nada
+      if (currentSlide === index) {
+        isTransitioning = false;
+        return;
+      }
+      
+      // Desactivar slide e indicador actuales
+      slides[currentSlide].classList.remove('active');
+      indicators[currentSlide].classList.remove('active');
+      
+      // Actualizar índice actual
+      currentSlide = index;
+      
+      // Activar nuevo slide e indicador
+      slides[currentSlide].classList.add('active');
+      indicators[currentSlide].classList.add('active');
+      
+      // Actualizar atributo data para referencia
+      container.setAttribute('data-active-slide', currentSlide);
+      
+      // Reiniciar temporizador para cambio automático
+      resetAutoSlide();
+      
+      // Permitir nueva transición después de un tiempo
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 800); // Coincide con la duración de la transición CSS
+    }
+    
+    // Función para iniciar rotación automática
+    function startAutoSlide() {
+      clearInterval(autoSlideInterval); // Limpiar cualquier intervalo existente
+      autoSlideInterval = setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, autoSlideDelay);
+    }
+    
+    // Función para reiniciar temporizador de rotación
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+    
+    // Escuchadores de eventos para botones
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentSlide - 1);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentSlide + 1);
+    });
+    
+    // Escuchadores para indicadores
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        goToSlide(index);
+      });
+    });
+    
+    // Iniciar rotación automática
+    startAutoSlide();
+    
+    // Pausar rotación al pasar el mouse por encima
+    container.addEventListener('mouseenter', () => {
+      clearInterval(autoSlideInterval);
+    });
+    
+    // Reanudar rotación al quitar el mouse
+    container.addEventListener('mouseleave', () => {
+      startAutoSlide();
+    });
+  });
+</script>

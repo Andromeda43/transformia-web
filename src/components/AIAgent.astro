@@ -1,0 +1,1012 @@
+---
+---
+
+<div class="ai-agent-visualization">
+    <div class="agent-container">
+      <!-- Interfaz del agente virtual -->
+      <div class="virtual-agent">
+        <!-- Avatar del agente -->
+        <div class="agent-avatar">
+          <div class="avatar-ring"></div>
+          <div class="avatar-face">
+            <div class="avatar-features">
+              <div class="avatar-eyes">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+              </div>
+              <div class="avatar-smile"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sistema de diálogo -->
+        <div class="dialogue-system">
+          <div class="dialogue-header">
+            <div class="agent-name">Agent.AI</div>
+            <div class="agent-status">Online</div>
+          </div>
+          
+          <div class="dialogue-messages">
+            <div class="message system">Iniciando sistema...</div>
+            <div class="message system">Cargando capacidades cognitivas...</div>
+            <div class="message agent" id="msg1">¿En qué puedo ayudarte hoy?</div>
+            <div class="message user">Necesito optimizar nuestros procesos.</div>
+            <div class="message agent" id="msg2">Analizando procesos actuales...</div>
+            <div class="message agent" id="msg3">Identificando oportunidades de mejora...</div>
+            <div class="message typing">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Visualización de capacidades -->
+      <div class="capabilities-visualization">
+        <!-- Nodos de capacidades -->
+        <div class="capability-nodes">
+          <div class="node nlp" data-label="NLP">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="node vision" data-label="Vision">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="node reasoning" data-label="Reasoning">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="node planning" data-label="Planning">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="node memory" data-label="Memory">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="node learning" data-label="Learning">
+            <div class="node-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 17l-2 2-2-2m4 0l2-2 2 2m-4 0V9"></path>
+                <circle cx="12" cy="5" r="3"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Conexiones entre nodos -->
+        <div class="capability-connections"></div>
+        
+        <!-- Anillos de pulso de la actividad del agente -->
+        <div class="agent-pulse-rings">
+          <div class="pulse-ring"></div>
+          <div class="pulse-ring"></div>
+          <div class="pulse-ring"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Panel de estado y actividad -->
+    <div class="agent-stats-panel">
+      <div class="stats-header">
+        <h4>Actividad del Agente</h4>
+        <div class="activity-indicator active"></div>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">Procesamiento</div>
+          <div class="stat-bar">
+            <div class="stat-progress" style="width: 85%"></div>
+          </div>
+          <div class="stat-value">85%</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-label">Confianza</div>
+          <div class="stat-bar">
+            <div class="stat-progress" style="width: 92%"></div>
+          </div>
+          <div class="stat-value">92%</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-label">Contexto</div>
+          <div class="stat-bar">
+            <div class="stat-progress" style="width: 78%"></div>
+          </div>
+          <div class="stat-value">78%</div>
+        </div>
+        
+        <div class="stat-item tasks">
+          <div class="task-header">
+            <div class="task-label">Ejecutando Tareas</div>
+            <div class="task-count">3</div>
+          </div>
+          <div class="task-list">
+            <div class="task-item">
+              <div class="task-name">Análisis de datos</div>
+              <div class="task-progress-bar">
+                <div class="task-progress" style="width: 60%"></div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-name">Modelado predictivo</div>
+              <div class="task-progress-bar">
+                <div class="task-progress" style="width: 45%"></div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-name">Generación de reporte</div>
+              <div class="task-progress-bar">
+                <div class="task-progress" style="width: 25%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .ai-agent-visualization {
+      background-color: rgba(20, 20, 35, 0.85);
+      border-radius: 10px;
+      border: 1px solid rgba(176, 66, 255, 0.5);
+      overflow: hidden;
+      box-shadow: 
+        0 0 15px rgba(176, 66, 255, 0.3),
+        0 0 30px rgba(176, 66, 255, 0.1);
+      backdrop-filter: blur(10px);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+  
+    /* Contenedor principal */
+    .agent-container {
+      position: relative;
+      height: 350px;
+      display: flex;
+      overflow: hidden;
+    }
+  
+    /* Avatar del agente y sistema de diálogo */
+    .virtual-agent {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(15, 15, 30, 0.7) 0%, rgba(30, 30, 60, 0.5) 100%);
+      border-right: 1px solid rgba(176, 66, 255, 0.2);
+    }
+  
+    .agent-avatar {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      margin: 0 auto 20px;
+    }
+  
+    .avatar-ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid rgba(176, 66, 255, 0.7);
+      box-shadow: 0 0 15px rgba(176, 66, 255, 0.5);
+      animation: rotate 10s linear infinite;
+    }
+  
+    .avatar-ring::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: #b042ff;
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .avatar-face {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      background: radial-gradient(circle, rgba(100, 200, 255, 0.3) 0%, rgba(176, 66, 255, 0.3) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  
+    .avatar-features {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .avatar-eyes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+  
+    .eye {
+      width: 8px;
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      animation: blink 3s infinite;
+    }
+  
+    .avatar-smile {
+      width: 20px;
+      height: 10px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+    }
+  
+    /* Sistema de diálogo */
+    .dialogue-system {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(15, 15, 30, 0.5);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  
+    .dialogue-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background-color: rgba(30, 30, 60, 0.6);
+      border-bottom: 1px solid rgba(176, 66, 255, 0.3);
+    }
+  
+    .agent-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+    }
+  
+    .agent-status {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: #4aef9e;
+      display: flex;
+      align-items: center;
+    }
+  
+    .agent-status::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #4aef9e;
+      border-radius: 50%;
+      margin-right: 5px;
+      animation: pulse 2s infinite;
+    }
+  
+    .dialogue-messages {
+      flex-grow: 1;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+    }
+  
+    .message {
+      padding: 8px 12px;
+      border-radius: 8px;
+      max-width: 85%;
+      animation: fade-in 0.3s ease;
+    }
+  
+    .message.system {
+      background-color: rgba(128, 128, 128, 0.2);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8rem;
+      align-self: center;
+    }
+  
+    .message.agent {
+      background-color: rgba(176, 66, 255, 0.2);
+      color: #fff;
+      align-self: flex-start;
+      border-left: 3px solid rgba(176, 66, 255, 0.5);
+    }
+  
+    .message.user {
+      background-color: rgba(66, 135, 255, 0.2);
+      color: #fff;
+      align-self: flex-end;
+      border-right: 3px solid rgba(66, 135, 255, 0.5);
+    }
+  
+    #msg1 {
+      animation: typing-effect 0.5s steps(20, end) 0.5s forwards, fade-in 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+    }
+  
+    #msg2 {
+      animation: typing-effect 0.5s steps(20, end) 2s forwards, fade-in 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+    }
+  
+    #msg3 {
+      animation: typing-effect 0.5s steps(30, end) 3.5s forwards, fade-in 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+    }
+  
+    .message.typing {
+      background: transparent;
+      align-self: flex-start;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: rgba(176, 66, 255, 0.7);
+      border-radius: 50%;
+    }
+  
+    .dot:nth-child(1) {
+      animation: bounce 1s infinite 0.2s;
+    }
+  
+    .dot:nth-child(2) {
+      animation: bounce 1s infinite 0.4s;
+    }
+  
+    .dot:nth-child(3) {
+      animation: bounce 1s infinite 0.6s;
+    }
+  
+    /* Visualización de capacidades */
+    .capabilities-visualization {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(30, 30, 60, 0.5) 0%, rgba(15, 15, 30, 0.7) 100%);
+    }
+  
+    .capability-nodes {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+  
+    .node {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(30, 30, 60, 0.8);
+      border: 2px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+  
+    .node::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.7);
+      white-space: nowrap;
+    }
+  
+    .node-icon {
+      color: #fff;
+      width: 24px;
+      height: 24px;
+    }
+  
+    .node.nlp {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-color: rgba(100, 200, 255, 0.7);
+      box-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
+    }
+  
+    .node.vision {
+      top: 30%;
+      left: 0;
+      border-color: rgba(255, 100, 200, 0.7);
+      box-shadow: 0 0 10px rgba(255, 100, 200, 0.3);
+    }
+  
+    .node.reasoning {
+      top: 30%;
+      right: 0;
+      border-color: rgba(250, 200, 100, 0.7);
+      box-shadow: 0 0 10px rgba(250, 200, 100, 0.3);
+    }
+  
+    .node.planning {
+      bottom: 0;
+      left: 20%;
+      border-color: rgba(100, 250, 150, 0.7);
+      box-shadow: 0 0 10px rgba(100, 250, 150, 0.3);
+    }
+  
+    .node.memory {
+      bottom: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-color: rgba(176, 66, 255, 0.7);
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.3);
+    }
+  
+    .node.learning {
+      bottom: 0;
+      right: 20%;
+      border-color: rgba(66, 135, 255, 0.7);
+      box-shadow: 0 0 10px rgba(66, 135, 255, 0.3);
+    }
+  
+    .node:hover {
+      transform: scale(1.1);
+    }
+  
+    .node.nlp:hover, .node.vision:hover, .node.reasoning:hover, 
+    .node.planning:hover, .node.memory:hover, .node.learning:hover {
+      transform: scale(1.1) translateX(0);
+    }
+  
+    .node.nlp:hover, .node.memory:hover {
+      transform: scale(1.1) translateX(-50%);
+    }
+  
+    .node.active {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px;
+    }
+  
+    .agent-pulse-rings {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+  
+    .pulse-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 2px solid rgba(176, 66, 255, 0.3);
+      opacity: 1;
+      animation: pulse-ring 4s infinite;
+    }
+  
+    .pulse-ring:nth-child(1) {
+      animation-delay: 0s;
+    }
+  
+    .pulse-ring:nth-child(2) {
+      animation-delay: 1.3s;
+    }
+  
+    .pulse-ring:nth-child(3) {
+      animation-delay: 2.6s;
+    }
+  
+    /* Panel de estadísticas */
+    .agent-stats-panel {
+      background-color: rgba(15, 15, 25, 0.7);
+      border-top: 1px solid rgba(176, 66, 255, 0.3);
+      padding: 15px 20px;
+    }
+  
+    .stats-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+  
+    .stats-header h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  
+    .activity-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #4aef9e;
+      box-shadow: 0 0 8px #4aef9e;
+      position: relative;
+    }
+  
+    .activity-indicator::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 50%;
+      border: 1px solid #4aef9e;
+      animation: pulse 2s infinite;
+    }
+  
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto auto;
+      gap: 15px;
+    }
+  
+    .stat-item {
+      background-color: rgba(30, 30, 50, 0.5);
+      border-radius: 8px;
+      padding: 12px;
+    }
+  
+    .stat-item.tasks {
+      grid-column: span 2;
+    }
+  
+    .stat-label, .task-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 8px;
+    }
+  
+    .stat-bar, .task-progress-bar {
+      height: 6px;
+      background-color: rgba(128, 128, 128, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+  
+    .stat-progress, .task-progress {
+      height: 100%;
+      background: linear-gradient(90deg, rgba(100, 200, 255, 0.7) 0%, rgba(176, 66, 255, 0.7) 100%);
+      border-radius: 3px;
+    }
+  
+    .stat-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: right;
+    }
+  
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  
+    .task-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: #ffcc66;
+      background-color: rgba(255, 204, 102, 0.1);
+      border-radius: 10px;
+      padding: 2px 8px;
+    }
+  
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .task-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .task-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      color: #fff;
+    }
+  
+    /* Animaciones */
+    @keyframes typing-effect {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+  
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+  
+    @keyframes pulse-ring {
+      0% {
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+      }
+    }
+  
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  
+    @keyframes blink {
+      0%, 90%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      95% {
+        transform: scale(0.1);
+        opacity: 0.1;
+      }
+    }
+  
+    /* Responsive */
+    @media (max-width: 768px) {
+      .agent-container {
+        flex-direction: column;
+        height: auto;
+      }
+  
+      .virtual-agent, .capabilities-visualization {
+        width: 100%;
+        min-height: 175px;
+      }
+  
+      .dialogue-messages {
+        max-height: 130px;
+      }
+  
+      .capability-nodes {
+        transform: scale(0.6);
+      }
+  
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+  
+      .stat-item.tasks {
+        grid-column: span 1;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Elementos DOM
+      const container = document.querySelector('.ai-agent-visualization');
+      const nodes = document.querySelectorAll('.node');
+      const connectionsContainer = document.querySelector('.capability-connections');
+      
+      // Crear conexiones SVG entre nodos
+      function createConnections() {
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+        svg.style.position = 'absolute';
+        svg.style.top = '0';
+        svg.style.left = '0';
+        svg.style.zIndex = '0';
+        svg.style.pointerEvents = 'none';
+        
+        // Añadir definiciones de gradientes
+        const defs = document.createElementNS(svgNS, 'defs');
+        
+        // Añadir gradientes para cada tipo de conexión
+        const gradientColors = [
+          ['rgba(100, 200, 255, 0.7)', 'rgba(176, 66, 255, 0.7)'],
+          ['rgba(176, 66, 255, 0.7)', 'rgba(255, 100, 200, 0.7)'],
+          ['rgba(250, 200, 100, 0.7)', 'rgba(100, 250, 150, 0.7)'],
+          ['rgba(66, 135, 255, 0.7)', 'rgba(100, 200, 255, 0.7)'],
+        ];
+        
+        gradientColors.forEach((colors, index) => {
+          const gradient = document.createElementNS(svgNS, 'linearGradient');
+          gradient.setAttribute('id', `connection-gradient-${index}`);
+          gradient.setAttribute('x1', '0%');
+          gradient.setAttribute('y1', '0%');
+          gradient.setAttribute('x2', '100%');
+          gradient.setAttribute('y2', '0%');
+          
+          const stop1 = document.createElementNS(svgNS, 'stop');
+          stop1.setAttribute('offset', '0%');
+          stop1.setAttribute('stop-color', colors[0]);
+          
+          const stop2 = document.createElementNS(svgNS, 'stop');
+          stop2.setAttribute('offset', '100%');
+          stop2.setAttribute('stop-color', colors[1]);
+          
+          gradient.appendChild(stop1);
+          gradient.appendChild(stop2);
+          defs.appendChild(gradient);
+        });
+        
+        svg.appendChild(defs);
+        
+        // Crear conexiones entre nodos centrales
+        const capabilitiesContainer = document.querySelector('.capability-nodes');
+        const containerRect = capabilitiesContainer.getBoundingClientRect();
+        
+        // Definir las conexiones que queremos crear
+        const connections = [
+          { from: 'nlp', to: 'reasoning', gradientIndex: 0 },
+          { from: 'reasoning', to: 'planning', gradientIndex: 2 },
+          { from: 'vision', to: 'reasoning', gradientIndex: 1 },
+          { from: 'memory', to: 'learning', gradientIndex: 3 },
+          { from: 'nlp', to: 'memory', gradientIndex: 0 },
+          { from: 'memory', to: 'reasoning', gradientIndex: 3 },
+          { from: 'planning', to: 'learning', gradientIndex: 2 },
+          { from: 'vision', to: 'memory', gradientIndex: 1 },
+        ];
+        
+        connections.forEach(connection => {
+          const fromNode = document.querySelector(`.node.${connection.from}`);
+          const toNode = document.querySelector(`.node.${connection.to}`);
+          
+          if (fromNode && toNode) {
+            const fromRect = fromNode.getBoundingClientRect();
+            const toRect = toNode.getBoundingClientRect();
+            
+            // Calcular centros relativos al contenedor
+            const x1 = fromRect.left - containerRect.left + fromRect.width / 2;
+            const y1 = fromRect.top - containerRect.top + fromRect.height / 2;
+            const x2 = toRect.left - containerRect.left + toRect.width / 2;
+            const y2 = toRect.top - containerRect.top + toRect.height / 2;
+            
+            // Crear línea
+            const line = document.createElementNS(svgNS, 'line');
+            line.setAttribute('x1', x1);
+            line.setAttribute('y1', y1);
+            line.setAttribute('x2', x2);
+            line.setAttribute('y2', y2);
+            line.setAttribute('stroke', `url(#connection-gradient-${connection.gradientIndex})`);
+            line.setAttribute('stroke-width', '2');
+            line.setAttribute('stroke-opacity', '0.6');
+            
+            // Añadir línea al SVG
+            svg.appendChild(line);
+            
+            // Añadir partícula en movimiento
+            const particle = document.createElementNS(svgNS, 'circle');
+            particle.setAttribute('r', '3');
+            particle.setAttribute('fill', '#fff');
+            
+            // Animación de la partícula
+            const animateMotion = document.createElementNS(svgNS, 'animateMotion');
+            animateMotion.setAttribute('path', `M${x1},${y1} L${x2},${y2}`);
+            animateMotion.setAttribute('dur', (Math.random() * 3 + 2) + 's');
+            animateMotion.setAttribute('repeatCount', 'indefinite');
+            animateMotion.setAttribute('begin', (Math.random() * 3) + 's');
+            
+            particle.appendChild(animateMotion);
+            svg.appendChild(particle);
+          }
+        });
+        
+        connectionsContainer.appendChild(svg);
+      }
+      
+      // Función para activar nodos aleatoriamente
+      function activateRandomNodes() {
+        // Desactivar nodos activos
+        nodes.forEach(node => {
+          node.classList.remove('active');
+        });
+        
+        // Determinar cuántos nodos activar (1-3)
+        const numToActivate = Math.floor(Math.random() * 3) + 1;
+        
+        // Activar nodos aleatorios
+        const shuffledNodes = [...nodes].sort(() => 0.5 - Math.random());
+        
+        for (let i = 0; i < numToActivate; i++) {
+          if (i < shuffledNodes.length) {
+            shuffledNodes[i].classList.add('active');
+          }
+        }
+      }
+      
+      // Función para simular actividad en la barra de estadísticas
+      function updateStatistics() {
+        // Actualizar barras de progreso
+        const progressBars = document.querySelectorAll('.stat-progress');
+        progressBars.forEach(bar => {
+          const currentWidth = parseInt(bar.style.width);
+          // Generar un pequeño cambio aleatorio (-5% a +5%)
+          const change = Math.floor(Math.random() * 11) - 5;
+          const newWidth = Math.min(100, Math.max(60, currentWidth + change));
+          
+          // Aplicar cambio con transición suave
+          bar.style.transition = 'width 1s ease';
+          bar.style.width = `${newWidth}%`;
+          
+          // Actualizar valor de texto
+          const valueElement = bar.closest('.stat-item').querySelector('.stat-value');
+          if (valueElement) {
+            valueElement.textContent = `${newWidth}%`;
+          }
+        });
+        
+        // Actualizar progreso de tareas
+        const taskBars = document.querySelectorAll('.task-progress');
+        taskBars.forEach(bar => {
+          const currentWidth = parseInt(bar.style.width);
+          // Aumentar progreso de las tareas gradualmente
+          const increase = Math.floor(Math.random() * 5) + 1;
+          const newWidth = Math.min(100, currentWidth + increase);
+          
+          // Aplicar cambio con transición suave
+          bar.style.transition = 'width 1s ease';
+          bar.style.width = `${newWidth}%`;
+          
+          // Si la tarea se completa, reiniciarla después de un momento
+          if (newWidth >= 100) {
+            setTimeout(() => {
+              bar.style.transition = 'none';
+              bar.style.width = '0%';
+              setTimeout(() => {
+                bar.style.transition = 'width 1s ease';
+              }, 100);
+            }, 2000);
+          }
+        });
+      }
+      
+      // Función para animar el avatar
+      function animateAvatar() {
+        // Ojos parpadean aleatoriamente
+        const eyes = document.querySelectorAll('.eye');
+        
+        setInterval(() => {
+          eyes.forEach(eye => {
+            eye.style.animation = 'none';
+            setTimeout(() => {
+              eye.style.animation = 'blink 3s infinite';
+            }, 100);
+          });
+        }, Math.random() * 3000 + 2000);
+      }
+      
+      // Inicializar
+      setTimeout(() => {
+        // Crear conexiones entre nodos
+        createConnections();
+        
+        // Activar nodos aleatoriamente
+        setInterval(activateRandomNodes, 4000);
+        
+        // Actualizar estadísticas periódicamente
+        setInterval(updateStatistics, 5000);
+        
+        // Animar avatar
+        animateAvatar();
+        
+        // Añadir interactividad a los nodos
+        nodes.forEach(node => {
+          node.addEventListener('click', () => {
+            // Desactivar todos los nodos
+            nodes.forEach(n => n.classList.remove('active'));
+            
+            // Activar el nodo clickeado
+            node.classList.add('active');
+          });
+        });
+      }, 1000);
+    });
+  </script>

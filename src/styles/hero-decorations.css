@@ -1,0 +1,129 @@
+/* Estilos para el contenedor del terminal */
+.terminal-container {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Circuitos alrededor de la red neuronal */
+  .circuit-line {
+    position: absolute;
+    background-color: rgba(176, 66, 255, 0.6);
+    box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+    z-index: 4;
+  }
+  
+  .cl-1 {
+    height: 2px;
+    width: 50px;
+    top: 30px;
+    left: -30px;
+    animation: circuit-glow 2s ease-in-out infinite alternate;
+  }
+  
+  .cl-2 {
+    height: 2px;
+    width: 80px;
+    bottom: 50px;
+    right: -60px;
+    animation: circuit-glow 2s ease-in-out infinite alternate-reverse;
+  }
+  
+  .cl-3 {
+    height: 60px;
+    width: 2px;
+    bottom: -40px;
+    left: 100px;
+    animation: circuit-glow 2s ease-in-out infinite alternate;
+    animation-delay: 1s;
+  }
+  
+  .circuit-node {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #b042ff;
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.8);
+    z-index: 4;
+  }
+  
+  .cn-1 {
+    top: 30px;
+    left: -30px;
+    animation: circuit-node-glow 3s ease-in-out infinite;
+  }
+  
+  .cn-2 {
+    bottom: 50px;
+    right: -60px;
+    animation: circuit-node-glow 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  
+  @keyframes circuit-glow {
+    0% {
+      opacity: 0.6;
+      box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+    }
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 15px rgba(176, 66, 255, 1);
+    }
+  }
+  
+  @keyframes circuit-node-glow {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+  }
+  
+  /* Flecha de desplazamiento */
+  .scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    z-index: 10;
+  }
+  
+  .scroll-arrow svg {
+    color: #b042ff;
+    filter: drop-shadow(0 0 5px rgba(176, 66, 255, 0.7));
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) translateX(-50%);
+    }
+    40% {
+      transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+      transform: translateY(-10px) translateX(-50%);
+    }
+  }
+  
+  /* Estilos para que la animación de entrada funcione correctamente */
+  .dom-loaded .hero-text,
+  .dom-loaded .tagline,
+  .dom-loaded .btn-container,
+  .dom-loaded .neural-network {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  /* Oculta elementos decorativos en móvil */
+  @media (max-width: 768px) {
+    .geometric-element, 
+    .circuit-line, 
+    .circuit-node {
+      display: none;
+    }
+  }
