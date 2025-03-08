@@ -53,36 +53,69 @@
         </div>
         
         <div class="terminal-container">
-          <!-- Terminal con efectos mejorados -->
-          <div class="terminal">
-            <div class="terminal-header">
-              <div class="terminal-buttons">
-                <span class="terminal-button"></span>
-                <span class="terminal-button"></span>
-                <span class="terminal-button"></span>
+          <!-- Visualización de red neuronal en vez del terminal -->
+          <div class="neural-network">
+            <div class="network-header">
+              <div class="network-controls">
+                <span class="network-control"></span>
+                <span class="network-control"></span>
+                <span class="network-control"></span>
               </div>
+              <div class="network-title">IA Neural Simulation</div>
             </div>
-            <div class="terminal-body">
-              <div class="line">
-                <span class="prompt">&gt;</span>
-                <span class="command" id="command1">Transformando procesos</span>
+            <div class="network-body">
+              <div class="neural-layers">
+                <div class="layer input-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                </div>
+                <div class="layer hidden-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                  <div class="node" data-index="5"></div>
+                  <div class="node" data-index="6"></div>
+                </div>
+                <div class="layer hidden-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                </div>
+                <div class="layer output-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                </div>
               </div>
-              <div class="line">
-                <span class="prompt">&gt;</span>
-                <span class="command" id="command2">Creando innovación</span>
-              </div>
-              <div class="line">
-                <span class="prompt">&gt;</span>
-                <span class="command" id="command3">Impulsando crecimiento</span>
-              </div>
-              <div class="line">
-                <span class="prompt">&gt;</span>
-                <span class="cursor"></span>
+              <div class="network-info">
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text1">Transformando procesos</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text2">Creando innovación</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text3">Impulsando crecimiento</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-cursor"></span>
+                </div>
               </div>
             </div>
           </div>
           
-          <!-- Elementos decorativos alrededor del terminal -->
+          <!-- Elementos decorativos alrededor de la red neuronal -->
           <div class="circuit-line cl-1"></div>
           <div class="circuit-line cl-2"></div>
           <div class="circuit-line cl-3"></div>
@@ -113,7 +146,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding: 6rem 0;
+      padding: 3rem 0; /* Reducido de 6rem a 3rem para disminuir el espacio superior */
     }
     
     .container {
@@ -325,7 +358,7 @@
       }
     }
     
-    /* Efecto Glitch para el título */
+    /* Efecto Glitch para el título - MODIFICADO para ser solo horizontal */
     .glitch-text {
       font-family: 'Space Mono', monospace;
       font-size: 4rem;
@@ -348,66 +381,104 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background: transparent;
     }
     
     .glitch-text::before {
       left: 2px;
       text-shadow: -2px 0 #ff00c1;
-      animation: glitch-1 2s infinite linear alternate-reverse;
-      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+      animation: glitch-slice 3s infinite linear alternate-reverse;
       opacity: 0.8;
     }
     
     .glitch-text::after {
       left: -2px;
       text-shadow: 2px 0 #00fff9;
-      animation: glitch-2 2s infinite linear alternate-reverse;
-      clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+      animation: glitch-slice 2s infinite linear alternate-reverse;
+      animation-delay: 0.5s;
       opacity: 0.8;
     }
     
-    @keyframes glitch-1 {
-      0% {
-        clip-path: polygon(0 0, 100% 0, 100% 25%, 0 25%);
-      }
-      100% {
-        clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-      }
+    /* MODIFICADO: Efecto glitch más estable para el título */
+    .glitch-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: relative;
+      color: #fff;
+      text-shadow: 
+        0 0 5px rgba(176, 66, 255, 0.7),
+        0 0 10px rgba(176, 66, 255, 0.5);
+      margin-bottom: 1.5rem;
+    }
+  
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
     }
     
-    @keyframes glitch-2 {
-      0% {
-        clip-path: polygon(0 60%, 100% 60%, 100% 85%, 0 85%);
-      }
-      100% {
-        clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-      }
+    .glitch-text::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      animation: glitch-slice 3s infinite linear alternate-reverse;
+      opacity: 0.8;
     }
     
-    @keyframes glitch {
-      0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
-        transform: skewX(0deg);
+    .glitch-text::after {
+      left: -2px;
+      text-shadow: 2px 0 #00fff9;
+      animation: glitch-slice 2s infinite linear alternate-reverse;
+      animation-delay: 0.5s;
+      opacity: 0.8;
+    }
+    
+    @keyframes glitch-slice {
+      0%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
       }
-      41% {
-        transform: skewX(10deg);
+      10% {
+        clip-path: inset(10% 0 35% 0);
+        transform: translateX(1px);
       }
-      42% {
-        transform: skewX(-10deg);
+      20% {
+        clip-path: inset(40% 0 60% 0);
+        transform: translateX(-1px);
       }
-      59% {
-        transform: skewX(40deg) skewY(10deg);
+      30% {
+        clip-path: inset(25% 0 58% 0);
+        transform: translateX(2px);
+      }
+      40% {
+        clip-path: inset(50% 0 40% 0);
+        transform: translateX(-2px);
+      }
+      50% {
+        clip-path: inset(75% 0 20% 0);
+        transform: translateX(1px);
       }
       60% {
-        transform: skewX(-40deg) skewY(-10deg);
-      }
-      63% {
-        transform: skewX(10deg) skewY(-5deg);
+        clip-path: inset(15% 0 65% 0);
+        transform: translateX(-1px);
       }
       70% {
-        transform: skewX(-50deg) skewY(-20deg);
+        clip-path: inset(30% 0 40% 0);
+        transform: translateX(2px);
       }
-      71% {
-        transform: skewX(10deg) skewY(-10deg);
+      80% {
+        clip-path: inset(55% 0 25% 0);
+        transform: translateX(-2px);
+      }
+      90% {
+        clip-path: inset(5% 0 80% 0);
+        transform: translateX(1px);
       }
     }
     
@@ -427,13 +498,7 @@
       font-weight: 500;
     }
     
-    /* Botones Cyberpunk */
-    .btn-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    
+    /* MODIFICADO: Botones sin duplicación en hover */
     .cybr-btn {
       --primary: hsl(var(--primary-hue), 85%, 60%);
       --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
@@ -462,6 +527,8 @@
       display: inline-block;
       text-align: center;
       text-decoration: none;
+      padding: 0 15px; /* Padding para evitar que el texto choque con los bordes */
+      overflow: hidden; /* Prevenir que cualquier contenido se desborde */
     }
     
     .cybr-btn:before {
@@ -499,18 +566,43 @@
       filter: blur(1px);
     }
     
+    /* MODIFICADO: Corregido el efecto glitch en hover */
     .cybr-btn__glitch {
       position: absolute;
-      top: calc(var(--border-width) * -1);
-      left: calc(var(--border-width) * -1);
-      right: calc(var(--border-width) * -1);
-      bottom: calc(var(--border-width) * -1);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: var(--shadow-primary);
       background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
       text-shadow: 2px 2px var(--shadow-primary), -2px -2px var(--shadow-primary);
       clip-path: var(--clip);
-      animation: glitch 2s infinite;
       display: none;
+      z-index: -2; /* Para que el glitch quede debajo del texto */
+      animation: glitch-btn 0.8s infinite;
+    }
+    
+    @keyframes glitch-btn {
+      0%, 5%, 10%, 100% {
+        opacity: 0.8;
+        transform: translateX(0);
+      }
+      1% {
+        transform: translateX(-2px);
+        opacity: 0.9;
+      }
+      2% {
+        transform: translateX(2px);
+        opacity: 0.9;
+      }
+      6% {
+        transform: translateX(-2px);
+        opacity: 0.9;
+      }
+      8% {
+        transform: translateX(2px);
+        opacity: 0.9;
+      }
     }
     
     .cybr-btn:hover .cybr-btn__glitch {
@@ -613,18 +705,23 @@
       animation: typing 3s steps(30, end) forwards;
     }
     
+    /* MODIFICADO: Animaciones de typing aún más rápidas */
     #command1 {
-      animation-delay: 0.5s;
+      animation-delay: 0.2s;
+      animation-duration: 1.5s;
     }
     
     #command2 {
-      animation-delay: 3.5s;
+      animation-delay: 1.2s;
+      animation-duration: 1.5s;
     }
     
     #command3 {
-      animation-delay: 6.5s;
+      animation-delay: 2.2s;
+      animation-duration: 1.5s;
     }
     
+    /* MODIFICADO: Animación de typing más rápida */
     @keyframes typing {
       from {
         width: 0;
@@ -787,6 +884,60 @@
   <script>
     // Esperamos a que cargue el DOM
     document.addEventListener('DOMContentLoaded', () => {
+      // Función para animar la entrada de elementos
+      function animateEntrance() {
+        // Seleccionar elementos principales para animar
+        const title = document.querySelector('.glitch-text');
+        const tagline = document.querySelector('.tagline');
+        const btnContainer = document.querySelector('.btn-container');
+        const terminal = document.querySelector('.terminal-container');
+        
+        // Configurar animaciones de entrada
+        if (title) {
+          title.style.opacity = '0';
+          title.style.transform = 'translateY(-20px)';
+          title.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          setTimeout(() => {
+            title.style.opacity = '1';
+            title.style.transform = 'translateY(0)';
+          }, 300);
+        }
+        
+        if (tagline) {
+          tagline.style.opacity = '0';
+          tagline.style.transform = 'translateY(-15px)';
+          tagline.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          setTimeout(() => {
+            tagline.style.opacity = '1';
+            tagline.style.transform = 'translateY(0)';
+          }, 600);
+        }
+        
+        if (btnContainer) {
+          btnContainer.style.opacity = '0';
+          btnContainer.style.transform = 'translateY(-10px)';
+          btnContainer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          setTimeout(() => {
+            btnContainer.style.opacity = '1';
+            btnContainer.style.transform = 'translateY(0)';
+          }, 900);
+        }
+        
+        if (terminal) {
+          terminal.style.opacity = '0';
+          terminal.style.transform = 'scale(0.95)';
+          terminal.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          
+          setTimeout(() => {
+            terminal.style.opacity = '1';
+            terminal.style.transform = 'scale(1)';
+          }, 750);
+        }
+      }
+
       // Función para crear efectos de glitch aleatorios
       function randomGlitch() {
         const title = document.querySelector('.glitch-text');
@@ -799,7 +950,7 @@
           setTimeout(() => {
             title.classList.remove('intensify-glitch');
           }, 200);
-        }, Math.random() * 5000 + 3000);
+        }, Math.random() * 3000 + 2000); // Más frecuente que antes
       }
       
       // Función para animar el movimiento del grid
@@ -856,6 +1007,7 @@
       }
       
       // Iniciar todas las animaciones
+      animateEntrance(); // Iniciar las animaciones de entrada
       randomGlitch();
       animateGrid();
       mouseParallax();
@@ -871,4 +1023,3 @@
         });
       });
     });
-  </script>

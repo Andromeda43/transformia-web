@@ -1,0 +1,2432 @@
+---
+---
+
+<section class="hero" id="hero">
+    <!-- Fondo con grid animado -->
+    <div class="grid-background"></div>
+    
+    <!-- Círculos de neón flotantes -->
+    <div class="neon-circle" style="--size: 300px; --top: 15%; --left: 10%; --color: rgba(176, 66, 255, 0.15); --delay: 0s;"></div>
+    <div class="neon-circle" style="--size: 400px; --top: 60%; --left: 80%; --color: rgba(66, 135, 255, 0.12); --delay: 3s;"></div>
+    <div class="neon-circle" style="--size: 250px; --top: 70%; --left: 5%; --color: rgba(255, 66, 176, 0.1); --delay: 5s;"></div>
+    
+    <!-- Elementos geométricos decorativos -->
+    <div class="geometric-element rect-element" style="--top: 25%; --left: 5%; --rotate: 15deg; --size: 40px;"></div>
+    <div class="geometric-element triangle-element" style="--top: 70%; --left: 85%; --rotate: -10deg; --size: 60px;"></div>
+    <div class="geometric-element cross-element" style="--top: 15%; --left: 90%; --rotate: 25deg; --size: 50px;"></div>
+    
+    <!-- Líneas de scanline -->
+    <div class="scanlines"></div>
+    
+    <!-- Partículas flotantes -->
+    <div class="particles-container">
+      <div class="particle" style="--size: 3px; --top: 20%; --left: 30%; --speed: 25s;"></div>
+      <div class="particle" style="--size: 2px; --top: 40%; --left: 70%; --speed: 30s;"></div>
+      <div class="particle" style="--size: 4px; --top: 80%; --left: 20%; --speed: 20s;"></div>
+      <div class="particle" style="--size: 2px; --top: 10%; --left: 50%; --speed: 35s;"></div>
+      <div class="particle" style="--size: 3px; --top: 50%; --left: 10%; --speed: 28s;"></div>
+      <div class="particle" style="--size: 2px; --top: 70%; --left: 80%; --speed: 32s;"></div>
+      <div class="particle" style="--size: 4px; --top: 30%; --left: 40%; --speed: 22s;"></div>
+      <div class="particle" style="--size: 3px; --top: 60%; --left: 65%; --speed: 27s;"></div>
+      <div class="particle" style="--size: 2px; --top: 90%; --left: 25%; --speed: 31s;"></div>
+      <div class="particle" style="--size: 4px; --top: 15%; --left: 60%; --speed: 24s;"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <!-- Título con efecto glitch -->
+          <h1 class="glitch-text" data-text="TRANSFORMIA">TRANSFORMIA</h1>
+          
+          <p class="tagline">
+            El aliado que traduce tus desafíos en <span class="highlight">oportunidades</span> de crecimiento.
+          </p>
+          
+          <div class="btn-container">
+            <a href="#servicios" class="cybr-btn">
+              DESCUBRIR SERVICIOS<span aria-hidden class="cybr-btn__glitch">DESCUBRIR SERVICIOS</span>
+            </a>
+            <a href="/contacto" class="cybr-btn cybr-btn--secondary">
+              CONTÁCTANOS<span aria-hidden class="cybr-btn__glitch">CONTÁCTANOS</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="terminal-container">
+          <!-- Visualización de red neuronal en vez del terminal -->
+          <div class="neural-network">
+            <div class="network-header">
+              <div class="network-controls">
+                <span class="network-control"></span>
+                <span class="network-control"></span>
+                <span class="network-control"></span>
+              </div>
+              <div class="network-title">IA Neural Simulation</div>
+            </div>
+            <div class="network-body">
+              <div class="neural-layers">
+                <div class="layer input-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                </div>
+                <div class="layer hidden-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                  <div class="node" data-index="5"></div>
+                  <div class="node" data-index="6"></div>
+                </div>
+                <div class="layer hidden-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                </div>
+                <div class="layer output-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                </div>
+              </div>
+              <div class="network-info">
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text1">Transformando procesos</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text2">Creando innovación</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text3">Impulsando crecimiento</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-cursor"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Elementos decorativos alrededor de la red neuronal -->
+          <div class="circuit-line cl-1"></div>
+          <div class="circuit-line cl-2"></div>
+          <div class="circuit-line cl-3"></div>
+          <div class="circuit-node cn-1"></div>
+          <div class="circuit-node cn-2"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Flecha animada hacia abajo -->
+    <div class="scroll-arrow">
+      <a href="#servicios">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+  
+  <style>
+    /* Estilos base para la sección hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-color: #0a0a14;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 3rem 0; /* Reducido de 6rem a 3rem para disminuir el espacio superior */
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    @media (min-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    /* Fondo con grid */
+    .grid-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      background-image: 
+        linear-gradient(to right, rgba(128, 90, 213, 0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(128, 90, 213, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: perspective(500px) rotateX(60deg);
+      transform-origin: center top;
+      animation: grid-scroll 20s linear infinite;
+      z-index: 1;
+    }
+    
+    @keyframes grid-scroll {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 1000px;
+      }
+    }
+    
+    /* Círculos de neón */
+    .neon-circle {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      top: var(--top);
+      left: var(--left);
+      background-color: var(--color);
+      filter: blur(60px);
+      z-index: 2;
+      animation: pulse 8s ease-in-out infinite;
+      animation-delay: var(--delay);
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+      }
+    }
+    
+    /* Elementos geométricos */
+    .geometric-element {
+      position: absolute;
+      top: var(--top);
+      left: var(--left);
+      width: var(--size);
+      height: var(--size);
+      border: 1px solid rgba(176, 66, 255, 0.5);
+      z-index: 2;
+      transform: rotate(var(--rotate));
+      animation: float 10s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+    }
+    
+    .rect-element {
+      border-radius: 4px;
+    }
+    
+    .triangle-element {
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .cross-element {
+      position: relative;
+    }
+    
+    .cross-element::before, .cross-element::after {
+      content: '';
+      position: absolute;
+      background-color: rgba(176, 66, 255, 0.5);
+    }
+    
+    .cross-element::before {
+      width: 100%;
+      height: 2px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    
+    .cross-element::after {
+      width: 2px;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(var(--rotate));
+      }
+      25% {
+        transform: translate(5px, -5px) rotate(calc(var(--rotate) + 5deg));
+      }
+      50% {
+        transform: translate(0, 10px) rotate(var(--rotate));
+      }
+      75% {
+        transform: translate(-5px, -5px) rotate(calc(var(--rotate) - 5deg));
+      }
+    }
+    
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+      }
+      100% {
+        box-shadow: 0 0 15px rgba(176, 66, 255, 0.8), 0 0 20px rgba(176, 66, 255, 0.5);
+      }
+    }
+    
+    /* Efecto Scanline */
+    .scanlines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(128, 90, 213, 0.05) 50%
+      );
+      background-size: 100% 4px;
+      z-index: 12;
+      pointer-events: none;
+      animation: scanlines 0.5s steps(60) infinite;
+    }
+    
+    @keyframes scanlines {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 4px;
+      }
+    }
+    
+    /* Partículas flotantes */
+    .particles-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+    
+    .particle {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      background-color: rgba(176, 66, 255, 0.6);
+      border-radius: 50%;
+      top: var(--top);
+      left: var(--left);
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.8);
+      animation: particle-move var(--speed) linear infinite;
+    }
+    
+    @keyframes particle-move {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      25% {
+        transform: translateY(50px) translateX(20px);
+      }
+      50% {
+        transform: translateY(100px) translateX(-20px);
+      }
+      75% {
+        transform: translateY(50px) translateX(-40px);
+      }
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+    }
+    
+    /* Efecto Glitch para el título - MODIFICADO para ser solo horizontal */
+    .glitch-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: relative;
+      color: #fff;
+      text-shadow: 
+        0 0 5px rgba(176, 66, 255, 0.7),
+        0 0 10px rgba(176, 66, 255, 0.5);
+      margin-bottom: 1.5rem;
+      animation: glitch 5s infinite;
+    }
+  
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+    
+    .glitch-text::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      animation: glitch-slice 3s infinite linear alternate-reverse;
+      opacity: 0.8;
+    }
+    
+    .glitch-text::after {
+      left: -2px;
+      text-shadow: 2px 0 #00fff9;
+      animation: glitch-slice 2s infinite linear alternate-reverse;
+      animation-delay: 0.5s;
+      opacity: 0.8;
+    }
+    
+    /* MODIFICADO: Efecto glitch más estable para el título */
+    .glitch-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: relative;
+      color: #fff;
+      text-shadow: 
+        0 0 5px rgba(176, 66, 255, 0.7),
+        0 0 10px rgba(176, 66, 255, 0.5);
+      margin-bottom: 1.5rem;
+    }
+  
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+    
+    .glitch-text::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      animation: glitch-slice 3s infinite linear alternate-reverse;
+      opacity: 0.8;
+    }
+    
+    .glitch-text::after {
+      left: -2px;
+      text-shadow: 2px 0 #00fff9;
+      animation: glitch-slice 2s infinite linear alternate-reverse;
+      animation-delay: 0.5s;
+      opacity: 0.8;
+    }
+    
+    @keyframes glitch-slice {
+      0%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
+      }
+      10% {
+        clip-path: inset(10% 0 35% 0);
+        transform: translateX(1px);
+      }
+      20% {
+        clip-path: inset(40% 0 60% 0);
+        transform: translateX(-1px);
+      }
+      30% {
+        clip-path: inset(25% 0 58% 0);
+        transform: translateX(2px);
+      }
+      40% {
+        clip-path: inset(50% 0 40% 0);
+        transform: translateX(-2px);
+      }
+      50% {
+        clip-path: inset(75% 0 20% 0);
+        transform: translateX(1px);
+      }
+      60% {
+        clip-path: inset(15% 0 65% 0);
+        transform: translateX(-1px);
+      }
+      70% {
+        clip-path: inset(30% 0 40% 0);
+        transform: translateX(2px);
+      }
+      80% {
+        clip-path: inset(55% 0 25% 0);
+        transform: translateX(-2px);
+      }
+      90% {
+        clip-path: inset(5% 0 80% 0);
+        transform: translateX(1px);
+      }
+    }
+    
+    /* Tagline */
+    .tagline {
+      font-size: 1.5rem;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      font-family: 'Space Grotesk', sans-serif;
+      max-width: 540px;
+    }
+    
+    .highlight {
+      color: #b042ff;
+      text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      font-weight: 500;
+    }
+    
+    /* MODIFICADO: Botones sin duplicación en hover */
+    .cybr-btn {
+      --primary: hsl(var(--primary-hue), 85%, 60%);
+      --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
+      --primary-hue: 268;
+      --shadow-primary-hue: 280;
+      --font-size: 16px;
+      --primary-border: 1px;
+      --shadow-primary-border: 1px;
+      --clip: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      
+      font-family: 'Space Mono', monospace;
+      color: white;
+      cursor: pointer;
+      background: transparent;
+      text-transform: uppercase;
+      font-size: var(--font-size);
+      outline: transparent;
+      letter-spacing: 2px;
+      position: relative;
+      font-weight: 700;
+      border: 0;
+      min-width: 200px;
+      height: 50px;
+      line-height: 50px;
+      transition: background 0.2s;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      padding: 0 15px; /* Padding para evitar que el texto choque con los bordes */
+      overflow: hidden; /* Prevenir que cualquier contenido se desborde */
+    }
+    
+    .cybr-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      clip-path: var(--clip);
+      z-index: -1;
+    }
+    
+    .cybr-btn:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      clip-path: var(--clip);
+      z-index: -1;
+    }
+    
+    .cybr-btn:before {
+      background: var(--primary);
+      background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      transform: translateX(calc(var(--border-width, 0px) * -1)) translateY(calc(var(--border-width, 0px) * -1));
+    }
+    
+    .cybr-btn:after {
+      background: var(--shadow-primary);
+      transform: translateX(var(--border-width, 0px)) translateY(var(--border-width, 0px));
+      background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      filter: blur(1px);
+    }
+    
+    /* MODIFICADO: Corregido el efecto glitch en hover */
+    .cybr-btn__glitch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--shadow-primary);
+      background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      text-shadow: 2px 2px var(--shadow-primary), -2px -2px var(--shadow-primary);
+      clip-path: var(--clip);
+      display: none;
+      z-index: -2; /* Para que el glitch quede debajo del texto */
+      animation: glitch-btn 0.8s infinite;
+    }
+    
+    @keyframes glitch-btn {
+      0%, 5%, 10%, 100% {
+        opacity: 0.8;
+        transform: translateX(0);
+      }
+      1% {
+        transform: translateX(-2px);
+        opacity: 0.9;
+      }
+      2% {
+        transform: translateX(2px);
+        opacity: 0.9;
+      }
+      6% {
+        transform: translateX(-2px);
+        opacity: 0.9;
+      }
+      8% {
+        transform: translateX(2px);
+        opacity: 0.9;
+      }
+    }
+    
+    .cybr-btn:hover .cybr-btn__glitch {
+      display: block;
+    }
+    
+    .cybr-btn:hover:before {
+      background: var(--primary-darker, hsl(var(--primary-hue), 85%, 50%));
+      transform: translateX(0) translateY(0);
+    }
+    
+    .cybr-btn:hover:after {
+      background: var(--shadow-primary-darker, hsl(var(--shadow-primary-hue), 90%, 40%));
+      transform: translateX(0) translateY(0);
+      filter: blur(3px);
+    }
+    
+    .cybr-btn--secondary {
+      --primary-hue: 210;
+      --shadow-primary-hue: 220;
+    }
+    
+    .cybr-btn--secondary:before {
+      background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.2) 0%, rgba(176, 66, 255, 0.5) 100%);
+      border: 1px solid rgba(176, 66, 255, 0.6);
+    }
+    
+    .cybr-btn--secondary:after {
+      background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.2) 0%, rgba(176, 66, 255, 0.5) 100%);
+      border: 1px solid rgba(176, 66, 255, 0.6);
+    }
+    
+    .cybr-btn--secondary .cybr-btn__glitch {
+      background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.4) 0%, rgba(176, 66, 255, 0.8) 100%);
+    }
+    
+    /* Estilos para el terminal */
+    .terminal-container {
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .terminal {
+      background-color: rgba(20, 20, 40, 0.8);
+      border-radius: 8px;
+      border: 1px solid rgba(176, 66, 255, 0.5);
+      overflow: hidden;
+      box-shadow: 
+        0 0 15px rgba(176, 66, 255, 0.3),
+        0 0 30px rgba(176, 66, 255, 0.1);
+      backdrop-filter: blur(10px);
+      z-index: 5;
+      position: relative;
+    }
+    
+    .terminal-header {
+      background-color: rgba(30, 30, 50, 0.95);
+      padding: 10px;
+      border-bottom: 1px solid rgba(176, 66, 255, 0.3);
+    }
+    
+    .terminal-buttons {
+      display: flex;
+      gap: 6px;
+    }
+    
+    .terminal-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #b042ff;
+      opacity: 0.7;
+    }
+    
+    .terminal-body {
+      padding: 20px;
+      font-family: 'Space Mono', monospace;
+      color: white;
+      line-height: 1.8;
+    }
+    
+    .line {
+      display: flex;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+    
+    .prompt {
+      color: #b042ff;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    .command {
+      opacity: 0; /* Inicialmente invisible */
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 3s steps(30, end) forwards;
+    }
+    
+    /* MODIFICADO: Animaciones de typing aún más rápidas */
+    #command1 {
+      animation-delay: 0.2s;
+      animation-duration: 1.5s;
+    }
+    
+    #command2 {
+      animation-delay: 1.2s;
+      animation-duration: 1.5s;
+    }
+    
+    #command3 {
+      animation-delay: 2.2s;
+      animation-duration: 1.5s;
+    }
+    
+    /* MODIFICADO: Animación de typing más rápida */
+    @keyframes typing {
+      from {
+        width: 0;
+        opacity: 1;
+      }
+      to {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+    
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: #b042ff;
+      animation: blink 1s step-end infinite;
+    }
+    
+    @keyframes blink {
+      from, to {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    }
+    
+    /* Circuitos alrededor del terminal */
+    .circuit-line {
+      position: absolute;
+      background-color: rgba(176, 66, 255, 0.6);
+      box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      z-index: 4;
+    }
+    
+    .cl-1 {
+      height: 2px;
+      width: 50px;
+      top: 30px;
+      left: -30px;
+      animation: circuit-glow 2s ease-in-out infinite alternate;
+    }
+    
+    .cl-2 {
+      height: 2px;
+      width: 80px;
+      bottom: 50px;
+      right: -60px;
+      animation: circuit-glow 2s ease-in-out infinite alternate-reverse;
+    }
+    
+    .cl-3 {
+      height: 60px;
+      width: 2px;
+      bottom: -40px;
+      left: 100px;
+      animation: circuit-glow 2s ease-in-out infinite alternate;
+      animation-delay: 1s;
+    }
+    
+    .circuit-node {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #b042ff;
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.8);
+      z-index: 4;
+    }
+    
+    .cn-1 {
+      top: 30px;
+      left: -30px;
+      animation: circuit-node-glow 3s ease-in-out infinite;
+    }
+    
+    .cn-2 {
+      bottom: 50px;
+      right: -60px;
+      animation: circuit-node-glow 3s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+    
+    @keyframes circuit-glow {
+      0% {
+        opacity: 0.6;
+        box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      }
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(176, 66, 255, 1);
+      }
+    }
+    
+    @keyframes circuit-node-glow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+    
+    /* Flecha de desplazamiento */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      z-index: 10;
+    }
+    
+    .scroll-arrow svg {
+      color: #b042ff;
+      filter: drop-shadow(0 0 5px rgba(176, 66, 255, 0.7));
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    
+    /* Media queries para responsividad */
+    @media (max-width: 768px) {
+      .glitch-text {
+        font-size: 3rem;
+      }
+      
+      .tagline {
+        font-size: 1.25rem;
+      }
+      
+      .btn-container {
+        justify-content: center;
+      }
+      
+      .cybr-btn {
+        min-width: auto;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .geometric-element, .circuit-line, .circuit-node {
+        display: none;
+      }
+    }
+  </style>
+  
+  <script>
+    // Esperamos a que cargue el DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      // Función para animar la entrada de elementos
+      function animateEntrance() {
+        // Seleccionar elementos principales para animar
+        const title = document.querySelector('.glitch-text');
+        const tagline = document.querySelector('.tagline');
+        const btnContainer = document.querySelector('.btn-container');
+        const terminal = document.querySelector('.terminal-container');
+        
+        // Configurar animaciones de entrada
+        if (title) {
+          title.style.opacity = '0';
+          title.style.transform = 'translateY(-20px)';
+          title.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          setTimeout(() => {
+            title.style.opacity = '1';
+            title.style.transform = 'translateY(0)';
+          }, 300);
+        }
+        
+        if (tagline) {
+          tagline.style.opacity = '0';
+          tagline.style.transform = 'translateY(-15px)';
+          tagline.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          setTimeout(() => {
+            tagline.style.opacity = '1';
+            tagline.style.transform = 'translateY(0)';
+          }, 600);
+        }
+        
+        if (btnContainer) {
+          btnContainer.style.opacity = '0';
+          btnContainer.style.transform = 'translateY(-10px)';
+          btnContainer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          setTimeout(() => {
+            btnContainer.style.opacity = '1';
+            btnContainer.style.transform = 'translateY(0)';
+          }, 900);
+        }
+        
+        if (terminal) {
+          terminal.style.opacity = '0';
+          terminal.style.transform = 'scale(0.95)';
+          terminal.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          
+          setTimeout(() => {
+            terminal.style.opacity = '1';
+            terminal.style.transform = 'scale(1)';
+          }, 750);
+        }
+      }
+
+      // Función para crear efectos de glitch aleatorios
+      function randomGlitch() {
+        const title = document.querySelector('.glitch-text');
+        if (!title) return;
+        
+        // Agregar clase de glitch intenso aleatoriamente
+        setInterval(() => {
+          title.classList.add('intensify-glitch');
+          
+          setTimeout(() => {
+            title.classList.remove('intensify-glitch');
+          }, 200);
+        }, Math.random() * 3000 + 2000); // Más frecuente que antes
+      }
+      
+      // Función para animar el movimiento del grid
+      function animateGrid() {
+        const grid = document.querySelector('.grid-background');
+        if (!grid) return;
+        
+        // Cambiar la perspectiva y la rotación del grid con el scroll
+        window.addEventListener('scroll', () => {
+          const scrollY = window.scrollY;
+          const rotationX = 60 - (scrollY * 0.05);
+          
+          grid.style.transform = `perspective(500px) rotateX(${Math.max(30, rotationX)}deg)`;
+        });
+      }
+      
+      // Función para hacer que los elementos respondan al movimiento del mouse
+      function mouseParallax() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        
+        const elements = {
+          geometrics: document.querySelectorAll('.geometric-element'),
+          particles: document.querySelectorAll('.particle'),
+          terminal: document.querySelector('.terminal-container'),
+          glowCircles: document.querySelectorAll('.neon-circle')
+        };
+        
+        hero.addEventListener('mousemove', (e) => {
+          const x = e.clientX / window.innerWidth;
+          const y = e.clientY / window.innerHeight;
+          
+          // Mover elementos geométricos
+          elements.geometrics.forEach(el => {
+            const moveX = (x - 0.5) * 20;
+            const moveY = (y - 0.5) * 20;
+            el.style.transform = `translate(${moveX}px, ${moveY}px) rotate(var(--rotate))`;
+          });
+          
+          // Mover terminal
+          if (elements.terminal) {
+            const moveX = (x - 0.5) * 10;
+            const moveY = (y - 0.5) * 10;
+            elements.terminal.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          }
+          
+          // Mover círculos de brillo
+          elements.glowCircles.forEach(el => {
+            const moveX = (x - 0.5) * 30;
+            const moveY = (y - 0.5) * 30;
+            el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+        });
+      }
+      
+      // Iniciar todas las animaciones
+      animateEntrance(); // Iniciar las animaciones de entrada
+      randomGlitch();
+      animateGrid();
+      mouseParallax();
+      
+      // Efecto hover en los botones cyberpunk
+      const buttons = document.querySelectorAll('.cybr-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          // Reproducir sonido de hover (opcional)
+          // const hoverSound = new Audio('/sounds/hover.mp3');
+          // hoverSound.volume = 0.2;
+          // hoverSound.play();
+        });
+      });
+    });
+
+    /* Estilos para la red neuronal */
+    .neural-network {
+      background-color: rgba(20, 20, 40, 0.8);
+      border-radius: 8px;
+      border: 1px solid rgba(176, 66, 255, 0.5);
+      overflow: hidden;
+      box-shadow: 
+        0 0 15px rgba(176, 66, 255, 0.3),
+        0 0 30px rgba(176, 66, 255, 0.1);
+      backdrop-filter: blur(10px);
+      z-index: 5;
+      position: relative;
+      height: 400px;
+    }
+    
+    .network-header {
+      background-color: rgba(30, 30, 50, 0.95);
+      padding: 10px;
+      border-bottom: 1px solid rgba(176, 66, 255, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .network-controls {
+      display: flex;
+      gap: 6px;
+    }
+    
+    .network-control {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #b042ff;
+      opacity: 0.7;
+    }
+
+    .network-title {
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+    
+    .network-body {
+      padding: 20px;
+      position: relative;
+      height: calc(100% - 33px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .neural-layers {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 250px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .layer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .node {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(176, 66, 255, 0.8) 0%, rgba(176, 66, 255, 0.3) 70%);
+      box-shadow: 0 0 8px rgba(176, 66, 255, 0.6);
+      position: relative;
+      z-index: 2;
+    }
+
+    .node::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(176, 66, 255, 0.4);
+      filter: blur(3px);
+      animation: pulse-node 2s infinite ease-in-out;
+      animation-delay: calc(var(--index, 0) * 0.2s);
+    }
+
+    .node[data-index="0"] { --index: 0; }
+    .node[data-index="1"] { --index: 1; }
+    .node[data-index="2"] { --index: 2; }
+    .node[data-index="3"] { --index: 3; }
+    .node[data-index="4"] { --index: 4; }
+    .node[data-index="5"] { --index: 5; }
+    .node[data-index="6"] { --index: 6; }
+
+    @keyframes pulse-node {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    .input-layer .node {
+      background: radial-gradient(circle, rgba(100, 200, 255, 0.8) 0%, rgba(100, 200, 255, 0.3) 70%);
+      box-shadow: 0 0 8px rgba(100, 200, 255, 0.6);
+    }
+
+    .input-layer .node::before {
+      background: rgba(100, 200, 255, 0.4);
+    }
+
+    .output-layer .node {
+      background: radial-gradient(circle, rgba(255, 100, 200, 0.8) 0%, rgba(255, 100, 200, 0.3) 70%);
+      box-shadow: 0 0 8px rgba(255, 100, 200, 0.6);
+    }
+
+    .output-layer .node::before {
+      background: rgba(255, 100, 200, 0.4);
+    }
+
+    .network-info {
+      font-family: 'Space Mono', monospace;
+      color: white;
+      line-height: 1.8;
+    }
+    
+    .info-line {
+      display: flex;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+    
+    .info-label {
+      color: #b042ff;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    .info-text {
+      opacity: 0; /* Inicialmente invisible */
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 2s steps(30, end) forwards;
+    }
+    
+    /* MODIFICADO: Animaciones de typing aún más rápidas */
+    #network-text1 {
+      animation-delay: 0.2s;
+      animation-duration: 1.5s;
+    }
+    
+    #network-text2 {
+      animation-delay: 1.2s;
+      animation-duration: 1.5s;
+    }
+    
+    #network-text3 {
+      animation-delay: 2.2s;
+      animation-duration: 1.5s;
+    }
+    
+    .info-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: #b042ff;
+      animation: blink 1s step-end infinite;
+    }
+
+    /* SVG Neural connections */
+    .neural-layers::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:rgba(100,200,255,0.3);stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:rgba(176,66,255,0.3);stop-opacity:1' /%3E%3C/linearGradient%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:rgba(176,66,255,0.3);stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:rgba(255,100,200,0.3);stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cg class='connections'%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    /* Animar las conexiones neuronales */
+    .neural-layers::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        repeating-linear-gradient(
+          60deg,
+          transparent,
+          transparent 20px,
+          rgba(176, 66, 255, 0.1) 20px,
+          rgba(176, 66, 255, 0.1) 40px
+        );
+      opacity: 0.1;
+      animation: shift-lines 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shift-lines {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100px 0;
+      }
+    }
+
+    .terminals-container {
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
+      animation: float 6s ease-in-out infinite;
+    }---
+---
+
+<section class="hero" id="hero">
+    <!-- Fondo con grid animado -->
+    <div class="grid-background"></div>
+    
+    <!-- Círculos de neón flotantes -->
+    <div class="neon-circle" style="--size: 300px; --top: 15%; --left: 10%; --color: rgba(176, 66, 255, 0.15); --delay: 0s;"></div>
+    <div class="neon-circle" style="--size: 400px; --top: 60%; --left: 80%; --color: rgba(66, 135, 255, 0.12); --delay: 3s;"></div>
+    <div class="neon-circle" style="--size: 250px; --top: 70%; --left: 5%; --color: rgba(255, 66, 176, 0.1); --delay: 5s;"></div>
+    
+    <!-- Elementos geométricos decorativos -->
+    <div class="geometric-element rect-element" style="--top: 25%; --left: 5%; --rotate: 15deg; --size: 40px;"></div>
+    <div class="geometric-element triangle-element" style="--top: 70%; --left: 85%; --rotate: -10deg; --size: 60px;"></div>
+    <div class="geometric-element cross-element" style="--top: 15%; --left: 90%; --rotate: 25deg; --size: 50px;"></div>
+    
+    <!-- Líneas de scanline -->
+    <div class="scanlines"></div>
+    
+    <!-- Partículas flotantes -->
+    <div class="particles-container">
+      <div class="particle" style="--size: 3px; --top: 20%; --left: 30%; --speed: 25s;"></div>
+      <div class="particle" style="--size: 2px; --top: 40%; --left: 70%; --speed: 30s;"></div>
+      <div class="particle" style="--size: 4px; --top: 80%; --left: 20%; --speed: 20s;"></div>
+      <div class="particle" style="--size: 2px; --top: 10%; --left: 50%; --speed: 35s;"></div>
+      <div class="particle" style="--size: 3px; --top: 50%; --left: 10%; --speed: 28s;"></div>
+      <div class="particle" style="--size: 2px; --top: 70%; --left: 80%; --speed: 32s;"></div>
+      <div class="particle" style="--size: 4px; --top: 30%; --left: 40%; --speed: 22s;"></div>
+      <div class="particle" style="--size: 3px; --top: 60%; --left: 65%; --speed: 27s;"></div>
+      <div class="particle" style="--size: 2px; --top: 90%; --left: 25%; --speed: 31s;"></div>
+      <div class="particle" style="--size: 4px; --top: 15%; --left: 60%; --speed: 24s;"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <!-- Título con efecto glitch -->
+          <h1 class="glitch-text" data-text="TRANSFORMIA">TRANSFORMIA</h1>
+          
+          <p class="tagline">
+            El aliado que traduce tus desafíos en <span class="highlight">oportunidades</span> de crecimiento.
+          </p>
+          
+          <div class="btn-container">
+            <a href="#servicios" class="cybr-btn">
+              DESCUBRIR SERVICIOS<span aria-hidden class="cybr-btn__glitch">DESCUBRIR SERVICIOS</span>
+            </a>
+            <a href="/contacto" class="cybr-btn cybr-btn--secondary">
+              CONTÁCTANOS<span aria-hidden class="cybr-btn__glitch">CONTÁCTANOS</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="terminal-container">
+          <!-- Visualización de red neuronal en vez del terminal -->
+          <div class="neural-network">
+            <div class="network-header">
+              <div class="network-controls">
+                <span class="network-control"></span>
+                <span class="network-control"></span>
+                <span class="network-control"></span>
+              </div>
+              <div class="network-title">IA Neural Simulation</div>
+            </div>
+            <div class="network-body">
+              <div class="neural-layers">
+                <div class="layer input-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                </div>
+                <div class="layer hidden-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                  <div class="node" data-index="5"></div>
+                  <div class="node" data-index="6"></div>
+                </div>
+                <div class="layer hidden-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                  <div class="node" data-index="3"></div>
+                  <div class="node" data-index="4"></div>
+                </div>
+                <div class="layer output-layer">
+                  <div class="node" data-index="0"></div>
+                  <div class="node" data-index="1"></div>
+                  <div class="node" data-index="2"></div>
+                </div>
+              </div>
+              <div class="network-info">
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text1">Transformando procesos</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text2">Creando innovación</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-text" id="network-text3">Impulsando crecimiento</span>
+                </div>
+                <div class="info-line">
+                  <span class="info-label">&gt;</span>
+                  <span class="info-cursor"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Elementos decorativos alrededor de la red neuronal -->
+          <div class="circuit-line cl-1"></div>
+          <div class="circuit-line cl-2"></div>
+          <div class="circuit-line cl-3"></div>
+          <div class="circuit-node cn-1"></div>
+          <div class="circuit-node cn-2"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Flecha animada hacia abajo -->
+    <div class="scroll-arrow">
+      <a href="#servicios">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+  
+  <style>
+    /* Estilos base para la sección hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-color: #0a0a14;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 3rem 0; /* Reducido de 6rem a 3rem para disminuir el espacio superior */
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    @media (min-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    /* Fondo con grid */
+    .grid-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      background-image: 
+        linear-gradient(to right, rgba(128, 90, 213, 0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(128, 90, 213, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: perspective(500px) rotateX(60deg);
+      transform-origin: center top;
+      animation: grid-scroll 20s linear infinite;
+      z-index: 1;
+    }
+    
+    @keyframes grid-scroll {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 1000px;
+      }
+    }
+    
+    /* Círculos de neón */
+    .neon-circle {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      top: var(--top);
+      left: var(--left);
+      background-color: var(--color);
+      filter: blur(60px);
+      z-index: 2;
+      animation: pulse 8s ease-in-out infinite;
+      animation-delay: var(--delay);
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+      }
+    }
+    
+    /* Elementos geométricos */
+    .geometric-element {
+      position: absolute;
+      top: var(--top);
+      left: var(--left);
+      width: var(--size);
+      height: var(--size);
+      border: 1px solid rgba(176, 66, 255, 0.5);
+      z-index: 2;
+      transform: rotate(var(--rotate));
+      animation: float 10s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+    }
+    
+    .rect-element {
+      border-radius: 4px;
+    }
+    
+    .triangle-element {
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .cross-element {
+      position: relative;
+    }
+    
+    .cross-element::before, .cross-element::after {
+      content: '';
+      position: absolute;
+      background-color: rgba(176, 66, 255, 0.5);
+    }
+    
+    .cross-element::before {
+      width: 100%;
+      height: 2px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    
+    .cross-element::after {
+      width: 2px;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(var(--rotate));
+      }
+      25% {
+        transform: translate(5px, -5px) rotate(calc(var(--rotate) + 5deg));
+      }
+      50% {
+        transform: translate(0, 10px) rotate(var(--rotate));
+      }
+      75% {
+        transform: translate(-5px, -5px) rotate(calc(var(--rotate) - 5deg));
+      }
+    }
+    
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+      }
+      100% {
+        box-shadow: 0 0 15px rgba(176, 66, 255, 0.8), 0 0 20px rgba(176, 66, 255, 0.5);
+      }
+    }
+    
+    /* Efecto Scanline */
+    .scanlines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(128, 90, 213, 0.05) 50%
+      );
+      background-size: 100% 4px;
+      z-index: 12;
+      pointer-events: none;
+      animation: scanlines 0.5s steps(60) infinite;
+    }
+    
+    @keyframes scanlines {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 4px;
+      }
+    }
+    
+    /* Partículas flotantes */
+    .particles-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+    
+    .particle {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      background-color: rgba(176, 66, 255, 0.6);
+      border-radius: 50%;
+      top: var(--top);
+      left: var(--left);
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.8);
+      animation: particle-move var(--speed) linear infinite;
+    }
+    
+    @keyframes particle-move {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      25% {
+        transform: translateY(50px) translateX(20px);
+      }
+      50% {
+        transform: translateY(100px) translateX(-20px);
+      }
+      75% {
+        transform: translateY(50px) translateX(-40px);
+      }
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+    }
+    
+    /* Efecto Glitch para el título - MODIFICADO para ser solo horizontal */
+    .glitch-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: relative;
+      color: #fff;
+      text-shadow: 
+        0 0 5px rgba(176, 66, 255, 0.7),
+        0 0 10px rgba(176, 66, 255, 0.5);
+      margin-bottom: 1.5rem;
+      animation: glitch 5s infinite;
+    }
+  
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+    
+    .glitch-text::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      animation: glitch-slice 3s infinite linear alternate-reverse;
+      opacity: 0.8;
+    }
+    
+    .glitch-text::after {
+      left: -2px;
+      text-shadow: 2px 0 #00fff9;
+      animation: glitch-slice 2s infinite linear alternate-reverse;
+      animation-delay: 0.5s;
+      opacity: 0.8;
+    }
+    
+    /* MODIFICADO: Efecto glitch más estable para el título */
+    .glitch-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: relative;
+      color: #fff;
+      text-shadow: 
+        0 0 5px rgba(176, 66, 255, 0.7),
+        0 0 10px rgba(176, 66, 255, 0.5);
+      margin-bottom: 1.5rem;
+    }
+  
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+    
+    .glitch-text::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      animation: glitch-slice 3s infinite linear alternate-reverse;
+      opacity: 0.8;
+    }
+    
+    .glitch-text::after {
+      left: -2px;
+      text-shadow: 2px 0 #00fff9;
+      animation: glitch-slice 2s infinite linear alternate-reverse;
+      animation-delay: 0.5s;
+      opacity: 0.8;
+    }
+    
+    @keyframes glitch-slice {
+      0%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
+      }
+      10% {
+        clip-path: inset(10% 0 35% 0);
+        transform: translateX(1px);
+      }
+      20% {
+        clip-path: inset(40% 0 60% 0);
+        transform: translateX(-1px);
+      }
+      30% {
+        clip-path: inset(25% 0 58% 0);
+        transform: translateX(2px);
+      }
+      40% {
+        clip-path: inset(50% 0 40% 0);
+        transform: translateX(-2px);
+      }
+      50% {
+        clip-path: inset(75% 0 20% 0);
+        transform: translateX(1px);
+      }
+      60% {
+        clip-path: inset(15% 0 65% 0);
+        transform: translateX(-1px);
+      }
+      70% {
+        clip-path: inset(30% 0 40% 0);
+        transform: translateX(2px);
+      }
+      80% {
+        clip-path: inset(55% 0 25% 0);
+        transform: translateX(-2px);
+      }
+      90% {
+        clip-path: inset(5% 0 80% 0);
+        transform: translateX(1px);
+      }
+    }
+    
+    /* Tagline */
+    .tagline {
+      font-size: 1.5rem;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      font-family: 'Space Grotesk', sans-serif;
+      max-width: 540px;
+    }
+    
+    .highlight {
+      color: #b042ff;
+      text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      font-weight: 500;
+    }
+    
+    /* MODIFICADO: Botones sin duplicación en hover */
+    .cybr-btn {
+      --primary: hsl(var(--primary-hue), 85%, 60%);
+      --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
+      --primary-hue: 268;
+      --shadow-primary-hue: 280;
+      --font-size: 16px;
+      --primary-border: 1px;
+      --shadow-primary-border: 1px;
+      --clip: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      
+      font-family: 'Space Mono', monospace;
+      color: white;
+      cursor: pointer;
+      background: transparent;
+      text-transform: uppercase;
+      font-size: var(--font-size);
+      outline: transparent;
+      letter-spacing: 2px;
+      position: relative;
+      font-weight: 700;
+      border: 0;
+      min-width: 200px;
+      height: 50px;
+      line-height: 50px;
+      transition: background 0.2s;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      padding: 0 15px; /* Padding para evitar que el texto choque con los bordes */
+      overflow: hidden; /* Prevenir que cualquier contenido se desborde */
+    }
+    
+    .cybr-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      clip-path: var(--clip);
+      z-index: -1;
+    }
+    
+    .cybr-btn:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      clip-path: var(--clip);
+      z-index: -1;
+    }
+    
+    .cybr-btn:before {
+      background: var(--primary);
+      background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      transform: translateX(calc(var(--border-width, 0px) * -1)) translateY(calc(var(--border-width, 0px) * -1));
+    }
+    
+    .cybr-btn:after {
+      background: var(--shadow-primary);
+      transform: translateX(var(--border-width, 0px)) translateY(var(--border-width, 0px));
+      background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      filter: blur(1px);
+    }
+    
+    /* MODIFICADO: Corregido el efecto glitch en hover */
+    .cybr-btn__glitch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--shadow-primary);
+      background-image: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      text-shadow: 2px 2px var(--shadow-primary), -2px -2px var(--shadow-primary);
+      clip-path: var(--clip);
+      display: none;
+      z-index: -2; /* Para que el glitch quede debajo del texto */
+      animation: glitch-btn 0.8s infinite;
+    }
+    
+    @keyframes glitch-btn {
+      0%, 5%, 10%, 100% {
+        opacity: 0.8;
+        transform: translateX(0);
+      }
+      1% {
+        transform: translateX(-2px);
+        opacity: 0.9;
+      }
+      2% {
+        transform: translateX(2px);
+        opacity: 0.9;
+      }
+      6% {
+        transform: translateX(-2px);
+        opacity: 0.9;
+      }
+      8% {
+        transform: translateX(2px);
+        opacity: 0.9;
+      }
+    }
+    
+    .cybr-btn:hover .cybr-btn__glitch {
+      display: block;
+    }
+    
+    .cybr-btn:hover:before {
+      background: var(--primary-darker, hsl(var(--primary-hue), 85%, 50%));
+      transform: translateX(0) translateY(0);
+    }
+    
+    .cybr-btn:hover:after {
+      background: var(--shadow-primary-darker, hsl(var(--shadow-primary-hue), 90%, 40%));
+      transform: translateX(0) translateY(0);
+      filter: blur(3px);
+    }
+    
+    .cybr-btn--secondary {
+      --primary-hue: 210;
+      --shadow-primary-hue: 220;
+    }
+    
+    .cybr-btn--secondary:before {
+      background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.2) 0%, rgba(176, 66, 255, 0.5) 100%);
+      border: 1px solid rgba(176, 66, 255, 0.6);
+    }
+    
+    .cybr-btn--secondary:after {
+      background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.2) 0%, rgba(176, 66, 255, 0.5) 100%);
+      border: 1px solid rgba(176, 66, 255, 0.6);
+    }
+    
+    .cybr-btn--secondary .cybr-btn__glitch {
+      background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.4) 0%, rgba(176, 66, 255, 0.8) 100%);
+    }
+    
+    /* Estilos para el terminal */
+    .terminal-container {
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .terminal {
+      background-color: rgba(20, 20, 40, 0.8);
+      border-radius: 8px;
+      border: 1px solid rgba(176, 66, 255, 0.5);
+      overflow: hidden;
+      box-shadow: 
+        0 0 15px rgba(176, 66, 255, 0.3),
+        0 0 30px rgba(176, 66, 255, 0.1);
+      backdrop-filter: blur(10px);
+      z-index: 5;
+      position: relative;
+    }
+    
+    .terminal-header {
+      background-color: rgba(30, 30, 50, 0.95);
+      padding: 10px;
+      border-bottom: 1px solid rgba(176, 66, 255, 0.3);
+    }
+    
+    .terminal-buttons {
+      display: flex;
+      gap: 6px;
+    }
+    
+    .terminal-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #b042ff;
+      opacity: 0.7;
+    }
+    
+    .terminal-body {
+      padding: 20px;
+      font-family: 'Space Mono', monospace;
+      color: white;
+      line-height: 1.8;
+    }
+    
+    .line {
+      display: flex;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+    
+    .prompt {
+      color: #b042ff;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    .command {
+      opacity: 0; /* Inicialmente invisible */
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 3s steps(30, end) forwards;
+    }
+    
+    /* MODIFICADO: Animaciones de typing aún más rápidas */
+    #command1 {
+      animation-delay: 0.2s;
+      animation-duration: 1.5s;
+    }
+    
+    #command2 {
+      animation-delay: 1.2s;
+      animation-duration: 1.5s;
+    }
+    
+    #command3 {
+      animation-delay: 2.2s;
+      animation-duration: 1.5s;
+    }
+    
+@keyframes typing {
+      from {
+        width: 0;
+        opacity: 1;
+      }
+      to {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+    
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: #b042ff;
+      animation: blink 1s step-end infinite;
+    }
+    
+    @keyframes blink {
+      from, to {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    }
+    
+    /* Circuitos alrededor del terminal */
+    .circuit-line {
+      position: absolute;
+      background-color: rgba(176, 66, 255, 0.6);
+      box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      z-index: 4;
+    }
+    
+    .cl-1 {
+      height: 2px;
+      width: 50px;
+      top: 30px;
+      left: -30px;
+      animation: circuit-glow 2s ease-in-out infinite alternate;
+    }
+    
+    .cl-2 {
+      height: 2px;
+      width: 80px;
+      bottom: 50px;
+      right: -60px;
+      animation: circuit-glow 2s ease-in-out infinite alternate-reverse;
+    }
+    
+    .cl-3 {
+      height: 60px;
+      width: 2px;
+      bottom: -40px;
+      left: 100px;
+      animation: circuit-glow 2s ease-in-out infinite alternate;
+      animation-delay: 1s;
+    }
+    
+    .circuit-node {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #b042ff;
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.8);
+      z-index: 4;
+    }
+    
+    .cn-1 {
+      top: 30px;
+      left: -30px;
+      animation: circuit-node-glow 3s ease-in-out infinite;
+    }
+    
+    .cn-2 {
+      bottom: 50px;
+      right: -60px;
+      animation: circuit-node-glow 3s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+    
+    @keyframes circuit-glow {
+      0% {
+        opacity: 0.6;
+        box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      }
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(176, 66, 255, 1);
+      }
+    }
+    
+    @keyframes circuit-node-glow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+    
+    /* Flecha de desplazamiento */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      z-index: 10;
+    }
+    
+    .scroll-arrow svg {
+      color: #b042ff;
+      filter: drop-shadow(0 0 5px rgba(176, 66, 255, 0.7));
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    
+    /* Estilos adicionales para posicionamiento inicial */
+    .hero-text {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    
+    .tagline {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    
+    .btn-container {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    
+    .neural-network {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    
+    /* Animación para nodos activos */
+    .node.active {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(176, 66, 255, 0.6) 70%);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .input-layer .node.active {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(100, 200, 255, 0.6) 70%);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+    
+    .output-layer .node.active {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 100, 200, 0.6) 70%);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Media queries para responsividad */
+    @media (max-width: 768px) {
+      .glitch-text {
+        font-size: 3rem;
+      }
+      
+      .tagline {
+        font-size: 1.25rem;
+      }
+      
+      .btn-container {
+        justify-content: center;
+      }
+      
+      .cybr-btn {
+        min-width: auto;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .geometric-element, .circuit-line, .circuit-node {
+        display: none;
+      }
+      
+      .neural-network {
+        height: 350px;
+      }
+      
+      .neural-layers {
+        height: 200px;
+      }
+    } rgba(176, 66, 255, 0.6) 70%);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .input-layer .node.active {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(100, 200, 255, 0.6) 70%);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+    
+    .output-layer .node.active {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 100, 200, 0.6) 70%);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Estilos para que la animación de entrada funcione correctamente */
+    .dom-loaded .hero-text,
+    .dom-loaded .tagline,
+    .dom-loaded .btn-container,
+    .dom-loaded .neural-network {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+  </style>
+  
+  <script>
+    // Esperamos a que cargue el DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      // Función para animar la red neuronal
+      function animateNeuralNetwork() {
+        // Creamos las conexiones de la red neuronal
+        const layers = document.querySelectorAll('.layer');
+        if (layers.length < 2) return; // Necesitamos al menos dos capas
+        
+        for (let l = 0; l < layers.length - 1; l++) {
+          const currentLayer = layers[l];
+          const nextLayer = layers[l + 1];
+          const currentNodes = currentLayer.querySelectorAll('.node');
+          const nextNodes = nextLayer.querySelectorAll('.node');
+          
+          // Añadir líneas SVG entre nodos
+          const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          svg.setAttribute("class", "connections-svg");
+          svg.setAttribute("width", "100%");
+          svg.setAttribute("height", "100%");
+          svg.style.position = "absolute";
+          svg.style.top = "0";
+          svg.style.left = "0";
+          svg.style.zIndex = "0";
+          svg.style.pointerEvents = "none";
+          
+          // Crear grupo para las conexiones
+          const connectionsGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          
+          // Conectar cada nodo con todos los nodos de la siguiente capa
+          currentNodes.forEach((currentNode, i) => {
+            const currentRect = currentNode.getBoundingClientRect();
+            const layerRect = currentLayer.getBoundingClientRect();
+            
+            nextNodes.forEach((nextNode, j) => {
+              const nextRect = nextNode.getBoundingClientRect();
+              const opacity = Math.random() * 0.4 + 0.1; // Opacidad aleatoria
+              const animDuration = Math.random() * 3 + 2; // Duración aleatoria
+              const animDelay = Math.random() * 2; // Retraso aleatorio
+              
+              // Crear línea
+              const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+              
+              // Calcular posiciones relativas al SVG
+              const x1 = currentRect.left - layerRect.left + currentRect.width / 2;
+              const y1 = currentRect.top - layerRect.top + currentRect.height / 2;
+              const x2 = nextRect.left - layerRect.left + nextRect.width / 2;
+              const y2 = nextRect.top - layerRect.top + nextRect.height / 2;
+              
+              line.setAttribute("x1", x1);
+              line.setAttribute("y1", y1);
+              line.setAttribute("x2", x2);
+              line.setAttribute("y2", y2);
+              
+              // Estilo de la línea
+              line.setAttribute("stroke", l === 0 ? "url(#grad1)" : "url(#grad2)");
+              line.setAttribute("stroke-width", "1");
+              line.setAttribute("stroke-opacity", opacity.toString());
+              
+              // Animación de pulso
+              const animate = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+              animate.setAttribute("attributeName", "stroke-opacity");
+              animate.setAttribute("values", `${opacity};${opacity * 2};${opacity}`);
+              animate.setAttribute("dur", `${animDuration}s`);
+              animate.setAttribute("begin", `${animDelay}s`);
+              animate.setAttribute("repeatCount", "indefinite");
+              
+              line.appendChild(animate);
+              connectionsGroup.appendChild(line);
+            });
+          });
+          
+          svg.appendChild(connectionsGroup);
+          document.querySelector('.neural-layers').appendChild(svg);
+        }
+        
+        // Animar los nodos con colores aleatorios
+        const nodes = document.querySelectorAll('.node');
+        nodes.forEach(node => {
+          setInterval(() => {
+            // Activar nodo aleatorio
+            if (Math.random() > 0.7) {
+              node.classList.add('active');
+              setTimeout(() => {
+                node.classList.remove('active');
+              }, Math.random() * 500 + 200);
+            }
+          }, Math.random() * 2000 + 1000);
+        });
+      }
+      
+      // Función para animar la entrada de elementos
+      function animateEntrance() {
+        // Seleccionar elementos principales para animar
+        const title = document.querySelector('.glitch-text');
+        const tagline = document.querySelector('.tagline');
+        const btnContainer = document.querySelector('.btn-container');
+        const network = document.querySelector('.neural-network');
+        
+        // Asegurarse de que los elementos estén inicialmente ocultos con CSS
+        if (title) title.style.opacity = '0';
+        if (tagline) tagline.style.opacity = '0';
+        if (btnContainer) btnContainer.style.opacity = '0';
+        if (network) network.style.opacity = '0';
+        
+        // Configurar animaciones de entrada
+        setTimeout(() => {
+          if (title) {
+            title.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            title.style.opacity = '1';
+            title.style.transform = 'translateY(0)';
+          }
+        }, 300);
+        
+        setTimeout(() => {
+          if (tagline) {
+            tagline.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            tagline.style.opacity = '1';
+            tagline.style.transform = 'translateY(0)';
+          }
+        }, 600);
+        
+        setTimeout(() => {
+          if (btnContainer) {
+            btnContainer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            btnContainer.style.opacity = '1';
+            btnContainer.style.transform = 'translateY(0)';
+          }
+        }, 900);
+        
+        setTimeout(() => {
+          if (network) {
+            network.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            network.style.opacity = '1';
+            network.style.transform = 'scale(1)';
+            
+            // Iniciar animación de la red neuronal después de que aparezca
+            setTimeout(animateNeuralNetwork, 500);
+          }
+        }, 1200);
+      }
+
+      // Función para crear efectos de glitch aleatorios
+      function randomGlitch() {
+        const title = document.querySelector('.glitch-text');
+        if (!title) return;
+        
+        // Agregar clase de glitch intenso aleatoriamente
+        setInterval(() => {
+          title.classList.add('intensify-glitch');
+          
+          setTimeout(() => {
+            title.classList.remove('intensify-glitch');
+          }, 200);
+        }, Math.random() * 3000 + 2000); // Más frecuente que antes
+      }
+      
+      // Función para animar el movimiento del grid
+      function animateGrid() {
+        const grid = document.querySelector('.grid-background');
+        if (!grid) return;
+        
+        // Cambiar la perspectiva y la rotación del grid con el scroll
+        window.addEventListener('scroll', () => {
+          const scrollY = window.scrollY;
+          const rotationX = 60 - (scrollY * 0.05);
+          
+          grid.style.transform = `perspective(500px) rotateX(${Math.max(30, rotationX)}deg)`;
+        });
+      }
+      
+      // Función para hacer que los elementos respondan al movimiento del mouse
+      function mouseParallax() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        
+        const elements = {
+          geometrics: document.querySelectorAll('.geometric-element'),
+          particles: document.querySelectorAll('.particle'),
+          network: document.querySelector('.neural-network'),
+          glowCircles: document.querySelectorAll('.neon-circle')
+        };
+        
+        hero.addEventListener('mousemove', (e) => {
+          const x = e.clientX / window.innerWidth;
+          const y = e.clientY / window.innerHeight;
+          
+          // Mover elementos geométricos
+          elements.geometrics.forEach(el => {
+            const moveX = (x - 0.5) * 20;
+            const moveY = (y - 0.5) * 20;
+            el.style.transform = `translate(${moveX}px, ${moveY}px) rotate(var(--rotate))`;
+          });
+          
+          // Mover red neuronal
+          if (elements.network) {
+            const moveX = (x - 0.5) * 10;
+            const moveY = (y - 0.5) * 10;
+            elements.network.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          }
+          
+          // Mover círculos de brillo
+          elements.glowCircles.forEach(el => {
+            const moveX = (x - 0.5) * 30;
+            const moveY = (y - 0.5) * 30;
+            el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+        });
+      }
+      
+      // Iniciar todas las animaciones
+      setTimeout(() => {
+        animateEntrance(); // Iniciar las animaciones de entrada
+        randomGlitch();
+        animateGrid();
+        mouseParallax();
+      }, 100); // Pequeño retraso para asegurar que el DOM esté listo
+      
+      // Efecto hover en los botones cyberpunk
+      const buttons = document.querySelectorAll('.cybr-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          // Reproducir sonido de hover (opcional)
+          // const hoverSound = new Audio('/sounds/hover.mp3');
+          // hoverSound.volume = 0.2;
+          // hoverSound.play();
+        });
+      });
+      
+      // Añadir clase CSS para activar animaciones solo cuando el DOM esté listo
+      document.body.classList.add('dom-loaded');
+    });

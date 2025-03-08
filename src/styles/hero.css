@@ -1,0 +1,233 @@
+/* Estilos base para la sección hero */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background-color: #0a0a14;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 3rem 0; /* Reducido de 6rem a 3rem para disminuir el espacio superior */
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  @media (min-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Fondo con grid */
+  .grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: 
+      linear-gradient(to right, rgba(128, 90, 213, 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: center top;
+    animation: grid-scroll 20s linear infinite;
+    z-index: 1;
+  }
+  
+  @keyframes grid-scroll {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 1000px;
+    }
+  }
+  
+  /* Círculos de neón */
+  .neon-circle {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    top: var(--top);
+    left: var(--left);
+    background-color: var(--color);
+    filter: blur(60px);
+    z-index: 2;
+    animation: pulse 8s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+  }
+  
+  /* Elementos geométricos */
+  .geometric-element {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    width: var(--size);
+    height: var(--size);
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    z-index: 2;
+    transform: rotate(var(--rotate));
+    animation: float 10s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+  }
+  
+  .rect-element {
+    border-radius: 4px;
+  }
+  
+  .triangle-element {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  
+  .cross-element {
+    position: relative;
+  }
+  
+  .cross-element::before, .cross-element::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(176, 66, 255, 0.5);
+  }
+  
+  .cross-element::before {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .cross-element::after {
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotate));
+    }
+    25% {
+      transform: translate(5px, -5px) rotate(calc(var(--rotate) + 5deg));
+    }
+    50% {
+      transform: translate(0, 10px) rotate(var(--rotate));
+    }
+    75% {
+      transform: translate(-5px, -5px) rotate(calc(var(--rotate) - 5deg));
+    }
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 15px rgba(176, 66, 255, 0.8), 0 0 20px rgba(176, 66, 255, 0.5);
+    }
+  }
+  
+  /* Efecto Scanline */
+  .scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(128, 90, 213, 0.05) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 12;
+    pointer-events: none;
+    animation: scanlines 0.5s steps(60) infinite;
+  }
+  
+  @keyframes scanlines {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 4px;
+    }
+  }
+  
+  /* Partículas flotantes */
+  .particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+  
+  .particle {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: rgba(176, 66, 255, 0.6);
+    border-radius: 50%;
+    top: var(--top);
+    left: var(--left);
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.8);
+    animation: particle-move var(--speed) linear infinite;
+  }
+  
+  @keyframes particle-move {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(50px) translateX(20px);
+    }
+    50% {
+      transform: translateY(100px) translateX(-20px);
+    }
+    75% {
+      transform: translateY(50px) translateX(-40px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+  
+  /* Tagline */
+  .tagline {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(-15px);
+    font-family: 'Space Grotesk', sans-serif;
+    max-width: 540px;
+  }
+  

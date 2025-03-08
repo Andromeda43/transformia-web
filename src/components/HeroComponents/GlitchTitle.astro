@@ -1,0 +1,95 @@
+---
+---
+
+<h1 class="glitch-text" data-text="TRANSFORMIA">TRANSFORMIA</h1>
+
+<style>
+  /* Efecto Glitch para el título - para estabilidad horizontal */
+  .glitch-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+    text-shadow: 
+      0 0 5px rgba(176, 66, 255, 0.7),
+      0 0 10px rgba(176, 66, 255, 0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+  
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    animation: glitch-slice 3s infinite linear alternate-reverse;
+    opacity: 0.8;
+  }
+  
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: 2px 0 #00fff9;
+    animation: glitch-slice 2s infinite linear alternate-reverse;
+    animation-delay: 0.5s;
+    opacity: 0.8;
+  }
+  
+  @keyframes glitch-slice {
+    0%, 100% {
+      clip-path: inset(0 0 0 0);
+      transform: translateX(0);
+    }
+    10% {
+      clip-path: inset(10% 0 35% 0);
+      transform: translateX(1px);
+    }
+    20% {
+      clip-path: inset(40% 0 60% 0);
+      transform: translateX(-1px);
+    }
+    30% {
+      clip-path: inset(25% 0 58% 0);
+      transform: translateX(2px);
+    }
+    40% {
+      clip-path: inset(50% 0 40% 0);
+      transform: translateX(-2px);
+    }
+    50% {
+      clip-path: inset(75% 0 20% 0);
+      transform: translateX(1px);
+    }
+    60% {
+      clip-path: inset(15% 0 65% 0);
+      transform: translateX(-1px);
+    }
+    70% {
+      clip-path: inset(30% 0 40% 0);
+      transform: translateX(2px);
+    }
+    80% {
+      clip-path: inset(55% 0 25% 0);
+      transform: translateX(-2px);
+    }
+    90% {
+      clip-path: inset(5% 0 80% 0);
+      transform: translateX(1px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .glitch-text {
+      font-size: 3rem;
+    }
+  }
+</style>
