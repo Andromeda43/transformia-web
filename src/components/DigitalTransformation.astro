@@ -3,134 +3,146 @@
 
 <div class="digital-transformation-visualization">
   <div class="transformation-container">
-    <!-- Mapa visual de transformación digital -->
-    <div class="transformation-map">
-      <!-- Primera fila - Sistemas Tradicionales e Integración -->
-      <div class="map-row">
-        <div class="map-node start-node">
-          <div class="node-icon legacy">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <div class="node-title">Sistemas Tradicionales</div>
-        </div>
-
-        <div class="map-connector horizontal">
-          <svg class="arrow-right" viewBox="0 0 24 24" width="16" height="16">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"></path>
-          </svg>
-        </div>
-
-        <div class="map-node">
-          <div class="node-icon integration">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 16V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
-              <path d="M6 12h12"></path>
-              <path d="M8 8v8"></path>
-              <path d="M16 8v8"></path>
-            </svg>
-          </div>
-          <div class="node-title">Integración</div>
-        </div>
+    <!-- Roadmap visual de transformación digital -->
+    <div class="roadmap-wrapper">
+      <div class="roadmap-header">
+        <h3>Transformación Digital</h3>
+        <div class="roadmap-subtitle">Ruta estratégica hacia el éxito digital</div>
       </div>
-
-      <!-- Segunda fila - Transformación Digital en el centro -->
-      <div class="map-row">
-        <div class="map-connector vertical right">
-          <svg class="arrow-down" viewBox="0 0 24 24" width="16" height="16">
-            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"></path>
-          </svg>
-        </div>
-
-        <div class="map-node central-node">
-          <div class="node-icon transform">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="23 4 23 10 17 10"></polyline>
-              <polyline points="1 20 1 14 7 14"></polyline>
-              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-            </svg>
+      
+      <div class="transformation-roadmap">
+        <!-- Etapa 1: Sistemas Tradicionales -->
+        <div class="roadmap-stage" data-stage="1">
+          <div class="stage-connector"></div>
+          <div class="stage-node">
+            <div class="stage-icon legacy">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <div class="stage-check">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#4aef9e" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
           </div>
-          <div class="node-title">Transformación Digital</div>
-        </div>
-
-        <div class="map-connector vertical left">
-          <svg class="arrow-down" viewBox="0 0 24 24" width="16" height="16">
-            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"></path>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Tercera fila - Automatización y Datos Centralizados -->
-      <div class="map-row">
-        <div class="map-node">
-          <div class="node-icon automation">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
+          <div class="stage-info">
+            <div class="stage-title">Sistemas Tradicionales</div>
+            <div class="stage-desc">Infraestructura y procesos existentes</div>
           </div>
-          <div class="node-title">Automatización</div>
         </div>
-
-        <div class="map-connector horizontal">
-          <svg class="arrow-right" viewBox="0 0 24 24" width="16" height="16">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"></path>
-          </svg>
-        </div>
-
-        <div class="map-node">
-          <div class="node-icon data">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
+        
+        <!-- Etapa 2: Integración -->
+        <div class="roadmap-stage" data-stage="2">
+          <div class="stage-connector"></div>
+          <div class="stage-node">
+            <div class="stage-icon integration">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+              </svg>
+              <div class="stage-check">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#4aef9e" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
           </div>
-          <div class="node-title">Datos Centralizados</div>
-        </div>
-      </div>
-
-      <!-- Cuarta fila - Ecosistema Digital -->
-      <div class="map-row">
-        <div class="map-connector vertical center">
-          <svg class="arrow-down" viewBox="0 0 24 24" width="16" height="16">
-            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"></path>
-          </svg>
-        </div>
-      </div>
-
-      <div class="map-row">
-        <div class="map-node end-node">
-          <div class="node-icon digital">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-              <rect x="9" y="9" width="6" height="6"></rect>
-              <line x1="9" y1="1" x2="9" y2="4"></line>
-              <line x1="15" y1="1" x2="15" y2="4"></line>
-              <line x1="9" y1="20" x2="9" y2="23"></line>
-              <line x1="15" y1="20" x2="15" y2="23"></line>
-              <line x1="20" y1="9" x2="23" y2="9"></line>
-              <line x1="20" y1="14" x2="23" y2="14"></line>
-              <line x1="1" y1="9" x2="4" y2="9"></line>
-              <line x1="1" y1="14" x2="4" y2="14"></line>
-            </svg>
+          <div class="stage-info">
+            <div class="stage-title">Integración</div>
+            <div class="stage-desc">Conexión de sistemas y datos</div>
           </div>
-          <div class="node-title">Ecosistema Digital</div>
         </div>
-      </div>
-
-      <!-- Partículas flotantes -->
-      <div class="floating-particles">
-        <div class="particle blue"></div>
-        <div class="particle purple"></div>
-        <div class="particle pink"></div>
+        
+        <!-- Etapa 3: Automatización -->
+        <div class="roadmap-stage" data-stage="3">
+          <div class="stage-connector"></div>
+          <div class="stage-node">
+            <div class="stage-icon automation">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              <div class="stage-check">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#4aef9e" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="stage-info">
+            <div class="stage-title">Automatización</div>
+            <div class="stage-desc">Optimización de procesos</div>
+          </div>
+        </div>
+        
+        <!-- Etapa 4: Datos Centralizados -->
+        <div class="roadmap-stage" data-stage="4">
+          <div class="stage-connector"></div>
+          <div class="stage-node">
+            <div class="stage-icon data">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <div class="stage-check">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#4aef9e" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="stage-info">
+            <div class="stage-title">Datos Centralizados</div>
+            <div class="stage-desc">Unificación de la información</div>
+          </div>
+        </div>
+        
+        <!-- Etapa 5: Ecosistema Digital -->
+        <div class="roadmap-stage" data-stage="5">
+          <div class="stage-connector"></div>
+          <div class="stage-node">
+            <div class="stage-icon digital">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+              <div class="stage-check">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#4aef9e" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="stage-info">
+            <div class="stage-title">Ecosistema Digital</div>
+            <div class="stage-desc">Plataforma completa e integrada</div>
+          </div>
+        </div>
+        
+        <!-- Particles for dynamic feel -->
+        <div class="floating-particles">
+          <div class="particle p1"></div>
+          <div class="particle p2"></div>
+          <div class="particle p3"></div>
+          <div class="particle p4"></div>
+        </div>
       </div>
     </div>
-
-    <!-- Barra de progreso -->
+    
+    <!-- Barra de progreso separada y mejor posicionada -->
     <div class="progress-section">
       <div class="progress-label">Progreso de transformación</div>
       <div class="progress-container">
@@ -210,7 +222,7 @@
   /* Contenedor principal */
   .transformation-container {
     position: relative;
-    height: 350px;
+    height: 335px; /* Aumentado de 320px para dar más espacio */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -218,249 +230,216 @@
     background: linear-gradient(135deg, rgba(30, 30, 60, 0.5) 0%, rgba(15, 15, 30, 0.7) 100%);
   }
 
-  /* Mapa de transformación */
-  .transformation-map {
-    position: relative;
-    height: 280px;
-    width: 100%;
+  /* Roadmap header */
+  .roadmap-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    height: 100%;
+    margin-bottom: 40px; /* Espacio para la barra de progreso */
   }
 
-  .map-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 65px;
-  }
-
-  /* Nodos del mapa */
-  .map-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .roadmap-header {
     text-align: center;
-    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  .roadmap-header h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 0 5px;
+    text-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+  }
+
+  .roadmap-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Roadmap visualization */
+  .transformation-roadmap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    position: relative;
+    flex-grow: 1;
+  }
+
+  .roadmap-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 20%;
+    z-index: 2;
+  }
+
+  .stage-connector {
+    position: absolute;
+    top: 30px;
+    left: calc(-50% + 25px);
+    right: calc(-50% + 25px);
+    height: 3px;
+    background: linear-gradient(90deg, 
+      rgba(100, 200, 255, 0.3) 0%, 
+      rgba(176, 66, 255, 0.7) 50%,
+      rgba(255, 100, 200, 0.3) 100%);
+    z-index: 1;
+  }
+
+  /* Hide connector for first stage */
+  .roadmap-stage[data-stage="1"] .stage-connector {
+    left: 0;
+    background: linear-gradient(90deg, 
+      rgba(176, 66, 255, 0.7) 0%, 
+      rgba(255, 100, 200, 0.3) 100%);
+  }
+
+  /* Hide connector for last stage */
+  .roadmap-stage[data-stage="5"] .stage-connector {
+    right: 0;
+    background: linear-gradient(90deg, 
+      rgba(100, 200, 255, 0.3) 0%, 
+      rgba(176, 66, 255, 0.7) 100%);
+  }
+
+  .stage-node {
+    margin-bottom: 15px;
     position: relative;
     z-index: 2;
   }
 
-  .central-node {
-    margin: 0 30px;
-  }
-
-  .start-node {
-    margin-right: auto;
-    margin-left: 5%;
-  }
-
-  .end-node {
-    margin: 0 auto;
-  }
-
-  .node-icon {
+  .stage-icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8px;
     border: 2px solid;
-    position: relative;
-    transition: all 0.3s ease;
     background-color: rgba(20, 20, 35, 0.7);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
 
-  .node-icon::after {
+  .stage-icon::after {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
     opacity: 0.7;
-    filter: blur(4px);
   }
 
-  .node-title {
+  /* Checkmark animation */
+  .stage-check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(20, 20, 35, 0.7);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 3;
+  }
+
+  .roadmap-stage.completed .stage-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .stage-info {
+    text-align: center;
+    max-width: 120px;
+  }
+
+  .stage-title {
     font-family: 'Space Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: #fff;
-    margin-top: 5px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    margin-bottom: 5px;
   }
 
-  /* Colores específicos para cada nodo */
-  .legacy .node-icon {
+  .stage-desc {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.2;
+  }
+
+  /* Colores específicos para cada etapa */
+  .legacy {
     border-color: #64c8ff;
     color: #64c8ff;
     box-shadow: 0 0 15px rgba(100, 200, 255, 0.4);
   }
 
-  .integration .node-icon {
+  .integration {
     border-color: #9e8cff;
     color: #9e8cff;
     box-shadow: 0 0 15px rgba(158, 140, 255, 0.4);
   }
 
-  .transform .node-icon {
+  .automation {
     border-color: #b042ff;
     color: #b042ff;
     box-shadow: 0 0 15px rgba(176, 66, 255, 0.5);
   }
 
-  .automation .node-icon {
+  .data {
     border-color: #d750d7;
     color: #d750d7;
     box-shadow: 0 0 15px rgba(215, 80, 215, 0.4);
   }
 
-  .data .node-icon {
-    border-color: #fa82d2;
-    color: #fa82d2;
-    box-shadow: 0 0 15px rgba(250, 130, 210, 0.4);
-  }
-
-  .digital .node-icon {
+  .digital {
     border-color: #ff64c8;
     color: #ff64c8;
     box-shadow: 0 0 15px rgba(255, 100, 200, 0.4);
   }
 
   /* Efectos al pasar el mouse por encima */
-  .node-icon:hover {
+  .stage-icon:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px currentColor;
   }
 
-  /* Conectores entre nodos */
-  .map-connector {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
+  /* Estado activo para etapas */
+  .roadmap-stage.active .stage-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px currentColor;
+    animation: pulse 2s infinite;
   }
 
-  .map-connector.horizontal {
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      rgba(100, 200, 255, 0.7) 0%, 
-      rgba(176, 66, 255, 0.7) 100%);
-  }
-
-  .map-connector.vertical {
-    height: 30px;
-    width: 2px;
-    background: linear-gradient(180deg, 
-      rgba(176, 66, 255, 0.7) 0%, 
-      rgba(255, 100, 200, 0.7) 100%);
-  }
-
-  .map-connector.vertical.right {
-    align-self: flex-end;
-    margin-right: 75px;
-  }
-
-  .map-connector.vertical.left {
-    align-self: flex-start;
-    margin-left: 75px;
-  }
-
-  .map-connector.vertical.center {
-    margin: 0 auto;
-  }
-
-  .arrow-right, .arrow-down {
-    position: absolute;
-    color: rgba(176, 66, 255, 0.9);
-    animation: pulse-arrow 2s infinite;
-  }
-
-  @keyframes pulse-arrow {
+  @keyframes pulse {
     0%, 100% {
-      opacity: 0.7;
-      transform: scale(1);
+      box-shadow: 0 0 20px currentColor;
     }
     50% {
-      opacity: 1;
-      transform: scale(1.1);
+      box-shadow: 0 0 30px currentColor;
     }
   }
 
-  /* Partículas flotantes */
-  .floating-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    opacity: 0.7;
-    filter: blur(1px);
-    animation: float-particle 10s infinite ease-in-out;
-  }
-
-  .particle.blue {
-    background-color: #64c8ff;
-    box-shadow: 0 0 10px #64c8ff;
-    top: 15%;
-    left: 25%;
-    animation-delay: 0s;
-  }
-
-  .particle.purple {
-    background-color: #b042ff;
-    box-shadow: 0 0 10px #b042ff;
-    top: 65%;
-    left: 45%;
-    animation-delay: 3s;
-  }
-
-  .particle.pink {
-    background-color: #ff64c8;
-    box-shadow: 0 0 10px #ff64c8;
-    top: 30%;
-    left: 65%;
-    animation-delay: 6s;
-  }
-
-  @keyframes float-particle {
-    0%, 100% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(20px, 10px);
-    }
-    50% {
-      transform: translate(0, 20px);
-    }
-    75% {
-      transform: translate(-20px, 10px);
-    }
-  }
-
-  /* Barra de progreso */
+  /* Barra de progreso reposicionada */
   .progress-section {
-    margin-top: auto;
     width: 100%;
+    margin-top: auto;
+    padding: 0;
+    position: relative;
+    bottom: 0;
+    margin-bottom: 20px; /* Aumentado de 10px para más espacio */
   }
 
   .progress-label {
@@ -486,25 +465,15 @@
 
   .progress-fill {
     height: 100%;
-    width: 75%;
+    width: 0%;
     background: linear-gradient(90deg, rgba(100, 200, 255, 0.7) 0%, rgba(176, 66, 255, 0.7) 50%, rgba(255, 100, 200, 0.7) 100%);
     border-radius: 4px;
-    animation: fill-progress 3s ease-out forwards;
-  }
-
-  @keyframes fill-progress {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 75%;
-    }
   }
 
   .status-marker {
     position: absolute;
     top: -6px;
-    left: 75%;
+    left: 0;
     width: 20px;
     height: 20px;
     background-color: #b042ff;
@@ -528,11 +497,79 @@
     border-radius: 4px;
   }
 
+  /* Partículas flotantes */
+  .floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(1px);
+  }
+
+  .particle.p1 {
+    background-color: #64c8ff;
+    box-shadow: 0 0 10px #64c8ff;
+    top: 20%;
+    left: 20%;
+    animation: float-particle 15s infinite ease-in-out;
+  }
+
+  .particle.p2 {
+    background-color: #b042ff;
+    box-shadow: 0 0 10px #b042ff;
+    top: 65%;
+    left: 40%;
+    animation: float-particle 12s infinite ease-in-out reverse;
+  }
+
+  .particle.p3 {
+    background-color: #ff64c8;
+    box-shadow: 0 0 10px #ff64c8;
+    top: 30%;
+    left: 70%;
+    animation: float-particle 18s infinite ease-in-out;
+  }
+
+  .particle.p4 {
+    background-color: #4aef9e;
+    box-shadow: 0 0 10px #4aef9e;
+    top: 60%;
+    left: 85%;
+    animation: float-particle 10s infinite ease-in-out reverse;
+  }
+
+  @keyframes float-particle {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(30px, 15px);
+    }
+    50% {
+      transform: translate(0, 30px);
+    }
+    75% {
+      transform: translate(-30px, 15px);
+    }
+  }
+
   /* Panel de beneficios */
   .benefits-panel {
     background-color: rgba(15, 15, 25, 0.7);
     border-top: 1px solid rgba(176, 66, 255, 0.3);
-    padding: 15px 20px;
+    padding: 12px 20px; /* Reducido el padding vertical */
+    margin-top: 0; /* Eliminado margen superior para mejor posicionamiento */
   }
 
   .benefits-title {
@@ -540,7 +577,7 @@
     font-size: 1rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 15px;
+    margin-bottom: 12px; /* Reducido para compactar el espacio */
   }
 
   .benefits-grid {
@@ -552,7 +589,7 @@
   .benefit-item {
     background-color: rgba(30, 30, 50, 0.5);
     border-radius: 8px;
-    padding: 15px;
+    padding: 12px 15px; /* Reducido el padding vertical */
     display: flex;
     align-items: center;
     gap: 12px;
@@ -606,20 +643,64 @@
     .transformation-container {
       padding: 15px;
       height: auto;
-      min-height: 350px;
+      min-height: 335px; /* Ajustado para mantener consistencia */
     }
     
-    .map-node {
-      width: 120px;
+    .transformation-roadmap {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 20px;
+      margin-top: 10px;
     }
     
-    .node-icon {
-      width: 50px;
-      height: 50px;
+    .roadmap-stage {
+      width: 100%;
+      flex-direction: row;
+      margin-bottom: 15px;
     }
     
-    .node-title {
-      font-size: 0.7rem;
+    .stage-node {
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+    
+    .stage-icon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .stage-connector {
+      height: calc(100% + 15px);
+      width: 3px;
+      top: 0;
+      left: -20px;
+      right: auto;
+      background: linear-gradient(to bottom, 
+        rgba(100, 200, 255, 0.3) 0%, 
+        rgba(176, 66, 255, 0.7) 50%,
+        rgba(255, 100, 200, 0.3) 100%);
+    }
+    
+    .roadmap-stage[data-stage="1"] .stage-connector {
+      top: 50%;
+      height: 50%;
+      background: linear-gradient(to bottom, 
+        rgba(176, 66, 255, 0.7) 0%, 
+        rgba(255, 100, 200, 0.3) 100%);
+    }
+    
+    .roadmap-stage[data-stage="5"] .stage-connector {
+      height: 50%;
+      bottom: 50%;
+      top: auto;
+      background: linear-gradient(to bottom, 
+        rgba(100, 200, 255, 0.3) 0%, 
+        rgba(176, 66, 255, 0.7) 100%);
+    }
+    
+    .progress-section {
+      position: relative;
+      margin-top: 15px;
     }
     
     .benefits-grid {
@@ -633,26 +714,10 @@
     // Referencias a elementos DOM
     const progressFill = document.getElementById('progressFill');
     const statusMarker = document.getElementById('statusMarker');
-    const nodes = document.querySelectorAll('.node-icon');
+    const stages = document.querySelectorAll('.roadmap-stage');
     
-    // Función para animar la entrada de los nodos
-    function animateNodes(): void {
-      nodes.forEach((node, index) => {
-        if (node instanceof HTMLElement) {
-          node.style.opacity = '0';
-          node.style.transform = 'scale(0.5)';
-          
-          setTimeout(() => {
-            node.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            node.style.opacity = '1';
-            node.style.transform = 'scale(1)';
-          }, 300 + (index * 150));
-        }
-      });
-    }
-    
-    // Función para animar valores de beneficios
-    function animateBenefitValues(): void {
+    // Función para animar los valores de beneficios
+    function animateBenefitValues() {
       const benefitValues = document.querySelectorAll('.benefit-value');
       
       benefitValues.forEach((valueElement) => {
@@ -660,11 +725,12 @@
         const targetValue = parseInt(targetValueText.replace(/[^0-9.-]/g, ''));
         let startValue = 0;
         let duration = 2000; // 2 segundos
-        let startTime: number | null = null;
         
-        function updateValue(timestamp: number): void {
-          if (!startTime) startTime = timestamp;
-          let progress = (timestamp - startTime) / duration;
+        const startTime = performance.now();
+        
+        function updateValue(timestamp: number) {
+          const elapsed = timestamp - startTime;
+          let progress = elapsed / duration;
           
           if (progress > 1) progress = 1;
           
@@ -672,9 +738,7 @@
           progress = 1 - Math.pow(1 - progress, 3);
           
           const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
-          if (valueElement instanceof HTMLElement) {
-            valueElement.textContent = '+' + currentValue + '%';
-          }
+          valueElement.textContent = '+' + currentValue + '%';
           
           if (progress < 1) {
             requestAnimationFrame(updateValue);
@@ -685,96 +749,167 @@
       });
     }
     
-    // Función para animar la barra de progreso periódicamente
-    function animateProgressPeriodically(): void {
-      // Asegurarse de que ambos elementos existen
-      if (!progressFill || !statusMarker) return;
+    // Obtener los porcentajes correspondientes a cada etapa
+    function getStagePercentages() {
+      const stageCount = stages.length;
+      const percentages = [];
       
-      // Crear función para actualizar ambos elementos con el mismo valor
-      function updateProgress(newWidth: number): void {
-        if (progressFill instanceof HTMLElement) {
-          progressFill.style.transition = 'width 2s ease';
-          progressFill.style.width = `${newWidth}%`;
-        }
-        
-        if (statusMarker instanceof HTMLElement) {
-          statusMarker.style.transition = 'left 2s ease';
-          statusMarker.style.left = `${newWidth}%`;
-        }
+      // Calculamos los porcentajes para cada etapa (distribución uniforme)
+      const stageWidth = 100 / stageCount;
+      
+      for (let i = 1; i <= stageCount; i++) {
+        percentages.push(i * stageWidth);
       }
       
-      // Inicialmente, establecer ambos al 75%
-      updateProgress(75);
-      
-      // Actualizar periódicamente
-      setInterval(() => {
-        // Obtener el ancho actual de la barra de progreso
-        const currentWidth = progressFill instanceof HTMLElement && progressFill.style.width 
-          ? parseInt(progressFill.style.width) 
-          : 75;
-        
-        // Generar cambio aleatorio de -3% a +3%
-        const delta = Math.random() * 6 - 3;
-        
-        // Limitar el rango de 60% a 95%
-        const newWidth = Math.max(60, Math.min(95, currentWidth + delta));
-        
-        // Actualizar ambos elementos
-        updateProgress(newWidth);
-      }, 8000); // Cada 8 segundos
+      return percentages;
     }
     
-    // Función para iluminar los nodos según el progreso
-    function highlightNodesByProgress(): void {
-      // Asegurarse de que progressFill existe
-      if (!progressFill) return;
+    // Función para actualizar el progreso
+    function updateProgress(percentage: number) {
+      // Asegurarnos de que el porcentaje esté entre 0 y 100
+      percentage = Math.max(0, Math.min(100, percentage));
       
-      function updateNodeHighlights(progress: number): void {
-        const totalNodes = nodes.length;
-        const nodesToHighlight = Math.ceil((progress / 100) * totalNodes);
+      if (progressFill) {
+        const progressElement = progressFill as HTMLElement;
+        progressElement.style.width = `${percentage}%`;
+      }
+      
+      if (statusMarker) {
+        const markerElement = statusMarker as HTMLElement;
+        markerElement.style.left = `${percentage}%`;
+      }
+      
+      // Actualizar etapas según el progreso
+      updateStages(percentage);
+    }
+    
+    // Función para actualizar las etapas en base al progreso
+    function updateStages(progress: number) {
+      const stagePercentages = getStagePercentages();
+      const totalStages = stages.length;
+      
+      stages.forEach((stage, index) => {
+        const stageElement = stage as HTMLElement;
+        const currentStagePercentage = stagePercentages[index];
+        const prevStagePercentage = index > 0 ? stagePercentages[index - 1] : 0;
         
-        nodes.forEach((node, index) => {
-          if (node instanceof HTMLElement) {
-            if (index < nodesToHighlight) {
-              // Nodo completado
-              node.style.transform = 'scale(1.05)';
-              node.style.boxShadow = '0 0 20px currentColor';
-              node.style.filter = 'brightness(1.2)';
-            } else {
-              // Nodo pendiente
-              node.style.transform = 'scale(1)';
-              node.style.boxShadow = '0 0 10px rgba(176, 66, 255, 0.2)';
-              node.style.filter = 'brightness(0.8)';
-            }
+        // Resetear clases
+        stageElement.classList.remove('active', 'completed');
+        
+        if (progress >= currentStagePercentage) {
+          // Etapa completada
+          stageElement.classList.add('completed');
+        } else if (progress > prevStagePercentage && progress < currentStagePercentage) {
+          // Etapa activa (actual)
+          stageElement.classList.add('active');
+        }
+      });
+    }
+    
+    // Función para animar la barra de progreso a un valor específico con una duración dada
+    function animateProgressTo(targetPercentage: number, duration: number, callback?: () => void) {
+      if (!progressFill || !statusMarker) return;
+      
+      const progressElement = progressFill as HTMLElement;
+      const markerElement = statusMarker as HTMLElement;
+      
+      const startWidth = parseFloat(progressElement.style.width || '0');
+      const startLeft = parseFloat(markerElement.style.left || '0');
+      
+      const startTime = performance.now();
+      
+      function step(timestamp: number) {
+        const elapsed = timestamp - startTime;
+        let progress = Math.min(elapsed / duration, 1);
+        
+        // Aplicar función de suavizado para movimiento más natural
+        progress = progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        
+        const currentWidth = startWidth + (targetPercentage - startWidth) * progress;
+        const currentLeft = startLeft + (targetPercentage - startLeft) * progress;
+        
+        progressElement.style.width = `${currentWidth}%`;
+        markerElement.style.left = `${currentLeft}%`;
+        
+        // Actualizar etapas basadas en el progreso actual
+        updateStages(currentWidth);
+        
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else if (callback) {
+          callback();
+        }
+      }
+      
+      requestAnimationFrame(step);
+    }
+    
+    // Iniciar la animación secuencial a cada etapa hasta el estado actual
+    function startProgressAnimation() {
+      const targetInitialProgress = 75;
+      const stagePercentages = getStagePercentages();
+      
+      // Retraso inicial para asegurar que todo esté renderizado
+      setTimeout(() => {
+        // Comenzar en 0
+        updateProgress(0);
+        
+        // Encontrar hasta qué etapa corresponde el 75% de progreso
+        let activeStageIndex = 0;
+        for (let i = 0; i < stagePercentages.length; i++) {
+          if (targetInitialProgress <= stagePercentages[i]) {
+            activeStageIndex = i;
+            break;
           }
-        });
-      }
-      
-      // Estado inicial
-      if (progressFill instanceof HTMLElement) {
-        const currentProgress = parseInt(progressFill.style.width) || 75;
-        updateNodeHighlights(currentProgress);
+        }
         
-        // Observar cambios en el ancho de la barra de progreso
-        const observer = new MutationObserver((mutations) => {
-          mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-              const newProgress = parseInt(progressFill.style.width) || 75;
-              updateNodeHighlights(newProgress);
-            }
+        // Animación secuencial a través de las etapas hasta la etapa activa
+        let currentStage = 0;
+        
+        function animateNextStage() {
+          if (currentStage > activeStageIndex) {
+            // Si llegamos a la etapa activa, hacer ajustes periódicos
+            setupPeriodicAdjustments();
+            return;
+          }
+          
+          // Si es la etapa activa final, animar hasta el porcentaje exacto (75%)
+          const targetPercentage = currentStage === activeStageIndex
+            ? targetInitialProgress
+            : stagePercentages[currentStage] - 5; // Restar un pequeño margen
+          
+          animateProgressTo(targetPercentage, 1000, () => {
+            currentStage++;
+            setTimeout(animateNextStage, 500);
           });
-        });
+        }
         
-        observer.observe(progressFill, { attributes: true });
-      }
+        // Iniciar la secuencia de animación después de un breve retraso
+        setTimeout(animateNextStage, 500);
+      }, 1000);
+    }
+    
+    // Configurar ajustes periódicos después de alcanzar la posición inicial
+    function setupPeriodicAdjustments() {
+      setInterval(() => {
+        const progressElement = progressFill as HTMLElement;
+        const currentWidth = parseFloat(progressElement.style.width || '75');
+        
+        // Generar variación aleatoria entre -3% y +3%
+        const delta = Math.random() * 6 - 3;
+        const newProgress = Math.max(60, Math.min(95, currentWidth + delta));
+        
+        // Animar al nuevo valor de forma suave
+        animateProgressTo(newProgress, 2000);
+      }, 8000);
     }
     
     // Inicializar animaciones
     setTimeout(() => {
-      animateNodes();
-      setTimeout(animateBenefitValues, 1500);
-      animateProgressPeriodically();
-      setTimeout(highlightNodesByProgress, 3500);
+      animateBenefitValues();
+      startProgressAnimation();
     }, 500);
   });
 </script>
