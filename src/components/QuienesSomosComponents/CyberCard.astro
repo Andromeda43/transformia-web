@@ -1,0 +1,420 @@
+---
+// src/components/QuienesSomosComponents/CyberCard.astro
+const { title, description, icon, color = "purple", number } = Astro.props;
+
+// Determinar la clase de color según la propiedad
+let colorClass = "purple";
+if (color === "blue") colorClass = "blue";
+if (color === "pink") colorClass = "pink";
+if (color === "yellow") colorClass = "yellow";
+
+// Determinar el icono según la propiedad
+let iconSvg = "";
+if (icon === "essence") {
+  iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+    <path d="M2 12h20" />
+  </svg>`;
+} else if (icon === "inspiration") {
+  iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+    <path d="M12 2v1" />
+    <path d="M12 21v1" />
+  </svg>`;
+} else if (icon === "motivation") {
+  iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12h5" />
+    <path d="M17 12h5" />
+    <path d="M12 2v5" />
+    <path d="M12 17v5" />
+    <path d="m19 5-7 7-7-7" />
+  </svg>`;
+}
+---
+
+<div class={`cyber-card ${colorClass} fade-in-element`}>
+  <div class="card-number">{number}</div>
+  
+  <div class="card-header">
+    <div class="card-icon">
+      <Fragment set:html={iconSvg} />
+      <div class="icon-pulse"></div>
+    </div>
+    <h3 class="card-title">{title}</h3>
+  </div>
+  
+  <div class="card-divider"></div>
+  
+  <p class="card-text">{description}</p>
+  
+  <!-- Esquinas decorativas -->
+  <div class="corner top-left"></div>
+  <div class="corner top-right"></div>
+  <div class="corner bottom-left"></div>
+  <div class="corner bottom-right"></div>
+  
+  <!-- Efecto de hover -->
+  <div class="hover-effect"></div>
+  
+  <!-- Efecto de escaneo -->
+  <div class="scan-effect"></div>
+</div>
+
+<style>
+  .cyber-card {
+    position: relative;
+    background: rgba(25, 25, 40, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 2rem;
+    min-height: 300px;
+    border: 1px solid rgba(176, 66, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cyber-card.blue {
+    border-color: rgba(66, 135, 255, 0.3);
+  }
+  
+  .cyber-card.pink {
+    border-color: rgba(255, 66, 176, 0.3);
+  }
+  
+  .cyber-card.yellow {
+    border-color: rgba(232, 255, 66, 0.3);
+  }
+  
+  .cyber-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cyber-card.purple:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(176, 66, 255, 0.3);
+    border-color: rgba(176, 66, 255, 0.6);
+  }
+  
+  .cyber-card.blue:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(66, 135, 255, 0.3);
+    border-color: rgba(66, 135, 255, 0.6);
+  }
+  
+  .cyber-card.pink:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 66, 176, 0.3);
+    border-color: rgba(255, 66, 176, 0.6);
+  }
+  
+  .cyber-card.yellow:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(232, 255, 66, 0.3);
+    border-color: rgba(232, 255, 66, 0.6);
+  }
+  
+  /* Número de la tarjeta */
+  .card-number {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .cyber-card:hover .card-number {
+    color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.2);
+  }
+  
+  /* Encabezado de la tarjeta */
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(176, 66, 255, 0.15);
+    margin-bottom: 1rem;
+    color: var(--neon-purple);
+    transition: all 0.3s ease;
+  }
+  
+  .cyber-card.blue .card-icon {
+    background: rgba(66, 135, 255, 0.15);
+    color: var(--neon-blue);
+  }
+  
+  .cyber-card.pink .card-icon {
+    background: rgba(255, 66, 176, 0.15);
+    color: var(--neon-pink);
+  }
+  
+  .cyber-card.yellow .card-icon {
+    background: rgba(232, 255, 66, 0.15);
+    color: var(--neon-yellow);
+  }
+  
+  .cyber-card:hover .card-icon {
+    transform: scale(1.1);
+  }
+  
+  .cyber-card.purple:hover .card-icon {
+    background: rgba(176, 66, 255, 0.25);
+    box-shadow: 0 0 20px rgba(176, 66, 255, 0.4);
+  }
+  
+  .cyber-card.blue:hover .card-icon {
+    background: rgba(66, 135, 255, 0.25);
+    box-shadow: 0 0 20px rgba(66, 135, 255, 0.4);
+  }
+  
+  .cyber-card.pink:hover .card-icon {
+    background: rgba(255, 66, 176, 0.25);
+    box-shadow: 0 0 20px rgba(255, 66, 176, 0.4);
+  }
+  
+  .cyber-card.yellow:hover .card-icon {
+    background: rgba(232, 255, 66, 0.25);
+    box-shadow: 0 0 20px rgba(232, 255, 66, 0.4);
+  }
+  
+  .icon-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    opacity: 0;
+    transform: scale(1.2);
+    animation: icon-pulse 2s infinite;
+  }
+  
+  .cyber-card.blue .icon-pulse {
+    border-color: rgba(66, 135, 255, 0.5);
+  }
+  
+  .cyber-card.pink .icon-pulse {
+    border-color: rgba(255, 66, 176, 0.5);
+  }
+  
+  .cyber-card.yellow .icon-pulse {
+    border-color: rgba(232, 255, 66, 0.5);
+  }
+  
+  @keyframes icon-pulse {
+    0% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  
+  .cyber-card:hover .card-title {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Divisor */
+  .card-divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .cyber-card.blue .card-divider {
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  }
+  
+  .cyber-card.pink .card-divider {
+    background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+  }
+  
+  .cyber-card.yellow .card-divider {
+    background: linear-gradient(90deg, transparent, var(--neon-yellow), transparent);
+  }
+  
+  .cyber-card:hover .card-divider {
+    width: 80px;
+    box-shadow: 0 0 10px currentColor;
+  }
+  
+  /* Texto de la tarjeta */
+  .card-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    font-family: var(--font-body);
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  /* Esquinas decorativas */
+  .corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+  
+  .top-left {
+    top: 4px;
+    left: 4px;
+    border-top: 1px solid rgba(176, 66, 255, 0.5);
+    border-left: 1px solid rgba(176, 66, 255, 0.5);
+  }
+  
+  .top-right {
+    top: 4px;
+    right: 4px;
+    border-top: 1px solid rgba(176, 66, 255, 0.5);
+    border-right: 1px solid rgba(176, 66, 255, 0.5);
+  }
+  
+  .bottom-left {
+    bottom: 4px;
+    left: 4px;
+    border-bottom: 1px solid rgba(176, 66, 255, 0.5);
+    border-left: 1px solid rgba(176, 66, 255, 0.5);
+  }
+  
+  .bottom-right {
+    bottom: 4px;
+    right: 4px;
+    border-bottom: 1px solid rgba(176, 66, 255, 0.5);
+    border-right: 1px solid rgba(176, 66, 255, 0.5);
+  }
+  
+  .cyber-card.blue .corner {
+    border-color: rgba(66, 135, 255, 0.5);
+  }
+  
+  .cyber-card.pink .corner {
+    border-color: rgba(255, 66, 176, 0.5);
+  }
+  
+  .cyber-card.yellow .corner {
+    border-color: rgba(232, 255, 66, 0.5);
+  }
+  
+  .cyber-card:hover .corner {
+    width: 15px;
+    height: 15px;
+  }
+  
+  /* Efecto de hover */
+  .hover-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(176, 66, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  .cyber-card.blue .hover-effect {
+    background: radial-gradient(circle at center, rgba(66, 135, 255, 0.1) 0%, transparent 70%);
+  }
+  
+  .cyber-card.pink .hover-effect {
+    background: radial-gradient(circle at center, rgba(255, 66, 176, 0.1) 0%, transparent 70%);
+  }
+  
+  .cyber-card.yellow .hover-effect {
+    background: radial-gradient(circle at center, rgba(232, 255, 66, 0.1) 0%, transparent 70%);
+  }
+  
+  .cyber-card:hover .hover-effect {
+    opacity: 1;
+  }
+  
+  /* Efecto de escaneo */
+  .scan-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+    z-index: 3;
+    opacity: 0.6;
+    animation: scan-animation 3s ease-in-out infinite;
+  }
+  
+  .cyber-card.blue .scan-effect {
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  }
+  
+  .cyber-card.pink .scan-effect {
+    background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+  }
+  
+  .cyber-card.yellow .scan-effect {
+    background: linear-gradient(90deg, transparent, var(--neon-yellow), transparent);
+  }
+  
+  @keyframes scan-animation {
+    0% {
+      top: -100%;
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.6;
+    }
+    80% {
+      opacity: 0.6;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+  
+  /* Animación de entrada */
+  .fade-in-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-in-element.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

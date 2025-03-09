@@ -1,0 +1,462 @@
+---
+// src/components/QuienesSomosComponents/QuoteHologram.astro
+const { quote, author } = Astro.props;
+---
+
+<div class="hologram-container">
+  <div class="hologram-frame">
+    <!-- Efectos holográficos -->
+    <div class="hologram-overlay"></div>
+    <div class="hologram-glow"></div>
+    <div class="hologram-scanline"></div>
+    <div class="hologram-flicker"></div>
+    
+    <!-- Contenido de la cita -->
+    <div class="hologram-content">
+      <div class="quote-mark">"</div>
+      <blockquote class="quote-text">{quote}</blockquote>
+      <div class="quote-author">— {author}</div>
+      
+      <!-- Barra de estado holográfica -->
+      <div class="holo-status-bar">
+        <div class="holo-status-dot"></div>
+        <div class="holo-status-text">Transmisión activa</div>
+        <div class="holo-status-info">ID: TFRM-VISION-2025</div>
+      </div>
+    </div>
+    
+    <!-- Esquinas decorativas -->
+    <div class="holo-corner top-left">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1V7M1 1H7M1 1L7 7" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="holo-corner top-right">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 1V7M19 1H13M19 1L13 7" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="holo-corner bottom-left">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 19V13M1 19H7M1 19L7 13" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="holo-corner bottom-right">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 19V13M19 19H13M19 19L13 13" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </div>
+    
+    <!-- Elementos decorativos técnicos -->
+    <div class="holo-tech-element top"></div>
+    <div class="holo-tech-element left"></div>
+    <div class="holo-tech-element right"></div>
+    <div class="holo-tech-element bottom"></div>
+    
+    <!-- Círculos de energía -->
+    <div class="energy-circle c1"></div>
+    <div class="energy-circle c2"></div>
+    <div class="energy-circle c3"></div>
+  </div>
+</div>
+
+<style>
+  /* Contenedor principal */
+  .hologram-container {
+    position: relative;
+    max-width: 700px;
+    margin: 6rem auto 0;
+    padding: 2rem 0;
+    z-index: 10;
+  }
+  
+  .hologram-frame {
+    position: relative;
+    background: rgba(20, 20, 40, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 3rem;
+    border: 1px solid rgba(66, 135, 255, 0.4);
+    box-shadow: 
+      0 0 30px rgba(66, 135, 255, 0.2),
+      inset 0 0 15px rgba(66, 135, 255, 0.1);
+    overflow: hidden;
+    animation: hologram-pulse 4s infinite ease-in-out;
+  }
+  
+  @keyframes hologram-pulse {
+    0%, 100% {
+      box-shadow: 
+        0 0 30px rgba(66, 135, 255, 0.2),
+        inset 0 0 15px rgba(66, 135, 255, 0.1);
+    }
+    50% {
+      box-shadow: 
+        0 0 40px rgba(66, 135, 255, 0.3),
+        inset 0 0 20px rgba(66, 135, 255, 0.2);
+    }
+  }
+  
+  /* Efectos holográficos */
+  .hologram-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(66, 135, 255, 0.05) 0%,
+      rgba(176, 66, 255, 0.05) 50%,
+      rgba(66, 135, 255, 0.05) 100%
+    );
+    z-index: 1;
+  }
+  
+  .hologram-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at center,
+      rgba(66, 135, 255, 0.15) 0%,
+      transparent 70%
+    );
+    z-index: 2;
+    opacity: 0.7;
+    animation: glow-pulse 4s infinite alternate;
+  }
+  
+  @keyframes glow-pulse {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.9;
+    }
+  }
+  
+  .hologram-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(66, 135, 255, 0.05) 50%,
+      transparent 100%
+    );
+    background-size: 100% 8px;
+    z-index: 3;
+    animation: scanline 6s linear infinite;
+    opacity: 0.5;
+  }
+  
+  @keyframes scanline {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 100%;
+    }
+  }
+  
+  .hologram-flicker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(66, 135, 255, 0.05);
+    z-index: 4;
+    opacity: 0;
+    animation: flicker 4s infinite;
+  }
+  
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 0;
+    }
+    5%, 9% {
+      opacity: 0.2;
+    }
+    7% {
+      opacity: 0;
+    }
+    20%, 39.9% {
+      opacity: 0;
+    }
+    40%, 42% {
+      opacity: 0.1;
+    }
+    43% {
+      opacity: 0;
+    }
+    60%, 79.9% {
+      opacity: 0;
+    }
+    80%, 84% {
+      opacity: 0.2;
+    }
+    85% {
+      opacity: 0;
+    }
+  }
+  
+  /* Contenido de la cita */
+  .hologram-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+  }
+  
+  .quote-mark {
+    font-size: 4rem;
+    line-height: 1;
+    font-family: var(--font-mono);
+    color: rgba(66, 135, 255, 0.5);
+    margin-bottom: -1rem;
+  }
+  
+  .quote-text {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-family: var(--font-body);
+    text-shadow: 0 0 10px rgba(66, 135, 255, 0.5);
+  }
+  
+  .quote-author {
+    font-family: var(--font-mono);
+    color: var(--neon-blue);
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(66, 135, 255, 0.7);
+    margin-bottom: 2rem;
+    animation: author-glow 2s infinite alternate;
+  }
+  
+  @keyframes author-glow {
+    0% {
+      text-shadow: 0 0 8px rgba(66, 135, 255, 0.7);
+    }
+    100% {
+      text-shadow: 0 0 15px rgba(66, 135, 255, 0.9), 0 0 25px rgba(66, 135, 255, 0.5);
+    }
+  }
+  
+  /* Barra de estado holográfica */
+  .holo-status-bar {
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 30, 50, 0.6);
+    border: 1px solid rgba(66, 135, 255, 0.3);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(66, 135, 255, 0.3);
+  }
+  
+  .holo-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--neon-blue);
+    box-shadow: 0 0 8px var(--neon-blue);
+    animation: status-pulse 2s infinite;
+  }
+  
+  @keyframes status-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .holo-status-text {
+    color: var(--neon-blue);
+  }
+  
+  .holo-status-info {
+    margin-left: auto;
+    opacity: 0.7;
+  }
+  
+  /* Esquinas decorativas */
+  .holo-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    color: var(--neon-blue);
+    z-index: 6;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .top-left {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .top-right {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .bottom-left {
+    bottom: 10px;
+    left: 10px;
+  }
+  
+  .bottom-right {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .hologram-frame:hover .holo-corner {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+  }
+  
+  /* Elementos técnicos decorativos */
+  .holo-tech-element {
+    position: absolute;
+    background: rgba(66, 135, 255, 0.2);
+    z-index: 5;
+  }
+  
+  .holo-tech-element.top {
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 2px;
+    box-shadow: 0 0 10px var(--neon-blue);
+  }
+  
+  .holo-tech-element.left {
+    top: 30%;
+    left: 0;
+    width: 2px;
+    height: 40%;
+    box-shadow: 0 0 10px var(--neon-blue);
+  }
+  
+  .holo-tech-element.right {
+    top: 40%;
+    right: 0;
+    width: 2px;
+    height: 20%;
+    box-shadow: 0 0 10px var(--neon-blue);
+  }
+  
+  .holo-tech-element.bottom {
+    bottom: 0;
+    right: 20%;
+    width: 30%;
+    height: 2px;
+    box-shadow: 0 0 10px var(--neon-blue);
+  }
+  
+  /* Círculos de energía */
+  .energy-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(66, 135, 255, 0.4);
+    box-shadow: 0 0 15px rgba(66, 135, 255, 0.3);
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  .energy-circle.c1 {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: energy-pulse 10s infinite alternate;
+  }
+  
+  .energy-circle.c2 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: energy-pulse 8s infinite alternate-reverse;
+  }
+  
+  .energy-circle.c3 {
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: energy-pulse 6s infinite alternate;
+  }
+  
+  @keyframes energy-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      border-color: rgba(66, 135, 255, 0.4);
+    }
+    50% {
+      opacity: 0.6;
+      border-color: rgba(66, 135, 255, 0.7);
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hologram-container {
+      padding: 1rem;
+    }
+    
+    .hologram-frame {
+      padding: 2rem 1.5rem;
+    }
+    
+    .quote-text {
+      font-size: 1.25rem;
+    }
+    
+    .quote-author {
+      font-size: 1rem;
+    }
+    
+    .holo-status-bar {
+      font-size: 0.7rem;
+      padding: 0.35rem 0.75rem;
+    }
+    
+    .energy-circle.c1 {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .energy-circle.c2 {
+      width: 140px;
+      height: 140px;
+    }
+    
+    .energy-circle.c3 {
+      width: 80px;
+      height: 80px;
+    }
+  }
+</style>

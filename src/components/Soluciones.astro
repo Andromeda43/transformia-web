@@ -1,5 +1,5 @@
 ---
-import RetroGrid from './RetroGrid.astro';
+import RetroGrid from './HeroComponents/RetroGrid.astro';
 ---
 
 <section id="soluciones" class="bg-dark-purple py-20 relative">
@@ -7,56 +7,82 @@ import RetroGrid from './RetroGrid.astro';
   
   <div class="container mx-auto px-6 relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 font-mono neon-text">SOLUCIONES / SERVICIOS</h2>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 neon-text" style="font-family: var(--font-mono);">SOLUCIONES / SERVICIOS</h2>
       <div class="w-24 h-1 bg-neon-purple mx-auto glow-effect"></div>
     </div>
     
     <div class="grid md:grid-cols-2 gap-10">
-      <div class="solution-card" data-aos="fade-right">
+      <div class="solution-card" data-accent="purple" data-aos="fade-right">
+        <div class="solution-glow purple"></div>
         <div class="solution-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-4 font-mono neon-text-purple">DESARROLLO DE SOFTWARE A MEDIDA</h3>
-        <p class="mb-6">Creamos aplicaciones personalizadas que resuelven tus problemas específicos, optimizando procesos y mejorando la experiencia de usuario.</p>
-        <a href="/servicios/desarrollo" class="solution-link">Conocer más <span>&rarr;</span></a>
+        <h3 class="text-xl font-bold mb-4 neon-text-purple" style="font-family: var(--font-mono);">DESARROLLO DE SOFTWARE A MEDIDA</h3>
+        <p class="mb-6" style="font-family: var(--font-sans);">Creamos aplicaciones personalizadas que resuelven tus problemas específicos, optimizando procesos y mejorando la experiencia de usuario.</p>
+        <a href="/servicios/desarrollo" class="solution-link purple">Conocer más <span>&rarr;</span></a>
+        <div class="card-corner top-left"></div>
+        <div class="card-corner top-right"></div>
+        <div class="card-corner bottom-left"></div>
+        <div class="card-corner bottom-right"></div>
       </div>
       
-      <div class="solution-card" data-aos="fade-left">
-        <div class="solution-icon">
+      <div class="solution-card" data-accent="blue" data-aos="fade-left">
+        <div class="solution-glow blue"></div>
+        <div class="solution-icon blue">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-4 font-mono neon-text-blue">TRANSFORMACIÓN DIGITAL Y AUTOMATIZACIÓN</h3>
-        <p class="mb-6">Modernizamos tus procesos analógicos, eliminando tareas repetitivas y potenciando la productividad de tu equipo.</p>
-        <a href="/servicios/transformacion" class="solution-link">Conocer más <span>&rarr;</span></a>
+        <h3 class="text-xl font-bold mb-4 neon-text-blue" style="font-family: var(--font-mono);">TRANSFORMACIÓN DIGITAL Y AUTOMATIZACIÓN</h3>
+        <p class="mb-6" style="font-family: var(--font-sans);">Modernizamos tus procesos analógicos, eliminando tareas repetitivas y potenciando la productividad de tu equipo con tecnologías avanzadas.</p>
+        <a href="/servicios/transformacion" class="solution-link blue">Conocer más <span>&rarr;</span></a>
+        <div class="card-corner top-left"></div>
+        <div class="card-corner top-right"></div>
+        <div class="card-corner bottom-left"></div>
+        <div class="card-corner bottom-right"></div>
       </div>
       
-      <div class="solution-card" data-aos="fade-right">
-        <div class="solution-icon">
+      <div class="solution-card" data-accent="pink" data-aos="fade-right">
+        <div class="solution-glow pink"></div>
+        <div class="solution-icon pink">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-4 font-mono neon-text-pink">INTELIGENCIA ARTIFICIAL Y DATA ANALYTICS</h3>
-        <p class="mb-6">Implementamos soluciones de IA y análisis de datos para ayudarte a tomar mejores decisiones basadas en información real.</p>
-        <a href="/servicios/ia" class="solution-link">Conocer más <span>&rarr;</span></a>
+        <h3 class="text-xl font-bold mb-4 neon-text-pink" style="font-family: var(--font-mono);">INTELIGENCIA ARTIFICIAL Y DATA ANALYTICS</h3>
+        <p class="mb-6" style="font-family: var(--font-sans);">Implementamos soluciones de IA y análisis de datos para ayudarte a tomar mejores decisiones basadas en información real y predicciones precisas.</p>
+        <a href="/servicios/ia" class="solution-link pink">Conocer más <span>&rarr;</span></a>
+        <div class="card-corner top-left"></div>
+        <div class="card-corner top-right"></div>
+        <div class="card-corner bottom-left"></div>
+        <div class="card-corner bottom-right"></div>
       </div>
       
-      <div class="solution-card" data-aos="fade-left">
-        <div class="solution-icon">
+      <div class="solution-card" data-accent="yellow" data-aos="fade-left">
+        <div class="solution-glow yellow"></div>
+        <div class="solution-icon yellow">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-4 font-mono neon-text-yellow">ASESORÍA EN OPTIMIZACIÓN DE PROCESOS</h3>
-        <p class="mb-6">Te ayudamos a identificar y eliminar cuellos de botella, simplificando operaciones y reduciendo costos operativos.</p>
-        <a href="/servicios/asesoria" class="solution-link">Conocer más <span>&rarr;</span></a>
+        <h3 class="text-xl font-bold mb-4 neon-text-yellow" style="font-family: var(--font-mono);">ASESORÍA EN OPTIMIZACIÓN DE PROCESOS</h3>
+        <p class="mb-6" style="font-family: var(--font-sans);">Te ayudamos a identificar y eliminar cuellos de botella, simplificando operaciones y reduciendo costos operativos con estrategias innovadoras.</p>
+        <a href="/servicios/asesoria" class="solution-link yellow">Conocer más <span>&rarr;</span></a>
+        <div class="card-corner top-left"></div>
+        <div class="card-corner top-right"></div>
+        <div class="card-corner bottom-left"></div>
+        <div class="card-corner bottom-right"></div>
       </div>
     </div>
   </div>
+  
+  <!-- Elementos decorativos -->
+  <div class="floating-bits bit-1"></div>
+  <div class="floating-bits bit-2"></div>
+  <div class="floating-bits bit-3"></div>
+  <div class="floating-bits bit-4"></div>
 </section>
 
 <style>
@@ -71,21 +97,53 @@ import RetroGrid from './RetroGrid.astro';
     position: relative;
   }
   
-  .solution-card::before {
-    content: '';
+  .solution-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(176, 66, 255, 0.2);
+  }
+  
+  .solution-card[data-accent="purple"]:hover {
+    border-color: var(--neon-purple);
+  }
+  
+  .solution-card[data-accent="blue"]:hover {
+    border-color: var(--neon-blue);
+  }
+  
+  .solution-card[data-accent="pink"]:hover {
+    border-color: var(--neon-pink);
+  }
+  
+  .solution-card[data-accent="yellow"]:hover {
+    border-color: var(--neon-yellow);
+  }
+  
+  .solution-glow {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(176, 66, 255, 0.05) 0%, rgba(10, 10, 20, 0) 70%);
+    background: radial-gradient(circle at 30% 30%, rgba(176, 66, 255, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
     z-index: -1;
   }
   
-  .solution-card:hover {
-    border-color: var(--neon-purple);
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(176, 66, 255, 0.2);
+  .solution-glow.blue {
+    background: radial-gradient(circle at 30% 30%, rgba(66, 135, 255, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
+  }
+  
+  .solution-glow.pink {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 66, 176, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
+  }
+  
+  .solution-glow.yellow {
+    background: radial-gradient(circle at 30% 30%, rgba(232, 255, 66, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
+  }
+  
+  .solution-card:hover .solution-glow {
+    opacity: 1;
   }
   
   .solution-icon {
@@ -94,17 +152,17 @@ import RetroGrid from './RetroGrid.astro';
     filter: drop-shadow(0 0 8px rgba(176, 66, 255, 0.7));
   }
   
-  .solution-card:nth-child(2) .solution-icon {
+  .solution-icon.blue {
     color: var(--neon-blue);
     filter: drop-shadow(0 0 8px rgba(66, 135, 255, 0.7));
   }
   
-  .solution-card:nth-child(3) .solution-icon {
+  .solution-icon.pink {
     color: var(--neon-pink);
     filter: drop-shadow(0 0 8px rgba(255, 66, 176, 0.7));
   }
   
-  .solution-card:nth-child(4) .solution-icon {
+  .solution-icon.yellow {
     color: var(--neon-yellow);
     filter: drop-shadow(0 0 8px rgba(232, 255, 66, 0.7));
   }
@@ -127,15 +185,165 @@ import RetroGrid from './RetroGrid.astro';
     transform: translateX(5px);
   }
   
-  .solution-card:nth-child(2) .solution-link {
+  .solution-link.blue {
     color: var(--neon-blue);
   }
   
-  .solution-card:nth-child(3) .solution-link {
+  .solution-link.pink {
     color: var(--neon-pink);
   }
   
-  .solution-card:nth-child(4) .solution-link {
+  .solution-link.yellow {
     color: var(--neon-yellow);
   }
+  
+  /* Esquinas de tarjetas */
+  .card-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: rgba(176, 66, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .top-left {
+    top: 5px;
+    left: 5px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  
+  .top-right {
+    top: 5px;
+    right: 5px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+  }
+  
+  .bottom-left {
+    bottom: 5px;
+    left: 5px;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+  }
+  
+  .bottom-right {
+    bottom: 5px;
+    right: 5px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+  
+  .solution-card[data-accent="purple"]:hover .card-corner {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+  }
+  
+  .solution-card[data-accent="blue"]:hover .card-corner {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 5px rgba(66, 135, 255, 0.5);
+  }
+  
+  .solution-card[data-accent="pink"]:hover .card-corner {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 5px rgba(255, 66, 176, 0.5);
+  }
+  
+  .solution-card[data-accent="yellow"]:hover .card-corner {
+    border-color: var(--neon-yellow);
+    box-shadow: 0 0 5px rgba(232, 255, 66, 0.5);
+  }
+  
+  /* Elementos flotantes decorativos */
+  .floating-bits {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--neon-purple);
+    filter: blur(1px);
+    opacity: 0.6;
+    z-index: 1;
+    animation: float-bits 8s ease-in-out infinite;
+  }
+  
+  .bit-1 {
+    top: 20%;
+    right: 10%;
+    animation-delay: 0s;
+  }
+  
+  .bit-2 {
+    bottom: 30%;
+    left: 5%;
+    animation-delay: 2s;
+    background-color: var(--neon-blue);
+  }
+  
+  .bit-3 {
+    top: 70%;
+    left: 50%;
+    animation-delay: 4s;
+    background-color: var(--neon-pink);
+  }
+  
+  .bit-4 {
+    top: 15%;
+    left: 15%;
+    animation-delay: 6s;
+    background-color: var(--neon-yellow);
+  }
+  
+  @keyframes float-bits {
+    0%, 100% {
+      transform: translate(0, 0);
+      opacity: 0.6;
+    }
+    25% {
+      transform: translate(20px, -15px);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(-10px, 25px);
+      opacity: 1;
+    }
+    75% {
+      transform: translate(-25px, -10px);
+      opacity: 0.7;
+    }
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .floating-bits {
+      display: none;
+    }
+  }
 </style>
+
+<script>
+  // Animación al hacer hover en las tarjetas
+  document.addEventListener('DOMContentLoaded', () => {
+    const solutionCards = document.querySelectorAll('.solution-card');
+    
+    solutionCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const accent = card.getAttribute('data-accent');
+        const corners = card.querySelectorAll('.card-corner');
+        
+        corners.forEach(corner => {
+          corner.style.width = '15px';
+          corner.style.height = '15px';
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        const corners = card.querySelectorAll('.card-corner');
+        
+        corners.forEach(corner => {
+          corner.style.width = '10px';
+          corner.style.height = '10px';
+        });
+      });
+    });
+  });
+</script>

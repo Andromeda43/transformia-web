@@ -1,54 +1,488 @@
 ---
 ---
-<section id="testimonios" class="py-20 bg-light">
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark" style="font-family: var(--font-title)">LO QUE DICEN NUESTROS CLIENTES</h2>
-        <div class="w-24 h-1 bg-purple mx-auto"></div>
+<section id="testimonios" class="py-20 bg-light relative overflow-hidden">
+  <!-- Elementos decorativos de fondo -->
+  <div class="decor-circle" style="--size: 400px; --top: -200px; --right: -200px; --color: rgba(176, 66, 255, 0.03);"></div>
+  <div class="decor-circle" style="--size: 300px; --bottom: -150px; --left: -150px; --color: rgba(66, 135, 255, 0.03);"></div>
+  
+  <div class="decor-lines"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark" style="font-family: var(--font-title);">LO QUE DICEN NUESTROS CLIENTES</h2>
+      <div class="w-24 h-1 bg-purple mx-auto"></div>
+    </div>
+    
+    <div class="testimonials-slider">
+      <div class="testimonials-wrapper">
+        <div class="testimonial-card active">
+          <div class="testimonial-quote">"</div>
+          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">Transformia ha revolucionado nuestra forma de trabajar. Automatizaron procesos que antes nos llevaban días y ahora se completan en minutos. La inversión se ha recuperado en tiempo récord.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <div class="avatar-plac eholder"></div>
+            </div>
+            <div>
+              <h4 class="font-bold" style="font-family: var(--font-title);">María López</h4>
+              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">Directora de Operaciones, TechSolutions</p>
+            </div>
+          </div>
+          <div class="card-beam"></div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">Lo que más valoramos de Transformia es su capacidad para entender nuestro negocio. No solo implementaron tecnología, sino que adaptaron las soluciones a nuestra forma de trabajar y cultura empresarial.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <div class="avatar-placeholder"></div>
+            </div>
+            <div>
+              <h4 class="font-bold" style="font-family: var(--font-title);">Carlos Rodríguez</h4>
+              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">CEO, Innovatech</p>
+            </div>
+          </div>
+          <div class="card-beam"></div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">Gracias a la implementación de IA en nuestro análisis de datos, ahora podemos predecir tendencias y tomar decisiones basadas en información real. Ha sido un cambio transformador para nuestra estrategia de negocio.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <div class="avatar-placeholder"></div>
+            </div>
+            <div>
+              <h4 class="font-bold" style="font-family: var(--font-title);">Laura Sánchez</h4>
+              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">Directora de Marketing, DataCorp</p>
+            </div>
+          </div>
+          <div class="card-beam"></div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">La transformación digital que implementamos con Transformia nos permitió seguir operando incluso durante la pandemia. Ahora nuestros sistemas son más rápidos, seguros y fáciles de usar.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <div class="avatar-placeholder"></div>
+            </div>
+            <div>
+              <h4 class="font-bold" style="font-family: var(--font-title);">Javier Méndez</h4>
+              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">CTO, Global Services</p>
+            </div>
+          </div>
+          <div class="card-beam"></div>
+        </div>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"</div>
-          <p class="mb-6" style="font-family: var(--font-body)">Transformia ha revolucionado nuestra forma de trabajar. Automatizaron procesos que antes nos llevaban días y ahora se completan en minutos. La inversión se ha recuperado en tiempo récord.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <div class="avatar-placeholder"></div>
-            </div>
-            <div>
-              <h4 class="font-bold" style="font-family: var(--font-title)">María López</h4>
-              <p class="text-sm text-gray-600" style="font-family: var(--font-body)">Directora de Operaciones, TechSolutions</p>
-            </div>
-          </div>
+      <!-- Botones de control -->
+      <div class="testimonials-nav">
+        <button class="nav-prev" aria-label="Testimonio anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        
+        <div class="testimonials-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
         </div>
         
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"</div>
-          <p class="mb-6" style="font-family: var(--font-body)">Lo que más valoramos de Transformia es su capacidad para entender nuestro negocio. No solo implementaron tecnología, sino que adaptaron las soluciones a nuestra forma de trabajar y cultura empresarial.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <div class="avatar-placeholder"></div>
-            </div>
-            <div>
-              <h4 class="font-bold" style="font-family: var(--font-title)">Carlos Rodríguez</h4>
-              <p class="text-sm text-gray-600" style="font-family: var(--font-body)">CEO, Innovatech</p>
-            </div>
+        <button class="nav-next" aria-label="Testimonio siguiente">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- KPIs de éxito -->
+    <div class="mt-20">
+      <h3 class="text-2xl font-bold mb-10 text-center text-dark" style="font-family: var(--font-title);">RESULTADOS MEDIBLES</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="stats-card">
+          <div class="stats-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
           </div>
+          <div class="stats-value">+62<span class="text-2xl">%</span></div>
+          <div class="stats-label">Aumento de Productividad</div>
+          <div class="stats-bar"></div>
         </div>
         
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"</div>
-          <p class="mb-6" style="font-family: var(--font-body)">Gracias a la implementación de IA en nuestro análisis de datos, ahora podemos predecir tendencias y tomar decisiones basadas en información real. Ha sido un cambio transformador para nuestra estrategia de negocio.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <div class="avatar-placeholder"></div>
-            </div>
-            <div>
-              <h4 class="font-bold" style="font-family: var(--font-title)">Laura Sánchez</h4>
-              <p class="text-sm text-gray-600" style="font-family: var(--font-body)">Directora de Marketing, DataCorp</p>
-            </div>
+        <div class="stats-card">
+          <div class="stats-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
           </div>
+          <div class="stats-value">-41<span class="text-2xl">%</span></div>
+          <div class="stats-label">Reducción de Costos</div>
+          <div class="stats-bar"></div>
+        </div>
+        
+        <div class="stats-card">
+          <div class="stats-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905A3.61 3.61 0 013.5 7.5v.416C3.5 9.624 4.5 11 6.414 11H7"/>
+            </svg>
+          </div>
+          <div class="stats-value">94<span class="text-2xl">%</span></div>
+          <div class="stats-label">Satisfacción de Clientes</div>
+          <div class="stats-bar"></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  /* Elementos decorativos */
+  .decor-circle {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--color);
+    top: var(--top, auto);
+    left: var(--left, auto);
+    right: var(--right, auto);
+    bottom: var(--bottom, auto);
+    z-index: 0;
+  }
+  
+  .decor-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(rgba(176, 66, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+  }
+  
+  /* Testimonial Slider */
+  .testimonials-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .testimonials-wrapper {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+  }
+  
+  .testimonial-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    transition: all 0.5s ease;
+    transform: translateX(50px);
+  }
+  
+  .testimonial-card.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .testimonial-quote {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 4rem;
+    line-height: 1;
+    font-family: var(--font-title);
+    color: rgba(176, 66, 255, 0.1);
+  }
+  
+  .testimonial-text {
+    position: relative;
+    z-index: 2;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+  }
+  
+  .testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+  
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6b46c1, #9f7aea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .card-beam {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      var(--neon-purple) 0%, 
+      var(--neon-blue) 50%, 
+      var(--neon-purple) 100%
+    );
+    transition: width 3s ease-in-out;
+  }
+  
+  .testimonial-card.active .card-beam {
+    width: 100%;
+  }
+  
+  /* Controles del slider */
+  .testimonials-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .nav-prev, .nav-next {
+    background: white;
+    border: 1px solid rgba(176, 66, 255, 0.3);
+    color: var(--neon-purple);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-prev:hover, .nav-next:hover {
+    background: var(--neon-purple);
+    color: white;
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+  }
+  
+  .testimonials-dots {
+    display: flex;
+    margin: 0 20px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dot.active {
+    background: var(--neon-purple);
+    transform: scale(1.3);
+    box-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+  }
+  
+  /* Cards de estadísticas */
+  .stats-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .stats-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stats-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(176, 66, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: var(--neon-purple);
+    transition: all 0.3s ease;
+  }
+  
+  .stats-card:hover .stats-icon {
+    background: var(--neon-purple);
+    color: white;
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.5);
+  }
+  
+  .stats-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--neon-purple);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+  }
+  
+  .stats-label {
+    color: #666;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+  }
+  
+  .stats-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, 
+      var(--neon-purple) 0%, 
+      var(--neon-blue) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .stats-card:hover .stats-bar {
+    opacity: 1;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .testimonials-wrapper {
+      height: 360px;
+    }
+    
+    .testimonial-card {
+      padding: 2rem;
+    }
+    
+    .stats-card {
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.nav-prev');
+    const nextBtn = document.querySelector('.nav-next');
+    
+    let currentIndex = 0;
+    const totalCards = cards.length;
+    let autoplayInterval;
+    
+    function showCard(index) {
+      // Ocultar todas las tarjetas y desactivar todos los puntos
+      cards.forEach(card => {
+        card.classList.remove('active');
+      });
+      
+      dots.forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      // Mostrar la tarjeta actual y activar el punto correspondiente
+      cards[index].classList.add('active');
+      dots[index].classList.add('active');
+      
+      // Reiniciar la barra de progreso
+      const activeBeam = cards[index].querySelector('.card-beam');
+      activeBeam.style.width = '0';
+      
+      // Permitir que el navegador renderice antes de animar
+      setTimeout(() => {
+        activeBeam.style.width = '100%';
+      }, 50);
+      
+      // Actualizar el índice actual
+      currentIndex = index;
+    }
+    
+    function nextCard() {
+      let nextIndex = currentIndex + 1;
+      if (nextIndex >= totalCards) {
+        nextIndex = 0;
+      }
+      showCard(nextIndex);
+    }
+    
+    function prevCard() {
+      let prevIndex = currentIndex - 1;
+      if (prevIndex < 0) {
+        prevIndex = totalCards - 1;
+      }
+      showCard(prevIndex);
+    }
+    
+    // Iniciar autoplay
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => {
+        nextCard();
+      }, 6000); // Cambiar cada 6 segundos
+    }
+    
+    // Detener autoplay (al interactuar con los controles)
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+    
+    // Event listeners para los botones de navegación
+    prevBtn.addEventListener('click', () => {
+      stopAutoplay();
+      prevCard();
+      startAutoplay();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      stopAutoplay();
+      nextCard();
+      startAutoplay();
+    });
+    
+    // Event listeners para los puntos de navegación
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoplay();
+        showCard(index);
+        startAutoplay();
+      });
+    });
+    
+    // Iniciar la presentación
+    showCard(0);
+    startAutoplay();
+  });
+</script>

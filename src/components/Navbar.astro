@@ -1,0 +1,359 @@
+---
+---
+
+<header class="navbar">
+    <div class="container">
+      <!-- Efecto de brillo superior -->
+      <div class="navbar-glow"></div>
+      
+      <div class="navbar-content">
+        <a href="/" class="navbar-logo">
+          <span class="logo-text">TRANSFORMIA</span>
+          <div class="logo-glitch"></div>
+        </a>
+        
+        <nav class="navbar-links desktop-nav">
+          <a href="#servicios" class="nav-link">
+            <span class="nav-link-text">SERVICIOS</span>
+            <span class="nav-link-hover"></span>
+          </a>
+          <a href="#nosotros" class="nav-link">
+            <span class="nav-link-text">NOSOTROS</span>
+            <span class="nav-link-hover"></span>
+          </a>
+          <a href="#soluciones" class="nav-link">
+            <span class="nav-link-text">SOLUCIONES</span>
+            <span class="nav-link-hover"></span>
+          </a>
+          <a href="#metodologia" class="nav-link">
+            <span class="nav-link-text">METODOLOGÍA</span>
+            <span class="nav-link-hover"></span>
+          </a>
+        </nav>
+        
+        <a href="/contacto" class="contact-button">
+          <span class="contact-text">Contacto</span>
+          <span class="contact-glow"></span>
+        </a>
+        
+        <button class="mobile-toggle">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Menú móvil -->
+    <div class="mobile-menu">
+      <nav class="mobile-nav">
+        <a href="#servicios" class="mobile-link">SERVICIOS</a>
+        <a href="#nosotros" class="mobile-link">NOSOTROS</a>
+        <a href="#soluciones" class="mobile-link">SOLUCIONES</a>
+        <a href="#metodologia" class="mobile-link">METODOLOGÍA</a>
+        <a href="/contacto" class="mobile-contact">CONTACTO</a>
+      </nav>
+    </div>
+  </header>
+  
+  <style>
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 20, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(176, 66, 255, 0.3);
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .navbar-glow {
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(to bottom, rgba(176, 66, 255, 0.5), transparent);
+      opacity: 0.5;
+    }
+    
+    .navbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    
+    .navbar-logo {
+      position: relative;
+      font-family: 'Space Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #b042ff;
+      text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+    
+    .logo-glitch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: -1;
+      opacity: 0;
+    }
+    
+    .navbar-logo:hover {
+      color: white;
+      text-shadow: 0 0 10px rgba(176, 66, 255, 1), 0 0 20px rgba(176, 66, 255, 0.8);
+    }
+    
+    .navbar-logo:hover .logo-glitch {
+      opacity: 1;
+      animation: logo-glitch 0.5s steps(2) infinite;
+    }
+    
+    @keyframes logo-glitch {
+      0%, 100% {
+        transform: translate(0);
+        text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+      }
+      25% {
+        transform: translate(-2px, 1px);
+        text-shadow: 2px 0 5px rgba(66, 135, 255, 0.7), -2px 0 5px rgba(255, 66, 176, 0.7);
+      }
+      50% {
+        transform: translate(1px, -1px);
+        text-shadow: -2px 0 5px rgba(176, 66, 255, 0.7), 2px 0 5px rgba(232, 255, 66, 0.7);
+      }
+      75% {
+        transform: translate(-1px, -2px);
+        text-shadow: 2px 0 5px rgba(255, 66, 176, 0.7), -2px 0 5px rgba(66, 135, 255, 0.7);
+      }
+    }
+    
+    .navbar-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-link {
+      position: relative;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link-hover {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #b042ff;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+    }
+    
+    .nav-link:hover .nav-link-hover {
+      width: 100%;
+    }
+    
+    .nav-link:hover {
+      color: #b042ff;
+      text-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+    }
+    
+    .contact-button {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      color: white;
+      font-family: 'Space Mono', monospace;
+      font-weight: bold;
+      font-size: 0.9rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(176, 66, 255, 0.5);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .contact-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(176, 66, 255, 0.4);
+    }
+    
+    .contact-button:hover .contact-glow {
+      opacity: 0.8;
+      animation: contact-pulse 2s infinite;
+    }
+    
+    @keyframes contact-pulse {
+      0%, 100% {
+        box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(176, 66, 255, 1), 0 0 30px rgba(176, 66, 255, 0.5);
+      }
+    }
+    
+    .mobile-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 100;
+    }
+    
+    .toggle-bar {
+      display: block;
+      width: 25px;
+      height: 2px;
+      margin: 5px 0;
+      background: white;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(10, 10, 20, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+    
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 2rem;
+    }
+    
+    .mobile-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.5rem;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-link:hover {
+      color: #b042ff;
+      text-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+    }
+    
+    .mobile-contact {
+      margin-top: 1rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 1.5rem;
+      color: #b042ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+      
+      .mobile-menu.active {
+        transform: translateY(0);
+      }
+      
+      .mobile-toggle.active .toggle-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        background: #b042ff;
+      }
+      
+      .mobile-toggle.active .toggle-bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .mobile-toggle.active .toggle-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        background: #b042ff;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileToggle = document.querySelector('.mobile-toggle');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-contact');
+      
+      mobileToggle.addEventListener('click', () => {
+        mobileToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+      });
+      
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          document.body.classList.remove('no-scroll');
+        });
+      });
+      
+      // Cambio de color del navbar al hacer scroll
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    });
+  </script>

@@ -1,62 +1,399 @@
 ---
 ---
-<section id="metodologia" class="py-20 bg-light">
-  <div class="container mx-auto px-6">
+<section id="metodologia" class="py-20 bg-light relative overflow-hidden">
+  <!-- Elementos decorativos en el fondo -->
+  <div class="circuit-lines"></div>
+  <div class="glow-orb" style="--top: 20%; --left: 10%; --size: 300px; --color: rgba(176, 66, 255, 0.15);"></div>
+  <div class="glow-orb" style="--bottom: 15%; --right: 5%; --size: 350px; --color: rgba(66, 135, 255, 0.1);"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark" style="font-family: var(--font-title)">METODOLOGÍA DE TRABAJO</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark" style="font-family: var(--font-title);">METODOLOGÍA DE TRABAJO</h2>
       <div class="w-24 h-1 bg-purple mx-auto"></div>
+      <p class="mt-6 text-lg max-w-2xl mx-auto" style="font-family: var(--font-body);">Nuestro enfoque estructurado asegura resultados exitosos y medibles para tu negocio.</p>
     </div>
     
-    <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
-      <div class="methodology-card">
-        <div class="methodology-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+    <div class="methodology-timeline">
+      <!-- Línea conectora -->
+      <div class="timeline-line"></div>
+      
+      <!-- Etapa 1 -->
+      <div class="methodology-step">
+        <div class="step-number">01</div>
+        <div class="methodology-card">
+          <div class="step-connector"></div>
+          <div class="methodology-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">EXPLORACIÓN Y DIAGNÓSTICO</h3>
+          <p class="text-gray-700" style="font-family: var(--font-body);">Analizamos tu situación actual e identificamos oportunidades de mejora mediante reuniones, análisis de procesos y diagnóstico tecnológico.</p>
+          <div class="hidden sm:block absolute top-5 right-5">
+            <div class="tech-dots">
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+            </div>
+          </div>
         </div>
-        <h3 class="text-lg font-bold mb-2" style="font-family: var(--font-title)">EXPLORACIÓN Y DIAGNÓSTICO</h3>
-        <p style="font-family: var(--font-body)">Analizamos tu situación actual e identificamos oportunidades de mejora.</p>
       </div>
       
-      <div class="methodology-card">
-        <div class="methodology-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-          </svg>
+      <!-- Etapa 2 -->
+      <div class="methodology-step">
+        <div class="step-number">02</div>
+        <div class="methodology-card">
+          <div class="step-connector"></div>
+          <div class="methodology-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">DISEÑO PERSONALIZADO</h3>
+          <p class="text-gray-700" style="font-family: var(--font-body);">Creamos soluciones a la medida de tus necesidades específicas con un enfoque centrado en resultados y experiencia de usuario.</p>
+          <div class="hidden sm:block absolute top-5 right-5">
+            <div class="tech-dots">
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+            </div>
+          </div>
         </div>
-        <h3 class="text-lg font-bold mb-2" style="font-family: var(--font-title)">DISEÑO PERSONALIZADO</h3>
-        <p style="font-family: var(--font-body)">Creamos soluciones a la medida de tus necesidades específicas.</p>
       </div>
       
-      <div class="methodology-card">
-        <div class="methodology-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
+      <!-- Etapa 3 -->
+      <div class="methodology-step">
+        <div class="step-number">03</div>
+        <div class="methodology-card">
+          <div class="step-connector"></div>
+          <div class="methodology-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">IMPLEMENTACIÓN ÁGIL</h3>
+          <p class="text-gray-700" style="font-family: var(--font-body);">Ejecutamos con metodologías ágiles para ver resultados rápidamente. Trabajamos en ciclos cortos con entregables funcionales.</p>
+          <div class="hidden sm:block absolute top-5 right-5">
+            <div class="tech-dots">
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+            </div>
+          </div>
         </div>
-        <h3 class="text-lg font-bold mb-2" style="font-family: var(--font-title)">IMPLEMENTACIÓN ÁGIL</h3>
-        <p style="font-family: var(--font-body)">Ejecutamos con metodologías ágiles para ver resultados rápidamente.</p>
       </div>
       
-      <div class="methodology-card">
-        <div class="methodology-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
+      <!-- Etapa 4 -->
+      <div class="methodology-step">
+        <div class="step-number">04</div>
+        <div class="methodology-card">
+          <div class="step-connector"></div>
+          <div class="methodology-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">CAPACITACIÓN Y CAMBIO CULTURAL</h3>
+          <p class="text-gray-700" style="font-family: var(--font-body);">Preparamos a tu equipo para adoptar las nuevas tecnologías mediante talleres, documentación y acompañamiento práctico.</p>
+          <div class="hidden sm:block absolute top-5 right-5">
+            <div class="tech-dots">
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+            </div>
+          </div>
         </div>
-        <h3 class="text-lg font-bold mb-2" style="font-family: var(--font-title)">CAPACITACIÓN Y CAMBIO CULTURAL</h3>
-        <p style="font-family: var(--font-body)">Preparamos a tu equipo para adoptar las nuevas tecnologías.</p>
       </div>
       
-      <div class="methodology-card">
-        <div class="methodology-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
+      <!-- Etapa 5 -->
+      <div class="methodology-step">
+        <div class="step-number">05</div>
+        <div class="methodology-card">
+          <div class="step-connector"></div>
+          <div class="methodology-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">MONITOREO Y OPTIMIZACIÓN CONTINUA</h3>
+          <p class="text-gray-700" style="font-family: var(--font-body);">Evaluamos y mejoramos constantemente el rendimiento de las soluciones con métricas clave y optimizaciones periódicas.</p>
+          <div class="hidden sm:block absolute top-5 right-5">
+            <div class="tech-dots">
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+              <div class="tech-dot"></div>
+            </div>
+          </div>
         </div>
-        <h3 class="text-lg font-bold mb-2" style="font-family: var(--font-title)">MONITOREO Y OPTIMIZACIÓN CONTINUA</h3>
-        <p style="font-family: var(--font-body)">Evaluamos y mejoramos constantemente el rendimiento de las soluciones.</p>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Fondo con circuitos */
+  .circuit-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%23b042ff' stroke-width='1'/%3E%3Cpath d='M30 10v20m0 40v20M10 30h20m40 0h20M10 70h20m40 0h20M30 30h40v40H30z' fill='none' stroke='%23b042ff' stroke-width='1'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%23b042ff'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%23b042ff'/%3E%3Ccircle cx='30' cy='70' r='2' fill='%23b042ff'/%3E%3Ccircle cx='70' cy='70' r='2' fill='%23b042ff'/%3E%3C/svg%3E");
+    z-index: 0;
+  }
+  
+  /* Orbes de luz */
+  .glow-orb {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--color);
+    filter: blur(40px);
+    opacity: 0.5;
+    top: var(--top, auto);
+    left: var(--left, auto);
+    right: var(--right, auto);
+    bottom: var(--bottom, auto);
+    z-index: 0;
+  }
+  
+  /* Timeline y cards de metodología */
+  .methodology-timeline {
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+  
+  .timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+      rgba(176, 66, 255, 0.3),
+      rgba(66, 135, 255, 0.3),
+      rgba(255, 66, 176, 0.3),
+      rgba(232, 255, 66, 0.3),
+      rgba(176, 66, 255, 0.3)
+    );
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .methodology-step {
+    position: relative;
+    margin-bottom: 3rem;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in 0.6s ease forwards;
+  }
+  
+  .methodology-step:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .methodology-step:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  .methodology-step:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+  
+  .methodology-step:nth-child(5) {
+    animation-delay: 0.8s;
+    margin-bottom: 0;
+  }
+  
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .step-number {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #6b46c1, #9f7aea);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 3;
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+  }
+  
+  .methodology-card {
+    width: 80%;
+    margin-left: auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+    border-left: 4px solid #b042ff;
+  }
+  
+  .methodology-step:nth-child(even) .methodology-card {
+    margin-right: auto;
+    margin-left: 0;
+    border-left: none;
+    border-right: 4px solid #4287ff;
+  }
+  
+  .methodology-step:nth-child(3) .methodology-card {
+    border-color: #ff42b0;
+  }
+  
+  .methodology-step:nth-child(5) .methodology-card {
+    border-color: #e8ff42;
+  }
+  
+  .step-connector {
+    position: absolute;
+    top: 20px;
+    right: 100%;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #b042ff);
+  }
+  
+  .methodology-step:nth-child(even) .step-connector {
+    left: 100%;
+    right: auto;
+    background: linear-gradient(to left, transparent, #4287ff);
+  }
+  
+  .methodology-step:nth-child(3) .step-connector {
+    background: linear-gradient(to right, transparent, #ff42b0);
+  }
+  
+  .methodology-step:nth-child(4) .step-connector {
+    background: linear-gradient(to left, transparent, #ff42b0);
+  }
+  
+  .methodology-step:nth-child(5) .step-connector {
+    background: linear-gradient(to right, transparent, #e8ff42);
+  }
+  
+  .methodology-icon {
+    margin-bottom: 1rem;
+    color: #b042ff;
+  }
+  
+  .methodology-step:nth-child(even) .methodology-icon {
+    color: #4287ff;
+  }
+  
+  .methodology-step:nth-child(3) .methodology-icon {
+    color: #ff42b0;
+  }
+  
+  .methodology-step:nth-child(5) .methodology-icon {
+    color: #e8ff42;
+  }
+  
+  .methodology-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Decoración de puntos tecnológicos */
+  .tech-dots {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .tech-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #b042ff;
+  }
+  
+  .methodology-step:nth-child(even) .tech-dot {
+    background-color: #4287ff;
+  }
+  
+  .methodology-step:nth-child(3) .tech-dot {
+    background-color: #ff42b0;
+  }
+  
+  .methodology-step:nth-child(5) .tech-dot {
+    background-color: #e8ff42;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .timeline-line {
+      left: 30px;
+    }
+    
+    .step-number {
+      left: 30px;
+      transform: translateX(-50%);
+    }
+    
+    .methodology-card {
+      width: calc(100% - 60px);
+      margin-left: 60px;
+      margin-right: 0;
+      border-left: 4px solid #b042ff;
+      border-right: none;
+    }
+    
+    .methodology-step:nth-child(even) .methodology-card {
+      margin-left: 60px;
+      margin-right: 0;
+      border-left: 4px solid #4287ff;
+      border-right: none;
+    }
+    
+    .step-connector {
+      left: 30px;
+      right: auto;
+      width: 20px;
+      background: linear-gradient(to right, transparent, #b042ff);
+    }
+    
+    .methodology-step:nth-child(even) .step-connector {
+      left: 30px;
+      right: auto;
+      background: linear-gradient(to right, transparent, #4287ff);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Activar animación de entrada al hacer scroll
+    const steps = document.querySelectorAll('.methodology-step');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    steps.forEach(step => {
+      observer.observe(step);
+    });
+  });
+</script>

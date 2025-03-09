@@ -2,86 +2,388 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-dark text-light py-12">
-  <div class="container mx-auto px-6">
+<footer class="bg-dark text-light py-12 relative overflow-hidden">
+  <!-- Elementos visuales de fondo -->
+  <div class="footer-grid"></div>
+  <div class="footer-glow"></div>
+  
+  <!-- Decoraciones de líneas -->
+  <div class="footer-line top"></div>
+  <div class="footer-line bottom"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
     <div class="grid md:grid-cols-4 gap-8">
-      <div>
-        <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-title)">TRANSFORMIA</h3>
-        <p class="mb-4" style="font-family: var(--font-body)">El aliado que traduce tus desafíos en oportunidades de crecimiento digital.</p>
-        <div class="flex space-x-4 mt-4">
-          <a href="#" class="text-light hover:text-purple transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <div class="footer-col">
+        <div class="footer-logo">
+          <h3 class="text-xl font-bold mb-4 neon-text-purple" style="font-family: var(--font-title);">TRANSFORMIA</h3>
+          <div class="logo-underline"></div>
+        </div>
+        <p class="mb-4" style="font-family: var(--font-body);">El aliado que traduce tus desafíos en oportunidades de crecimiento digital con soluciones tecnológicas innovadoras.</p>
+        <div class="flex space-x-4 mt-4 social-icons">
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect width="4" height="12" x="2" y="9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <circle cx="4" cy="4" r="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
             </svg>
           </a>
-          <a href="#" class="text-light hover:text-purple transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
             </svg>
           </a>
-          <a href="#" class="text-light hover:text-purple transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <rect width="20" height="20" x="2" y="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" rx="5" ry="5" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
             </svg>
           </a>
         </div>
       </div>
       
-      <div>
-        <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-title)">SERVICIOS</h3>
-        <ul class="space-y-2" style="font-family: var(--font-body)">
-          <li><a href="/servicios/desarrollo" class="hover:text-purple transition-colors">Desarrollo de software</a></li>
-          <li><a href="/servicios/transformacion" class="hover:text-purple transition-colors">Transformación digital</a></li>
-          <li><a href="/servicios/ia" class="hover:text-purple transition-colors">Inteligencia artificial</a></li>
-          <li><a href="/servicios/asesoria" class="hover:text-purple transition-colors">Asesoría en procesos</a></li>
+      <div class="footer-col">
+        <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-title);">SERVICIOS</h3>
+        <div class="w-12 h-0.5 bg-neon-purple mb-4"></div>
+        <ul class="space-y-2 footer-links" style="font-family: var(--font-body);">
+          <li><a href="/servicios/desarrollo" class="footer-link"><span class="link-arrow">›</span> Desarrollo de software</a></li>
+          <li><a href="/servicios/transformacion" class="footer-link"><span class="link-arrow">›</span> Transformación digital</a></li>
+          <li><a href="/servicios/ia" class="footer-link"><span class="link-arrow">›</span> Inteligencia artificial</a></li>
+          <li><a href="/servicios/asesoria" class="footer-link"><span class="link-arrow">›</span> Asesoría en procesos</a></li>
         </ul>
       </div>
       
-      <div>
-        <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-title)">EMPRESA</h3>
-        <ul class="space-y-2" style="font-family: var(--font-body)">
-          <li><a href="/nosotros" class="hover:text-purple transition-colors">Sobre nosotros</a></li>
-          <li><a href="/casos" class="hover:text-purple transition-colors">Casos de éxito</a></li>
-          <li><a href="/blog" class="hover:text-purple transition-colors">Blog</a></li>
-          <li><a href="/contacto" class="hover:text-purple transition-colors">Contacto</a></li>
+      <div class="footer-col">
+        <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-title);">EMPRESA</h3>
+        <div class="w-12 h-0.5 bg-neon-blue mb-4"></div>
+        <ul class="space-y-2 footer-links" style="font-family: var(--font-body);">
+          <li><a href="/nosotros" class="footer-link"><span class="link-arrow">›</span> Sobre nosotros</a></li>
+          <li><a href="/casos" class="footer-link"><span class="link-arrow">›</span> Casos de éxito</a></li>
+          <li><a href="/blog" class="footer-link"><span class="link-arrow">›</span> Blog</a></li>
+          <li><a href="/contacto" class="footer-link"><span class="link-arrow">›</span> Contacto</a></li>
         </ul>
       </div>
       
-      <div>
-        <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-title)">CONTACTO</h3>
-        <ul class="space-y-2" style="font-family: var(--font-body)">
+      <div class="footer-col">
+        <h3 class="text-xl font-bold mb-4" style="font-family: var(--font-title);">CONTACTO</h3>
+        <div class="w-12 h-0.5 bg-neon-pink mb-4"></div>
+        <ul class="space-y-3" style="font-family: var(--font-body);">
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
             <span>+34 XXX XXX XXX</span>
           </li>
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
             <span>info@transformia.com</span>
           </li>
           <li class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
             <span>Calle Innovación 123<br/>28001 Madrid, España</span>
           </li>
         </ul>
-      </div>
-    </div>
-    
-    <div class="border-t border-gray-700 mt-10 pt-8">
-      <div class="flex flex-col md:flex-row md:justify-between items-center">
-        <p class="text-sm" style="font-family: var(--font-body)">© {currentYear} Transformia. Todos los derechos reservados.</p>
-        <div class="flex space-x-4 mt-4 md:mt-0">
-          <a href="/politica-privacidad" class="text-sm hover:text-purple transition-colors" style="font-family: var(--font-body)">Política de Privacidad</a>
-          <a href="/terminos" class="text-sm hover:text-purple transition-colors" style="font-family: var(--font-body)">Términos y Condiciones</a>
-          <a href="/cookies" class="text-sm hover:text-purple transition-colors" style="font-family: var(--font-body)">Política de Cookies</a>
+        
+        <div class="mt-6 newsletter">
+          <form class="flex">
+            <input type="email" placeholder="Tu email" class="newsletter-input" aria-label="Email para suscripción" required>
+            <button type="submit" class="newsletter-button" aria-label="Suscribirse">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
     </div>
+    
+    <div class="border-t border-gray-800 mt-10 pt-8">
+      <div class="flex flex-col md:flex-row md:justify-between items-center">
+        <p class="text-sm mb-4 md:mb-0" style="font-family: var(--font-body);">© {currentYear} Transformia. Todos los derechos reservados.</p>
+        <div class="flex space-x-5">
+          <a href="/politica-privacidad" class="text-sm hover:text-purple transition-colors" style="font-family: var(--font-body);">Política de Privacidad</a>
+          <a href="/terminos" class="text-sm hover:text-purple transition-colors" style="font-family: var(--font-body);">Términos y Condiciones</a>
+          <a href="/cookies" class="text-sm hover:text-purple transition-colors" style="font-family: var(--font-body);">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Botón para volver arriba -->
+    <div class="back-to-top">
+      <a href="#hero" aria-label="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </a>
+    </div>
   </div>
 </footer>
+
+<style>
+  /* Fondo con grid */
+  .footer-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(128, 90, 213, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  
+  .footer-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center top, rgba(176, 66, 255, 0.15) 0%, rgba(10, 10, 20, 0) 70%);
+    z-index: 1;
+  }
+  
+  /* Líneas decorativas */
+  .footer-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(176, 66, 255, 0.3) 20%, 
+      rgba(176, 66, 255, 0.5) 50%,
+      rgba(176, 66, 255, 0.3) 80%,
+      transparent 100%
+    );
+    z-index: 2;
+  }
+  
+  .footer-line.top {
+    top: 0;
+  }
+  
+  .footer-line.bottom {
+    bottom: 0;
+  }
+  
+  /* Logo */
+  .footer-logo {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .logo-underline {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--neon-purple);
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+  }
+  
+  /* Enlaces e iconos */
+  .footer-links li {
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-links li:hover {
+    transform: translateX(5px);
+  }
+  
+  .footer-link {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: var(--neon-purple);
+  }
+  
+  .link-arrow {
+    color: var(--neon-purple);
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-link:hover .link-arrow {
+    transform: translateX(3px);
+  }
+  
+  .contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--neon-purple);
+    margin-right: 0.75rem;
+  }
+  
+  .social-icons {
+    display: flex;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(176, 66, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    background: var(--neon-purple);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(176, 66, 255, 0.3);
+  }
+  
+  /* Formulario de newsletter */
+  .newsletter {
+    position: relative;
+  }
+  
+  .newsletter-input {
+    width: 100%;
+    padding: 0.75rem 3.5rem 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(176, 66, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter-input:focus {
+    border-color: var(--neon-purple);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(176, 66, 255, 0.2);
+  }
+  
+  .newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .newsletter-button {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    background: var(--neon-purple);
+    border: none;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter-button:hover {
+    background: #8a2be2;
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+  }
+  
+  /* Botón de volver arriba */
+  .back-to-top {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: rgba(176, 66, 255, 0.2);
+    border: 1px solid rgba(176, 66, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  .back-to-top:hover {
+    background: var(--neon-purple);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(176, 66, 255, 0.4);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-col {
+      margin-bottom: 2rem;
+    }
+    
+    .back-to-top {
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Botón de volver arriba con desplazamiento suave
+    const backToTopButton = document.querySelector('.back-to-top a');
+    
+    if (backToTopButton) {
+      backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+    
+    // Mostrar/ocultar botón de volver arriba según la posición de scroll
+    window.addEventListener('scroll', () => {
+      const backToTop = document.querySelector('.back-to-top');
+      
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    
+    // Animación de los elementos del footer al hacer scroll
+    const footerElements = document.querySelectorAll('.footer-col, .border-t');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    footerElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
