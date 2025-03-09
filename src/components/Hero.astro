@@ -1,6 +1,6 @@
 ---
-import TechShowcase from './TechShowcase.astro';
-import GlitchTitle from './GlitchTitle.astro';
+import TechShowcase from './HeroComponents/TechShowcase.astro';
+import GlitchTitle from './HeroComponents/GlitchTitle.astro';
 ---
 
 <section class="hero" id="hero">
@@ -536,29 +536,33 @@ import GlitchTitle from './GlitchTitle.astro';
         glowCircles: document.querySelectorAll('.neon-circle')
       };
       
-      hero.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
+      hero.addEventListener('mousemove', (e: Event) => {
+        const mouseEvent = e as MouseEvent;
+        const x = mouseEvent.clientX / window.innerWidth;
+        const y = mouseEvent.clientY / window.innerHeight;
         
         // Mover elementos geométricos
         elements.geometrics.forEach(el => {
           const moveX = (x - 0.5) * 20;
           const moveY = (y - 0.5) * 20;
-          el.style.transform = `translate(${moveX}px, ${moveY}px) rotate(var(--rotate))`;
+          const htmlEl = el as HTMLElement;
+          htmlEl.style.transform = `translate(${moveX}px, ${moveY}px) rotate(var(--rotate))`;
         });
         
         // Mover contenedor de showcase
         if (elements.showcase) {
           const moveX = (x - 0.5) * 10;
           const moveY = (y - 0.5) * 10;
-          elements.showcase.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          const showcaseEl = elements.showcase as HTMLElement;
+          showcaseEl.style.transform = `translate(${moveX}px, ${moveY}px)`;
         }
         
         // Mover círculos de brillo
         elements.glowCircles.forEach(el => {
           const moveX = (x - 0.5) * 30;
           const moveY = (y - 0.5) * 30;
-          el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          const glowEl = el as HTMLElement;
+          glowEl.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
       });
     }
@@ -572,7 +576,8 @@ import GlitchTitle from './GlitchTitle.astro';
         const scrollY = window.scrollY;
         const rotationX = 60 - (scrollY * 0.05);
         
-        grid.style.transform = `perspective(500px) rotateX(${Math.max(30, rotationX)}deg)`;
+        const gridEl = grid as HTMLElement;
+        gridEl.style.transform = `perspective(500px) rotateX(${Math.max(30, rotationX)}deg)`;
       });
     }
     

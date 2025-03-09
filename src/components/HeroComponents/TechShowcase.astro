@@ -137,7 +137,7 @@ import RealtimeDashboard from './RealtimeDashboard.astro';
 
   .showcase-controls {
     position: absolute;
-    bottom: -30px;
+    bottom: -60px; /* Ajustado para bajar los controles (antes era -30px) */
     left: 0;
     right: 0;
     display: flex;
@@ -193,7 +193,21 @@ import RealtimeDashboard from './RealtimeDashboard.astro';
     }
 
     .showcase-controls {
-      bottom: -40px;
+      bottom: -40px; /* Mantener la posición original en móviles */
+    }
+  }
+  
+  /* Ajuste para pantallas grandes */
+  @media (min-width: 1200px) {
+    .showcase-controls {
+      bottom: -70px; /* Aún más abajo en pantallas grandes */
+    }
+  }
+  
+  /* Ajuste específico para tablets */
+  @media (min-width: 769px) and (max-width: 1199px) {
+    .showcase-controls {
+      bottom: -65px;
     }
   }
 </style>

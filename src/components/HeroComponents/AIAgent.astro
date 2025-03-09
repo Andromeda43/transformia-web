@@ -676,13 +676,54 @@
     let agentY = 50; // porcentaje
     let velocityX = 0;
     let velocityY = 0;
-    let acceleration = 0.02;
-    let maxVelocity = 0.5;
+    let acceleration = 0.015; // Reducido para movimientos más suaves
+    let maxVelocity = 0.4; // Reducido para evitar cambios bruscos
     let targetX = Math.random() * 80 + 10; // Mantener en un 80% central
     let targetY = Math.random() * 80 + 10;
     
+    // Variables para movimiento de Bezier
+    let waypoints: {x: number, y: number}[] = [];
+    const maxWaypoints = 3; // Número de puntos de control para la curva
+    let currentWaypointIndex = 0;
+    let pathProgress = 0;
+    let waypointReached = true;
+    
     // Posiciones de los nodos de interacción para el agente
     const nodePositions: {x: number, y: number}[] = [];
+    
+    // Función para actualizar las partículas que siguen al agente
+    function updateParticles() {
+      if (!particles.length) return;
+      
+      particles.forEach((particle, index) => {
+        const particleElement = particle as HTMLElement;
+        const angle = (index / particles.length) * Math.PI * 2;
+        
+        // Radio variable con efecto suave
+        const radius = 30 + Math.sin(Date.now() * 0.003 + index) * 10;
+        
+        // Añadir un componente de velocidad para que las partículas "sigan" al agente
+        let trailFactor = 0;
+        if (waypoints.length > 1 && currentWaypointIndex < waypoints.length - 1) {
+          const startPoint = waypoints[currentWaypointIndex];
+          const endPoint = waypoints[currentWaypointIndex + 1];
+          const dx = endPoint.x - startPoint.x;
+          const dy = endPoint.y - startPoint.y;
+          const speed = Math.sqrt(dx * dx + dy * dy);
+          
+          // La estela es más pronunciada con mayor velocidad
+          trailFactor = speed * 20;
+        }
+        
+        // Calcular posición con efecto de estela
+        const offsetX = Math.cos(angle + Date.now() * 0.001) * radius + trailFactor * Math.sin(angle);
+        const offsetY = Math.sin(angle + Date.now() * 0.001) * radius - trailFactor * Math.cos(angle);
+        
+        particleElement.style.left = `calc(50% + ${offsetX}px)`;
+        particleElement.style.top = `calc(50% + ${offsetY}px)`;
+        particleElement.style.opacity = `${0.2 + Math.sin(Date.now() * 0.002 + index) * 0.3 + 0.5}`;
+      });
+    }
     
     // Función para crear las conexiones neuronales SVG
     function createNeuralConnections() {
@@ -694,16 +735,18 @@
       svg.setAttribute('height', '100%');
       
       // Verificación adicional de nulidad
-      if (neuralConnections) {
-        neuralConnections.appendChild(svg);
-      }
+      neuralConnections.appendChild(svg);
       
       // Almacenar las posiciones de los nodos
       interactionNodes.forEach(node => {
         const rect = node.getBoundingClientRect();
-        // Verificación adicional de nulidad
-        const containerRect = neuralConnections && neuralConnections.getBoundingClientRect() || 
-                              { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
+        // Verificación adicional de nulidad y uso de operador nullish coalescing
+        const containerRect = neuralConnections?.getBoundingClientRect() ?? { 
+          left: 0, 
+          top: 0, 
+          width: window.innerWidth, 
+          height: window.innerHeight 
+        };
         
         const x = (rect.left + rect.width / 2 - containerRect.left) / containerRect.width * 100;
         const y = (rect.top + rect.height / 2 - containerRect.top) / containerRect.height * 100;
@@ -717,6 +760,9 @@
         while (svg.firstChild) {
           svg.removeChild(svg.firstChild);
         }
+        
+        // Asegurarse de que neuralConnections no sea null
+        if (!neuralConnections) return;
         
         const containerWidth = neuralConnections.offsetWidth;
         const containerHeight = neuralConnections.offsetHeight;
@@ -769,6 +815,42 @@
       
       // Actualizar conexiones periódicamente
       setInterval(updateConnections, 300);
+    }
+    
+    // Función para generar puntos aleatorios de Bezier para movimiento suave
+    function generateWaypoints(startX: number, startY: number, endX: number, endY: number) {
+      const waypoints = [];
+      
+      // Siempre incluir el punto inicial
+      waypoints.push({x: startX, y: startY});
+      
+      // Generar puntos de control intermedios
+      for (let i = 0; i < maxWaypoints - 2; i++) {
+        // Los puntos de control están a una distancia aleatoria del camino directo
+        const t = (i + 1) / (maxWaypoints - 1); // Valor entre 0 y 1
+        
+        // Punto en la línea directa
+        const lineX = startX + (endX - startX) * t;
+        const lineY = startY + (endY - startY) * t;
+        
+        // Desviación perpendicular aleatoria (para crear curvas)
+        const perpX = (endY - startY);
+        const perpY = -(endX - startX);
+        const length = Math.sqrt(perpX * perpX + perpY * perpY);
+        
+        // Desviación proporcional a la distancia total, pero aleatoria
+        const deviation = ((Math.random() * 2) - 1) * Math.min(length * 0.3, 20);
+        
+        waypoints.push({
+          x: lineX + (perpX / length) * deviation,
+          y: lineY + (perpY / length) * deviation
+        });
+      }
+      
+      // Siempre incluir el punto final
+      waypoints.push({x: endX, y: endY});
+      
+      return waypoints;
     }
     
     // Función para visualizar la ruta planificada del agente
@@ -840,7 +922,26 @@
           
           // Añadir línea punteada hacia el objetivo
           if (targetPosX !== agentPosX || targetPosY !== agentPosY) {
-            pathElement.setAttribute('d', `M ${agentPosX} ${agentPosY} L ${targetPosX} ${targetPosY}`);
+            // Visualizar la ruta de Bezier si tenemos waypoints
+            if (waypoints.length > 1) {
+              let bezierPath = `M ${agentPosX} ${agentPosY}`;
+              
+              // Convertir waypoints a coordenadas de píxeles
+              const waypointsPixels = waypoints.map(wp => ({
+                x: wp.x * containerWidth / 100,
+                y: wp.y * containerHeight / 100
+              }));
+              
+              // Añadir los puntos restantes como una curva
+              for (let i = 1; i < waypointsPixels.length; i++) {
+                bezierPath += ` L ${waypointsPixels[i].x} ${waypointsPixels[i].y}`;
+              }
+              
+              pathElement.setAttribute('d', bezierPath);
+            } else {
+              // Línea recta al objetivo si no hay waypoints
+              pathElement.setAttribute('d', `M ${agentPosX} ${agentPosY} L ${targetPosX} ${targetPosY}`);
+            }
             svg.appendChild(pathElement);
           }
         }
@@ -850,70 +951,82 @@
       setInterval(updatePath, 100);
     }
     
+    // Función para calcular posición en curva Bezier
+    function bezierPoint(points: {x: number, y: number}[], t: number) {
+      if (points.length === 1) {
+        return points[0];
+      }
+      
+      const newPoints = [];
+      for (let i = 0; i < points.length - 1; i++) {
+        newPoints.push({
+          x: points[i].x * (1 - t) + points[i + 1].x * t,
+          y: points[i].y * (1 - t) + points[i + 1].y * t
+        });
+      }
+      
+      return bezierPoint(newPoints, t);
+    }
+    
     // Función para animar el movimiento del agente
     function animateAgent() {
       if (!intelligentAgent || !agentDirection) return;
       
       function updatePosition() {
-        // Calcular nueva velocidad hacia el objetivo
-        const dx = targetX - agentX;
-        const dy = targetY - agentY;
-        
-        // Añadir un poco de comportamiento de "depredador" - cambios repentinos de dirección
-        if (Math.random() < 0.01) {
-          // Cambio repentino de dirección
-          velocityX += (Math.random() - 0.5) * maxVelocity;
-          velocityY += (Math.random() - 0.5) * maxVelocity;
-        } else {
-          // Movimiento normal hacia el objetivo
-          velocityX += dx * acceleration;
-          velocityY += dy * acceleration;
+        // Si necesitamos generar nuevos waypoints
+        if (waypointReached) {
+          // Generar nuevo conjunto de waypoints para movimiento suave
+          waypoints = generateWaypoints(agentX, agentY, targetX, targetY);
+          pathProgress = 0;
+          currentWaypointIndex = 0;
+          waypointReached = false;
         }
         
-        // Limitar la velocidad máxima
-        const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-        if (speed > maxVelocity) {
-          velocityX = (velocityX / speed) * maxVelocity;
-          velocityY = (velocityY / speed) * maxVelocity;
+        // Avanzar a través de la curva Bezier
+        pathProgress += 0.01; // Velocidad de movimiento a lo largo de la curva
+        
+        if (pathProgress >= 1) {
+          // Si estamos en el último waypoint, hemos llegado al destino
+          if (currentWaypointIndex >= waypoints.length - 2) {
+            // Generar nuevo objetivo aleatorio dentro del contenedor
+            targetX = Math.random() * 80 + 10;
+            targetY = Math.random() * 80 + 10;
+            waypointReached = true;
+          } else {
+            // Moverse al siguiente segmento de waypoint
+            currentWaypointIndex++;
+            pathProgress = 0;
+          }
         }
         
-        // Aplicar resistencia (ralentizar gradualmente)
-        velocityX *= 0.98;
-        velocityY *= 0.98;
-        
-        // Actualizar posición
-        agentX += velocityX;
-        agentY += velocityY;
-        
-        // Mantener el agente dentro del contenedor
-        agentX = Math.max(10, Math.min(90, agentX));
-        agentY = Math.max(10, Math.min(90, agentY));
-        
-        // Verificar si se ha llegado al objetivo
-        const distanceToTarget = Math.sqrt(
-          (targetX - agentX) * (targetX - agentX) + 
-          (targetY - agentY) * (targetY - agentY)
-        );
-        
-        if (distanceToTarget < 2) {
-          // Generar nuevo objetivo aleatorio dentro del contenedor
-          targetX = Math.random() * 80 + 10;
-          targetY = Math.random() * 80 + 10;
+        // Si tenemos waypoints, seguir la curva Bezier
+        if (waypoints.length > 1) {
+          // Calcular posición actual en la curva entre los waypoints actuales
+          const startPoint = waypoints[currentWaypointIndex];
+          const endPoint = waypoints[currentWaypointIndex + 1];
+          
+          // Interpolación
+          agentX = startPoint.x + (endPoint.x - startPoint.x) * pathProgress;
+          agentY = startPoint.y + (endPoint.y - startPoint.y) * pathProgress;
+          
+          // Calcular dirección de movimiento
+          const dx = endPoint.x - startPoint.x;
+          const dy = endPoint.y - startPoint.y;
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+          
+          // Actualizar dirección visual
+          const agentDirectionElement = agentDirection as HTMLElement;
+          agentDirectionElement.style.transform = `translateY(-50%) rotate(${angle}deg)`;
+          
+          // La flecha es más visible cuando hay velocidad
+          const speed = Math.sqrt(dx * dx + dy * dy);
+          agentDirectionElement.style.opacity = Math.min(1, speed * 10).toString();
         }
         
         // Aplicar el movimiento al elemento DOM del agente
         const agentElement = intelligentAgent as HTMLElement;
         agentElement.style.left = `${agentX}%`;
         agentElement.style.top = `${agentY}%`;
-        
-        // Actualizar la dirección del agente
-        const agentDirectionElement = agentDirection as HTMLElement;
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-        agentDirectionElement.style.transform = `translateY(-50%) rotate(${angle}deg)`;
-        
-        // La flecha es más visible cuando hay velocidad
-        const speedPercent = Math.min(1, speed / maxVelocity);
-        agentDirectionElement.style.opacity = speedPercent.toString();
         
         // Animar las partículas para que sigan al agente
         updateParticles();
@@ -924,24 +1037,6 @@
       
       // Iniciar la animación
       updatePosition();
-    }
-    
-    // Función para actualizar las partículas que siguen al agente
-    function updateParticles() {
-      if (!particles.length) return;
-      
-      particles.forEach((particle, index) => {
-        const particleElement = particle as HTMLElement;
-        const angle = (index / particles.length) * Math.PI * 2;
-        const radius = 30 + Math.sin(Date.now() * 0.003 + index) * 10;
-        
-        const offsetX = Math.cos(angle + Date.now() * 0.001) * radius;
-        const offsetY = Math.sin(angle + Date.now() * 0.001) * radius;
-        
-        particleElement.style.left = `calc(50% + ${offsetX}px)`;
-        particleElement.style.top = `calc(50% + ${offsetY}px)`;
-        particleElement.style.opacity = `${0.2 + Math.sin(Date.now() * 0.002 + index) * 0.3 + 0.5}`;
-      });
     }
     
     // Función para animar las métricas
@@ -1061,17 +1156,14 @@
             targetX = ((rect.left + rect.width / 2) - containerRect.left) / containerRect.width * 100;
             targetY = ((rect.top + rect.height / 2) - containerRect.top) / containerRect.height * 100;
             
+            // Forzar regeneración de waypoints para crear un nuevo camino curvo
+            waypointReached = true;
+            
             // Mostrar feedback visual de que se ha seleccionado este nodo
             node.classList.add('target-selected');
             setTimeout(() => {
               node.classList.remove('target-selected');
             }, 2000);
-            
-            // Aumentar velocidad para movimiento más rápido hacia el objetivo
-            maxVelocity = 1;
-            setTimeout(() => {
-              maxVelocity = 0.5; // Volver a velocidad normal después
-            }, 1000);
             
             // Actualizar consola para mostrar que se dirige al objetivo
             if (consoleText3) {
@@ -1085,4 +1177,3 @@
     // Iniciar cuando el DOM esté cargado
     setTimeout(initialize, 500);
   });
-</script>

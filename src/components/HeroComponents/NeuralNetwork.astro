@@ -107,11 +107,12 @@
 
   .visualization-container {
     position: relative;
-    height: 350px;
+    flex: 1;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 200px;
   }
 
   /* Grid de fondo */
@@ -151,7 +152,7 @@
 
   .layer-label {
     font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: rgba(176, 66, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -167,12 +168,13 @@
   }
 
   .node {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     position: relative;
     box-shadow: 0 0 8px rgba(176, 66, 255, 0.4);
     transition: all 0.3s ease;
+    margin: 4px 0;
   }
 
   .node::before {
@@ -247,12 +249,13 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-shrink: 0;
   }
 
   .status-monitor {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
     min-width: 200px;
   }
 
@@ -263,7 +266,7 @@
 
   .status-label {
     color: rgba(176, 66, 255, 0.8);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     width: 100px;
     text-align: right;
@@ -291,7 +294,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     margin-left: 20px;
   }
 
@@ -366,36 +369,282 @@
     }
   }
 
-  /* Responsive */
+  /* Media queries mejorados para responsive */
+  @media (max-width: 1024px) {
+    .visualization-container {
+      padding: 15px;
+      min-height: 180px;
+    }
+    
+    .node {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .layer-label {
+      font-size: 0.8rem;
+    }
+    
+    .network-info {
+      padding: 12px 15px;
+    }
+    
+    .status-label {
+      font-size: 0.8rem;
+      width: 90px;
+      margin-right: 10px;
+    }
+  }
+  
   @media (max-width: 768px) {
     .visualization-container {
-      height: 280px;
+      padding: 12px;
+      min-height: 150px;
     }
-
+    
+    .node {
+      width: 16px;
+      height: 16px;
+      margin: 3px 0;
+    }
+    
+    .layer-label {
+      font-size: 0.7rem;
+      margin-bottom: 8px;
+    }
+    
     .network-info {
-      flex-direction: column;
-      gap: 15px;
+      padding: 10px 12px;
     }
-
+    
     .status-monitor {
-      width: 100%;
-      flex-direction: row;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
+      width: 100%;
     }
-
+    
     .status-line {
-      min-width: 140px;
+      min-width: 0;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
     }
-
+    
+    .status-label {
+      font-size: 0.75rem;
+      width: auto;
+      margin-right: 0;
+      text-align: left;
+    }
+    
+    .status-value {
+      font-size: 0.95rem;
+    }
+    
+    .console-output {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .visualization-container {
+      padding: 10px;
+      min-height: 140px;
+    }
+    
+    .neural-layers {
+      width: 100%;
+    }
+    
     .node {
       width: 14px;
       height: 14px;
+      margin: 2px 0;
+    }
+    
+    .layer-label {
+      font-size: 0.65rem;
+      margin-bottom: 5px;
+    }
+    
+    /* Reducir espaciado entre las capas */
+    .neural-layers {
+      justify-content: space-around;
+    }
+    
+    .network-info {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    
+    .status-monitor {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+    
+    .status-line {
+      width: 100%;
+    }
+    
+    .status-label {
+      font-size: 0.65rem;
+    }
+    
+    .status-value {
+      font-size: 0.85rem;
+    }
+    
+    .console-output {
+      gap: 2px;
+    }
+    
+    .console-line {
+      font-size: 0.7rem;
+      line-height: 1.4;
+    }
+    
+    .console-cursor {
+      height: 15px;
+      width: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .visualization-container {
+      padding: 8px 5px;
+      min-height: 120px;
+    }
+    
+    .node {
+      width: 10px;
+      height: 10px;
+      margin: 1px 0;
+    }
+    
+    .layer-label {
+      font-size: 0.6rem;
+      margin-bottom: 4px;
+    }
+    
+    .network-info {
+      padding: 8px;
+    }
+    
+    .status-monitor {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+    
+    .status-label {
+      font-size: 0.6rem;
+    }
+    
+    .status-value {
+      font-size: 0.75rem;
+    }
+    
+    .console-output {
+      gap: 0;
+    }
+    
+    .console-prompt {
+      margin-right: 4px;
+    }
+    
+    .console-line {
+      font-size: 0.65rem;
+      line-height: 1.3;
+    }
+    
+    /* Reducir espacios entre líneas de consola */
+    .console-line:not(:last-child) {
+      margin-bottom: 1px;
+    }
+    
+    /* Optimizar animación para pantallas pequeñas */
+    .typed-text {
+      animation-duration: 1.5s;
+    }
+  }
+  
+  /* Extra small - optimizado para pantallas pequeñas */
+  @media (max-width: 360px) {
+    .visualization-container {
+      min-height: 100px;
+    }
+    
+    .node {
+      width: 8px;
+      height: 8px;
+      margin: 1px 0;
+    }
+    
+    .status-label {
+      font-size: 0.55rem;
+    }
+    
+    .status-value {
+      font-size: 0.7rem;
+    }
+    
+    .console-line {
+      font-size: 0.6rem;
+    }
+  }
+  
+  /* Orientación landscape para dispositivos móviles */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .neural-network-visualization {
+      flex-direction: row;
+      height: 100%;
+    }
+    
+    .visualization-container {
+      width: 65%;
+      min-height: auto;
+    }
+    
+    .network-info {
+      width: 35%;
+      border-top: none;
+      border-left: 1px solid rgba(176, 66, 255, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .status-monitor {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .status-line {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .console-output {
+      margin-top: 5px;
     }
   }
 </style>
 
 <script>
+  // Extender la interfaz Window para el timeout
+  declare global {
+    interface Window {
+      resizeTimeout: number;
+    }
+  }
+  
   // Script para animar la red neuronal
   document.addEventListener('DOMContentLoaded', () => {
     // Elementos DOM
@@ -405,7 +654,7 @@
     const nodes = document.querySelectorAll('.node');
     
     // Generar conexiones SVG entre capas
-    function generateConnections(): void {
+    function generateConnections() {
       if (!container || !connectionsContainer) return;
       
       // Crear elemento SVG
@@ -489,7 +738,7 @@
         const nextNodes = nextLayer.querySelectorAll('.node');
         
         // Seleccionar el gradiente correcto según las capas
-        let gradientId: string;
+        let gradientId;
         if (i === 0) gradientId = 'connection-gradient-input';
         else if (i === layers.length - 2) gradientId = 'connection-gradient-output';
         else gradientId = 'connection-gradient-hidden';
@@ -503,8 +752,12 @@
           const x1 = currentRect.left - containerRect.left + currentRect.width / 2;
           const y1 = currentRect.top - containerRect.top + currentRect.height / 2;
           
+          // Ajustar la cantidad de conexiones según el tamaño de pantalla
+          const isMobile = window.innerWidth <= 576;
+          const connectionLimit = isMobile ? 2 : 4; // Menos conexiones en móvil
+          
           // No conectar todos los nodos para evitar saturación visual
-          const connectionsCount = Math.min(nextNodes.length, 4);
+          const connectionsCount = Math.min(nextNodes.length, connectionLimit);
           const selectedNodes = [...nextNodes].sort(() => 0.5 - Math.random()).slice(0, connectionsCount);
           
           selectedNodes.forEach(nextNode => {
@@ -521,16 +774,16 @@
             line.setAttribute('x2', x2.toString());
             line.setAttribute('y2', y2.toString());
             line.setAttribute('stroke', `url(#${gradientId})`);
-            line.setAttribute('stroke-width', '1');
+            line.setAttribute('stroke-width', isMobile ? '0.8' : '1');
             line.setAttribute('stroke-opacity', (Math.random() * 0.3 + 0.2).toString());
             
             // Añadir línea al SVG
             svg.appendChild(line);
             
-            // Opcionalmente añadir partícula de datos en movimiento para algunas conexiones
-            if (Math.random() > 0.7) {
+            // Añadir partícula de datos en movimiento para algunas conexiones (menos en móvil)
+            if (Math.random() > (isMobile ? 0.85 : 0.7)) {
               const dataParticle = document.createElementNS(svgNS, 'circle');
-              dataParticle.setAttribute('r', '3');
+              dataParticle.setAttribute('r', isMobile ? '2' : '3');
               dataParticle.setAttribute('fill', '#ffffff');
               dataParticle.setAttribute('opacity', '0.7');
               
@@ -549,6 +802,7 @@
       }
       
       // Añadir SVG al contenedor
+      connectionsContainer.innerHTML = '';
       connectionsContainer.appendChild(svg);
     }
     
@@ -669,8 +923,17 @@
       }
     }
     
+    // Función para regenerar conexiones cuando cambie el tamaño
+    function handleResize() {
+      // Debounce para evitar demasiadas regeneraciones
+      clearTimeout(window.resizeTimeout);
+      window.resizeTimeout = setTimeout(() => {
+        generateConnections();
+      }, 250);
+    }
+    
     // Inicializar
-    setTimeout(() => {
+    function initialize() {
       // Generar conexiones SVG cuando el componente esté listo
       generateConnections();
       
@@ -679,6 +942,18 @@
       
       // Actualizar valores de estado
       updateStatusValues();
-    }, 1000);
+      
+      // Escuchar cambios de tamaño para regenerar las conexiones
+      window.addEventListener('resize', handleResize);
+    }
+    
+    // Asegurarse de que el DOM está listo
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initialize, 1000);
+      });
+    } else {
+      setTimeout(initialize, 1000);
+    }
   });
 </script>

@@ -222,7 +222,7 @@
   /* Contenedor principal */
   .transformation-container {
     position: relative;
-    height: 335px; /* Aumentado de 320px para dar más espacio */
+    height: 335px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -432,14 +432,15 @@
     }
   }
 
-  /* Barra de progreso reposicionada */
+  /* Ajustes específicos para la barra de progreso */
   .progress-section {
     width: 100%;
     margin-top: auto;
     padding: 0;
     position: relative;
     bottom: 0;
-    margin-bottom: 20px; /* Aumentado de 10px para más espacio */
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
   }
 
   .progress-label {
@@ -568,8 +569,8 @@
   .benefits-panel {
     background-color: rgba(15, 15, 25, 0.7);
     border-top: 1px solid rgba(176, 66, 255, 0.3);
-    padding: 12px 20px; /* Reducido el padding vertical */
-    margin-top: 0; /* Eliminado margen superior para mejor posicionamiento */
+    padding: 12px 20px;
+    margin-top: 0;
   }
 
   .benefits-title {
@@ -577,7 +578,7 @@
     font-size: 1rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 12px; /* Reducido para compactar el espacio */
+    margin-bottom: 12px;
   }
 
   .benefits-grid {
@@ -589,7 +590,7 @@
   .benefit-item {
     background-color: rgba(30, 30, 50, 0.5);
     border-radius: 8px;
-    padding: 12px 15px; /* Reducido el padding vertical */
+    padding: 12px 15px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -638,12 +639,16 @@
     color: #fff;
   }
 
-  /* Media queries */
+  /* Media queries - Completamente rediseñados para una mejor visualización en móvil */
   @media (max-width: 768px) {
     .transformation-container {
       padding: 15px;
       height: auto;
-      min-height: 335px; /* Ajustado para mantener consistencia */
+      min-height: 300px;
+    }
+    
+    .roadmap-wrapper {
+      margin-bottom: 20px;
     }
     
     .transformation-roadmap {
@@ -656,7 +661,7 @@
     .roadmap-stage {
       width: 100%;
       flex-direction: row;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     
     .stage-node {
@@ -698,13 +703,196 @@
         rgba(176, 66, 255, 0.7) 100%);
     }
     
+    /* Reducir el espacio que ocupa la barra de progreso */
     .progress-section {
       position: relative;
-      margin-top: 15px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    
+    /* Ajustar panel de beneficios */
+    .benefits-panel {
+      padding: 10px;
     }
     
     .benefits-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    
+    .benefit-item {
+      padding: 8px;
+    }
+    
+    .benefit-icon {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .benefit-value {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Pantallas pequeñas - rediseño completo para móviles */
+  @media (max-width: 480px) {
+    .digital-transformation-visualization {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .transformation-container {
+      padding: 10px;
+      min-height: 0;
+      flex: 1;
+    }
+    
+    /* Reducir tamaño del header */
+    .roadmap-header h3 {
+      font-size: 0.9rem;
+    }
+    
+    .roadmap-subtitle {
+      font-size: 0.65rem;
+    }
+    
+    /* Compactar las etapas */
+    .roadmap-stage {
+      margin-bottom: 8px;
+    }
+    
+    .stage-icon {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .stage-title {
+      font-size: 0.65rem;
+    }
+    
+    .stage-desc {
+      font-size: 0.6rem;
+    }
+    
+    /* Simplificar información */
+    .stage-info {
+      max-width: 100%;
+    }
+    
+    /* Barra de progreso más compacta */
+    .progress-section {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .progress-label {
+      font-size: 0.65rem;
+      margin-bottom: 5px;
+    }
+    
+    .progress-container {
+      height: 20px;
+    }
+    
+    .progress-bar {
+      height: 6px;
+    }
+    
+    .status-marker {
+      width: 15px;
+      height: 15px;
+      top: -5px;
+    }
+    
+    .marker-label {
+      font-size: 0.55rem;
+      top: -20px;
+      padding: 2px 5px;
+    }
+    
+    /* Panel de beneficios extremadamente compacto o parcialmente oculto */
+    .benefits-panel {
+      padding: 8px;
+      margin-top: auto;
+      height: auto;
+      max-height: 40%;
+    }
+    
+    .benefits-title {
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+    }
+    
+    /* Mostrar solo un beneficio en móvil o mostrarlos muy compactos */
+    .benefits-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .benefit-item {
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .benefit-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    
+    .benefit-title {
+      font-size: 0.65rem;
+    }
+    
+    .benefit-value {
+      font-size: 0.85rem;
+    }
+  }
+  
+  /* Solución específica para dispositivos extra pequeños */
+  @media (max-width: 360px) {
+    .transformation-container {
+      padding: 8px;
+    }
+    
+    .roadmap-header h3 {
+      font-size: 0.85rem;
+    }
+    
+    .roadmap-subtitle {
+      font-size: 0.6rem;
+    }
+    
+    .stage-icon {
+      width: 26px;
+      height: 26px;
+    }
+    
+    .stage-connector {
+      left: -15px;
+    }
+    
+    .stage-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+    
+    .stage-title {
+      font-size: 0.6rem;
+    }
+    
+    .stage-desc {
+      display: none; /* Ocultar descripciones en pantallas muy pequeñas */
+    }
+    
+    /* Ocultar ciertas partículas para aligerar visualmente */
+    .particle.p3, .particle.p4 {
+      display: none;
     }
   }
 </style>
@@ -717,7 +905,7 @@
     const stages = document.querySelectorAll('.roadmap-stage');
     
     // Función para animar los valores de beneficios
-    function animateBenefitValues() {
+    function animateBenefitValues(): void {
       const benefitValues = document.querySelectorAll('.benefit-value');
       
       benefitValues.forEach((valueElement) => {
@@ -728,7 +916,7 @@
         
         const startTime = performance.now();
         
-        function updateValue(timestamp: number) {
+        function updateValue(timestamp: number): void {
           const elapsed = timestamp - startTime;
           let progress = elapsed / duration;
           
@@ -750,9 +938,9 @@
     }
     
     // Obtener los porcentajes correspondientes a cada etapa
-    function getStagePercentages() {
+    function getStagePercentages(): number[] {
       const stageCount = stages.length;
-      const percentages = [];
+      const percentages: number[] = [];
       
       // Calculamos los porcentajes para cada etapa (distribución uniforme)
       const stageWidth = 100 / stageCount;
@@ -765,18 +953,16 @@
     }
     
     // Función para actualizar el progreso
-    function updateProgress(percentage: number) {
+    function updateProgress(percentage: number): void {
       // Asegurarnos de que el porcentaje esté entre 0 y 100
       percentage = Math.max(0, Math.min(100, percentage));
       
       if (progressFill) {
-        const progressElement = progressFill as HTMLElement;
-        progressElement.style.width = `${percentage}%`;
+        progressFill.style.width = `${percentage}%`;
       }
       
       if (statusMarker) {
-        const markerElement = statusMarker as HTMLElement;
-        markerElement.style.left = `${percentage}%`;
+        statusMarker.style.left = `${percentage}%`;
       }
       
       // Actualizar etapas según el progreso
@@ -784,41 +970,36 @@
     }
     
     // Función para actualizar las etapas en base al progreso
-    function updateStages(progress: number) {
+    function updateStages(progress: number): void {
       const stagePercentages = getStagePercentages();
-      const totalStages = stages.length;
       
       stages.forEach((stage, index) => {
-        const stageElement = stage as HTMLElement;
         const currentStagePercentage = stagePercentages[index];
         const prevStagePercentage = index > 0 ? stagePercentages[index - 1] : 0;
         
         // Resetear clases
-        stageElement.classList.remove('active', 'completed');
+        stage.classList.remove('active', 'completed');
         
         if (progress >= currentStagePercentage) {
           // Etapa completada
-          stageElement.classList.add('completed');
+          stage.classList.add('completed');
         } else if (progress > prevStagePercentage && progress < currentStagePercentage) {
           // Etapa activa (actual)
-          stageElement.classList.add('active');
+          stage.classList.add('active');
         }
       });
     }
     
     // Función para animar la barra de progreso a un valor específico con una duración dada
-    function animateProgressTo(targetPercentage: number, duration: number, callback?: () => void) {
+    function animateProgressTo(targetPercentage: number, duration: number, callback?: () => void): void {
       if (!progressFill || !statusMarker) return;
       
-      const progressElement = progressFill as HTMLElement;
-      const markerElement = statusMarker as HTMLElement;
-      
-      const startWidth = parseFloat(progressElement.style.width || '0');
-      const startLeft = parseFloat(markerElement.style.left || '0');
+      const startWidth = parseFloat(progressFill.style.width || '0');
+      const startLeft = parseFloat(statusMarker.style.left || '0');
       
       const startTime = performance.now();
       
-      function step(timestamp: number) {
+      function step(timestamp: number): void {
         const elapsed = timestamp - startTime;
         let progress = Math.min(elapsed / duration, 1);
         
@@ -830,8 +1011,8 @@
         const currentWidth = startWidth + (targetPercentage - startWidth) * progress;
         const currentLeft = startLeft + (targetPercentage - startLeft) * progress;
         
-        progressElement.style.width = `${currentWidth}%`;
-        markerElement.style.left = `${currentLeft}%`;
+        if (progressFill) progressFill.style.width = `${currentWidth}%`;
+        if (statusMarker) statusMarker.style.left = `${currentLeft}%`;
         
         // Actualizar etapas basadas en el progreso actual
         updateStages(currentWidth);
@@ -847,7 +1028,7 @@
     }
     
     // Iniciar la animación secuencial a cada etapa hasta el estado actual
-    function startProgressAnimation() {
+    function startProgressAnimation(): void {
       const targetInitialProgress = 75;
       const stagePercentages = getStagePercentages();
       
@@ -868,7 +1049,7 @@
         // Animación secuencial a través de las etapas hasta la etapa activa
         let currentStage = 0;
         
-        function animateNextStage() {
+        function animateNextStage(): void {
           if (currentStage > activeStageIndex) {
             // Si llegamos a la etapa activa, hacer ajustes periódicos
             setupPeriodicAdjustments();
@@ -892,24 +1073,52 @@
     }
     
     // Configurar ajustes periódicos después de alcanzar la posición inicial
-    function setupPeriodicAdjustments() {
+    function setupPeriodicAdjustments(): void {
       setInterval(() => {
-        const progressElement = progressFill as HTMLElement;
-        const currentWidth = parseFloat(progressElement.style.width || '75');
+        if (!progressFill) return;
+        
+        const currentWidth = parseFloat(progressFill.style.width || '75');
         
         // Generar variación aleatoria entre -3% y +3%
         const delta = Math.random() * 6 - 3;
         const newProgress = Math.max(60, Math.min(95, currentWidth + delta));
         
         // Animar al nuevo valor de forma suave
-        animateProgressTo(newProgress, 2000);
+        animateProgressTo(newProgress, 2000, undefined);
       }, 8000);
     }
     
-    // Inicializar animaciones
-    setTimeout(() => {
-      animateBenefitValues();
-      startProgressAnimation();
-    }, 500);
+    // Inicializar animaciones - con retraso adaptativo para dispositivos
+    function initAnimations(): void {
+      // Detectar si es un dispositivo móvil para optimizar rendimiento
+      const isMobile = window.innerWidth <= 768;
+      const initDelay = isMobile ? 800 : 500; // Dar más tiempo en móviles
+      
+      setTimeout(() => {
+        animateBenefitValues();
+        startProgressAnimation();
+      }, initDelay);
+    }
+    
+    // Iniciar una vez que el DOM esté listo
+    initAnimations();
+    
+    // Re-iniciar animaciones si el componente se vuelve visible después del scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && progressFill) {
+          // Reiniciar animaciones si el componente entra en el viewport
+          if (progressFill.style.width === '0%') {
+            initAnimations();
+          }
+        }
+      });
+    }, { threshold: 0.2 }); // Activar cuando al menos 20% del componente sea visible
+    
+    // Observar el componente
+    const component = document.querySelector('.digital-transformation-visualization');
+    if (component) {
+      observer.observe(component);
+    }
   });
 </script>
