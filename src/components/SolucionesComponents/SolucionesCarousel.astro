@@ -46,9 +46,10 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     </div>
   </div>
   
-  <!-- Controles de navegación -->
-  <div class="carousel-controls">
+  <!-- Controles de navegación - solo para desktop -->
+  <div class="carousel-controls desktop-controls">
     <button class="control-button prev-button" aria-label="Anterior">
+      <div class="button-glow"></div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M19 12H5"></path>
         <path d="M12 19L5 12L12 5"></path>
@@ -56,11 +57,33 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     </button>
     
     <button class="control-button next-button" aria-label="Siguiente">
+      <div class="button-glow"></div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M5 12H19"></path>
         <path d="M12 5L19 12L12 19"></path>
       </svg>
     </button>
+  </div>
+  
+  <!-- Controles de navegación - solo para móvil -->
+  <div class="mobile-controls">
+    <div class="mobile-arrows">
+      <button class="control-button prev-button" aria-label="Anterior">
+        <div class="button-glow"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"></path>
+          <path d="M12 19L5 12L12 5"></path>
+        </svg>
+      </button>
+      
+      <button class="control-button next-button" aria-label="Siguiente">
+        <div class="button-glow"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12H19"></path>
+          <path d="M12 5L19 12L12 19"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -70,6 +93,8 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 70px; /* Padding amplio para desktop */
+    box-sizing: border-box; /* Asegurar que el padding se incluye en el ancho */
   }
   
   /* Navegación del carrusel */
@@ -81,10 +106,11 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     background: rgba(20, 20, 40, 0.5);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(176, 66, 255, 0.3);
-    border-radius: 50px;
+    border-radius: 12px;
     padding: 0.75rem 1.5rem;
     z-index: 5;
     position: relative;
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten en pantallas pequeñas */
   }
   
   .nav-button {
@@ -177,6 +203,7 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     min-height: 500px;
     width: 100%;
     overflow: hidden;
+    box-sizing: border-box; /* Asegurarse de que el padding se incluye en el ancho */
   }
   
   .carousel-slide {
@@ -189,6 +216,7 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     visibility: hidden;
     transform: translateX(50px);
     transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s linear 0.8s;
+    box-sizing: border-box; /* Asegurarse de que el padding se incluye en el ancho */
   }
   
   .carousel-slide.active {
@@ -198,51 +226,146 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     transition: opacity 0.5s ease, transform 0.8s ease, visibility 0s linear;
   }
   
-  /* Controles del carrusel */
-  .carousel-controls {
+  /* Controles del carrusel - Para desktop */
+  .desktop-controls {
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
+    top: 45%;
+    left: -50px;
+    right: -50px;
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
     z-index: 5;
     pointer-events: none;
+    width: calc(100% + 100px); /* Extender más allá del contenedor */
+  }
+  
+  /* Controles del carrusel - Para móvil */
+  .mobile-controls {
+    display: none; /* Oculto por defecto en desktop */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  
+  .mobile-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 auto;
+    width: auto;
   }
   
   .control-button {
-    background: rgba(20, 20, 40, 0.7);
-    border: 1px solid rgba(176, 66, 255, 0.3);
+    background: rgba(20, 20, 40, 0.8);
+    border: 1px solid rgba(176, 66, 255, 0.5);
     color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin: 0 1rem;
     pointer-events: auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.3);
+  }
+  
+  .button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(176, 66, 255, 0.3), transparent);
+    animation: button-glow 3s ease-in-out infinite;
+  }
+  
+  @keyframes button-glow {
+    0% {
+      left: -100%;
+    }
+    50%, 100% {
+      left: 100%;
+    }
   }
   
   .control-button:hover {
     background: rgba(176, 66, 255, 0.3);
-    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.7), 0 0 25px rgba(176, 66, 255, 0.5);
+    transform: translateY(-3px);
+  }
+  
+  .control-button svg {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Animación de hover */
+  .control-button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(176, 66, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .control-button:hover:after {
+    opacity: 1;
   }
   
   /* Responsive */
+  @media (max-width: 1200px) {
+    .carousel-container {
+      padding: 0 60px;
+    }
+    
+    .desktop-controls {
+      left: -40px;
+      right: -40px;
+      width: calc(100% + 80px);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .carousel-container {
+      padding: 0 20px; /* Reducir padding para más espacio de contenido */
+    }
+    
+    /* Cambiar de controles de escritorio a móviles */
+    .desktop-controls {
+      display: none;
+    }
+    
+    .mobile-controls {
+      display: block;
+    }
+  }
+  
   @media (max-width: 768px) {
+    .carousel-container {
+      padding: 0 15px; /* Reducir aún más para móviles */
+    }
+    
     .carousel-nav {
+      justify-content: center;
       flex-wrap: wrap;
-      border-radius: 20px;
-      padding: 0.5rem;
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      gap: 0.75rem;
     }
     
     .nav-button {
       font-size: 0.8rem;
       padding: 0.3rem 0.6rem;
+      min-width: calc(50% - 0.75rem); /* 2 botones por fila */
     }
     
     .carousel-slides {
@@ -250,13 +373,21 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     }
     
     .control-button {
-      width: 36px;
-      height: 36px;
-      margin: 0 0.5rem;
+      width: 38px;
+      height: 38px;
+    }
+    
+    .control-button svg {
+      width: 20px;
+      height: 20px;
     }
   }
   
   @media (max-width: 480px) {
+    .carousel-container {
+      padding: 0 12px; /* Mínimo padding para máximo espacio */
+    }
+    
     .carousel-slides {
       min-height: 700px;
     }
@@ -264,23 +395,63 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
     .nav-button {
       font-size: 0.7rem;
       padding: 0.3rem 0.4rem;
+      min-width: calc(50% - 0.5rem);
+    }
+    
+    .mobile-arrows {
+      gap: 1rem;
+    }
+    
+    .control-button {
+      width: 34px;
+      height: 34px;
+    }
+    
+    .control-button svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .carousel-container {
+      padding: 0 10px;
+    }
+    
+    .carousel-nav {
+      padding: 0.4rem 0.5rem;
+    }
+    
+    .nav-button {
+      padding: 0.2rem 0.3rem;
+      font-size: 0.65rem;
+    }
+    
+    .nav-dot {
+      width: 8px;
+      height: 8px;
     }
     
     .control-button {
       width: 32px;
       height: 32px;
     }
+    
+    .control-button svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 </style>
 
 <script>
-  // Script mejorado para el carrusel
+  // Script mejorado para el carrusel con correcciones de tipado
   document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     const navButtons = document.querySelectorAll('.nav-button');
     const slides = document.querySelectorAll('.carousel-slide');
-    const nextButton = document.querySelector('.next-button');
-    const prevButton = document.querySelector('.prev-button');
+    const nextButtons = document.querySelectorAll('.next-button');
+    const prevButtons = document.querySelectorAll('.prev-button');
     
     // Iniciar carrusel
     function initCarousel() {
@@ -295,18 +466,19 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
         });
       });
       
-      // Eventos de los botones de control
-      if (nextButton) {
-        nextButton.addEventListener('click', function() {
+      // Eventos de los botones de control - Para todos los botones "next"
+      nextButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
           goToNextSlide();
         });
-      }
+      });
       
-      if (prevButton) {
-        prevButton.addEventListener('click', function() {
+      // Eventos de los botones de control - Para todos los botones "prev"
+      prevButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
           goToPrevSlide();
         });
-      }
+      });
       
       // Soporte para swipe en móviles
       setupSwipeSupport();
@@ -355,13 +527,18 @@ import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
       let touchStartX = 0;
       let touchEndX = 0;
       
+      // Corrección de tipos para los eventos touch
       carousel.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
+        if (e instanceof TouchEvent) {
+          touchStartX = e.changedTouches[0].screenX;
+        }
       }, { passive: true });
       
       carousel.addEventListener('touchend', function(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+        if (e instanceof TouchEvent) {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }
       }, { passive: true });
       
       function handleSwipe() {
