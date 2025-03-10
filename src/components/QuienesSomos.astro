@@ -187,14 +187,30 @@
     color: white;
     overflow: hidden;
     z-index: 1;
+    box-sizing: border-box;
+  }
+  
+  /* Regla global para asegurar box-sizing correcto */
+  .nosotros-section *,
+  .nosotros-section *::before,
+  .nosotros-section *::after {
+    box-sizing: border-box;
   }
   
   .nosotros-container {
     position: relative;
-    width: 90%;
+    width: 95%;
     max-width: 1280px;
     margin: 0 auto;
     z-index: 2;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 767px) {
+    .nosotros-container {
+      width: 92%;
+      padding: 0 10px;
+    }
   }
   
   /* FONDO CON GRID - Estrictamente limitado a esta sección */
@@ -302,18 +318,14 @@
     80% { opacity: 0; transform: translateX(0); }
   }
   
-  /* TARJETAS */
+  /* TARJETAS - Anchos ajustados para coincidir con la imagen de referencia */
   .nosotros-cards {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
     margin-bottom: 4rem;
-  }
-  
-  @media (min-width: 768px) {
-    .nosotros-cards {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    width: 100%;
   }
   
   .nosotros-card {
@@ -323,13 +335,53 @@
     padding: 2rem 1.5rem;
     overflow: hidden;
     transition: all 0.3s ease;
-    height: 100%;
     display: flex;
     flex-direction: column;
     z-index: 1;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(176, 66, 255, 0.3);
-    width: 100%;
+    flex: 1;
+    min-width: 0; /* Evita desbordamiento en flexbox */
+  }
+  
+  /* Media queries ajustados para el espaciado horizontal */
+  @media (max-width: 991px) {
+    .nosotros-cards {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .nosotros-card {
+      width: 100%;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .nosotros-container {
+      width: 85%;
+    }
+    
+    .nosotros-cards {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+    .nosotros-card {
+      flex: 0 0 calc(50% - 15px);
+      max-width: calc(50% - 15px);
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .nosotros-container {
+      width: 90%;
+      max-width: 1280px; /* Aumentado para permitir tarjetas más anchas */
+    }
+    
+    .nosotros-card {
+      flex: 0 0 calc(33.333% - 15px);
+      max-width: calc(33.333% - 15px);
+    }
   }
   
   .nosotros-card:hover {
@@ -677,6 +729,7 @@
   
   .terminal-line {
     display: flex;
+    align-items: center; /* Alineación vertical correcta */
     margin-bottom: 1rem;
     font-size: 0.9rem;
   }
@@ -694,9 +747,10 @@
     position: relative;
     display: inline-block;
     width: 8px;
-    height: 1rem;
+    height: 1em; /* Corregido: usa em en lugar de rem */
     background: var(--neon-purple);
     margin-left: 0.5rem;
+    vertical-align: middle; /* Asegura alineación vertical correcta */
     animation: cursor-blink 1s infinite;
   }
   
@@ -869,8 +923,15 @@
   
   .valores-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 2.5rem;
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    .valores-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
   }
   
   @media (min-width: 768px) {
@@ -919,5 +980,72 @@
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
     font-family: var(--font-body);
+  }
+  
+  /* Ajustes responsivos adicionales para terminal */
+  @media (max-width: 576px) {
+    .retro-terminal-container {
+      margin: 3rem auto;
+    }
+    
+    .terminal-screen {
+      padding: 1rem;
+      min-height: 280px;
+    }
+    
+    .terminal-line {
+      font-size: 0.8rem;
+    }
+    
+    .quote-text {
+      font-size: 1rem;
+    }
+    
+    .terminal-title {
+      font-size: 0.8rem;
+    }
+    
+    .valores-title {
+      font-size: 1.75rem;
+    }
+    
+    .nosotros-title {
+      font-size: 2.5rem;
+    }
+    
+    .nosotros-header {
+      margin-bottom: 3rem;
+    }
+    
+    .nosotros-section {
+      padding: 4rem 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .screen-content {
+      font-size: 0.85rem;
+    }
+    
+    .quote-display {
+      padding: 1rem;
+    }
+    
+    .terminal-output {
+      padding: 1rem;
+    }
+    
+    .circuit-decoration {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .circuit-decoration.left {
+      left: -20px;
+    }
+    
+    .circuit-decoration.right {
+      right: -20px;
+    }
   }
 </style>
