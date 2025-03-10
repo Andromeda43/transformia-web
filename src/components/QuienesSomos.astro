@@ -66,21 +66,61 @@
       </div>
     </div>
     
-    <!-- Cita inspiradora con diseño futurista -->
-    <div class="nosotros-quote">
-      <div class="quote-content">
-        <span class="quote-mark">"</span>
-        <div class="corner corner-tl"></div>
-        <div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div>
-        <div class="corner corner-br"></div>
+    <!-- Cita inspiradora con diseño retrofuturista -->
+    <div class="retro-terminal-container">
+      <div class="retro-terminal">
+        <!-- Barra superior del terminal -->
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="terminal-title">INNOVACIÓN.SYS</div>
+          <div class="terminal-led"></div>
+        </div>
         
-        <div class="quote-particle"></div>
-        <div class="quote-particle"></div>
-        <div class="quote-particle"></div>
-        
-        <p class="quote-text">La innovación distingue a los líderes de los seguidores.</p>
-        <p class="quote-author">— Steve Jobs</p>
+        <!-- Pantalla -->
+        <div class="terminal-screen">
+          <!-- Efecto CRT -->
+          <div class="crt-overlay"></div>
+          <div class="scanline"></div>
+          <div class="flicker"></div>
+          
+          <!-- Contenido -->
+          <div class="screen-content">
+            <div class="terminal-line">
+              <span class="terminal-prompt">></span>
+              <span class="terminal-command">load innovation_quote.dat</span>
+            </div>
+            
+            <div class="screen-divider"></div>
+            
+            <div class="quote-display">
+              <div class="loading-bar">
+                <div class="loading-progress"></div>
+              </div>
+              
+              <h3 class="quote-title">PENSAMIENTO INNOVADOR:</h3>
+              
+              <div class="terminal-output">
+                <p class="quote-text">"La innovación distingue a los líderes de los seguidores."</p>
+                <p class="quote-author">— Steve Jobs</p>
+              </div>
+              
+              <div class="circuit-decoration left"></div>
+              <div class="circuit-decoration right"></div>
+            </div>
+            
+            <div class="screen-divider"></div>
+            
+            <div class="terminal-line">
+              <span class="terminal-prompt">></span>
+              <span class="terminal-command">execute transformation_protocol</span>
+              <span class="terminal-cursor"></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     
@@ -280,7 +320,7 @@
     position: relative;
     background: rgba(26, 20, 45, 0.5);
     border-radius: 10px;
-    padding: 2.5rem 1.8rem;
+    padding: 2rem 1.5rem;
     overflow: hidden;
     transition: all 0.3s ease;
     height: 100%;
@@ -289,6 +329,7 @@
     z-index: 1;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(176, 66, 255, 0.3);
+    width: 100%;
   }
   
   .nosotros-card:hover {
@@ -321,6 +362,7 @@
     align-items: center;
     text-align: center;
     height: 100%;
+    width: 100%;
   }
   
   /* Iconos animados con tecnología */
@@ -328,10 +370,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -444,7 +486,7 @@
   }
   
   .card-text {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
     flex-grow: 1;
@@ -466,257 +508,337 @@
     width: 100%;
   }
   
-  /* CITA - Rediseñada con tema tecnológico */
-  .nosotros-quote {
+  /* CITA - Diseño retrofuturista estilo terminal */
+  .retro-terminal-container {
     position: relative;
-    max-width: 800px;
-    margin: 7rem auto;
-    padding: 0;
+    max-width: 760px;
+    margin: 5rem auto;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  .retro-terminal {
+    position: relative;
+    background: rgb(20, 20, 30);
+    border-radius: 8px;
+    border: 2px solid var(--neon-purple);
+    box-shadow: 
+      0 0 0 1px rgba(176, 66, 255, 0.3),
+      0 0 15px rgba(176, 66, 255, 0.5),
+      0 0 30px rgba(176, 66, 255, 0.2),
+      inset 0 0 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
     z-index: 5;
   }
   
-  .quote-content {
-    position: relative;
-    width: 100%;
-    padding: 3.5rem 2.5rem;
+  /* Barra superior del terminal */
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #1a142d, #252040);
+    padding: 0.7rem 1rem;
+    border-bottom: 2px solid rgba(176, 66, 255, 0.7);
+  }
+  
+  .terminal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-right: 1rem;
+  }
+  
+  .terminal-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  .terminal-buttons span:first-child {
+    background: rgba(255, 80, 80, 0.7);
+  }
+  
+  .terminal-buttons span:nth-child(2) {
+    background: rgba(255, 180, 80, 0.7);
+  }
+  
+  .terminal-buttons span:last-child {
+    background: rgba(80, 200, 80, 0.7);
+  }
+  
+  .terminal-title {
+    flex-grow: 1;
     text-align: center;
-    background: rgba(15, 15, 30, 0.7);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    border: 1px solid rgba(176, 66, 255, 0.4);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 30px rgba(176, 66, 255, 0.2);
-    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
   
-  /* Fondo tecnológico animado */
-  .quote-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(circle at 20% 30%, rgba(176, 66, 255, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(66, 135, 255, 0.1) 0%, transparent 50%);
-    z-index: -1;
+  .terminal-led {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--neon-purple);
+    box-shadow: 0 0 8px var(--neon-purple);
+    animation: led-blink 2s infinite alternate;
   }
   
-  /* Red de circuitos animados */
-  .quote-content::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23b042ff' stroke-width='0.5' fill='none' d='M10,10 L90,10 L90,90 L10,90 Z M10,50 L50,50 L50,90 M90,50 L50,50 M50,50 L50,10 M70,10 L70,30 L90,30 M10,70 L30,70 L30,90'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23b042ff' opacity='0.5'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%23b042ff' opacity='0.5'/%3E%3Ccircle cx='30' cy='70' r='2' fill='%23b042ff' opacity='0.5'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-    opacity: 0.05;
-    z-index: -1;
-    transition: all 5s linear;
-  }
-  
-  .nosotros-quote:hover .quote-content::after {
-    background-position: 30px 30px;
-    opacity: 0.1;
-  }
-  
-  /* Efecto de energía pulsante */
-  .corner {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    z-index: 3;
-  }
-  
-  .corner-tl {
-    top: 10px;
-    left: 10px;
-    border-top: 2px solid var(--neon-purple);
-    border-left: 2px solid var(--neon-purple);
-  }
-  
-  .corner-tr {
-    top: 10px;
-    right: 10px;
-    border-top: 2px solid var(--neon-purple);
-    border-right: 2px solid var(--neon-purple);
-  }
-  
-  .corner-bl {
-    bottom: 10px;
-    left: 10px;
-    border-bottom: 2px solid var(--neon-purple);
-    border-left: 2px solid var(--neon-purple);
-  }
-  
-  .corner-br {
-    bottom: 10px;
-    right: 10px;
-    border-bottom: 2px solid var(--neon-purple);
-    border-right: 2px solid var(--neon-purple);
-  }
-  
-  /* Línea de energía pulsante en el borde */
-  @keyframes border-pulse {
-    0%, 100% {
-      box-shadow: 0 0 8px var(--neon-purple);
-      opacity: 0.8;
+  @keyframes led-blink {
+    0%, 80% {
+      opacity: 1;
     }
-    50% {
-      box-shadow: 0 0 15px var(--neon-purple);
+    90% {
+      opacity: 0.3;
+    }
+    100% {
       opacity: 1;
     }
   }
   
-  .corner {
-    animation: border-pulse 2s infinite alternate;
-  }
-  
-  .corner-tr {
-    animation-delay: 0.5s;
-  }
-  
-  .corner-bl {
-    animation-delay: 1s;
-  }
-  
-  .corner-br {
-    animation-delay: 1.5s;
-  }
-  
-  /* Marca de cita futurista */
-  .quote-mark {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    background: var(--color-dark);
-    color: var(--neon-purple);
-    border-radius: 50%;
-    border: 2px solid var(--neon-purple);
-    box-shadow: 0 0 15px rgba(176, 66, 255, 0.5);
-    z-index: 10;
-  }
-  
-  /* Partículas tecnológicas */
-  .quote-particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--neon-purple);
-    border-radius: 50%;
-    box-shadow: 0 0 5px var(--neon-purple);
-    z-index: 2;
-    animation: float-particle 15s infinite linear;
-  }
-  
-  .quote-particle:nth-child(2) {
-    top: 25%;
-    left: 75%;
-    width: 6px;
-    height: 6px;
-    background: var(--neon-blue);
-    box-shadow: 0 0 5px var(--neon-blue);
-    animation-duration: 25s;
-  }
-  
-  .quote-particle:nth-child(3) {
-    top: 65%;
-    left: 15%;
-    width: 5px;
-    height: 5px;
-    animation-duration: 20s;
-    animation-delay: 5s;
-  }
-  
-  @keyframes float-particle {
-    0% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(-50px, 30px);
-    }
-    50% {
-      transform: translate(0, 60px);
-    }
-    75% {
-      transform: translate(50px, 30px);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }
-  
-  /* Texto de la cita */
-  .quote-text {
+  /* Pantalla del terminal */
+  .terminal-screen {
     position: relative;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: white;
-    font-family: var(--font-title);
-    line-height: 1.4;
-    z-index: 2;
+    background: #0a0a12;
+    min-height: 320px;
+    padding: 1.5rem;
+    overflow: hidden;
   }
   
-  /* Efecto de tecnología digital en el texto */
-  .quote-text::before {
-    content: 'La innovación distingue a los líderes de los seguidores.';
+  /* Efectos CRT */
+  .crt-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    color: rgba(176, 66, 255, 0.5);
-    z-index: -1;
-    animation: text-glitch 5s infinite;
+    background: 
+      radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 18, 0.3) 90%), 
+      linear-gradient(rgba(10, 10, 18, 0.1) 50%, rgba(0, 0, 0, 0.3) 50%);
+    background-size: 100% 100%, 100% 2px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  
+  .scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+      transparent 0%, 
+      rgba(176, 66, 255, 0.1) 10%, 
+      transparent 100%);
+    opacity: 0.7;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  
+  .flicker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(176, 66, 255, 0.03);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 4;
+    animation: flicker 0.2s infinite alternate;
+  }
+  
+  @keyframes flicker {
+    0%, 95% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+  
+  /* Contenido de la pantalla */
+  .screen-content {
+    position: relative;
+    color: #16e91d; /* Verde terminal clásico */
+    font-family: var(--font-mono);
+    z-index: 1;
+  }
+  
+  .terminal-line {
+    display: flex;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .terminal-prompt {
+    color: var(--neon-purple);
+    margin-right: 0.5rem;
+  }
+  
+  .terminal-command {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .terminal-cursor {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 1rem;
+    background: var(--neon-purple);
+    margin-left: 0.5rem;
+    animation: cursor-blink 1s infinite;
+  }
+  
+  @keyframes cursor-blink {
+    0%, 49% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  .screen-divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--neon-purple) 20%, 
+      rgba(255, 255, 255, 0.8) 50%,
+      var(--neon-purple) 80%, 
+      transparent 100%);
+    margin: 1rem 0;
+    opacity: 0.4;
+  }
+  
+  /* Bloque de visualización de la cita */
+  .quote-display {
+    position: relative;
+    background: rgba(20, 20, 40, 0.3);
+    border: 1px solid rgba(176, 66, 255, 0.4);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  
+  .loading-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  
+  .loading-progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, 
+      var(--neon-purple) 0%, 
+      var(--neon-blue) 50%, 
+      var(--neon-purple) 100%);
+    animation: loading 2s ease-in-out forwards;
+  }
+  
+  @keyframes loading {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: 60%;
+    }
+    80% {
+      width: 80%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  .quote-title {
+    font-size: 1rem;
+    text-align: center;
+    color: var(--neon-blue);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+  }
+  
+  .terminal-output {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+  
+  .quote-text {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: white;
+    text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
+    animation: text-fade-in 2s ease-in-out forwards;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  @keyframes text-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .quote-author {
+    font-size: 1.1rem;
+    color: var(--neon-purple);
+    animation: author-fade-in 2s ease-in-out forwards;
+    animation-delay: 1s;
     opacity: 0;
   }
   
-  @keyframes text-glitch {
-    0%, 100% {
-      opacity: 0;
-      transform: translateX(0);
-    }
-    2%, 5% {
-      opacity: 0.3;
-      transform: translateX(-2px);
-    }
-    3%, 6% {
-      opacity: 0;
-      transform: translateX(0);
-    }
-    50%, 55% {
+  @keyframes author-fade-in {
+    0% {
       opacity: 0;
     }
-    52%, 54% {
-      opacity: 0.3;
-      transform: translateX(2px);
+    100% {
+      opacity: 1;
     }
   }
   
-  /* Autor de la cita */
-  .quote-author {
-    position: relative;
-    font-size: 1.2rem;
-    color: var(--neon-purple);
-    font-family: var(--font-mono);
-    font-weight: 700;
-    z-index: 2;
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background: rgba(176, 66, 255, 0.1);
-    border-radius: 30px;
-    box-shadow: 0 0 15px rgba(176, 66, 255, 0.2);
-    border: 1px solid rgba(176, 66, 255, 0.3);
+  /* Decoraciones de circuito */
+  .circuit-decoration {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23b042ff' stroke-width='1' fill='none' d='M10,10 L70,10 L70,70 L10,70 Z M10,40 L40,40 M40,40 L40,70 M40,40 L40,10 M40,40 L70,40 M20,10 L20,25 M60,10 L60,25 M20,70 L20,55 M60,70 L60,55'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23b042ff'/%3E%3Ccircle cx='20' cy='25' r='2' fill='%23b042ff'/%3E%3Ccircle cx='60' cy='25' r='2' fill='%23b042ff'/%3E%3Ccircle cx='20' cy='55' r='2' fill='%23b042ff'/%3E%3Ccircle cx='60' cy='55' r='2' fill='%23b042ff'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    z-index: -1;
+  }
+  
+  .circuit-decoration.left {
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+  }
+  
+  .circuit-decoration.right {
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
   }
   
   /* VALORES - En lugar de métricas */
