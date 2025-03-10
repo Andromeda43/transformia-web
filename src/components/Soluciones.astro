@@ -1,349 +1,414 @@
 ---
-import RetroGrid from './HeroComponents/RetroGrid.astro';
+// Componente principal de Soluciones que integra el carrusel y sus slides
+import SolucionesCarousel from './SolucionesComponents/SolucionesCarousel.astro';
 ---
 
-<section id="soluciones" class="bg-dark-purple py-20 relative">
-  <RetroGrid glowPosition="top-left" />
+<section id="soluciones" class="soluciones-section">
+  <!-- Efectos de fondo -->
+  <div class="grid-background"></div>
+  <div class="matrix-bg"></div>
+  <div class="glow-orb orb1"></div>
+  <div class="glow-orb orb2"></div>
   
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 neon-text" style="font-family: var(--font-mono);">SOLUCIONES / SERVICIOS</h2>
-      <div class="w-24 h-1 bg-neon-purple mx-auto glow-effect"></div>
+  <div class="container">
+    <!-- Encabezado de sección -->
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-text">SOLUCIONES</span>
+        <span class="separator">/</span>
+        <span class="title-text">SERVICIOS</span>
+      </h2>
+      
+      <div class="badge-container">
+        <div class="tech-badge">
+          <span class="badge-glow"></span>
+          ALTA TECNOLOGÍA
+        </div>
+      </div>
+      
+      <div class="title-line">
+        <span class="line-pulse"></span>
+      </div>
+      
+      <p class="section-description">
+        Soluciones digitales de vanguardia que transforman desafíos en oportunidades de crecimiento para tu negocio.
+      </p>
     </div>
     
-    <div class="grid md:grid-cols-2 gap-10">
-      <div class="solution-card" data-accent="purple" data-aos="fade-right">
-        <div class="solution-glow purple"></div>
-        <div class="solution-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-4 neon-text-purple" style="font-family: var(--font-mono);">DESARROLLO DE SOFTWARE A MEDIDA</h3>
-        <p class="mb-6" style="font-family: var(--font-sans);">Creamos aplicaciones personalizadas que resuelven tus problemas específicos, optimizando procesos y mejorando la experiencia de usuario.</p>
-        <a href="/servicios/desarrollo" class="solution-link purple">Conocer más <span>&rarr;</span></a>
-        <div class="card-corner top-left"></div>
-        <div class="card-corner top-right"></div>
-        <div class="card-corner bottom-left"></div>
-        <div class="card-corner bottom-right"></div>
-      </div>
-      
-      <div class="solution-card" data-accent="blue" data-aos="fade-left">
-        <div class="solution-glow blue"></div>
-        <div class="solution-icon blue">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-4 neon-text-blue" style="font-family: var(--font-mono);">TRANSFORMACIÓN DIGITAL Y AUTOMATIZACIÓN</h3>
-        <p class="mb-6" style="font-family: var(--font-sans);">Modernizamos tus procesos analógicos, eliminando tareas repetitivas y potenciando la productividad de tu equipo con tecnologías avanzadas.</p>
-        <a href="/servicios/transformacion" class="solution-link blue">Conocer más <span>&rarr;</span></a>
-        <div class="card-corner top-left"></div>
-        <div class="card-corner top-right"></div>
-        <div class="card-corner bottom-left"></div>
-        <div class="card-corner bottom-right"></div>
-      </div>
-      
-      <div class="solution-card" data-accent="pink" data-aos="fade-right">
-        <div class="solution-glow pink"></div>
-        <div class="solution-icon pink">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-4 neon-text-pink" style="font-family: var(--font-mono);">INTELIGENCIA ARTIFICIAL Y DATA ANALYTICS</h3>
-        <p class="mb-6" style="font-family: var(--font-sans);">Implementamos soluciones de IA y análisis de datos para ayudarte a tomar mejores decisiones basadas en información real y predicciones precisas.</p>
-        <a href="/servicios/ia" class="solution-link pink">Conocer más <span>&rarr;</span></a>
-        <div class="card-corner top-left"></div>
-        <div class="card-corner top-right"></div>
-        <div class="card-corner bottom-left"></div>
-        <div class="card-corner bottom-right"></div>
-      </div>
-      
-      <div class="solution-card" data-accent="yellow" data-aos="fade-left">
-        <div class="solution-glow yellow"></div>
-        <div class="solution-icon yellow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-4 neon-text-yellow" style="font-family: var(--font-mono);">ASESORÍA EN OPTIMIZACIÓN DE PROCESOS</h3>
-        <p class="mb-6" style="font-family: var(--font-sans);">Te ayudamos a identificar y eliminar cuellos de botella, simplificando operaciones y reduciendo costos operativos con estrategias innovadoras.</p>
-        <a href="/servicios/asesoria" class="solution-link yellow">Conocer más <span>&rarr;</span></a>
-        <div class="card-corner top-left"></div>
-        <div class="card-corner top-right"></div>
-        <div class="card-corner bottom-left"></div>
-        <div class="card-corner bottom-right"></div>
-      </div>
+    <!-- Componente de Carrusel -->
+    <div class="carousel-wrapper">
+      <SolucionesCarousel />
     </div>
   </div>
   
-  <!-- Elementos decorativos -->
-  <div class="floating-bits bit-1"></div>
-  <div class="floating-bits bit-2"></div>
-  <div class="floating-bits bit-3"></div>
-  <div class="floating-bits bit-4"></div>
+  <!-- Elementos decorativos flotantes -->
+  <div class="floating-elements">
+    <div class="element el1"></div>
+    <div class="element el2"></div>
+    <div class="element el3"></div>
+    <div class="element el4"></div>
+  </div>
 </section>
 
 <style>
-  .solution-card {
-    background: rgba(20, 20, 40, 0.3);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    padding: 2rem;
-    border: 1px solid rgba(176, 66, 255, 0.2);
-    transition: all 0.4s ease;
-    overflow: hidden;
+  /* Variables y estilos base */
+  :root {
+    --purple: #b042ff;
+    --blue: #4287ff;
+    --pink: #ff42b0;
+    --yellow: #e8ff42;
+    --dark-bg: #0a0a14;
+    --dark-purple: #1a142d;
+  }
+  
+  .soluciones-section {
     position: relative;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 8rem 0 6rem;
+    overflow: hidden;
   }
   
-  .solution-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(176, 66, 255, 0.2);
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 10;
   }
   
-  .solution-card[data-accent="purple"]:hover {
-    border-color: var(--neon-purple);
-  }
-  
-  .solution-card[data-accent="blue"]:hover {
-    border-color: var(--neon-blue);
-  }
-  
-  .solution-card[data-accent="pink"]:hover {
-    border-color: var(--neon-pink);
-  }
-  
-  .solution-card[data-accent="yellow"]:hover {
-    border-color: var(--neon-yellow);
-  }
-  
-  .solution-glow {
+  /* Fondo con grid animado */
+  .grid-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 30%, rgba(176, 66, 255, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    z-index: -1;
+    background-image: 
+      linear-gradient(to right, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(1000px) rotateX(60deg);
+    transform-origin: center top;
+    animation: grid-animation 20s linear infinite;
+    z-index: 1;
+    opacity: 0.5;
   }
   
-  .solution-glow.blue {
-    background: radial-gradient(circle at 30% 30%, rgba(66, 135, 255, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
+  @keyframes grid-animation {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 1000px;
+    }
   }
   
-  .solution-glow.pink {
-    background: radial-gradient(circle at 30% 30%, rgba(255, 66, 176, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
+  /* Fondo tipo Matrix */
+  .matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='150' viewBox='0 0 300 150'%3E%3Cstyle%3E @keyframes fall %7B 0%25 %7B transform: translateY(-100%25); %7D 100%25 %7B transform: translateY(100%25); %7D %7D .t %7B opacity: 0.6; font-family: monospace; animation: fall linear infinite; %7D %3C/style%3E%3Cg fill='%23b042ff'%3E%3Ctext x='10' y='0' class='t' style='animation-duration: 5s; animation-delay: 0s;'%3E10110%3C/text%3E%3Ctext x='40' y='0' class='t' style='animation-duration: 7s; animation-delay: 0.5s;'%3E01001%3C/text%3E%3Ctext x='70' y='0' class='t' style='animation-duration: 6s; animation-delay: 1s;'%3E11010%3C/text%3E%3Ctext x='100' y='0' class='t' style='animation-duration: 8s; animation-delay: 1.5s;'%3E10101%3C/text%3E%3Ctext x='130' y='0' class='t' style='animation-duration: 9s; animation-delay: 2s;'%3E01011%3C/text%3E%3Ctext x='160' y='0' class='t' style='animation-duration: 5.5s; animation-delay: 2.5s;'%3E10110%3C/text%3E%3Ctext x='190' y='0' class='t' style='animation-duration: 7.5s; animation-delay: 3s;'%3E01001%3C/text%3E%3Ctext x='220' y='0' class='t' style='animation-duration: 6.5s; animation-delay: 3.5s;'%3E11010%3C/text%3E%3Ctext x='250' y='0' class='t' style='animation-duration: 8.5s; animation-delay: 4s;'%3E10101%3C/text%3E%3Ctext x='280' y='0' class='t' style='animation-duration: 7s; animation-delay: 4.5s;'%3E01011%3C/text%3E%3C/g%3E%3C/svg%3E");
   }
   
-  .solution-glow.yellow {
-    background: radial-gradient(circle at 30% 30%, rgba(232, 255, 66, 0.1) 0%, rgba(10, 10, 20, 0) 70%);
+  /* Orbes brillantes */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 1;
   }
   
-  .solution-card:hover .solution-glow {
-    opacity: 1;
+  .orb1 {
+    background-color: var(--purple);
+    width: 500px;
+    height: 500px;
+    top: -5%;
+    left: -10%;
+    animation: orb-float 20s ease-in-out infinite alternate;
   }
   
-  .solution-icon {
-    margin-bottom: 1.5rem;
-    color: var(--neon-purple);
-    filter: drop-shadow(0 0 8px rgba(176, 66, 255, 0.7));
+  .orb2 {
+    background-color: var(--blue);
+    width: 600px;
+    height: 600px;
+    bottom: -10%;
+    right: -15%;
+    animation: orb-float 25s ease-in-out infinite alternate-reverse;
   }
   
-  .solution-icon.blue {
-    color: var(--neon-blue);
-    filter: drop-shadow(0 0 8px rgba(66, 135, 255, 0.7));
+  @keyframes orb-float {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50px, 30px);
+    }
   }
   
-  .solution-icon.pink {
-    color: var(--neon-pink);
-    filter: drop-shadow(0 0 8px rgba(255, 66, 176, 0.7));
+  /* Encabezado de sección */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
   }
   
-  .solution-icon.yellow {
-    color: var(--neon-yellow);
-    filter: drop-shadow(0 0 8px rgba(232, 255, 66, 0.7));
+  .section-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    display: inline-block;
+    position: relative;
   }
   
-  .solution-link {
+  .title-text {
+    color: white;
+    text-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
+    animation: title-flicker 5s infinite alternate;
     font-family: var(--font-mono);
+  }
+  
+  @keyframes title-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow: 0 0 10px rgba(176, 66, 255, 0.7), 
+                   0 0 20px rgba(176, 66, 255, 0.5);
+    }
+    20%, 24%, 55% {
+      text-shadow: none;
+    }
+  }
+  
+  .separator {
+    margin: 0 1rem;
+    color: var(--pink);
+    animation: separator-pulse 2s infinite alternate;
+  }
+  
+  @keyframes separator-pulse {
+    0% {
+      opacity: 0.7;
+      text-shadow: 0 0 5px rgba(255, 66, 176, 0.5);
+    }
+    100% {
+      opacity: 1;
+      text-shadow: 0 0 15px rgba(255, 66, 176, 0.9), 0 0 25px rgba(255, 66, 176, 0.5);
+    }
+  }
+  
+  /* Badge Alta Tecnología */
+  .badge-container {
+    margin-top: 0.5rem;
+  }
+  
+  .tech-badge {
+    display: inline-block;
+    background: rgba(176, 66, 255, 0.15);
+    border: 1px solid var(--purple);
+    padding: 0.5rem 2rem;
+    border-radius: 30px;
+    color: var(--purple);
+    font-family: var(--font-mono);
+    font-size: 1rem;
     font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    color: var(--neon-purple);
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.3);
   }
   
-  .solution-link span {
-    margin-left: 0.5rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .solution-link:hover span {
-    transform: translateX(5px);
-  }
-  
-  .solution-link.blue {
-    color: var(--neon-blue);
-  }
-  
-  .solution-link.pink {
-    color: var(--neon-pink);
-  }
-  
-  .solution-link.yellow {
-    color: var(--neon-yellow);
-  }
-  
-  /* Esquinas de tarjetas */
-  .card-corner {
+  .badge-glow {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: rgba(176, 66, 255, 0.3);
-    transition: all 0.3s ease;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(176, 66, 255, 0.5), transparent);
+    animation: badge-slide 3s ease-in-out infinite;
   }
   
-  .top-left {
-    top: 5px;
-    left: 5px;
-    border-top: 1px solid;
-    border-left: 1px solid;
+  @keyframes badge-slide {
+    0% {
+      left: -100%;
+    }
+    50%, 100% {
+      left: 100%;
+    }
   }
   
-  .top-right {
-    top: 5px;
-    right: 5px;
-    border-top: 1px solid;
-    border-right: 1px solid;
+  /* Línea divisoria */
+  .title-line {
+    position: relative;
+    width: 150px;
+    height: 3px;
+    background: rgba(176, 66, 255, 0.3);
+    margin: 1.5rem auto 2rem;
+    overflow: hidden;
   }
   
-  .bottom-left {
-    bottom: 5px;
-    left: 5px;
-    border-bottom: 1px solid;
-    border-left: 1px solid;
-  }
-  
-  .bottom-right {
-    bottom: 5px;
-    right: 5px;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-  }
-  
-  .solution-card[data-accent="purple"]:hover .card-corner {
-    border-color: var(--neon-purple);
-    box-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
-  }
-  
-  .solution-card[data-accent="blue"]:hover .card-corner {
-    border-color: var(--neon-blue);
-    box-shadow: 0 0 5px rgba(66, 135, 255, 0.5);
-  }
-  
-  .solution-card[data-accent="pink"]:hover .card-corner {
-    border-color: var(--neon-pink);
-    box-shadow: 0 0 5px rgba(255, 66, 176, 0.5);
-  }
-  
-  .solution-card[data-accent="yellow"]:hover .card-corner {
-    border-color: var(--neon-yellow);
-    box-shadow: 0 0 5px rgba(232, 255, 66, 0.5);
-  }
-  
-  /* Elementos flotantes decorativos */
-  .floating-bits {
+  .line-pulse {
     position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--purple), transparent);
+    animation: line-slide 3s ease-in-out infinite;
+  }
+  
+  @keyframes line-slide {
+    0% {
+      left: -100%;
+    }
+    50%, 100% {
+      left: 100%;
+    }
+  }
+  
+  /* Descripción */
+  .section-description {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-sans);
+  }
+  
+  /* Wrapper del carrusel */
+  .carousel-wrapper {
+    position: relative;
+    z-index: 10;
+    margin-top: 3rem;
+  }
+  
+  /* Elementos decorativos flotantes */
+  .floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .element {
+    position: absolute;
+    opacity: 0.6;
+    border-radius: 50%;
+    animation: float-animation 15s infinite ease-in-out;
+  }
+  
+  .el1 {
     width: 8px;
     height: 8px;
-    background-color: var(--neon-purple);
-    filter: blur(1px);
-    opacity: 0.6;
-    z-index: 1;
-    animation: float-bits 8s ease-in-out infinite;
-  }
-  
-  .bit-1 {
+    background: var(--purple);
     top: 20%;
-    right: 10%;
-    animation-delay: 0s;
-  }
-  
-  .bit-2 {
-    bottom: 30%;
-    left: 5%;
-    animation-delay: 2s;
-    background-color: var(--neon-blue);
-  }
-  
-  .bit-3 {
-    top: 70%;
-    left: 50%;
-    animation-delay: 4s;
-    background-color: var(--neon-pink);
-  }
-  
-  .bit-4 {
-    top: 15%;
     left: 15%;
-    animation-delay: 6s;
-    background-color: var(--neon-yellow);
+    box-shadow: 0 0 10px var(--purple);
   }
   
-  @keyframes float-bits {
+  .el2 {
+    width: 12px;
+    height: 12px;
+    background: var(--blue);
+    bottom: 25%;
+    left: 10%;
+    box-shadow: 0 0 15px var(--blue);
+    animation-delay: 3s;
+  }
+  
+  .el3 {
+    width: 10px;
+    height: 10px;
+    background: var(--pink);
+    top: 30%;
+    right: 15%;
+    box-shadow: 0 0 12px var(--pink);
+    animation-delay: 2s;
+  }
+  
+  .el4 {
+    width: 14px;
+    height: 14px;
+    background: var(--yellow);
+    bottom: 15%;
+    right: 10%;
+    box-shadow: 0 0 15px var(--yellow);
+    animation-delay: 5s;
+  }
+  
+  @keyframes float-animation {
     0%, 100% {
       transform: translate(0, 0);
-      opacity: 0.6;
     }
     25% {
-      transform: translate(20px, -15px);
-      opacity: 0.8;
+      transform: translate(15px, -20px);
     }
     50% {
-      transform: translate(-10px, 25px);
-      opacity: 1;
+      transform: translate(30px, 0px);
     }
     75% {
-      transform: translate(-25px, -10px);
-      opacity: 0.7;
+      transform: translate(15px, 20px);
     }
   }
   
-  /* Responsivo */
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .section-title {
+      font-size: 3.2rem;
+    }
+  }
+  
   @media (max-width: 768px) {
-    .floating-bits {
+    .soluciones-section {
+      padding: 6rem 0 4rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+    }
+    
+    .separator {
+      margin: 0 0.5rem;
+    }
+    
+    .tech-badge {
+      padding: 0.4rem 1.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .tech-badge {
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+    }
+    
+    .section-description {
+      font-size: 1rem;
+    }
+    
+    .element {
       display: none;
     }
   }
 </style>
-
-<script>
-  // Animación al hacer hover en las tarjetas
-  document.addEventListener('DOMContentLoaded', () => {
-    const solutionCards = document.querySelectorAll('.solution-card');
-    
-    solutionCards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        const accent = card.getAttribute('data-accent');
-        const corners = card.querySelectorAll('.card-corner');
-        
-        corners.forEach(corner => {
-          corner.style.width = '15px';
-          corner.style.height = '15px';
-        });
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        const corners = card.querySelectorAll('.card-corner');
-        
-        corners.forEach(corner => {
-          corner.style.width = '10px';
-          corner.style.height = '10px';
-        });
-      });
-    });
-  });
-</script>
