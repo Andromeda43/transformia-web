@@ -1,43 +1,52 @@
 ---
-// TransformacionSlide.astro - Slide actualizado de Transformación Digital
+// IoTSlide.astro - Slide para Internet of Things (IoT)
 ---
 
-<div class="transformacion-card">
+<div class="iot-card">
     <div class="card-content">
       <!-- Panel de información -->
       <div class="info-panel">
         <div class="service-header">
           <div class="service-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.5C21 17.1944 17.1944 21 12.5 21C7.80558 21 4 17.1944 4 12.5C4 7.80558 7.80558 4 12.5 4C15.6256 4 18.3395 5.70178 19.8024 8.2"></path>
-              <path d="M22 7V3H18"></path>
-              <path d="M18 9L22 5"></path>
+              <path d="M6.5 6.5h11v11h-11z"></path>
+              <path d="M5 5L2 2"></path>
+              <path d="M19 5l3-3"></path>
+              <path d="M5 19l-3 3"></path>
+              <path d="M19 19l3 3"></path>
+              <path d="M9 12a3 3 0 1 0 6 0 3 3 0 1 0-6 0"></path>
             </svg>
             <div class="icon-pulse"></div>
           </div>
-          <h3 class="service-title">TRANSFORMACIÓN DIGITAL Y AUTOMATIZACIÓN</h3>
+          <h3 class="service-title">INTERNET OF THINGS Y SISTEMAS FÍSICOS</h3>
         </div>
         
         <p class="service-description">
-          Modernizamos tus procesos analógicos, eliminando tareas repetitivas y potenciando la productividad de tu equipo con tecnologías avanzadas.
+          Conectamos tu mundo físico y digital mediante sensores, dispositivos y sistemas inteligentes que capturan datos en tiempo real, optimizando operaciones y creando experiencias interactivas innovadoras.
         </p>
         
         <div class="service-features">
           <div class="feature">
             <div class="feature-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                <path d="M3 3v18h18"></path>
+                <path d="M18.4 9.6L8.3 15"></path>
+                <path d="m2 16 2.9-1.2L7 18l2.1-5.7L14 10"></path>
+                <circle cx="18" cy="6" r="3"></circle>
               </svg>
             </div>
-            <div class="feature-text">Digitalización</div>
+            <div class="feature-text">Sensores</div>
           </div>
           
           <div class="feature">
             <div class="feature-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 5V3"></path>
+                <path d="M12 21v-2"></path>
+                <path d="M16 12h2"></path>
+                <path d="M6 12h2"></path>
               </svg>
             </div>
             <div class="feature-text">Automatización</div>
@@ -46,9 +55,9 @@
           <div class="feature">
             <div class="feature-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 3h6v6"></path>
-                <path d="M10 14L21 3"></path>
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
             </div>
             <div class="feature-text">Integración</div>
@@ -56,12 +65,13 @@
         </div>
         
         <div class="service-tags">
-          <span class="tag">Workflow</span>
-          <span class="tag">Procesos</span>
-          <span class="tag">Automatización</span>
+          <span class="tag">Sensores</span>
+          <span class="tag">Hardware</span>
+          <span class="tag">Monitoreo</span>
+          <span class="tag">Smart Systems</span>
         </div>
         
-        <a href="/servicios/transformacion" class="service-link">
+        <a href="/servicios/iot" class="service-link">
           <span class="link-text">Conocer más</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -74,13 +84,13 @@
   
   <style>
     /* Variables y estilos base */
-    .transformacion-card {
-      --slide-color: var(--blue);
-      --highlight-color: #4287ff;
-      --lowlight-color: rgba(66, 135, 255, 0.5);
-      --bg-glow: rgba(66, 135, 255, 0.1);
+    .iot-card {
+      --slide-color: var(--orange);
+      --highlight-color: #ff7842;
+      --lowlight-color: rgba(255, 120, 66, 0.5);
+      --bg-glow: rgba(255, 120, 66, 0.1);
       --text-color: rgba(255, 255, 255, 0.9);
-      --border-color: rgba(66, 135, 255, 0.3);
+      --border-color: rgba(255, 120, 66, 0.3);
       
       width: 100%;
       box-sizing: border-box;
@@ -94,7 +104,7 @@
       padding: 2.5rem;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(66, 135, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 120, 66, 0.1);
     }
     
     .card-content::before {
@@ -126,7 +136,7 @@
       width: 70px;
       height: 70px;
       border-radius: 12px;
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(255, 120, 66, 0.1);
       border: 2px solid var(--border-color);
       display: flex;
       align-items: center;
@@ -234,8 +244,8 @@
     }
     
     .feature {
-      background: rgba(66, 135, 255, 0.05);
-      border: 1px solid rgba(66, 135, 255, 0.2);
+      background: rgba(255, 120, 66, 0.05);
+      border: 1px solid rgba(255, 120, 66, 0.2);
       border-radius: 8px;
       padding: 1rem;
       display: flex;
@@ -246,7 +256,7 @@
     }
     
     .feature:hover {
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(255, 120, 66, 0.1);
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
@@ -273,7 +283,7 @@
     }
     
     .tag {
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(255, 120, 66, 0.1);
       border: 1px solid var(--border-color);
       border-radius: 20px;
       padding: 0.5rem 1rem;
@@ -284,9 +294,9 @@
     }
     
     .tag:hover {
-      background: rgba(66, 135, 255, 0.2);
+      background: rgba(255, 120, 66, 0.2);
       transform: translateY(-3px);
-      box-shadow: 0 3px 10px rgba(66, 135, 255, 0.3);
+      box-shadow: 0 3px 10px rgba(255, 120, 66, 0.3);
     }
     
     /* Enlace de servicio */
@@ -294,7 +304,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(255, 120, 66, 0.1);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 1rem 1.5rem;
@@ -324,7 +334,7 @@
       background: var(--highlight-color);
       color: white;
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(66, 135, 255, 0.5);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 120, 66, 0.5);
     }
     
     .service-link:hover::before {

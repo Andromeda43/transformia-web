@@ -1,0 +1,543 @@
+---
+// SolucionesTabCards.astro - Sistema de tabs y cards que reemplaza al carrusel
+import DesarrolloSlide from './CarouselSlides/DesarrolloSlide.astro';
+import TransformacionSlide from './CarouselSlides/TransformacionSlide.astro';
+import InteligenciaSlide from './CarouselSlides/InteligenciaSlide.astro';
+import AsesoriaSlide from './CarouselSlides/AsesoriaSlide.astro';
+import IoTSlide from './CarouselSlides/IoTSlide.astro';
+import ArquitecturaSlide from './CarouselSlides/ArquitecturaSlide.astro';
+import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
+---
+
+<div class="tab-cards-container">
+  <!-- Panel de navegación con tabs -->
+  <div class="tabs-container">
+    <div class="tabs-nav">
+      <button class="tab-button active" data-index="0">
+        <div class="tab-glow"></div>
+        <div class="tab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <span class="tab-label">Desarrollo</span>
+      </button>
+      
+      <button class="tab-button" data-index="1">
+        <div class="tab-glow"></div>
+        <div class="tab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.5C21 17.1944 17.1944 21 12.5 21C7.80558 21 4 17.1944 4 12.5C4 7.80558 7.80558 4 12.5 4C15.6256 4 18.3395 5.70178 19.8024 8.2"></path>
+            <path d="M22 7V3H18"></path>
+            <path d="M18 9L22 5"></path>
+          </svg>
+        </div>
+        <span class="tab-label">Transformación</span>
+      </button>
+      
+      <button class="tab-button" data-index="2">
+        <div class="tab-glow"></div>
+        <div class="tab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <span class="tab-label">Inteligencia</span>
+      </button>
+      
+      <button class="tab-button" data-index="3">
+        <div class="tab-glow"></div>
+        <div class="tab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <span class="tab-label">Asesoría</span>
+      </button>
+      
+      <button class="tab-button" data-index="4">
+        <div class="tab-glow"></div>
+        <div class="tab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.5 6.5h11v11h-11z"></path>
+            <path d="M5 5L2 2"></path>
+            <path d="M19 5l3-3"></path>
+            <path d="M5 19l-3 3"></path>
+            <path d="M19 19l3 3"></path>
+          </svg>
+        </div>
+        <span class="tab-label">IoT</span>
+      </button>
+      
+      <button class="tab-button" data-index="5">
+        <div class="tab-glow"></div>
+        <div class="tab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
+        </div>
+        <span class="tab-label">Arquitectura</span>
+      </button>
+      
+      <button class="tab-button" data-index="6">
+        <div class="tab-glow"></div>
+        <div class="tab-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+        </div>
+        <span class="tab-label">Bases de Datos</span>
+      </button>
+    </div>
+    
+    <div class="tab-indicator-container">
+      <div class="tab-indicator"></div>
+    </div>
+  </div>
+  
+  <!-- Contenedor de las cards -->
+  <div class="cards-container">
+    <div class="cards-wrapper">
+      <div class="card active" data-index="0">
+        <DesarrolloSlide />
+      </div>
+      
+      <div class="card" data-index="1">
+        <TransformacionSlide />
+      </div>
+      
+      <div class="card" data-index="2">
+        <InteligenciaSlide />
+      </div>
+      
+      <div class="card" data-index="3">
+        <AsesoriaSlide />
+      </div>
+      
+      <div class="card" data-index="4">
+        <IoTSlide />
+      </div>
+      
+      <div class="card" data-index="5">
+        <ArquitecturaSlide />
+      </div>
+      
+      <div class="card" data-index="6">
+        <DatabaseSlide />
+      </div>
+    </div>
+  </div>
+  
+  <!-- Indicador móvil de páginas -->
+  <div class="mobile-indicators">
+    <span class="indicator active" data-index="0"></span>
+    <span class="indicator" data-index="1"></span>
+    <span class="indicator" data-index="2"></span>
+    <span class="indicator" data-index="3"></span>
+    <span class="indicator" data-index="4"></span>
+    <span class="indicator" data-index="5"></span>
+    <span class="indicator" data-index="6"></span>
+  </div>
+</div>
+
+<style>
+  /* Variables y estilos base */
+  :root {
+    --purple: #b042ff;
+    --blue: #4287ff;
+    --pink: #ff42b0;
+    --yellow: #e8ff42;
+    --dark-bg: #0a0a14;
+    --dark-purple: #1a142d;
+  }
+  
+  .tab-cards-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  
+  /* Panel de navegación con tabs */
+  .tabs-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .tabs-nav {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: rgba(20, 20, 40, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(176, 66, 255, 0.3);
+    border-radius: 12px;
+    padding: 0.75rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .tab-button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+    border-radius: 8px;
+  }
+  
+  .tab-button.active, .tab-button:hover {
+    color: white;
+  }
+  
+  .tab-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(176, 66, 255, 0.1);
+    border-radius: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+  
+  .tab-button.active .tab-glow {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.3);
+  }
+  
+  .tab-label {
+    font-size: 0.8rem;
+    font-weight: 700; /* Más legible */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    line-height: 1.2;
+    letter-spacing: 0.5px; /* Mejor legibilidad */
+  }
+  
+  .tab-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3)); /* Sombra sutil */
+  }
+  
+  .tab-button:nth-child(1) .tab-glow,
+  .tab-button:nth-child(1).active .tab-icon {
+    color: var(--purple);
+  }
+  
+  .tab-button:nth-child(2) .tab-glow,
+  .tab-button:nth-child(2).active .tab-icon {
+    color: var(--blue);
+  }
+  
+  .tab-button:nth-child(3) .tab-glow,
+  .tab-button:nth-child(3).active .tab-icon {
+    color: var(--pink);
+  }
+  
+  .tab-button:nth-child(5) .tab-glow,
+  .tab-button:nth-child(5).active .tab-icon {
+    color: #ff7842;
+  }
+  
+  .tab-button:nth-child(6) .tab-glow,
+  .tab-button:nth-child(6).active .tab-icon {
+    color: #42ff9d;
+  }
+  
+  .tab-button:nth-child(7) .tab-glow,
+  .tab-button:nth-child(7).active .tab-icon {
+    color: #42e8ff;
+  }
+  
+  .tab-indicator-container {
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 4px;
+    z-index: 1;
+  }
+  
+  .tab-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0; /* Se ajustará con JavaScript */
+    height: 4px;
+    width: calc(100% / 7 - 15px); /* Ancho inicial */
+    background-color: var(--purple); /* Color inicial */
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.7);
+  }
+  
+  /* Contenedor de las cards */
+  .cards-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cards-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+  }
+  
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    visibility: hidden;
+  }
+  
+  .card.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    visibility: visible;
+  }
+  
+  /* Indicador móvil */
+  .mobile-indicators {
+    display: none;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .indicator.active:nth-child(1) {
+    background: var(--purple);
+    box-shadow: 0 0 8px var(--purple);
+  }
+  
+  .indicator.active:nth-child(2) {
+    background: var(--blue);
+    box-shadow: 0 0 8px var(--blue);
+  }
+  
+  .indicator.active:nth-child(3) {
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+  }
+  
+  .indicator.active:nth-child(4) {
+    background: var(--yellow);
+    box-shadow: 0 0 8px var(--yellow);
+  }
+  
+  .indicator.active:nth-child(5) {
+    background: #ff7842;
+    box-shadow: 0 0 8px #ff7842;
+  }
+  
+  .indicator.active:nth-child(6) {
+    background: #42ff9d;
+    box-shadow: 0 0 8px #42ff9d;
+  }
+  
+  .indicator.active:nth-child(7) {
+    background: #42e8ff;
+    box-shadow: 0 0 8px #42e8ff;
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .tabs-nav {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 0.75rem;
+    }
+    
+    .tab-indicator {
+      display: none;
+    }
+    
+    .card.active {
+      min-height: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tab-cards-container {
+      gap: 1.5rem;
+    }
+    
+    .tabs-container {
+      max-width: 100%;
+    }
+    
+    .tabs-nav {
+      padding: 0.5rem;
+    }
+    
+    .tab-button {
+      padding: 0.75rem 0.25rem;
+      font-size: 0.8rem;
+    }
+    
+    .mobile-indicators {
+      display: flex;
+    }
+    
+    .cards-wrapper {
+      min-height: auto;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .tab-button {
+      font-size: 0.75rem;
+    }
+    
+    .tab-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const cards = document.querySelectorAll('.card');
+    const indicators = document.querySelectorAll('.indicator');
+    const tabIndicator = document.querySelector('.tab-indicator');
+    
+    // Función para actualizar el tab y card activos
+    function updateActiveTab(index: number) {
+      // Actualizar botones tab
+      tabButtons.forEach((btn, idx) => {
+        if (idx === index) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      // Actualizar cards
+      cards.forEach((card, idx) => {
+        if (idx === index) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+      
+      // Actualizar indicadores móviles
+      indicators.forEach((ind, idx) => {
+        if (idx === index) {
+          ind.classList.add('active');
+        } else {
+          ind.classList.remove('active');
+        }
+      });
+      
+      // Actualizar posición del indicador de tabs
+      if (tabIndicator) {
+        // Ajustar color y posición según el tab seleccionado
+        const colors = ['#b042ff', '#4287ff', '#ff42b0', '#e8ff42'];
+        const tabElem = tabIndicator as HTMLElement;
+        tabElem.style.left = `${(index * 25)}%`;
+        tabElem.style.backgroundColor = colors[index];
+        tabElem.style.boxShadow = `0 0 10px ${colors[index]}`;
+      }
+    }
+    
+    // Eventos para botones de tab
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        updateActiveTab(index);
+      });
+    });
+    
+    // Eventos para indicadores móviles
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        updateActiveTab(index);
+      });
+    });
+    
+    // Soporte para navegación con swipe
+    const cardsContainer = document.querySelector('.cards-container');
+    if (cardsContainer) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      cardsContainer.addEventListener('touchstart', (e) => {
+        if (e instanceof TouchEvent) {
+          touchStartX = e.changedTouches[0].screenX;
+        }
+      }, { passive: true });
+      
+      cardsContainer.addEventListener('touchend', (e) => {
+        if (e instanceof TouchEvent) {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }
+      }, { passive: true });
+      
+      function handleSwipe() {
+        const activeIndex = Array.from(cards).findIndex(card => card.classList.contains('active'));
+        const swipeThreshold = 50;
+        
+        if (touchEndX < touchStartX - swipeThreshold && activeIndex < cards.length - 1) {
+          // Swipe izquierda - Siguiente card
+          updateActiveTab(activeIndex + 1);
+        }
+        
+        if (touchEndX > touchStartX + swipeThreshold && activeIndex > 0) {
+          // Swipe derecha - Card anterior
+          updateActiveTab(activeIndex - 1);
+        }
+      }
+    }
+  });
+</script>

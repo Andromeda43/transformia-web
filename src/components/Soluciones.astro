@@ -1,6 +1,6 @@
 ---
-// Componente principal de Soluciones que integra el carrusel y sus slides
-import SolucionesCarousel from './SolucionesComponents/SolucionesCarousel.astro';
+// Componente principal de Soluciones que integra el sistema de tabs y cards
+import SolucionesTabCards from './SolucionesComponents/SolucionesTabCards.astro';
 ---
 
 <section id="soluciones" class="soluciones-section">
@@ -36,9 +36,9 @@ import SolucionesCarousel from './SolucionesComponents/SolucionesCarousel.astro'
       </p>
     </div>
     
-    <!-- Componente de Carrusel -->
-    <div class="carousel-wrapper">
-      <SolucionesCarousel />
+    <!-- Componente de Tabs y Cards -->
+    <div class="tab-cards-wrapper">
+      <SolucionesTabCards />
     </div>
   </div>
   
@@ -270,8 +270,8 @@ import SolucionesCarousel from './SolucionesComponents/SolucionesCarousel.astro'
     font-family: var(--font-sans);
   }
   
-  /* Wrapper del carrusel */
-  .carousel-wrapper {
+  /* Wrapper del nuevo sistema de tabs y cards */
+  .tab-cards-wrapper {
     position: relative;
     z-index: 10;
     margin-top: 3rem;
@@ -439,4 +439,3 @@ import SolucionesCarousel from './SolucionesComponents/SolucionesCarousel.astro'
       margin: 0 0.25rem;
     }
   }
-</style>

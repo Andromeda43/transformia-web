@@ -1,67 +1,67 @@
 ---
-// TransformacionSlide.astro - Slide actualizado de Transformación Digital
+// DatabaseSlide.astro - Slide para Gestión y Administración de Bases de Datos
 ---
 
-<div class="transformacion-card">
+<div class="database-card">
     <div class="card-content">
       <!-- Panel de información -->
       <div class="info-panel">
         <div class="service-header">
           <div class="service-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.5C21 17.1944 17.1944 21 12.5 21C7.80558 21 4 17.1944 4 12.5C4 7.80558 7.80558 4 12.5 4C15.6256 4 18.3395 5.70178 19.8024 8.2"></path>
-              <path d="M22 7V3H18"></path>
-              <path d="M18 9L22 5"></path>
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
             </svg>
             <div class="icon-pulse"></div>
           </div>
-          <h3 class="service-title">TRANSFORMACIÓN DIGITAL Y AUTOMATIZACIÓN</h3>
+          <h3 class="service-title">GESTIÓN DE BASES DE DATOS</h3>
         </div>
         
         <p class="service-description">
-          Modernizamos tus procesos analógicos, eliminando tareas repetitivas y potenciando la productividad de tu equipo con tecnologías avanzadas.
+          Diseñamos, implementamos y optimizamos soluciones de almacenamiento de datos SQL y NoSQL, garantizando rendimiento, seguridad y escalabilidad para gestionar eficientemente grandes volúmenes de información.
         </p>
         
         <div class="service-features">
           <div class="feature">
             <div class="feature-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
               </svg>
             </div>
-            <div class="feature-text">Digitalización</div>
+            <div class="feature-text">SQL</div>
           </div>
           
           <div class="feature">
             <div class="feature-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                <path d="M21 7 12 3 3 7l9 4 9-4Z"></path>
+                <path d="m21 13-9-4-9 4 9 4 9-4Z"></path>
+                <path d="m21 19-9-4-9 4 9 4 9-4Z"></path>
               </svg>
             </div>
-            <div class="feature-text">Automatización</div>
+            <div class="feature-text">NoSQL</div>
           </div>
           
           <div class="feature">
             <div class="feature-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 3h6v6"></path>
-                <path d="M10 14L21 3"></path>
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <path d="M12 2a10 10 0 1 0 10 10H12V2Z"></path>
+                <path d="M21.2 8A10 10 0 0 0 17.6 4"></path>
               </svg>
             </div>
-            <div class="feature-text">Integración</div>
+            <div class="feature-text">Optimización</div>
           </div>
         </div>
         
         <div class="service-tags">
-          <span class="tag">Workflow</span>
-          <span class="tag">Procesos</span>
-          <span class="tag">Automatización</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Data Modeling</span>
         </div>
         
-        <a href="/servicios/transformacion" class="service-link">
+        <a href="/servicios/database" class="service-link">
           <span class="link-text">Conocer más</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -74,13 +74,13 @@
   
   <style>
     /* Variables y estilos base */
-    .transformacion-card {
-      --slide-color: var(--blue);
-      --highlight-color: #4287ff;
-      --lowlight-color: rgba(66, 135, 255, 0.5);
-      --bg-glow: rgba(66, 135, 255, 0.1);
+    .database-card {
+      --slide-color: var(--aqua);
+      --highlight-color: #42e8ff;
+      --lowlight-color: rgba(66, 232, 255, 0.5);
+      --bg-glow: rgba(66, 232, 255, 0.1);
       --text-color: rgba(255, 255, 255, 0.9);
-      --border-color: rgba(66, 135, 255, 0.3);
+      --border-color: rgba(66, 232, 255, 0.3);
       
       width: 100%;
       box-sizing: border-box;
@@ -94,7 +94,7 @@
       padding: 2.5rem;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(66, 135, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(66, 232, 255, 0.1);
     }
     
     .card-content::before {
@@ -126,7 +126,7 @@
       width: 70px;
       height: 70px;
       border-radius: 12px;
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(66, 232, 255, 0.1);
       border: 2px solid var(--border-color);
       display: flex;
       align-items: center;
@@ -175,7 +175,7 @@
       line-height: 1.3;
       margin-bottom: 1.5rem;
       text-shadow: 
-        0 0 2px rgba(255, 255, 255, 0.4),
+        0 0 2px rgba(20, 20, 40, 0.4),
         0 0 8px var(--highlight-color);
       animation: subtle-glow 3s ease-in-out infinite alternate;
       letter-spacing: 0.5px;
@@ -196,12 +196,12 @@
     @keyframes subtle-glow {
       from {
         text-shadow: 
-          0 0 2px rgba(255, 255, 255, 0.4),
+          0 0 2px rgba(20, 20, 40, 0.4),
           0 0 8px var(--highlight-color);
       }
       to {
         text-shadow: 
-          0 0 2px rgba(255, 255, 255, 0.7),
+          0 0 2px rgba(20, 20, 40, 0.6),
           0 0 12px var(--highlight-color);
       }
     }
@@ -234,8 +234,8 @@
     }
     
     .feature {
-      background: rgba(66, 135, 255, 0.05);
-      border: 1px solid rgba(66, 135, 255, 0.2);
+      background: rgba(66, 232, 255, 0.05);
+      border: 1px solid rgba(66, 232, 255, 0.2);
       border-radius: 8px;
       padding: 1rem;
       display: flex;
@@ -246,7 +246,7 @@
     }
     
     .feature:hover {
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(66, 232, 255, 0.1);
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
@@ -273,7 +273,7 @@
     }
     
     .tag {
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(66, 232, 255, 0.1);
       border: 1px solid var(--border-color);
       border-radius: 20px;
       padding: 0.5rem 1rem;
@@ -284,9 +284,9 @@
     }
     
     .tag:hover {
-      background: rgba(66, 135, 255, 0.2);
+      background: rgba(66, 232, 255, 0.2);
       transform: translateY(-3px);
-      box-shadow: 0 3px 10px rgba(66, 135, 255, 0.3);
+      box-shadow: 0 3px 10px rgba(66, 232, 255, 0.3);
     }
     
     /* Enlace de servicio */
@@ -294,7 +294,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(66, 135, 255, 0.1);
+      background: rgba(66, 232, 255, 0.1);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 1rem 1.5rem;
@@ -322,9 +322,9 @@
     
     .service-link:hover {
       background: var(--highlight-color);
-      color: white;
+      color: rgba(20, 20, 40, 1);
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(66, 135, 255, 0.5);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(66, 232, 255, 0.5);
     }
     
     .service-link:hover::before {
