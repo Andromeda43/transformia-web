@@ -27,10 +27,15 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
       <button class="tab-button" data-index="1">
         <div class="tab-glow"></div>
         <div class="tab-icon">
+          <!-- Icono actualizado para coincidir con el slide principal -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.5C21 17.1944 17.1944 21 12.5 21C7.80558 21 4 17.1944 4 12.5C4 7.80558 7.80558 4 12.5 4C15.6256 4 18.3395 5.70178 19.8024 8.2"></path>
-            <path d="M22 7V3H18"></path>
-            <path d="M18 9L22 5"></path>
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <path d="M3.29 7L12 12l8.71-5"></path>
+            <line x1="12" y1="22" x2="12" y2="12"></line>
+            <path d="M7 3.5v5" stroke-dasharray="1 1"></path>
+            <path d="M17 3.5v5" stroke-dasharray="1 1"></path>
+            <path d="M7 14v4" stroke-dasharray="1 1"></path>
+            <path d="M17 14v4" stroke-dasharray="1 1"></path>
           </svg>
         </div>
         <span class="tab-label">Transformación</span>
@@ -39,10 +44,11 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
       <button class="tab-button" data-index="2">
         <div class="tab-glow"></div>
         <div class="tab-icon">
+          <!-- Icono simplificado para Inteligencia Artificial -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M8 12l4-4 4 4"></path>
           </svg>
         </div>
         <span class="tab-label">Inteligencia</span>
@@ -99,9 +105,8 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
         </div>
         <span class="tab-label">Bases de Datos</span>
       </button>
-    </div>
-    
-    <div class="tab-indicator-container">
+      
+      <!-- Movido el indicador dentro del tabs-nav para asegurar que esté por encima -->
       <div class="tab-indicator"></div>
     </div>
   </div>
@@ -158,6 +163,9 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
     --blue: #4287ff;
     --pink: #ff42b0;
     --yellow: #e8ff42;
+    --orange: #ff7842;
+    --green: #42ff9d;
+    --aqua: #42e8ff;
     --dark-bg: #0a0a14;
     --dark-purple: #1a142d;
   }
@@ -174,9 +182,12 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
   /* Panel de navegación con tabs */
   .tabs-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px; /* Aumentado de 800px a 900px para dar más espacio */
     margin: 0 auto;
     position: relative;
+    padding-bottom: 5px; /* Reducido de 10px a 5px */
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
   }
   
   .tabs-nav {
@@ -186,9 +197,13 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
     backdrop-filter: blur(10px);
     border: 1px solid rgba(176, 66, 255, 0.3);
     border-radius: 12px;
-    padding: 0.75rem;
+    padding: 0.75rem 1.25rem; /* Aumentado el padding horizontal de 0.75rem a 1.25rem */
     position: relative;
     z-index: 2;
+    column-gap: 0.75rem; /* Añadido gap entre columnas */
+    min-width: max-content; /* Evita que los elementos se compriman demasiado */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
   }
   
   .tab-button {
@@ -198,7 +213,8 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
     font-family: var(--font-mono);
     font-size: 0.9rem;
     font-weight: 600;
-    padding: 1rem 0.5rem;
+    padding: 1rem 0.25rem; /* Ajustado padding horizontal para balance */
+    margin: 0 0.15rem; /* Añadido margen horizontal para separación adicional */
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -268,40 +284,38 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
     color: var(--pink);
   }
   
+  .tab-button:nth-child(4) .tab-glow,
+  .tab-button:nth-child(4).active .tab-icon {
+    color: var(--yellow);
+  }
+  
   .tab-button:nth-child(5) .tab-glow,
   .tab-button:nth-child(5).active .tab-icon {
-    color: #ff7842;
+    color: var(--orange);
   }
   
   .tab-button:nth-child(6) .tab-glow,
   .tab-button:nth-child(6).active .tab-icon {
-    color: #42ff9d;
+    color: var(--green);
   }
   
   .tab-button:nth-child(7) .tab-glow,
   .tab-button:nth-child(7).active .tab-icon {
-    color: #42e8ff;
+    color: var(--aqua);
   }
   
-  .tab-indicator-container {
-    position: absolute;
-    bottom: 0;
-    left: 1.5rem;
-    right: 1.5rem;
-    height: 4px;
-    z-index: 1;
-  }
-  
+  /* Indicador de tabs */  
   .tab-indicator {
     position: absolute;
     bottom: 0;
     left: 0; /* Se ajustará con JavaScript */
     height: 4px;
-    width: calc(100% / 7 - 15px); /* Ancho inicial */
+    width: calc(100% / 7); /* Ancho inicial */
     background-color: var(--purple); /* Color inicial */
     border-radius: 4px;
     transition: all 0.4s ease;
     box-shadow: 0 0 15px rgba(176, 66, 255, 0.7);
+    z-index: 10; /* Aseguramos que esté por encima */
   }
   
   /* Contenedor de las cards */
@@ -374,26 +388,34 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
   }
   
   .indicator.active:nth-child(5) {
-    background: #ff7842;
-    box-shadow: 0 0 8px #ff7842;
+    background: var(--orange);
+    box-shadow: 0 0 8px var(--orange);
   }
   
   .indicator.active:nth-child(6) {
-    background: #42ff9d;
-    box-shadow: 0 0 8px #42ff9d;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
   }
   
   .indicator.active:nth-child(7) {
-    background: #42e8ff;
-    box-shadow: 0 0 8px #42e8ff;
+    background: var(--aqua);
+    box-shadow: 0 0 8px var(--aqua);
   }
   
   /* Responsive */
   @media (max-width: 992px) {
+    .tabs-container {
+      max-width: 100%;
+    }
+    
     .tabs-nav {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, auto);
-      gap: 0.75rem;
+      grid-template-columns: repeat(7, auto); /* Cambiado de 4fr a auto para mejor adaptación */
+      gap: 0.5rem; /* Ajustado de 1rem a 0.5rem */
+      padding: 0.75rem; /* Ajustado de 1rem a 0.75rem */
+    }
+    
+    .tab-button {
+      min-width: 80px; /* Asegura un ancho mínimo para cada botón */
     }
     
     .tab-indicator {
@@ -412,15 +434,49 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
     
     .tabs-container {
       max-width: 100%;
+      /* Habilitamos scroll horizontal solo en pantallas medianas y pequeñas */
+      overflow-x: auto;
+      scrollbar-width: thin; /* Para Firefox */
+      scrollbar-color: rgba(176, 66, 255, 0.5) rgba(20, 20, 40, 0.3); /* Para Firefox */
+      padding-bottom: 10px; /* Espacio para el scrollbar */
+      -webkit-overflow-scrolling: touch; /* Desplazamiento suave en iOS */
+      justify-content: flex-start; /* Cambiado para el comportamiento correcto con scroll */
+    }
+    
+    .tabs-container::-webkit-scrollbar {
+      height: 6px; /* Altura del scrollbar */
+    }
+    
+    .tabs-container::-webkit-scrollbar-track {
+      background: rgba(20, 20, 40, 0.3);
+      border-radius: 10px;
+    }
+    
+    .tabs-container::-webkit-scrollbar-thumb {
+      background-color: rgba(176, 66, 255, 0.5);
+      border-radius: 10px;
     }
     
     .tabs-nav {
-      padding: 0.5rem;
+      padding: 0.6rem; /* Ajustado de 0.8rem a 0.6rem */
+      column-gap: 0.4rem; /* Reducido de 0.5rem a 0.4rem */
+      min-width: max-content; /* Asegura que todos los elementos estén visibles */
     }
     
     .tab-button {
-      padding: 0.75rem 0.25rem;
-      font-size: 0.8rem;
+      padding: 0.75rem 0.2rem; /* Reducido padding horizontal */
+      margin: 0;
+      font-size: 0.75rem; /* Reducido de 0.8rem a 0.75rem */
+      min-width: 70px; /* Menor ancho mínimo para pantallas más pequeñas */
+    }
+    
+    .tab-icon {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .tab-label {
+      font-size: 0.7rem; /* Reducido tamaño de fuente */
     }
     
     .mobile-indicators {
@@ -434,12 +490,41 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
   
   @media (max-width: 576px) {
     .tab-button {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+      padding: 0.6rem 0.15rem;
+      min-width: 65px;
     }
     
     .tab-icon {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
+    }
+    
+    .tab-label {
+      font-size: 0.65rem;
+      margin-top: 0.3rem;
+    }
+    
+    .tabs-nav {
+      padding: 0.5rem 0.4rem;
+      column-gap: 0.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .tabs-container {
+      padding-bottom: 10px;
+    }
+    
+    .tabs-nav {
+      min-width: 700px; /* Ancho mínimo para asegurar que todos los elementos sean visibles */
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.25rem;
+      padding: 0.5rem 0.3rem;
+    }
+    
+    .tab-button {
+      min-width: 60px;
     }
   }
 </style>
@@ -450,6 +535,17 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
     const cards = document.querySelectorAll('.card');
     const indicators = document.querySelectorAll('.indicator');
     const tabIndicator = document.querySelector('.tab-indicator');
+    
+    // Colores para todos los tabs (uno por tab)
+    const colors = [
+      '#b042ff', // purple - Desarrollo
+      '#4287ff', // blue - Transformación
+      '#ff42b0', // pink - Inteligencia
+      '#e8ff42', // yellow - Asesoría
+      '#ff7842', // orange - IoT
+      '#42ff9d', // green - Arquitectura
+      '#42e8ff'  // aqua - Bases de Datos
+    ];
     
     // Función para actualizar el tab y card activos
     function updateActiveTab(index: number) {
@@ -480,15 +576,70 @@ import DatabaseSlide from './CarouselSlides/DatabaseSlide.astro';
         }
       });
       
-      // Actualizar posición del indicador de tabs
+      // Actualizar posición y color del indicador de tabs
       if (tabIndicator) {
-        // Ajustar color y posición según el tab seleccionado
-        const colors = ['#b042ff', '#4287ff', '#ff42b0', '#e8ff42'];
-        const tabElem = tabIndicator as HTMLElement;
-        tabElem.style.left = `${(index * 25)}%`;
-        tabElem.style.backgroundColor = colors[index];
-        tabElem.style.boxShadow = `0 0 10px ${colors[index]}`;
+        const activeTab = tabButtons[index];
+        
+        // Si estamos en modo escritorio (no grid de 4 columnas)
+        if (window.innerWidth > 992) {
+          // Obtener la posición y dimensiones del botón activo
+          const tabRect = activeTab.getBoundingClientRect();
+          const tabsNav = document.querySelector('.tabs-nav');
+          
+          if (tabsNav) {
+            const navRect = tabsNav.getBoundingClientRect();
+            
+            // Calcular la posición relativa y el ancho
+            const leftPosition = tabRect.left - navRect.left;
+            
+            // Aplicar posición y ancho
+            (tabIndicator as HTMLElement).style.left = `${leftPosition}px`;
+            (tabIndicator as HTMLElement).style.width = `${tabRect.width}px`;
+          }
+        }
+        
+        // Establecer color según el tab seleccionado
+        (tabIndicator as HTMLElement).style.backgroundColor = colors[index];
+        (tabIndicator as HTMLElement).style.boxShadow = `0 0 15px ${colors[index]}`;
       }
+    }
+    
+    // Inicializar posición del indicador al cargar la página
+    if (tabIndicator) {
+      window.addEventListener('load', () => {
+        // El tab inicial activo es el primero (índice 0)
+        const activeTab = tabButtons[0];
+        const tabsNav = document.querySelector('.tabs-nav');
+        
+        if (window.innerWidth > 992 && tabsNav) {
+          const tabRect = activeTab.getBoundingClientRect();
+          const navRect = tabsNav.getBoundingClientRect();
+          const leftPosition = tabRect.left - navRect.left;
+          
+          (tabIndicator as HTMLElement).style.left = `${leftPosition}px`;
+          (tabIndicator as HTMLElement).style.width = `${tabRect.width}px`;
+        }
+      });
+      
+      // Actualizar posición al cambiar el tamaño de la ventana
+      window.addEventListener('resize', () => {
+        // Encontrar el índice del tab activo actual
+        const activeIndex = Array.from(tabButtons).findIndex(tab => tab.classList.contains('active'));
+        
+        if (activeIndex >= 0 && window.innerWidth > 992) {
+          const activeTab = tabButtons[activeIndex];
+          const tabsNav = document.querySelector('.tabs-nav');
+          
+          if (tabsNav) {
+            const tabRect = activeTab.getBoundingClientRect();
+            const navRect = tabsNav.getBoundingClientRect();
+            const leftPosition = tabRect.left - navRect.left;
+            
+            (tabIndicator as HTMLElement).style.left = `${leftPosition}px`;
+            (tabIndicator as HTMLElement).style.width = `${tabRect.width}px`;
+          }
+        }
+      });
     }
     
     // Eventos para botones de tab
