@@ -1,11 +1,12 @@
 ---
-// DesarrolloSlide.astro - Slide de Desarrollo de Software
+// DesarrolloSlide.astro - Slide de Desarrollo de Software (Rediseñado y corregido)
 ---
 
 <div class="desarrollo-slide">
     <div class="slide-content">
-      <div class="slide-info">
-        <div class="slide-header">
+      <!-- Panel de información -->
+      <div class="info-panel">
+        <div class="service-header">
           <div class="service-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="16 18 22 12 16 6"></polyline>
@@ -13,11 +14,10 @@
             </svg>
             <div class="icon-pulse"></div>
           </div>
-          
-          <h3 class="slide-title">DESARROLLO DE SOFTWARE A MEDIDA</h3>
+          <h3 class="service-title">DESARROLLO DE SOFTWARE A MEDIDA</h3>
         </div>
         
-        <p class="slide-description">
+        <p class="service-description">
           Creamos aplicaciones personalizadas que resuelven tus problemas específicos, optimizando procesos y mejorando la experiencia de usuario.
         </p>
         
@@ -36,108 +36,208 @@
         </a>
       </div>
       
-      <!-- Animación interactiva: IDE con código -->
-      <div class="animation-container">
-        <div class="code-editor">
-          <div class="editor-header">
-            <div class="editor-controls">
-              <span class="control red"></span>
-              <span class="control yellow"></span>
-              <span class="control green"></span>
+      <!-- Visualización interactiva - Solo visible en desktop -->
+      <div class="visualization">
+        <!-- Área de código -->
+        <div class="code-area">
+          <div class="editor-frame">
+            <div class="editor-header">
+              <div class="window-controls">
+                <span class="control red"></span>
+                <span class="control yellow"></span>
+                <span class="control green"></span>
+              </div>
+              <div class="file-tab">app.tsx</div>
+              <div class="editor-options">
+                <span class="option"></span>
+                <span class="option"></span>
+              </div>
             </div>
-            <div class="editor-title">app.js</div>
-            <div class="editor-actions">
-              <span class="action"></span>
-              <span class="action"></span>
+            
+            <div class="editor-body">
+              <div class="line-numbers">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+              </div>
+              
+              <div class="code-content">
+                <div class="code-line">
+                  <span class="keyword">import</span> 
+                  <span class="standard">React from 'react';</span>
+                </div>
+                
+                <div class="code-line">
+                  <span class="keyword">import</span> 
+                  <span class="standard">&#123; getData &#125; from './utils';</span>
+                </div>
+                
+                <div class="code-line empty-line"></div>
+                
+                <div class="code-line">
+                  <span class="keyword">const</span> 
+                  <span class="function">AppSolution</span> = () => {
+                </div>
+                
+                <div class="code-line indented">
+                  <span class="keyword">const</span> 
+                  <span class="square-brackets">[</span>data, setData<span class="square-brackets">]</span> = 
+                  <span class="standard">React.useState([]);</span>
+                </div>
+                
+                <div class="code-line indented typing-line">
+                  <span class="keyword">const</span> 
+                  <span class="square-brackets">[</span>loading, setLoading<span class="square-brackets">]</span> = 
+                  <span class="standard">React.useState(</span>
+                  <span class="boolean">false</span>);
+                </div>
+                
+                <div class="code-line indented blurred-line">
+                  <span class="keyword">const</span> 
+                  <span class="square-brackets">[</span>optimized, setOptimized<span class="square-brackets">]</span> = 
+                  <span class="standard">React.useState(</span>
+                  <span class="boolean">true</span>);
+                </div>
+                
+                <div class="code-line blurred-line">}</div>
+                
+                <div class="code-line empty-line blurred-line"></div>
+                
+                <div class="code-line blurred-line">
+                  <span class="keyword">export default</span> 
+                  <span class="standard">AppSolution</span>;
+                </div>
+              </div>
+            </div>
+            
+            <div class="cursor"></div>
+          </div>
+          
+          <!-- Ventana de terminal/consola -->
+          <div class="terminal">
+            <div class="terminal-header">
+              <span>Terminal</span>
+            </div>
+            <div class="terminal-content">
+              <div class="terminal-line">$ npm run start</div>
+              <div class="terminal-line success">✓ Compiled successfully!</div>
+              <div class="terminal-line">Starting development server...</div>
+              <div class="terminal-line active">Ready on http://localhost:3000</div>
             </div>
           </div>
-          <div class="editor-body">
-            <div class="line-numbers">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-              <span>6</span>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-              <span>11</span>
-              <span>12</span>
-            </div>
-            <div class="code-content">
-              <div class="code-line"><span class="keyword">import</span> <span class="variable">React</span> <span class="keyword">from</span> <span class="string">'react'</span>;</div>
-              <div class="code-line"><span class="keyword">import</span> <span class="variable">CustomSolution</span> <span class="keyword">from</span> <span class="string">'./solutions'</span>;</div>
-              <div class="code-line"></div>
-              <div class="code-line"><span class="keyword">class</span> <span class="class">AppOptimizer</span> <span class="keyword">extends</span> <span class="class">React.Component</span> {</div>
-              <div class="code-line typing"><span class="keyword">  constructor</span>() {</div>
-              <div class="code-line hidden"><span class="keyword">    super</span>();</div>
-              <div class="code-line hidden"><span class="keyword">    this</span>.<span class="property">state</span> = {</div>
-              <div class="code-line hidden"><span class="property">      loading</span>: <span class="boolean">false</span>,</div>
-              <div class="code-line hidden"><span class="property">      optimized</span>: <span class="boolean">false</span></div>
-              <div class="code-line hidden">    }</div>
-              <div class="code-line hidden">  }</div>
-              <div class="code-line hidden">}</div>
-            </div>
-          </div>
-          <div class="cursor"></div>
         </div>
         
-        <div class="digital-devices">
-          <div class="device laptop">
-            <div class="screen"></div>
-            <div class="keyboard"></div>
+        <!-- Panel de dispositivos -->
+        <div class="devices-panel">
+          <div class="responsive-preview">
+            <div class="device-title">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="device-icon">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Desarrollo Multiplataforma</span>
+            </div>
+            
+            <div class="devices-showcase">
+              <div class="device laptop">
+                <div class="device-screen">
+                  <div class="screen-content laptop-content"></div>
+                </div>
+                <div class="device-base"></div>
+              </div>
+              
+              <div class="device tablet">
+                <div class="device-screen">
+                  <div class="screen-content tablet-content"></div>
+                </div>
+                <div class="device-home"></div>
+              </div>
+              
+              <div class="device mobile">
+                <div class="device-screen">
+                  <div class="screen-content mobile-content"></div>
+                </div>
+                <div class="device-home"></div>
+              </div>
+            </div>
           </div>
-          <div class="device tablet">
-            <div class="screen"></div>
-            <div class="button"></div>
-          </div>
-          <div class="device mobile">
-            <div class="screen"></div>
-            <div class="button"></div>
-          </div>
-        </div>
-        
-        <div class="floating-elements">
-          <div class="element html-tag"><span>&lt;/&gt;</span></div>
-          <div class="element css-bracket">{ }</div>
-          <div class="element js-arrow">=></div>
-          <div class="element react-logo">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="8" fill="currentColor" />
-              <ellipse cx="50" cy="50" rx="25" ry="10" stroke="currentColor" stroke-width="2" transform="rotate(30 50 50)" />
-              <ellipse cx="50" cy="50" rx="25" ry="10" stroke="currentColor" stroke-width="2" transform="rotate(90 50 50)" />
-              <ellipse cx="50" cy="50" rx="25" ry="10" stroke="currentColor" stroke-width="2" transform="rotate(150 50 50)" />
-            </svg>
+          
+          <!-- Estadísticas de desarrollo -->
+          <div class="dev-stats">
+            <div class="stat-card">
+              <div class="stat-value">99.8<span class="percent">%</span></div>
+              <div class="stat-label">Uptime</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-value">+63<span class="percent">%</span></div>
+              <div class="stat-label">Rendimiento</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-value">-40<span class="percent">%</span></div>
+              <div class="stat-label">Tiempo de desarrollo</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    
+    <!-- Elementos decorativos -->
+    <div class="decorative-elements">
+      <div class="code-symbol">&lt;/&gt;</div>
+      <div class="bracket-symbol">{ }</div>
+      <div class="framework-logo react"></div>
+      <div class="framework-logo vue"></div>
+      <div class="framework-logo node"></div>
+    </div>
   </div>
   
   <style>
-    /* Estilos para el slide de Desarrollo de Software */
+    /* Variables y estilos base */
     .desarrollo-slide {
       --slide-color: var(--purple);
       --highlight-color: #b042ff;
       --lowlight-color: rgba(176, 66, 255, 0.5);
-      --bg-glow: rgba(176, 66, 255, 0.2);
+      --bg-glow: rgba(176, 66, 255, 0.1);
+      --text-color: rgba(255, 255, 255, 0.9);
+      --border-color: rgba(176, 66, 255, 0.3);
+      
+      --editor-bg: #1a1a2e;
+      --terminal-bg: #0f0f23;
+      --code-function: #ddbdfc;
+      --code-keyword: #ff9d00;
+      --code-string: #a5ff90;
+      --code-standard: #9effff;
+      --code-boolean: #ff628c;
+      
+      --indent-size: 1.5rem;
+      
+      width: 100%;
+      box-sizing: border-box;
     }
     
     .slide-content {
       background: rgba(26, 20, 45, 0.8);
       backdrop-filter: blur(15px);
       border-radius: 16px;
-      border: 1px solid rgba(176, 66, 255, 0.3);
+      border: 1px solid var(--border-color);
       padding: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
       position: relative;
       overflow: hidden;
-      height: 500px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2.5rem;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(176, 66, 255, 0.1);
+      min-height: 500px;
     }
     
     .slide-content::before {
@@ -147,19 +247,19 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 30% 30%, var(--bg-glow) 0%, transparent 70%);
+      background: radial-gradient(circle at 20% 20%, var(--bg-glow) 0%, transparent 70%);
       z-index: 0;
     }
     
-    /* Información del servicio */
-    .slide-info {
-      display: flex;
-      flex-direction: column;
+    /* ===== Panel de información ===== */
+    .info-panel {
       position: relative;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
     }
     
-    .slide-header {
+    .service-header {
       margin-bottom: 1.5rem;
     }
     
@@ -168,7 +268,7 @@
       height: 70px;
       border-radius: 12px;
       background: rgba(176, 66, 255, 0.1);
-      border: 2px solid rgba(176, 66, 255, 0.3);
+      border: 2px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -208,7 +308,7 @@
       }
     }
     
-    .slide-title {
+    .service-title {
       font-family: var(--font-mono);
       font-size: 1.8rem;
       font-weight: 800;
@@ -220,24 +320,24 @@
     }
     
     @keyframes title-glow {
-      from {
+      0% {
         text-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
       }
-      to {
+      100% {
         text-shadow: 0 0 15px rgba(176, 66, 255, 0.8), 0 0 25px rgba(176, 66, 255, 0.5);
       }
     }
     
-    .slide-description {
+    .service-description {
       font-family: var(--font-sans);
       font-size: 1.1rem;
       line-height: 1.7;
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--text-color);
       margin-bottom: 2rem;
       flex-grow: 1;
     }
     
-    /* Tags */
+    /* Etiquetas */
     .service-tags {
       display: flex;
       flex-wrap: wrap;
@@ -247,11 +347,11 @@
     
     .tag {
       background: rgba(176, 66, 255, 0.1);
-      border: 1px solid rgba(176, 66, 255, 0.3);
+      border: 1px solid var(--border-color);
       border-radius: 20px;
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--text-color);
       font-family: var(--font-mono);
       transition: all 0.3s ease;
     }
@@ -268,7 +368,7 @@
       align-items: center;
       justify-content: space-between;
       background: rgba(176, 66, 255, 0.1);
-      border: 1px solid rgba(176, 66, 255, 0.3);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 1rem 1.5rem;
       color: var(--highlight-color);
@@ -315,40 +415,46 @@
       transform: translateX(5px);
     }
     
-    /* Animación de código */
-    .animation-container {
+    /* ===== Visualización interactiva ===== */
+    .visualization {
       position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      z-index: 2;
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      gap: 1.5rem;
+      height: 100%;
     }
     
-    .code-editor {
-      width: 100%;
-      height: 60%;
-      background: #1e1e3f;
-      border-radius: 10px;
+    /* Área de código */
+    .code-area {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      gap: 1rem;
+    }
+    
+    /* Editor de código */
+    .editor-frame {
+      background: var(--editor-bg);
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
       position: relative;
-      z-index: 3;
-      border: 1px solid #2d2b55;
     }
     
     .editor-header {
-      background: #2d2b55;
-      height: 32px;
+      background: rgba(0, 0, 0, 0.2);
+      height: 36px;
       display: flex;
       align-items: center;
       padding: 0 1rem;
-      border-bottom: 1px solid #4d4b7f;
     }
     
-    .editor-controls {
+    .window-controls {
       display: flex;
       gap: 8px;
+      margin-right: 1rem;
     }
     
     .control {
@@ -369,337 +475,544 @@
       background: #27c93f;
     }
     
-    .editor-title {
+    .file-tab {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: var(--font-mono);
       flex-grow: 1;
       text-align: center;
-      font-family: monospace;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.8);
     }
     
-    .editor-actions {
+    .editor-options {
       display: flex;
       gap: 8px;
     }
     
-    .action {
-      width: 12px;
-      height: 12px;
+    .option {
+      width: 16px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
       border-radius: 2px;
-      background: rgba(255, 255, 255, 0.2);
     }
     
     .editor-body {
       display: flex;
-      height: calc(100% - 32px);
+      flex-grow: 1;
+      padding: 1rem 0;
       position: relative;
     }
     
     .line-numbers {
-      background: #2d2b55;
-      padding: 10px 10px 10px 15px;
-      color: rgba(255, 255, 255, 0.5);
-      font-family: monospace;
-      font-size: 14px;
-      user-select: none;
-      text-align: right;
+      width: 40px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      align-items: flex-end;
+      padding-right: 0.75rem;
+      color: rgba(255, 255, 255, 0.3);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    
+    .line-numbers span {
+      height: 1.6rem;
+      line-height: 1.6rem;
     }
     
     .code-content {
       flex-grow: 1;
-      padding: 10px 15px;
-      position: relative;
-      overflow: hidden;
-      font-family: monospace;
-      font-size: 14px;
-      color: white;
       display: flex;
       flex-direction: column;
-      gap: 3px;
     }
     
     .code-line {
-      position: relative;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      height: 1.6rem;
+      line-height: 1.6rem;
       white-space: nowrap;
+      color: white;
     }
     
-    .code-line.typing {
-      animation: typing 3s steps(40, end) forwards;
-      overflow: hidden;
+    .indented {
+      padding-left: var(--indent-size);
+    }
+    
+    .empty-line {
+      height: 1.6rem;
+    }
+    
+    .blurred-line {
+      opacity: 0.5;
+      filter: blur(0.5px);
+    }
+    
+    .typing-line {
+      position: relative;
+      animation: typing 3s steps(40) 1s forwards;
       white-space: nowrap;
-      border-right: 2px solid var(--highlight-color);
+      overflow: hidden;
       width: 0;
     }
     
-    .code-line.hidden {
-      opacity: 0;
-    }
-    
     @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+      to {
+        width: 100%;
+      }
     }
     
     .keyword {
-      color: #ff9d00;
+      color: var(--code-keyword);
     }
     
-    .variable {
-      color: #9effff;
+    .function {
+      color: var(--code-function);
     }
     
     .string {
-      color: #a5ff90;
+      color: var(--code-string);
     }
     
-    .class {
-      color: #fb94ff;
-    }
-    
-    .property {
-      color: #9effff;
+    .standard {
+      color: var(--code-standard);
     }
     
     .boolean {
-      color: #ff628c;
+      color: var(--code-boolean);
+    }
+    
+    .square-brackets {
+      color: #ff9d00;
     }
     
     .cursor {
       position: absolute;
       width: 2px;
-      height: 18px;
-      background-color: var(--highlight-color);
-      top: 94px;
-      left: 220px;
-      animation: blink-caret 0.75s step-end infinite;
+      height: 1.6rem;
+      background: var(--highlight-color);
+      top: calc(1.6rem * 5 + 1rem); /* Posición en la línea 6 */
+      left: calc(40px + var(--indent-size) + 16.5rem); /* Posición después de "setLoading(false)" */
+      animation: blink 0.8s step-end infinite;
       opacity: 0;
+      animation-delay: 4s;
     }
     
-    @keyframes blink-caret {
-      from, to { opacity: 0; }
-      50% { opacity: 1; }
+    @keyframes blink {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
     }
     
-    /* Dispositivos digitales */
-    .digital-devices {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 30%;
+    /* Terminal */
+    .terminal {
+      background: var(--terminal-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      transform: perspective(500px) rotateX(20deg);
-      transform-origin: bottom center;
-      z-index: 2;
+      flex-direction: column;
+    }
+    
+    .terminal-header {
+      background: rgba(0, 0, 0, 0.3);
+      height: 30px;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .terminal-content {
+      flex-grow: 1;
+      padding: 0.75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    
+    .terminal-line {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+      opacity: 0.7;
+    }
+    
+    .terminal-line.success {
+      color: #27c93f;
+    }
+    
+    .terminal-line.active {
+      color: var(--highlight-color);
+      animation: pulse-text 2s infinite alternate;
+    }
+    
+    @keyframes pulse-text {
+      0% {
+        opacity: 0.7;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    /* Panel de dispositivos */
+    .devices-panel {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      gap: 1rem;
+    }
+    
+    .responsive-preview {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .device-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: var(--highlight-color);
+      font-family: var(--font-mono);
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    
+    .device-icon {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .devices-showcase {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      perspective: 800px;
     }
     
     .device {
-      background: #333;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
       position: relative;
+      transform-style: preserve-3d;
+      animation: float-device 5s ease-in-out infinite;
+    }
+    
+    @keyframes float-device {
+      0%, 100% {
+        transform: translateY(0) rotateX(0);
+      }
+      50% {
+        transform: translateY(-10px) rotateX(5deg);
+      }
     }
     
     .laptop {
-      width: 180px;
-      height: 120px;
+      width: 140px;
+      height: 90px;
       z-index: 3;
     }
     
-    .laptop .screen {
-      width: 100%;
-      height: 100px;
-      background: #1e1e3f;
-      border-radius: 10px 10px 0 0;
+    .laptop .device-screen {
+      width: 140px;
+      height: 80px;
+      background: #1a1a2e;
+      border-radius: 6px 6px 0 0;
       overflow: hidden;
       position: relative;
     }
     
-    .laptop .screen::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    }
-    
-    .laptop .keyboard {
-      width: 180px;
-      height: 20px;
-      background: #555;
-      border-radius: 0 0 10px 10px;
-      position: absolute;
-      bottom: 0;
+    .device-base {
+      width: 140px;
+      height: 10px;
+      background: #333;
+      border-radius: 0 0 6px 6px;
+      position: relative;
     }
     
     .tablet {
-      width: 100px;
-      height: 130px;
-      transform: translateX(-20px) translateY(10px);
+      width: 70px;
+      height: 100px;
+      animation-delay: 0.5s;
       z-index: 2;
     }
     
-    .tablet .screen {
-      width: 100%;
-      height: 120px;
-      background: #1e1e3f;
-      border-radius: 10px 10px 0 0;
+    .tablet .device-screen {
+      width: 70px;
+      height: 90px;
+      background: #1a1a2e;
+      border-radius: 6px;
       overflow: hidden;
       position: relative;
     }
     
-    .tablet .screen::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    }
-    
-    .tablet .button {
-      width: 12px;
-      height: 12px;
-      background: #777;
+    .tablet .device-home {
+      width: 8px;
+      height: 8px;
+      background: #333;
       border-radius: 50%;
       position: absolute;
-      bottom: 4px;
+      bottom: -3px;
       left: 50%;
       transform: translateX(-50%);
     }
     
     .mobile {
-      width: 60px;
-      height: 110px;
-      transform: translateX(-30px) translateY(20px);
+      width: 40px;
+      height: 80px;
+      animation-delay: 1s;
       z-index: 1;
     }
     
-    .mobile .screen {
-      width: 100%;
-      height: 100px;
-      background: #1e1e3f;
-      border-radius: 10px 10px 0 0;
+    .mobile .device-screen {
+      width: 40px;
+      height: 70px;
+      background: #1a1a2e;
+      border-radius: 6px;
       overflow: hidden;
       position: relative;
     }
     
-    .mobile .screen::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    }
-    
-    .mobile .button {
-      width: 10px;
-      height: 10px;
-      background: #777;
+    .mobile .device-home {
+      width: 6px;
+      height: 6px;
+      background: #333;
       border-radius: 50%;
       position: absolute;
-      bottom: 3px;
+      bottom: -3px;
       left: 50%;
       transform: translateX(-50%);
     }
     
-    /* Elementos flotantes */
-    .floating-elements {
+    .screen-content {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
-      pointer-events: none;
+      opacity: 0.8;
     }
     
-    .element {
-      position: absolute;
-      color: var(--lowlight-color);
-      font-family: monospace;
-      font-size: 16px;
+    .laptop-content {
+      background: linear-gradient(135deg, var(--highlight-color) 0%, #4287ff 100%);
+      animation: content-pulse 3s ease-in-out infinite alternate;
+    }
+    
+    .tablet-content {
+      background: linear-gradient(135deg, #ff42b0 0%, var(--highlight-color) 100%);
+      animation: content-pulse 3s ease-in-out infinite alternate 0.5s;
+    }
+    
+    .mobile-content {
+      background: linear-gradient(135deg, #4287ff 0%, #ff42b0 100%);
+      animation: content-pulse 3s ease-in-out infinite alternate 1s;
+    }
+    
+    @keyframes content-pulse {
+      0% {
+        opacity: 0.6;
+      }
+      100% {
+        opacity: 0.9;
+      }
+    }
+    
+    /* Estadísticas de desarrollo */
+    .dev-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    
+    .stat-card {
+      background: rgba(176, 66, 255, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      background: rgba(176, 66, 255, 0.15);
+      border-color: var(--highlight-color);
+    }
+    
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.3rem;
       font-weight: bold;
-      animation: float-element 10s infinite ease-in-out;
+      color: var(--highlight-color);
+      margin-bottom: 0.3rem;
     }
     
-    .html-tag {
-      top: 20%;
-      left: 10%;
-      font-size: 24px;
+    .percent {
+      font-size: 0.9rem;
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
+    
+    /* Elementos decorativos */
+    .decorative-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .code-symbol, .bracket-symbol, .framework-logo {
+      position: absolute;
+      opacity: 0.15;
+      color: var(--highlight-color);
+      font-family: var(--font-mono);
+      font-weight: bold;
+      animation: float-animation 15s infinite ease-in-out;
+    }
+    
+    .code-symbol {
+      top: 15%;
+      right: 10%;
+      font-size: 2rem;
       animation-delay: 0s;
     }
     
-    .css-bracket {
-      top: 50%;
-      right: 10%;
-      font-size: 24px;
+    .bracket-symbol {
+      bottom: 10%;
+      left: 15%;
+      font-size: 2.5rem;
+      animation-delay: 3s;
+    }
+    
+    .framework-logo {
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    .react {
+      top: 30%;
+      left: 8%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-11.5 -10.23174 23 20.46348'%3E%3Ccircle cx='0' cy='0' r='2.05' fill='%23b042ff'/%3E%3Cg stroke='%23b042ff' stroke-width='1' fill='none'%3E%3Cellipse rx='11' ry='4.2'/%3E%3Cellipse rx='11' ry='4.2' transform='rotate(60)'/%3E%3Cellipse rx='11' ry='4.2' transform='rotate(120)'/%3E%3C/g%3E%3C/svg%3E");
       animation-delay: 2s;
     }
     
-    .js-arrow {
-      bottom: 30%;
-      left: 25%;
-      font-size: 20px;
+    .vue {
+      bottom: 25%;
+      right: 18%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 196.32 170.02'%3E%3Cpath fill='%23b042ff' d='M120.83 0L98.16 39.26 75.49 0H0l98.16 170.02L196.32 0h-75.49z'/%3E%3Cpath fill='%23b042ff' d='M120.83 0L98.16 39.26 75.49 0H39.26l58.9 102.01L157.06 0h-36.23z'/%3E%3C/svg%3E");
       animation-delay: 4s;
     }
     
-    .react-logo {
-      top: 30%;
-      right: 20%;
-      width: 40px;
-      height: 40px;
-      color: var(--lowlight-color);
-      animation-delay: 1s;
+    .node {
+      top: 70%;
+      right: 30%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 442.4 270.9'%3E%3Cpath fill='%23b042ff' d='M218.8 0l-3.5 2L66.5 74.5c-4.4 2.5-7 7.1-7 12.2v149.1c0 5 2.6 9.7 7 12.2l39.7 23c9.4 4.7 12.8 4.7 17.1 4.7 14 0 22-8.5 22-23.3V86.9c0-1.2-.7-2.3-1.8-2.3h-9.5c-1.1 0-1.8 1.1-1.8 2.3v165.5c0 6.6-6.8 13.1-17.7 7.6l-41.3-23.5c-1.5-.9-2.4-2.5-2.4-4.3V86.7c0-1.8.9-3.4 2.4-4.3L214.2 9.1c1.5-.8 3.4-.8 4.8 0l144.9 73.4c1.5.8 2.4 2.5 2.4 4.3v146.9c0 1.8-.9 3.5-2.4 4.3l-144.9 73.2c-1.4.8-3.3.8-4.8 0l-39.1-22.9c-1.3-.7-3-.5-4.3.5-12 6.7-14.2 7.6-25.4 11.5-2.8 1-7 2.6 1.6 7.3l51 30.2c4.4 2.5 9.5 3.8 14.6 3.8 5.1 0 10.2-1.3 14.6-3.8l144.8-73.2c4.4-2.5 7.1-7.1 7.1-12.2V86.7c0-5-2.7-9.7-7.1-12.2L222.3 2C219.3 0 221.7 0 218.8 0zm79.9 106.9c-40.4 0-48.7 18.6-48.7 34.2 0 1.2.7 2.2 1.8 2.2h9.8c.9 0 1.7-.7 1.8-1.6 1.3-8.5 5-12.7 35.3-12.7 21.7 0 31 4.9 31 16.5 0 6.6-2.6 11.5-36.5 14.8-28.3 2.8-45.8 9-45.8 31.7 0 21 17.7 33.4 47.4 33.4 33.3 0 49.7-9.2 51.9-29 .1-.7-.2-1.4-.7-1.8-.5-.5-1.2-.7-1.8-.7h-9.8c-.8 0-1.6.6-1.8 1.4-2 9.1-7 12-38 12-28 0-31.3-9.8-31.3-17 0-8.9 3.8-11.5 35.5-14.8 31.9-3.3 46.7-10.3 46.7-31.6-.1-22.7-19-34-49.6-34z'/%3E%3C/svg%3E");
+      animation-delay: 0.5s;
     }
     
-    @keyframes float-element {
+    @keyframes float-animation {
       0%, 100% {
         transform: translate(0, 0);
       }
       25% {
-        transform: translate(10px, -15px) rotate(5deg);
+        transform: translate(15px, -10px) rotate(5deg);
       }
       50% {
-        transform: translate(0, 0) rotate(0deg);
+        transform: translate(5px, 10px) rotate(0deg);
       }
       75% {
-        transform: translate(-10px, 15px) rotate(-5deg);
+        transform: translate(-10px, 5px) rotate(-5deg);
       }
     }
     
-    /* Animaciones y efectos */
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Media queries */
+    /* Responsive */
     @media (max-width: 1200px) {
       .slide-content {
-        grid-template-columns: 1fr;
-        height: auto;
+        padding: 2rem;
         gap: 2rem;
       }
       
-      .animation-container {
-        display: none;
+      .service-title {
+        font-size: 1.6rem;
+      }
+      
+      .laptop {
+        width: 120px;
+        height: 80px;
+      }
+      
+      .laptop .device-screen {
+        width: 120px;
+        height: 70px;
+      }
+      
+      .tablet {
+        width: 60px;
+        height: 85px;
+      }
+      
+      .tablet .device-screen {
+        width: 60px;
+        height: 75px;
+      }
+      
+      .mobile {
+        width: 35px;
+        height: 70px;
+      }
+      
+      .mobile .device-screen {
+        width: 35px;
+        height: 60px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .slide-content {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 2rem;
+      }
+      
+      .visualization {
+        display: none; /* Ocultar en tablets/móviles */
+      }
+      
+      .info-panel {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .service-title {
+        font-size: 1.8rem;
+      }
+      
+      .decorative-elements {
+        display: none; /* Ocultar en tablets/móviles */
       }
     }
     
@@ -708,42 +1021,49 @@
         padding: 1.5rem;
       }
       
-      .slide-title {
-        font-size: 1.5rem;
+      .service-title {
+        font-size: 1.6rem;
       }
       
-      .slide-description {
+      .service-description {
         font-size: 1rem;
       }
     }
-  </style>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Animación de líneas de código adicionales
-      const hiddenLines = document.querySelectorAll('.code-line.hidden');
-      let delay = 3500; // después de que termine la animación de typing
+    
+    @media (max-width: 576px) {
+      .slide-content {
+        padding: 1.25rem;
+      }
       
-      hiddenLines.forEach((line, index) => {
-        setTimeout(() => {
-          line.classList.remove('hidden');
-          line.classList.add('typing');
-          
-          // Mover el cursor a la línea actual
-          const cursor = document.querySelector('.cursor');
-          if (cursor) {
-            const cursorElement = cursor as HTMLElement;
-            cursorElement.style.top = `${94 + (index+1) * 21}px`;
-            cursorElement.style.opacity = '1';
-            
-            if (index === hiddenLines.length - 1) {
-              // Ocultar el cursor después de la última línea
-              setTimeout(() => {
-                cursorElement.style.opacity = '0';
-              }, 1500);
-            }
-          }
-        }, delay + index * 1500);
-      });
-    });
-  </script>
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1.25rem;
+      }
+      
+      .service-icon svg {
+        width: 30px;
+        height: 30px;
+      }
+      
+      .service-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.25rem;
+      }
+      
+      .service-description {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+      
+      .service-link {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
