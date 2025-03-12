@@ -1,399 +1,679 @@
 ---
+// MetodologiaTrabajo.astro - Componente principal con estética retrofuturista
+import MetodologiaHeader from './MetodologiaComponents/MetodologiaHeader.astro';
+import MetodologiaCycle from './MetodologiaComponents/MetodologiaCycle.astro';
+import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios.astro';
 ---
-<section id="metodologia" class="py-20 bg-light relative overflow-hidden">
-  <!-- Elementos decorativos en el fondo -->
-  <div class="circuit-lines"></div>
-  <div class="glow-orb" style="--top: 20%; --left: 10%; --size: 300px; --color: rgba(176, 66, 255, 0.15);"></div>
-  <div class="glow-orb" style="--bottom: 15%; --right: 5%; --size: 350px; --color: rgba(66, 135, 255, 0.1);"></div>
+
+<section id="metodologia" class="metodologia-section">
+  <!-- Elemento de transición hacia la sección anterior -->
+  <div class="section-transition"></div>
   
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark" style="font-family: var(--font-title);">METODOLOGÍA DE TRABAJO</h2>
-      <div class="w-24 h-1 bg-purple mx-auto"></div>
-      <p class="mt-6 text-lg max-w-2xl mx-auto" style="font-family: var(--font-body);">Nuestro enfoque estructurado asegura resultados exitosos y medibles para tu negocio.</p>
+  <!-- Fondos avanzados y efectos visuales -->
+  <div class="cyberpunk-background">
+    <!-- Efecto de rejilla digital -->
+    <div class="digital-grid"></div>
+    
+    <!-- Efecto de líneas de código -->
+    <div class="code-lines">
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+      <div class="code-line"></div>
     </div>
     
-    <div class="methodology-timeline">
-      <!-- Línea conectora -->
-      <div class="timeline-line"></div>
-      
-      <!-- Etapa 1 -->
-      <div class="methodology-step">
-        <div class="step-number">01</div>
-        <div class="methodology-card">
-          <div class="step-connector"></div>
-          <div class="methodology-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">EXPLORACIÓN Y DIAGNÓSTICO</h3>
-          <p class="text-gray-700" style="font-family: var(--font-body);">Analizamos tu situación actual e identificamos oportunidades de mejora mediante reuniones, análisis de procesos y diagnóstico tecnológico.</p>
-          <div class="hidden sm:block absolute top-5 right-5">
-            <div class="tech-dots">
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Etapa 2 -->
-      <div class="methodology-step">
-        <div class="step-number">02</div>
-        <div class="methodology-card">
-          <div class="step-connector"></div>
-          <div class="methodology-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">DISEÑO PERSONALIZADO</h3>
-          <p class="text-gray-700" style="font-family: var(--font-body);">Creamos soluciones a la medida de tus necesidades específicas con un enfoque centrado en resultados y experiencia de usuario.</p>
-          <div class="hidden sm:block absolute top-5 right-5">
-            <div class="tech-dots">
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Etapa 3 -->
-      <div class="methodology-step">
-        <div class="step-number">03</div>
-        <div class="methodology-card">
-          <div class="step-connector"></div>
-          <div class="methodology-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">IMPLEMENTACIÓN ÁGIL</h3>
-          <p class="text-gray-700" style="font-family: var(--font-body);">Ejecutamos con metodologías ágiles para ver resultados rápidamente. Trabajamos en ciclos cortos con entregables funcionales.</p>
-          <div class="hidden sm:block absolute top-5 right-5">
-            <div class="tech-dots">
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Etapa 4 -->
-      <div class="methodology-step">
-        <div class="step-number">04</div>
-        <div class="methodology-card">
-          <div class="step-connector"></div>
-          <div class="methodology-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">CAPACITACIÓN Y CAMBIO CULTURAL</h3>
-          <p class="text-gray-700" style="font-family: var(--font-body);">Preparamos a tu equipo para adoptar las nuevas tecnologías mediante talleres, documentación y acompañamiento práctico.</p>
-          <div class="hidden sm:block absolute top-5 right-5">
-            <div class="tech-dots">
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Etapa 5 -->
-      <div class="methodology-step">
-        <div class="step-number">05</div>
-        <div class="methodology-card">
-          <div class="step-connector"></div>
-          <div class="methodology-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-dark" style="font-family: var(--font-title);">MONITOREO Y OPTIMIZACIÓN CONTINUA</h3>
-          <p class="text-gray-700" style="font-family: var(--font-body);">Evaluamos y mejoramos constantemente el rendimiento de las soluciones con métricas clave y optimizaciones periódicas.</p>
-          <div class="hidden sm:block absolute top-5 right-5">
-            <div class="tech-dots">
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-              <div class="tech-dot"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Efecto de circuitos -->
+    <div class="circuit-patterns">
+      <div class="circuit circuit-1"></div>
+      <div class="circuit circuit-2"></div>
+      <div class="circuit circuit-3"></div>
     </div>
+    
+    <!-- Efecto de nodos y conexiones -->
+    <div class="neural-network">
+      <div class="node node-1"></div>
+      <div class="node node-2"></div>
+      <div class="node node-3"></div>
+      <div class="node node-4"></div>
+      <div class="node node-5"></div>
+      <div class="node node-6"></div>
+      <div class="connection connection-1"></div>
+      <div class="connection connection-2"></div>
+      <div class="connection connection-3"></div>
+      <div class="connection connection-4"></div>
+      <div class="connection connection-5"></div>
+    </div>
+    
+    <!-- Efecto de partículas de datos -->
+    <div class="data-particles">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+      <div class="particle particle-4"></div>
+      <div class="particle particle-5"></div>
+      <div class="particle particle-6"></div>
+      <div class="particle particle-7"></div>
+      <div class="particle particle-8"></div>
+      <div class="particle particle-9"></div>
+      <div class="particle particle-10"></div>
+      <div class="particle particle-11"></div>
+      <div class="particle particle-12"></div>
+    </div>
+    
+    <!-- Overlay para dar profundidad -->
+    <div class="depth-overlay"></div>
+  </div>
+  
+  <!-- Decoración de interfaz de alta tecnología -->
+  <div class="tech-ui-elements">
+    <div class="tech-corner top-left">
+      <div class="corner-line horizontal"></div>
+      <div class="corner-line vertical"></div>
+    </div>
+    <div class="tech-corner top-right">
+      <div class="corner-line horizontal"></div>
+      <div class="corner-line vertical"></div>
+    </div>
+    <div class="tech-corner bottom-left">
+      <div class="corner-line horizontal"></div>
+      <div class="corner-line vertical"></div>
+    </div>
+    <div class="tech-corner bottom-right">
+      <div class="corner-line horizontal"></div>
+      <div class="corner-line vertical"></div>
+    </div>
+    
+    <div class="scanning-line"></div>
+  </div>
+  
+  <div class="container">
+    <!-- Componentes de Metodología -->
+    <MetodologiaHeader />
+    <MetodologiaCycle />
+    <MetodologiaBeneficios />
   </div>
 </section>
 
 <style>
-  /* Fondo con circuitos */
-  .circuit-lines {
+  /* Variables y estilos base */
+  :root {
+    --purple: #8a42ff;
+    --purple-dark: #5a35d1;
+    --purple-light: #b076ff;
+    --blue-neon: #42f5ff;
+    --pink-neon: #ff42cf;
+    --dark-bg: #080814;
+    --dark-purple: #1a142d;
+  }
+  
+  .metodologia-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 8rem 0 6rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  /* Transición suave entre secciones */
+  .section-transition {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--dark-bg));
+    z-index: 20;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  
+  /* Fondo cyberpunk retrofuturista */
+  .cyberpunk-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.1;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%23b042ff' stroke-width='1'/%3E%3Cpath d='M30 10v20m0 40v20M10 30h20m40 0h20M10 70h20m40 0h20M30 30h40v40H30z' fill='none' stroke='%23b042ff' stroke-width='1'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%23b042ff'/%3E%3Ccircle cx='70' cy='30' r='2' fill='%23b042ff'/%3E%3Ccircle cx='30' cy='70' r='2' fill='%23b042ff'/%3E%3Ccircle cx='70' cy='70' r='2' fill='%23b042ff'/%3E%3C/svg%3E");
-    z-index: 0;
+    z-index: 1;
+    overflow: hidden;
   }
   
-  /* Orbes de luz */
-  .glow-orb {
-    position: absolute;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    background: var(--color);
-    filter: blur(40px);
-    opacity: 0.5;
-    top: var(--top, auto);
-    left: var(--left, auto);
-    right: var(--right, auto);
-    bottom: var(--bottom, auto);
-    z-index: 0;
-  }
-  
-  /* Timeline y cards de metodología */
-  .methodology-timeline {
-    position: relative;
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 2rem 0;
-  }
-  
-  .timeline-line {
+  /* Rejilla digital en perspectiva */
+  .digital-grid {
     position: absolute;
     top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: linear-gradient(to bottom, 
-      rgba(176, 66, 255, 0.3),
-      rgba(66, 135, 255, 0.3),
-      rgba(255, 66, 176, 0.3),
-      rgba(232, 255, 66, 0.3),
-      rgba(176, 66, 255, 0.3)
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: 
+      linear-gradient(to right, rgba(138, 66, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(138, 66, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(1000px) rotateX(60deg);
+    transform-origin: center top;
+    animation: grid-movement 30s linear infinite;
+    opacity: 0.5;
+  }
+  
+  @keyframes grid-movement {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 1000px;
+    }
+  }
+  
+  /* Líneas de código que se mueven verticalmente */
+  .code-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+  }
+  
+  .code-line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--purple), transparent);
+    top: 0;
+    animation: code-line-movement 15s linear infinite;
+  }
+  
+  .code-line::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(to bottom, 
+      transparent 0%, 
+      transparent 10%,
+      var(--purple-light) 10%,
+      var(--purple-light) 15%,
+      transparent 15%,
+      transparent 20%
     );
-    transform: translateX(-50%);
-    z-index: 1;
+    opacity: 0.8;
   }
   
-  .methodology-step {
-    position: relative;
-    margin-bottom: 3rem;
-    z-index: 2;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fade-in 0.6s ease forwards;
+  .code-line:nth-child(1) { left: 10%; animation-duration: 9s; }
+  .code-line:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; }
+  .code-line:nth-child(3) { left: 35%; animation-duration: 12s; animation-delay: 4s; }
+  .code-line:nth-child(4) { left: 50%; animation-duration: 18s; animation-delay: 1s; }
+  .code-line:nth-child(5) { left: 65%; animation-duration: 10s; animation-delay: 3s; }
+  .code-line:nth-child(6) { left: 75%; animation-duration: 14s; animation-delay: 6s; }
+  .code-line:nth-child(7) { left: 85%; animation-duration: 11s; animation-delay: 7s; }
+  .code-line:nth-child(8) { left: 90%; animation-duration: 16s; animation-delay: 5s; }
+  
+  @keyframes code-line-movement {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
   }
   
-  .methodology-step:nth-child(2) {
+  /* Patrones de circuitos */
+  .circuit-patterns {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .circuit {
+    position: absolute;
+    opacity: 0.15;
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: hue-rotate(0deg);
+    animation: circuit-glow 4s ease-in-out infinite alternate;
+  }
+  
+  .circuit-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E path, circle %7B stroke: %238a42ff; stroke-width: 2; fill: none; %7D %3C/style%3E%3Cpath d='M50,20 L150,20 L150,100 L100,150 L50,100 Z'/%3E%3Ccircle cx='50' cy='20' r='5'/%3E%3Ccircle cx='150' cy='20' r='5'/%3E%3Ccircle cx='150' cy='100' r='5'/%3E%3Ccircle cx='100' cy='150' r='5'/%3E%3Ccircle cx='50' cy='100' r='5'/%3E%3Cpath d='M50,20 L50,100 M150,20 L150,100 M50,100 L100,150 M100,150 L150,100'/%3E%3C/svg%3E");
+    animation-delay: 0s;
+  }
+  
+  .circuit-2 {
+    width: 400px;
+    height: 400px;
+    bottom: 20%;
+    right: 10%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E path, circle %7B stroke: %238a42ff; stroke-width: 2; fill: none; %7D %3C/style%3E%3Cpath d='M20,50 L180,50 M20,100 L180,100 M20,150 L180,150 M50,20 L50,180 M100,20 L100,180 M150,20 L150,180'/%3E%3Ccircle cx='50' cy='50' r='5'/%3E%3Ccircle cx='100' cy='50' r='5'/%3E%3Ccircle cx='150' cy='50' r='5'/%3E%3Ccircle cx='50' cy='100' r='5'/%3E%3Ccircle cx='100' cy='100' r='5'/%3E%3Ccircle cx='150' cy='100' r='5'/%3E%3Ccircle cx='50' cy='150' r='5'/%3E%3Ccircle cx='100' cy='150' r='5'/%3E%3Ccircle cx='150' cy='150' r='5'/%3E%3C/svg%3E");
+    animation-delay: 2s;
+  }
+  
+  .circuit-3 {
+    width: 350px;
+    height: 350px;
+    top: 40%;
+    left: 25%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E path, circle %7B stroke: %238a42ff; stroke-width: 2; fill: none; %7D %3C/style%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3Cpath d='M100,20 L100,180 M20,100 L180,100 M35,35 L165,165 M35,165 L165,35'/%3E%3Ccircle cx='100' cy='20' r='5'/%3E%3Ccircle cx='100' cy='180' r='5'/%3E%3Ccircle cx='20' cy='100' r='5'/%3E%3Ccircle cx='180' cy='100' r='5'/%3E%3Ccircle cx='35' cy='35' r='5'/%3E%3Ccircle cx='165' cy='165' r='5'/%3E%3Ccircle cx='35' cy='165' r='5'/%3E%3Ccircle cx='165' cy='35' r='5'/%3E%3C/svg%3E");
+    animation-delay: 1s;
+  }
+  
+  @keyframes circuit-glow {
+    0%, 100% {
+      opacity: 0.15;
+      filter: hue-rotate(0deg) brightness(1);
+    }
+    50% {
+      opacity: 0.25;
+      filter: hue-rotate(30deg) brightness(1.2);
+    }
+  }
+  
+  /* Red neuronal con nodos y conexiones */
+  .neural-network {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--purple);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--purple), 0 0 5px var(--purple-light);
+    animation: node-pulse 4s infinite alternate;
+  }
+  
+  .node-1 { top: 20%; left: 30%; animation-delay: 0s; }
+  .node-2 { top: 30%; right: 25%; animation-delay: 0.7s; }
+  .node-3 { top: 50%; left: 15%; animation-delay: 1.4s; }
+  .node-4 { top: 60%; right: 20%; animation-delay: 2.1s; }
+  .node-5 { top: 75%; left: 40%; animation-delay: 2.8s; }
+  .node-6 { top: 40%; left: 60%; animation-delay: 3.5s; }
+  
+  @keyframes node-pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 15px var(--purple), 0 0 5px var(--purple-light);
+    }
+    50% {
+      transform: scale(1.3);
+      box-shadow: 0 0 25px var(--purple), 0 0 8px var(--purple-light);
+    }
+  }
+  
+  .connection {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--purple-light));
+    opacity: 0.5;
+    transform-origin: 0 0;
+    animation: connection-pulse 3s infinite alternate;
+  }
+  
+  .connection-1 {
+    width: 200px;
+    top: calc(20% + 6px);
+    left: calc(30% + 6px);
+    transform: rotate(15deg);
     animation-delay: 0.2s;
   }
   
-  .methodology-step:nth-child(3) {
-    animation-delay: 0.4s;
+  .connection-2 {
+    width: 250px;
+    top: calc(30% + 6px);
+    left: calc(25% + 450px);
+    transform: rotate(150deg);
+    animation-delay: 0.9s;
   }
   
-  .methodology-step:nth-child(4) {
-    animation-delay: 0.6s;
+  .connection-3 {
+    width: 300px;
+    top: calc(50% + 6px);
+    left: calc(15% + 6px);
+    transform: rotate(-20deg);
+    animation-delay: 1.6s;
   }
   
-  .methodology-step:nth-child(5) {
-    animation-delay: 0.8s;
-    margin-bottom: 0;
+  .connection-4 {
+    width: 200px;
+    top: calc(60% + 6px);
+    left: calc(20% + 600px);
+    transform: rotate(-160deg);
+    animation-delay: 2.3s;
   }
   
-  @keyframes fade-in {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  .connection-5 {
+    width: 250px;
+    top: calc(75% + 6px);
+    left: calc(40% + 6px);
+    transform: rotate(-30deg);
+    animation-delay: 3s;
+  }
+  
+  @keyframes connection-pulse {
+    0% {
+      opacity: 0.3;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
+    }
+    50% {
+      opacity: 0.7;
+      background: linear-gradient(90deg, var(--purple-light), var(--blue-neon));
+    }
+    100% {
+      opacity: 0.3;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
     }
   }
   
-  .step-number {
+  /* Partículas de datos */
+  .data-particles {
     position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #6b46c1, #9f7aea);
-    color: white;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--purple-light);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-mono);
-    font-weight: bold;
-    font-size: 1rem;
-    z-index: 3;
-    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+    box-shadow: 0 0 10px var(--purple-light);
+    opacity: 0.7;
+    animation: particle-movement 15s linear infinite;
   }
   
-  .methodology-card {
-    width: 80%;
-    margin-left: auto;
-    background-color: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: all 0.3s ease;
-    border-left: 4px solid #b042ff;
+  .particle:nth-child(odd) {
+    background: var(--blue-neon);
+    box-shadow: 0 0 10px var(--blue-neon);
   }
   
-  .methodology-step:nth-child(even) .methodology-card {
-    margin-right: auto;
-    margin-left: 0;
-    border-left: none;
-    border-right: 4px solid #4287ff;
+  .particle:nth-child(3n) {
+    background: var(--pink-neon);
+    box-shadow: 0 0 10px var(--pink-neon);
   }
   
-  .methodology-step:nth-child(3) .methodology-card {
-    border-color: #ff42b0;
+  .particle:nth-child(1) { top: 10%; left: 20%; animation-duration: 20s; animation-delay: 0s; }
+  .particle:nth-child(2) { top: 15%; left: 70%; animation-duration: 25s; animation-delay: 1s; }
+  .particle:nth-child(3) { top: 25%; left: 40%; animation-duration: 15s; animation-delay: 2s; }
+  .particle:nth-child(4) { top: 35%; left: 80%; animation-duration: 18s; animation-delay: 3s; }
+  .particle:nth-child(5) { top: 45%; left: 10%; animation-duration: 22s; animation-delay: 4s; }
+  .particle:nth-child(6) { top: 55%; left: 50%; animation-duration: 19s; animation-delay: 5s; }
+  .particle:nth-child(7) { top: 65%; left: 30%; animation-duration: 17s; animation-delay: 6s; }
+  .particle:nth-child(8) { top: 75%; left: 60%; animation-duration: 24s; animation-delay: 7s; }
+  .particle:nth-child(9) { top: 85%; left: 25%; animation-duration: 21s; animation-delay: 8s; }
+  .particle:nth-child(10) { top: 5%; left: 45%; animation-duration: 16s; animation-delay: 9s; }
+  .particle:nth-child(11) { top: 50%; left: 75%; animation-duration: 23s; animation-delay: 10s; }
+  .particle:nth-child(12) { top: 70%; left: 5%; animation-duration: 26s; animation-delay: 11s; }
+  
+  @keyframes particle-movement {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    20% {
+      transform: translate(100px, 50px) scale(1.5);
+    }
+    40% {
+      transform: translate(200px, -80px) scale(1);
+    }
+    60% {
+      transform: translate(100px, -120px) scale(2);
+    }
+    80% {
+      transform: translate(-100px, -50px) scale(1);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
   }
   
-  .methodology-step:nth-child(5) .methodology-card {
-    border-color: #e8ff42;
-  }
-  
-  .step-connector {
+  /* Overlay para añadir profundidad */
+  .depth-overlay {
     position: absolute;
-    top: 20px;
-    right: 100%;
-    width: 30px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(8, 8, 20, 0.5) 100%);
+    z-index: 2;
+  }
+  
+  /* Elementos de interfaz de alta tecnología */
+  .tech-ui-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+  }
+  
+  .tech-corner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .corner-line {
+    position: absolute;
+    background: var(--purple);
+    opacity: 0.6;
+  }
+  
+  .horizontal {
     height: 2px;
-    background: linear-gradient(to right, transparent, #b042ff);
+    width: 100%;
+    box-shadow: 0 0 10px var(--purple);
   }
   
-  .methodology-step:nth-child(even) .step-connector {
-    left: 100%;
-    right: auto;
-    background: linear-gradient(to left, transparent, #4287ff);
+  .vertical {
+    width: 2px;
+    height: 100%;
+    box-shadow: 0 0 10px var(--purple);
   }
   
-  .methodology-step:nth-child(3) .step-connector {
-    background: linear-gradient(to right, transparent, #ff42b0);
+  .top-left {
+    top: 50px;
+    left: 50px;
   }
   
-  .methodology-step:nth-child(4) .step-connector {
-    background: linear-gradient(to left, transparent, #ff42b0);
+  .top-left .horizontal {
+    top: 0;
+    left: 0;
   }
   
-  .methodology-step:nth-child(5) .step-connector {
-    background: linear-gradient(to right, transparent, #e8ff42);
+  .top-left .vertical {
+    top: 0;
+    left: 0;
   }
   
-  .methodology-icon {
-    margin-bottom: 1rem;
-    color: #b042ff;
+  .top-right {
+    top: 50px;
+    right: 50px;
   }
   
-  .methodology-step:nth-child(even) .methodology-icon {
-    color: #4287ff;
+  .top-right .horizontal {
+    top: 0;
+    right: 0;
   }
   
-  .methodology-step:nth-child(3) .methodology-icon {
-    color: #ff42b0;
+  .top-right .vertical {
+    top: 0;
+    right: 0;
   }
   
-  .methodology-step:nth-child(5) .methodology-icon {
-    color: #e8ff42;
+  .bottom-left {
+    bottom: 50px;
+    left: 50px;
   }
   
-  .methodology-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  .bottom-left .horizontal {
+    bottom: 0;
+    left: 0;
   }
   
-  /* Decoración de puntos tecnológicos */
-  .tech-dots {
-    display: flex;
-    gap: 5px;
+  .bottom-left .vertical {
+    bottom: 0;
+    left: 0;
   }
   
-  .tech-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #b042ff;
+  .bottom-right {
+    bottom: 50px;
+    right: 50px;
   }
   
-  .methodology-step:nth-child(even) .tech-dot {
-    background-color: #4287ff;
+  .bottom-right .horizontal {
+    bottom: 0;
+    right: 0;
   }
   
-  .methodology-step:nth-child(3) .tech-dot {
-    background-color: #ff42b0;
+  .bottom-right .vertical {
+    bottom: 0;
+    right: 0;
   }
   
-  .methodology-step:nth-child(5) .tech-dot {
-    background-color: #e8ff42;
+  .scanning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue-neon), transparent);
+    opacity: 0.6;
+    box-shadow: 0 0 15px var(--blue-neon);
+    animation: scanning 8s ease-in-out infinite;
+  }
+  
+  @keyframes scanning {
+    0%, 100% {
+      top: 0;
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    50% {
+      top: 100%;
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0;
+    }
   }
   
   /* Responsive */
+  @media (max-width: 1200px) {
+    .container {
+      padding: 0 1.5rem;
+    }
+    
+    .tech-corner {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .metodologia-section {
+      padding: 7rem 0 5rem;
+    }
+    
+    .container {
+      padding: 0 1.25rem;
+    }
+    
+    /* Simplificar elementos de fondo para tablets */
+    .circuit-3 {
+      display: none;
+    }
+  }
+  
   @media (max-width: 768px) {
-    .timeline-line {
-      left: 30px;
+    .metodologia-section {
+      padding: 6rem 0 4rem;
     }
     
-    .step-number {
-      left: 30px;
-      transform: translateX(-50%);
+    .container {
+      padding: 0 1rem;
     }
     
-    .methodology-card {
-      width: calc(100% - 60px);
-      margin-left: 60px;
-      margin-right: 0;
-      border-left: 4px solid #b042ff;
-      border-right: none;
+    /* Reducir efectos visuales para mejorar rendimiento */
+    .circuit-2 {
+      display: none;
     }
     
-    .methodology-step:nth-child(even) .methodology-card {
-      margin-left: 60px;
-      margin-right: 0;
-      border-left: 4px solid #4287ff;
-      border-right: none;
+    .node:nth-child(even),
+    .connection:nth-child(even) {
+      display: none;
     }
     
-    .step-connector {
-      left: 30px;
-      right: auto;
-      width: 20px;
-      background: linear-gradient(to right, transparent, #b042ff);
+    .particle:nth-child(odd) {
+      display: none;
     }
     
-    .methodology-step:nth-child(even) .step-connector {
-      left: 30px;
-      right: auto;
-      background: linear-gradient(to right, transparent, #4287ff);
+    .tech-corner {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .metodologia-section {
+      padding: 5rem 0 3rem;
+    }
+    
+    .container {
+      padding: 0 0.75rem;
+    }
+    
+    /* Minimizar efectos para dispositivos móviles */
+    .connection {
+      display: none;
+    }
+    
+    .particle {
+      display: none;
+    }
+    
+    .tech-corner {
+      width: 40px;
+      height: 40px;
+    }
+    
+    /* Mantener solo algunos nodos */
+    .node-2, .node-3, .node-5 {
+      display: none;
     }
   }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Activar animación de entrada al hacer scroll
-    const steps = document.querySelectorAll('.methodology-step');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.2 });
-    
-    steps.forEach(step => {
-      observer.observe(step);
-    });
-  });
-</script>
