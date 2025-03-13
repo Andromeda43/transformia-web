@@ -9,66 +9,24 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
   <!-- Elemento de transición hacia la sección anterior -->
   <div class="section-transition"></div>
   
-  <!-- Fondos avanzados y efectos visuales -->
+  <!-- Fondos simplificados y efectos visuales esenciales -->
   <div class="cyberpunk-background">
     <!-- Efecto de rejilla digital -->
     <div class="digital-grid"></div>
     
-    <!-- Efecto de líneas de código -->
+    <!-- Efecto de líneas de código (lluvia) -->
     <div class="code-lines">
       <div class="code-line"></div>
       <div class="code-line"></div>
       <div class="code-line"></div>
       <div class="code-line"></div>
-      <div class="code-line"></div>
-      <div class="code-line"></div>
-      <div class="code-line"></div>
-      <div class="code-line"></div>
-    </div>
-    
-    <!-- Efecto de circuitos -->
-    <div class="circuit-patterns">
-      <div class="circuit circuit-1"></div>
-      <div class="circuit circuit-2"></div>
-      <div class="circuit circuit-3"></div>
-    </div>
-    
-    <!-- Efecto de nodos y conexiones -->
-    <div class="neural-network">
-      <div class="node node-1"></div>
-      <div class="node node-2"></div>
-      <div class="node node-3"></div>
-      <div class="node node-4"></div>
-      <div class="node node-5"></div>
-      <div class="node node-6"></div>
-      <div class="connection connection-1"></div>
-      <div class="connection connection-2"></div>
-      <div class="connection connection-3"></div>
-      <div class="connection connection-4"></div>
-      <div class="connection connection-5"></div>
-    </div>
-    
-    <!-- Efecto de partículas de datos -->
-    <div class="data-particles">
-      <div class="particle particle-1"></div>
-      <div class="particle particle-2"></div>
-      <div class="particle particle-3"></div>
-      <div class="particle particle-4"></div>
-      <div class="particle particle-5"></div>
-      <div class="particle particle-6"></div>
-      <div class="particle particle-7"></div>
-      <div class="particle particle-8"></div>
-      <div class="particle particle-9"></div>
-      <div class="particle particle-10"></div>
-      <div class="particle particle-11"></div>
-      <div class="particle particle-12"></div>
     </div>
     
     <!-- Overlay para dar profundidad -->
     <div class="depth-overlay"></div>
   </div>
   
-  <!-- Decoración de interfaz de alta tecnología -->
+  <!-- Decoración de interfaz de alta tecnología - bordes de la sección -->
   <div class="tech-ui-elements">
     <div class="tech-corner top-left">
       <div class="corner-line horizontal"></div>
@@ -93,7 +51,15 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
   <div class="container">
     <!-- Componentes de Metodología -->
     <MetodologiaHeader />
+    
+    <!-- Espaciador entre header y cycle -->
+    <div class="header-cycle-spacer"></div>
+    
     <MetodologiaCycle />
+    
+    <!-- Espaciador explícito para aumentar la separación -->
+    <div class="section-spacer"></div>
+    
     <MetodologiaBeneficios />
   </div>
 </section>
@@ -132,6 +98,18 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
     height: 120px;
     background: linear-gradient(to bottom, transparent, var(--dark-bg));
     z-index: 20;
+  }
+  
+  /* Espaciador explícito entre componentes */
+  .section-spacer {
+    height: 9rem; /* Aumentado a 9rem como solicitado */
+    width: 100%;
+  }
+  
+  /* Espaciador entre header y cycle */
+  .header-cycle-spacer {
+    height: 4rem; /* Espaciador más pequeño como solicitado */
+    width: 100%;
   }
   
   .container {
@@ -183,7 +161,7 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
     }
   }
   
-  /* Líneas de código que se mueven verticalmente */
+  /* Líneas de código que se mueven verticalmente (efecto lluvia) */
   .code-lines {
     position: absolute;
     width: 100%;
@@ -218,14 +196,10 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
     opacity: 0.8;
   }
   
-  .code-line:nth-child(1) { left: 10%; animation-duration: 9s; }
-  .code-line:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; }
-  .code-line:nth-child(3) { left: 35%; animation-duration: 12s; animation-delay: 4s; }
-  .code-line:nth-child(4) { left: 50%; animation-duration: 18s; animation-delay: 1s; }
-  .code-line:nth-child(5) { left: 65%; animation-duration: 10s; animation-delay: 3s; }
-  .code-line:nth-child(6) { left: 75%; animation-duration: 14s; animation-delay: 6s; }
-  .code-line:nth-child(7) { left: 85%; animation-duration: 11s; animation-delay: 7s; }
-  .code-line:nth-child(8) { left: 90%; animation-duration: 16s; animation-delay: 5s; }
+  .code-line:nth-child(1) { left: 15%; animation-duration: 15s; animation-delay: 2s; }
+  .code-line:nth-child(2) { left: 35%; animation-duration: 12s; animation-delay: 4s; }
+  .code-line:nth-child(3) { left: 65%; animation-duration: 10s; animation-delay: 3s; }
+  .code-line:nth-child(4) { left: 85%; animation-duration: 14s; animation-delay: 1s; }
   
   @keyframes code-line-movement {
     0% {
@@ -233,227 +207,6 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
     }
     100% {
       transform: translateY(100%);
-    }
-  }
-  
-  /* Patrones de circuitos */
-  .circuit-patterns {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-  
-  .circuit {
-    position: absolute;
-    opacity: 0.15;
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: hue-rotate(0deg);
-    animation: circuit-glow 4s ease-in-out infinite alternate;
-  }
-  
-  .circuit-1 {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 5%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E path, circle %7B stroke: %238a42ff; stroke-width: 2; fill: none; %7D %3C/style%3E%3Cpath d='M50,20 L150,20 L150,100 L100,150 L50,100 Z'/%3E%3Ccircle cx='50' cy='20' r='5'/%3E%3Ccircle cx='150' cy='20' r='5'/%3E%3Ccircle cx='150' cy='100' r='5'/%3E%3Ccircle cx='100' cy='150' r='5'/%3E%3Ccircle cx='50' cy='100' r='5'/%3E%3Cpath d='M50,20 L50,100 M150,20 L150,100 M50,100 L100,150 M100,150 L150,100'/%3E%3C/svg%3E");
-    animation-delay: 0s;
-  }
-  
-  .circuit-2 {
-    width: 400px;
-    height: 400px;
-    bottom: 20%;
-    right: 10%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E path, circle %7B stroke: %238a42ff; stroke-width: 2; fill: none; %7D %3C/style%3E%3Cpath d='M20,50 L180,50 M20,100 L180,100 M20,150 L180,150 M50,20 L50,180 M100,20 L100,180 M150,20 L150,180'/%3E%3Ccircle cx='50' cy='50' r='5'/%3E%3Ccircle cx='100' cy='50' r='5'/%3E%3Ccircle cx='150' cy='50' r='5'/%3E%3Ccircle cx='50' cy='100' r='5'/%3E%3Ccircle cx='100' cy='100' r='5'/%3E%3Ccircle cx='150' cy='100' r='5'/%3E%3Ccircle cx='50' cy='150' r='5'/%3E%3Ccircle cx='100' cy='150' r='5'/%3E%3Ccircle cx='150' cy='150' r='5'/%3E%3C/svg%3E");
-    animation-delay: 2s;
-  }
-  
-  .circuit-3 {
-    width: 350px;
-    height: 350px;
-    top: 40%;
-    left: 25%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cstyle%3E path, circle %7B stroke: %238a42ff; stroke-width: 2; fill: none; %7D %3C/style%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3Cpath d='M100,20 L100,180 M20,100 L180,100 M35,35 L165,165 M35,165 L165,35'/%3E%3Ccircle cx='100' cy='20' r='5'/%3E%3Ccircle cx='100' cy='180' r='5'/%3E%3Ccircle cx='20' cy='100' r='5'/%3E%3Ccircle cx='180' cy='100' r='5'/%3E%3Ccircle cx='35' cy='35' r='5'/%3E%3Ccircle cx='165' cy='165' r='5'/%3E%3Ccircle cx='35' cy='165' r='5'/%3E%3Ccircle cx='165' cy='35' r='5'/%3E%3C/svg%3E");
-    animation-delay: 1s;
-  }
-  
-  @keyframes circuit-glow {
-    0%, 100% {
-      opacity: 0.15;
-      filter: hue-rotate(0deg) brightness(1);
-    }
-    50% {
-      opacity: 0.25;
-      filter: hue-rotate(30deg) brightness(1.2);
-    }
-  }
-  
-  /* Red neuronal con nodos y conexiones */
-  .neural-network {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-  
-  .node {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: var(--purple);
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--purple), 0 0 5px var(--purple-light);
-    animation: node-pulse 4s infinite alternate;
-  }
-  
-  .node-1 { top: 20%; left: 30%; animation-delay: 0s; }
-  .node-2 { top: 30%; right: 25%; animation-delay: 0.7s; }
-  .node-3 { top: 50%; left: 15%; animation-delay: 1.4s; }
-  .node-4 { top: 60%; right: 20%; animation-delay: 2.1s; }
-  .node-5 { top: 75%; left: 40%; animation-delay: 2.8s; }
-  .node-6 { top: 40%; left: 60%; animation-delay: 3.5s; }
-  
-  @keyframes node-pulse {
-    0%, 100% {
-      transform: scale(1);
-      box-shadow: 0 0 15px var(--purple), 0 0 5px var(--purple-light);
-    }
-    50% {
-      transform: scale(1.3);
-      box-shadow: 0 0 25px var(--purple), 0 0 8px var(--purple-light);
-    }
-  }
-  
-  .connection {
-    position: absolute;
-    height: 2px;
-    background: linear-gradient(90deg, var(--purple), var(--purple-light));
-    opacity: 0.5;
-    transform-origin: 0 0;
-    animation: connection-pulse 3s infinite alternate;
-  }
-  
-  .connection-1 {
-    width: 200px;
-    top: calc(20% + 6px);
-    left: calc(30% + 6px);
-    transform: rotate(15deg);
-    animation-delay: 0.2s;
-  }
-  
-  .connection-2 {
-    width: 250px;
-    top: calc(30% + 6px);
-    left: calc(25% + 450px);
-    transform: rotate(150deg);
-    animation-delay: 0.9s;
-  }
-  
-  .connection-3 {
-    width: 300px;
-    top: calc(50% + 6px);
-    left: calc(15% + 6px);
-    transform: rotate(-20deg);
-    animation-delay: 1.6s;
-  }
-  
-  .connection-4 {
-    width: 200px;
-    top: calc(60% + 6px);
-    left: calc(20% + 600px);
-    transform: rotate(-160deg);
-    animation-delay: 2.3s;
-  }
-  
-  .connection-5 {
-    width: 250px;
-    top: calc(75% + 6px);
-    left: calc(40% + 6px);
-    transform: rotate(-30deg);
-    animation-delay: 3s;
-  }
-  
-  @keyframes connection-pulse {
-    0% {
-      opacity: 0.3;
-      background: linear-gradient(90deg, var(--purple), var(--purple-light));
-    }
-    50% {
-      opacity: 0.7;
-      background: linear-gradient(90deg, var(--purple-light), var(--blue-neon));
-    }
-    100% {
-      opacity: 0.3;
-      background: linear-gradient(90deg, var(--purple), var(--purple-light));
-    }
-  }
-  
-  /* Partículas de datos */
-  .data-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-  
-  .particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: var(--purple-light);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--purple-light);
-    opacity: 0.7;
-    animation: particle-movement 15s linear infinite;
-  }
-  
-  .particle:nth-child(odd) {
-    background: var(--blue-neon);
-    box-shadow: 0 0 10px var(--blue-neon);
-  }
-  
-  .particle:nth-child(3n) {
-    background: var(--pink-neon);
-    box-shadow: 0 0 10px var(--pink-neon);
-  }
-  
-  .particle:nth-child(1) { top: 10%; left: 20%; animation-duration: 20s; animation-delay: 0s; }
-  .particle:nth-child(2) { top: 15%; left: 70%; animation-duration: 25s; animation-delay: 1s; }
-  .particle:nth-child(3) { top: 25%; left: 40%; animation-duration: 15s; animation-delay: 2s; }
-  .particle:nth-child(4) { top: 35%; left: 80%; animation-duration: 18s; animation-delay: 3s; }
-  .particle:nth-child(5) { top: 45%; left: 10%; animation-duration: 22s; animation-delay: 4s; }
-  .particle:nth-child(6) { top: 55%; left: 50%; animation-duration: 19s; animation-delay: 5s; }
-  .particle:nth-child(7) { top: 65%; left: 30%; animation-duration: 17s; animation-delay: 6s; }
-  .particle:nth-child(8) { top: 75%; left: 60%; animation-duration: 24s; animation-delay: 7s; }
-  .particle:nth-child(9) { top: 85%; left: 25%; animation-duration: 21s; animation-delay: 8s; }
-  .particle:nth-child(10) { top: 5%; left: 45%; animation-duration: 16s; animation-delay: 9s; }
-  .particle:nth-child(11) { top: 50%; left: 75%; animation-duration: 23s; animation-delay: 10s; }
-  .particle:nth-child(12) { top: 70%; left: 5%; animation-duration: 26s; animation-delay: 11s; }
-  
-  @keyframes particle-movement {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    20% {
-      transform: translate(100px, 50px) scale(1.5);
-    }
-    40% {
-      transform: translate(200px, -80px) scale(1);
-    }
-    60% {
-      transform: translate(100px, -120px) scale(2);
-    }
-    80% {
-      transform: translate(-100px, -50px) scale(1);
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
     }
   }
   
@@ -468,7 +221,7 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
     z-index: 2;
   }
   
-  /* Elementos de interfaz de alta tecnología */
+  /* Elementos de interfaz de alta tecnología - bordes de la sección */
   .tech-ui-elements {
     position: absolute;
     top: 0;
@@ -534,8 +287,8 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
   }
   
   .bottom-left {
-    bottom: 50px;
-    left: 50px;
+    bottom: 20px;
+    left: 20px;
   }
   
   .bottom-left .horizontal {
@@ -549,8 +302,8 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
   }
   
   .bottom-right {
-    bottom: 50px;
-    right: 50px;
+    bottom: 20px;
+    right: 20px;
   }
   
   .bottom-right .horizontal {
@@ -602,6 +355,14 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
       width: 80px;
       height: 80px;
     }
+    
+    .section-spacer {
+      height: 8rem;
+    }
+    
+    .header-cycle-spacer {
+      height: 3.5rem;
+    }
   }
   
   @media (max-width: 992px) {
@@ -613,9 +374,12 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
       padding: 0 1.25rem;
     }
     
-    /* Simplificar elementos de fondo para tablets */
-    .circuit-3 {
-      display: none;
+    .section-spacer {
+      height: 7rem;
+    }
+    
+    .header-cycle-spacer {
+      height: 3rem;
     }
   }
   
@@ -628,23 +392,29 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
       padding: 0 1rem;
     }
     
-    /* Reducir efectos visuales para mejorar rendimiento */
-    .circuit-2 {
-      display: none;
+    .section-spacer {
+      height: 7rem; /* Mantenemos proporcionalmente grande el espaciador */
     }
     
-    .node:nth-child(even),
-    .connection:nth-child(even) {
-      display: none;
-    }
-    
-    .particle:nth-child(odd) {
-      display: none;
+    .header-cycle-spacer {
+      height: 2.5rem;
     }
     
     .tech-corner {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
+    }
+    
+    .bottom-left, .bottom-right {
+      bottom: 15px;
+    }
+    
+    .bottom-left {
+      left: 15px;
+    }
+    
+    .bottom-right {
+      right: 15px;
     }
   }
   
@@ -657,23 +427,29 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
       padding: 0 0.75rem;
     }
     
-    /* Minimizar efectos para dispositivos móviles */
-    .connection {
-      display: none;
+    .section-spacer {
+      height: 5rem; /* Mantenemos un espaciador considerable */
     }
     
-    .particle {
-      display: none;
+    .header-cycle-spacer {
+      height: 2rem;
     }
     
     .tech-corner {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
     
-    /* Mantener solo algunos nodos */
-    .node-2, .node-3, .node-5 {
-      display: none;
+    .bottom-left, .bottom-right {
+      bottom: 10px;
+    }
+    
+    .bottom-left {
+      left: 10px;
+    }
+    
+    .bottom-right {
+      right: 10px;
     }
   }
 </style>

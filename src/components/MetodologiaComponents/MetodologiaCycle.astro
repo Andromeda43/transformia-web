@@ -19,7 +19,6 @@
           </div>
           <div class="core-label">CLIENTE</div>
         </div>
-        <div class="core-ring"></div>
         <div class="core-particles">
           <div class="c-particle p1"></div>
           <div class="c-particle p2"></div>
@@ -355,17 +354,6 @@
       text-shadow: 0 0 10px rgba(138, 66, 255, 0.8);
     }
     
-    .core-ring {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 1px solid rgba(138, 66, 255, 0.6);
-      border-radius: 50%;
-      animation: ring-rotate 20s linear infinite;
-    }
-    
     .core-ring::before, .core-ring::after {
       content: '';
       position: absolute;
@@ -419,15 +407,15 @@
     .p2 { top: 50%; left: 0; animation: particle-orbit 5s linear infinite; animation-delay: 1s; }
     .p3 { top: 100%; left: 50%; animation: particle-orbit 7s linear infinite; animation-delay: 2s; }
     .p4 { top: 50%; left: 100%; animation: particle-orbit 6s linear infinite; animation-delay: 0.5s; }
-    .p5 { top: 25%; left: 75%; animation: particle-orbit 4s linear infinite; animation-delay: 1.5s; }
+    .p5 { top: 25%; left: 75%; animation: particle-orbit 4s linear infinite; animation-delay: 1.5s;     }
     
     @keyframes particle-orbit {
       0% {
-        transform: rotate(0deg) translateX(65px) rotate(0deg); /* Aumentado de 50px */
-    }
+        transform: rotate(0deg) translateX(75px) rotate(0deg);
+      }
       100% {
-        transform: rotate(360deg) translateX(65px) rotate(-360deg); /* Aumentado de 50px */
-    }
+        transform: rotate(360deg) translateX(75px) rotate(-360deg);
+      }
     }
     
     /* Línea del timeline */
@@ -947,7 +935,7 @@
       }
     }
     
-    /* Modo Vertical (Mobile) */
+    /* Modo Vertical (Mobile) - CORREGIDO PARA MOSTRAR CORRECTAMENTE LAS TARJETAS */
     @media (max-width: 768px) {
       .cyber-cycle {
         margin: 2rem auto 4rem;
@@ -1009,7 +997,7 @@
         transform: translateY(-50%);
       }
       
-      /* Alternar los conectores y las cards a derecha e izquierda */
+      /* Alternar los conectores a derecha e izquierda */
       .timeline-icon-wrapper:nth-child(odd) .icon-connector {
         left: -30px;
       }
@@ -1019,13 +1007,15 @@
         left: auto;
       }
       
-      /* Alternancia derecha/izquierda para las tarjetas en móvil */
+      /* CORRECCIÓN: Posicionamiento central de las tarjetas en móvil */
       .timeline-icon-wrapper {
         width: 100%;
         display: flex;
         justify-content: center;
+        position: relative;
       }
       
+      /* Ajustamos el desplazamiento alternando izquierda y derecha para los iconos */
       .timeline-icon-wrapper:nth-child(odd) {
         padding-left: 40px;
       }
@@ -1034,63 +1024,64 @@
         padding-right: 40px;
       }
       
-      .timeline-icon-wrapper:nth-child(odd) .info-card {
-        left: calc(100% + 15px);
-        top: 50%;
-        transform: translateY(-50%) scale(0.95);
-        transform-origin: left center;
+      /* CORRECCIÓN: Posicionamiento de las tarjetas informativas */
+      .info-card {
+        max-width: 280px; /* Reducido para mejor ajuste en móvil */
+        width: 90vw; /* Ancho responsivo */
+        position: fixed; /* Fijo en la pantalla */
+        top: 50%; /* Centrado vertical */
+        left: 50%; /* Centrado horizontal */
+        transform: translate(-50%, -50%) scale(0.95); /* Centrado absoluto */
+        z-index: 100; /* Aseguramos que está por encima de todo */
       }
       
-      .timeline-icon-wrapper:nth-child(odd) .info-card.active {
-        transform: translateY(-50%) scale(1);
+      .info-card.active {
+        transform: translate(-50%, -50%) scale(1);
       }
       
-      .timeline-icon-wrapper:nth-child(odd) .info-card::after {
+      /* Añadimos un fondo semi-transparente cuando la tarjeta está activa */
+      .timeline-icon-wrapper .info-card::before {
         content: '';
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-right: 10px solid rgba(20, 20, 40, 0.85);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
       }
       
-      .timeline-icon-wrapper:nth-child(even) .info-card {
-        right: calc(100% + 15px);
-        left: auto;
-        top: 50%;
-        transform: translateY(-50%) scale(0.95);
-        transform-origin: right center;
+      .timeline-icon-wrapper .info-card.active::before {
+        opacity: 1;
+        visibility: visible;
       }
       
-      .timeline-icon-wrapper:nth-child(even) .info-card.active {
-        transform: translateY(-50%) scale(1);
+      /* Eliminamos los pseudoelementos de flecha que ya no necesitamos */
+      .timeline-icon-wrapper .info-card::after {
+        display: none;
       }
       
-      .timeline-icon-wrapper:nth-child(even) .info-card::after {
-        content: '';
-        position: absolute;
-        right: -10px;
-        left: auto;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 10px solid rgba(20, 20, 40, 0.85);
+      /* Mejoramos el estilo del botón de cierre para que sea más visible */
+      .info-card .close-btn {
+        background: rgba(138, 66, 255, 0.2);
+        width: 36px;
+        height: 36px;
+      }
+      
+      .info-card .close-btn:hover,
+      .info-card .close-btn:focus {
+        background: rgba(138, 66, 255, 0.4);
       }
     }
     
     /* Ajustes para pantallas muy pequeñas */
     @media (max-width: 480px) {
       .info-card {
-        width: 270px;
+        width: 85vw;
         padding: 1.25rem;
-        max-width: calc(100vw - 120px);
       }
       
       .card-header h3 {
@@ -1168,6 +1159,11 @@
         icon.classList.remove('active');
       });
       activeCard = null;
+      
+      // Restaurar el scroll si estábamos en móvil
+      if (window.innerWidth <= 768) {
+        document.body.style.overflow = '';
+      }
     };
     
     // Agregar manejadores de eventos para cada icono
@@ -1188,6 +1184,11 @@
           card.classList.remove('active');
           icon.classList.remove('active');
           activeCard = null;
+          
+          // Restaurar scroll en móvil
+          if (window.innerWidth <= 768) {
+            document.body.style.overflow = '';
+          }
         } else {
           // Cerrar la tarjeta actualmente activa (si hay)
           closeAllCards();
@@ -1196,6 +1197,11 @@
           card.classList.add('active');
           icon.classList.add('active');
           activeCard = card as HTMLElement;
+          
+          // Evitar scroll en móvil cuando la tarjeta está abierta
+          if (window.innerWidth <= 768) {
+            document.body.style.overflow = 'hidden';
+          }
         }
       });
       
@@ -1206,6 +1212,11 @@
           card.classList.remove('active');
           icon.classList.remove('active');
           activeCard = null;
+          
+          // Restaurar scroll en móvil
+          if (window.innerWidth <= 768) {
+            document.body.style.overflow = '';
+          }
         });
       }
     });
@@ -1274,5 +1285,22 @@
     
     // Ejecutar animaciones aleatorias cada cierto tiempo
     setInterval(randomGlow, 3000);
+    
+    // Añadir evento de escucha para el cambio de tamaño de ventana
+    window.addEventListener('resize', () => {
+      // Si hay una tarjeta activa y estamos cambiando entre modos de visualización,
+      // cerramos la tarjeta para evitar problemas de posicionamiento
+      if (activeCard && ((window.innerWidth > 768 && window.innerWidth <= 769) || 
+                         (window.innerWidth <= 768 && window.innerWidth > 767))) {
+        closeAllCards();
+      }
+    });
+    
+    // Manejar escape key para cerrar tarjetas
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activeCard) {
+        closeAllCards();
+      }
+    });
   });
 </script>
