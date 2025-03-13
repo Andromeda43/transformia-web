@@ -1,260 +1,272 @@
 ---
-// MetodologiaCycle.astro - Ciclo de metodología con diseño retrofuturista
+// MetodologiaCycle.astro - Ciclo de metodología con conexiones corregidas
 ---
 
-<div class="cyber-cycle">
-    <!-- Núcleo central: cliente -->
-    <div class="core-hub">
-      <div class="core-inner">
-        <div class="core-icon">
+<div class="cycle-container">
+    <!-- Elemento central (CLIENTE) -->
+    <div class="central-element">
+      <div class="central-circle">
+        <div class="central-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
           </svg>
         </div>
-        <div class="core-label">CLIENTE</div>
+        <div class="central-label">CLIENTE</div>
       </div>
-      <div class="core-ring"></div>
-      <div class="core-particles">
-        <div class="c-particle p1"></div>
-        <div class="c-particle p2"></div>
-        <div class="c-particle p3"></div>
-        <div class="c-particle p4"></div>
-        <div class="c-particle p5"></div>
+      <div class="glow-ring"></div>
+    </div>
+    
+    <!-- Líneas radiales hacia el centro -->
+    <div class="radial-lines">
+      <div class="rad-line line-1"></div>
+      <div class="rad-line line-2"></div>
+      <div class="rad-line line-3"></div>
+      <div class="rad-line line-4"></div>
+      <div class="rad-line line-5"></div>
+    </div>
+    
+    <!-- Conexiones de puntos entre nodos (solo entre nodos, no hacia el centro) -->
+    <div class="dot-connections">
+      <!-- 01 a 02 -->
+      <div class="dot-connection conn-1-2">
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+      </div>
+      
+      <!-- 02 a 03 -->
+      <div class="dot-connection conn-2-3">
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+      </div>
+      
+      <!-- 03 a 04 -->
+      <div class="dot-connection conn-3-4">
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+      </div>
+      
+      <!-- 04 a 05 -->
+      <div class="dot-connection conn-4-5">
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+      </div>
+      
+      <!-- 05 a 01 - Cierra el ciclo -->
+      <div class="dot-connection conn-5-1">
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
+        <div class="dot-item"></div>
       </div>
     </div>
     
-    <!-- Ciclo de metodología -->
-    <div class="cycle-orbit">
-      <!-- Paso 1: Descubrimiento -->
-      <div class="cycle-node node-1">
-        <div class="node-ring"></div>
-        <div class="node-connector">
-          <div class="data-flow"></div>
-        </div>
-        <div class="node-content">
-          <div class="node-header">
-            <div class="node-number">01</div>
-            <div class="node-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-              </svg>
-            </div>
-          </div>
-          <h3>Descubrimiento</h3>
-          <div class="node-desc">
-            <div class="desc-line"></div>
-            <p>Entendemos tus necesidades y objetivos de negocio para definir claramente el alcance del proyecto.</p>
-          </div>
+    <!-- Paso 1: Descubrimiento (Arriba) -->
+    <div class="cycle-node node-1" data-index="1">
+      <div class="node-circle">
+        <div class="node-pulse"></div>
+        <div class="node-number">01</div>
+        <div class="node-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
         </div>
       </div>
-      
-      <!-- Paso 2: Planificación -->
-      <div class="cycle-node node-2">
-        <div class="node-ring"></div>
-        <div class="node-connector">
-          <div class="data-flow"></div>
-        </div>
-        <div class="node-content">
-          <div class="node-header">
-            <div class="node-number">02</div>
-            <div class="node-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
-          </div>
-          <h3>Planificación</h3>
-          <div class="node-desc">
-            <div class="desc-line"></div>
-            <p>Creamos sprints de trabajo priorizando las características que aportan mayor valor a tu negocio.</p>
-          </div>
+      <div class="node-content">
+        <h3>Descubrimiento</h3>
+        <p>Entendemos tus necesidades y objetivos de negocio para definir claramente el alcance del proyecto.</p>
+      </div>
+    </div>
+    
+    <!-- Paso 2: Planificación (Derecha) -->
+    <div class="cycle-node node-2" data-index="2">
+      <div class="node-circle">
+        <div class="node-pulse"></div>
+        <div class="node-number">02</div>
+        <div class="node-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
         </div>
       </div>
-      
-      <!-- Paso 3: Desarrollo -->
-      <div class="cycle-node node-3">
-        <div class="node-ring"></div>
-        <div class="node-connector">
-          <div class="data-flow"></div>
-        </div>
-        <div class="node-content">
-          <div class="node-header">
-            <div class="node-number">03</div>
-            <div class="node-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-            </div>
-          </div>
-          <h3>Desarrollo</h3>
-          <div class="node-desc">
-            <div class="desc-line"></div>
-            <p>Implementamos soluciones en ciclos cortos, manteniendo la flexibilidad para adaptarnos a nuevos requisitos.</p>
-          </div>
+      <div class="node-content">
+        <h3>Planificación</h3>
+        <p>Creamos sprints de trabajo priorizando las características que aportan mayor valor a tu negocio.</p>
+      </div>
+    </div>
+    
+    <!-- Paso 3: Desarrollo (Abajo derecha) -->
+    <div class="cycle-node node-3" data-index="3">
+      <div class="node-circle">
+        <div class="node-pulse"></div>
+        <div class="node-number">03</div>
+        <div class="node-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
         </div>
       </div>
-      
-      <!-- Paso 4: Pruebas -->
-      <div class="cycle-node node-4">
-        <div class="node-ring"></div>
-        <div class="node-connector">
-          <div class="data-flow"></div>
-        </div>
-        <div class="node-content">
-          <div class="node-header">
-            <div class="node-number">04</div>
-            <div class="node-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </div>
-          </div>
-          <h3>Pruebas</h3>
-          <div class="node-desc">
-            <div class="desc-line"></div>
-            <p>Validamos continuamente las soluciones con usuarios reales para garantizar una experiencia óptima.</p>
-          </div>
+      <div class="node-content">
+        <h3>Desarrollo</h3>
+        <p>Implementamos soluciones en ciclos cortos, manteniendo la flexibilidad para adaptarnos a nuevos requisitos.</p>
+      </div>
+    </div>
+    
+    <!-- Paso 4: Pruebas (Abajo izquierda) -->
+    <div class="cycle-node node-4" data-index="4">
+      <div class="node-circle">
+        <div class="node-pulse"></div>
+        <div class="node-number">04</div>
+        <div class="node-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
         </div>
       </div>
-      
-      <!-- Paso 5: Entrega -->
-      <div class="cycle-node node-5">
-        <div class="node-ring"></div>
-        <div class="node-connector">
-          <div class="data-flow"></div>
-        </div>
-        <div class="node-content">
-          <div class="node-header">
-            <div class="node-number">05</div>
-            <div class="node-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-            </div>
-          </div>
-          <h3>Entrega</h3>
-          <div class="node-desc">
-            <div class="desc-line"></div>
-            <p>Implementamos las versiones finales y aseguramos una transición sin problemas a la operación.</p>
-          </div>
+      <div class="node-content">
+        <h3>Pruebas</h3>
+        <p>Validamos continuamente las soluciones con usuarios reales para garantizar una experiencia óptima.</p>
+      </div>
+    </div>
+    
+    <!-- Paso 5: Entrega (Izquierda) -->
+    <div class="cycle-node node-5" data-index="5">
+      <div class="node-circle">
+        <div class="node-pulse"></div>
+        <div class="node-number">05</div>
+        <div class="node-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
         </div>
       </div>
+      <div class="node-content">
+        <h3>Entrega</h3>
+        <p>Implementamos las versiones finales y aseguramos una transición sin problemas a la operación.</p>
+      </div>
+    </div>
+    
+    <!-- Partículas flotantes -->
+    <div class="floating-particles">
+      <div class="particle p1"></div>
+      <div class="particle p2"></div>
+      <div class="particle p3"></div>
+      <div class="particle p4"></div>
+      <div class="particle p5"></div>
+      <div class="particle p6"></div>
+      <div class="particle p7"></div>
+      <div class="particle p8"></div>
     </div>
   </div>
   
   <style>
-    /* Variables y estilos base */
-    .cyber-cycle {
+    /* Estilos base y variables */
+    .cycle-container {
       position: relative;
       width: 100%;
-      max-width: 1200px;
-      height: 800px;
+      height: 650px;
+      max-width: 900px;
       margin: 3rem auto 6rem;
       perspective: 1200px;
     }
     
-    /* Núcleo central - Cliente */
-    .core-hub {
+    /* Elemento central - CLIENTE */
+    .central-element {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 180px;
-      height: 180px;
-      z-index: 50;
+      width: 150px;
+      height: 150px;
+      z-index: 20;
     }
     
-    .core-inner {
+    .central-circle {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 120px;
       height: 120px;
-      background: rgba(138, 66, 255, 0.15);
-      border: 2px solid rgba(138, 66, 255, 0.6);
+      background: rgba(30, 20, 50, 0.9);
+      border: 2px solid rgba(138, 66, 255, 0.8);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 10;
-      box-shadow: 
-        0 0 20px rgba(138, 66, 255, 0.5),
-        inset 0 0 15px rgba(138, 66, 255, 0.5);
-      backdrop-filter: blur(5px);
-      animation: core-pulse 5s ease-in-out infinite alternate;
+      box-shadow: 0 0 30px rgba(138, 66, 255, 0.6);
+      animation: gentle-float 6s ease-in-out infinite alternate;
     }
     
-    @keyframes core-pulse {
+    @keyframes gentle-float {
       0%, 100% {
-        box-shadow: 
-          0 0 20px rgba(138, 66, 255, 0.5),
-          inset 0 0 15px rgba(138, 66, 255, 0.5);
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 30px rgba(138, 66, 255, 0.6);
       }
       50% {
-        box-shadow: 
-          0 0 30px rgba(138, 66, 255, 0.7),
-          inset 0 0 25px rgba(138, 66, 255, 0.7);
+        transform: translate(-50%, -55%);
+        box-shadow: 0 0 40px rgba(138, 66, 255, 0.8);
       }
     }
     
-    .core-icon {
-      color: var(--purple);
-      width: 40px;
-      height: 40px;
-      margin-bottom: 0.5rem;
-      filter: drop-shadow(0 0 5px rgba(138, 66, 255, 0.8));
+    .central-icon {
+      color: var(--purple, #8a42ff);
+      width: 42px;
+      height: 42px;
+      margin-bottom: 0.6rem;
+      filter: drop-shadow(0 0 8px rgba(138, 66, 255, 0.8));
     }
     
-    .core-label {
-      font-family: var(--font-mono);
+    .central-label {
+      font-family: var(--font-mono, 'Space Mono', monospace);
       font-weight: 800;
-      font-size: 1rem;
-      color: var(--purple);
+      font-size: 1.1rem;
+      color: var(--purple, #8a42ff);
       letter-spacing: 2px;
       text-shadow: 0 0 10px rgba(138, 66, 255, 0.8);
     }
     
-    .core-ring {
+    .glow-ring {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 1px solid rgba(138, 66, 255, 0.6);
+      top: -10px;
+      left: -10px;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      border: 1px solid rgba(138, 66, 255, 0.4);
       border-radius: 50%;
-      animation: ring-rotate 20s linear infinite;
-    }
-    
-    .core-ring::before, .core-ring::after {
-      content: '';
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: var(--purple);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--purple), 0 0 20px var(--purple);
-    }
-    
-    .core-ring::before {
-      top: 50%;
-      left: -5px;
-      transform: translateY(-50%);
-    }
-    
-    .core-ring::after {
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
+      animation: ring-rotate 60s linear infinite;
     }
     
     @keyframes ring-rotate {
@@ -266,428 +278,623 @@
       }
     }
     
-    .core-particles {
+    /* Líneas radiales desde los nodos al centro */
+    .radial-lines {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      z-index: 5;
     }
     
-    .c-particle {
+    .rad-line {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: var(--purple);
-      border-radius: 50%;
-      opacity: 0.7;
-      box-shadow: 0 0 10px var(--purple);
+      background: rgba(138, 66, 255, 0.4);
+      z-index: 5;
+      transform-origin: 0 0;
     }
     
-    .p1 { top: 0; left: 50%; animation: particle-orbit 3s linear infinite; }
-    .p2 { top: 50%; left: 0; animation: particle-orbit 5s linear infinite; animation-delay: 1s; }
-    .p3 { top: 100%; left: 50%; animation: particle-orbit 7s linear infinite; animation-delay: 2s; }
-    .p4 { top: 50%; left: 100%; animation: particle-orbit 6s linear infinite; animation-delay: 0.5s; }
-    .p5 { top: 25%; left: 75%; animation: particle-orbit 4s linear infinite; animation-delay: 1.5s; }
-    
-    @keyframes particle-orbit {
-      0% {
-        transform: rotate(0deg) translateX(90px) rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg) translateX(90px) rotate(-360deg);
-      }
+    .line-1 {
+      width: 2px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
     }
     
-    /* Órbita y nodos del ciclo */
-    .cycle-orbit {
+    .line-2 {
+      width: 220px;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(0, -50%);
+    }
+    
+    .line-3 {
+      width: 2px;
+      height: 200px;
+      bottom: 0;
+      right: 180px;
+      transform: rotate(45deg);
+    }
+    
+    .line-4 {
+      width: 2px;
+      height: 200px;
+      bottom: 0;
+      left: 180px;
+      transform: rotate(-45deg);
+    }
+    
+    .line-5 {
+      width: 220px;
+      height: 2px;
+      top: 50%;
+      right: 50%;
+      transform: translate(0, -50%);
+    }
+    
+    /* Conexiones de puntos entre nodos */
+    .dot-connections {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-    }
-    
-    .cycle-node {
-      position: absolute;
-      width: 400px;
-      padding: 20px;
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 10;
     }
     
-    .node-1 { top: 5%; left: 50%; transform: translateX(-50%); }
-    .node-2 { top: 25%; left: 10%; }
-    .node-3 { top: 50%; right: 5%; }
-    .node-4 { bottom: 25%; left: 10%; }
-    .node-5 { bottom: 5%; left: 50%; transform: translateX(-50%); }
-    
-    .cycle-node:hover {
-      z-index: 30;
-      transform: translateY(-10px) scale(1.05);
-    }
-    
-    .node-1:hover, .node-5:hover {
-      transform: translateX(-50%) translateY(-10px) scale(1.05);
-    }
-    
-    .node-ring {
+    .dot-connection {
       position: absolute;
-      width: 30px;
-      height: 30px;
-      border: 2px solid var(--purple);
+      z-index: 15;
+    }
+    
+    .dot-item {
+      position: absolute;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      top: 30px;
-      left: 0;
-      box-shadow: 0 0 15px var(--purple), inset 0 0 10px var(--purple);
-      animation: node-ring-pulse 3s infinite alternate;
+      background: rgba(138, 66, 255, 0.8);
+      box-shadow: 0 0 10px rgba(138, 66, 255, 0.8);
+      animation: dot-pulse 2s infinite alternate;
     }
     
-    @keyframes node-ring-pulse {
-      0%, 100% {
-        box-shadow: 0 0 10px var(--purple), inset 0 0 5px var(--purple);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 15px var(--purple), inset 0 0 10px var(--purple);
-        transform: scale(1.2);
-      }
-    }
-    
-    .node-connector {
-      position: absolute;
-      height: 2px;
-      background: linear-gradient(90deg, var(--purple), transparent);
-      top: 44px;
-      left: 30px;
-      z-index: -1;
-    }
-    
-    .node-1 .node-connector { width: calc(50% - 120px); background: linear-gradient(to right, transparent, var(--purple)); left: auto; right: 100%; }
-    .node-2 .node-connector { width: 100px; transform: rotate(-45deg); transform-origin: left center; }
-    .node-3 .node-connector { width: 100px; transform: rotate(135deg); transform-origin: left center; left: -20px; }
-    .node-4 .node-connector { width: 100px; transform: rotate(45deg); transform-origin: left center; }
-    .node-5 .node-connector { width: calc(50% - 120px); transform: rotate(0deg); left: auto; right: 100%; background: linear-gradient(to right, transparent, var(--purple)); }
-    
-    .data-flow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, var(--purple), transparent);
-      opacity: 0.6;
-      animation: data-pulse 2s infinite linear;
-    }
-    
-    @keyframes data-pulse {
+    @keyframes dot-pulse {
       0% {
-        transform: translateX(-100%);
+        transform: scale(0.8);
+        opacity: 0.5;
       }
       100% {
-        transform: translateX(100%);
+        transform: scale(1.2);
+        opacity: 1;
       }
     }
     
-    .node-content {
-      background: rgba(10, 10, 20, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 20px;
-      border-top: 1px solid rgba(138, 66, 255, 0.5);
-      border-left: 1px solid rgba(138, 66, 255, 0.3);
-      border-right: 1px solid rgba(138, 66, 255, 0.2);
-      border-bottom: 1px solid rgba(138, 66, 255, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      margin-left: 40px;
-      overflow: hidden;
-      position: relative;
-      transition: all 0.3s ease;
+    /* De 01 a 02 (arriba a derecha) */
+    .conn-1-2 {
+      top: 75px;
+      left: 50%;
+      width: 250px;
+      height: 130px;
     }
     
-    .node-content::before {
-      content: '';
+    .conn-1-2 .dot-item:nth-child(1) { top: 0%; left: 0%; animation-delay: 0s; }
+    .conn-1-2 .dot-item:nth-child(2) { top: 0%; left: 20%; animation-delay: 0.2s; }
+    .conn-1-2 .dot-item:nth-child(3) { top: 20%; left: 40%; animation-delay: 0.4s; }
+    .conn-1-2 .dot-item:nth-child(4) { top: 40%; left: 50%; animation-delay: 0.6s; }
+    .conn-1-2 .dot-item:nth-child(5) { top: 60%; left: 60%; animation-delay: 0.8s; }
+    .conn-1-2 .dot-item:nth-child(6) { top: 80%; left: 80%; animation-delay: 1s; }
+    .conn-1-2 .dot-item:nth-child(7) { top: 100%; left: 100%; animation-delay: 1.2s; }
+    
+    /* De 02 a 03 (derecha a abajo derecha) */
+    .conn-2-3 {
+      top: 50%;
+      right: 75px;
+      width: 130px;
+      height: 200px;
+    }
+    
+    .conn-2-3 .dot-item:nth-child(1) { top: 0%; right: 0%; animation-delay: 1.2s; }
+    .conn-2-3 .dot-item:nth-child(2) { top: 20%; right: 10%; animation-delay: 1.4s; }
+    .conn-2-3 .dot-item:nth-child(3) { top: 30%; right: 30%; animation-delay: 1.6s; }
+    .conn-2-3 .dot-item:nth-child(4) { top: 50%; right: 40%; animation-delay: 1.8s; }
+    .conn-2-3 .dot-item:nth-child(5) { top: 70%; right: 50%; animation-delay: 2s; }
+    .conn-2-3 .dot-item:nth-child(6) { top: 90%; right: 30%; animation-delay: 2.2s; }
+    .conn-2-3 .dot-item:nth-child(7) { top: 100%; right: 10%; animation-delay: 2.4s; }
+    
+    /* De 03 a 04 (abajo derecha a abajo izquierda) */
+    .conn-3-4 {
+      bottom: 75px;
+      right: 200px;
+      width: 300px;
+      height: 100px;
+    }
+    
+    .conn-3-4 .dot-item:nth-child(1) { bottom: 50%; right: 0%; animation-delay: 2.4s; }
+    .conn-3-4 .dot-item:nth-child(2) { bottom: 30%; right: 15%; animation-delay: 2.6s; }
+    .conn-3-4 .dot-item:nth-child(3) { bottom: 50%; right: 30%; animation-delay: 2.8s; }
+    .conn-3-4 .dot-item:nth-child(4) { bottom: 70%; right: 45%; animation-delay: 3s; }
+    .conn-3-4 .dot-item:nth-child(5) { bottom: 50%; right: 60%; animation-delay: 3.2s; }
+    .conn-3-4 .dot-item:nth-child(6) { bottom: 30%; right: 75%; animation-delay: 3.4s; }
+    .conn-3-4 .dot-item:nth-child(7) { bottom: 50%; right: 90%; animation-delay: 3.6s; }
+    
+    /* De 04 a 05 (abajo izquierda a izquierda) */
+    .conn-4-5 {
+      bottom: 250px;
+      left: 75px;
+      width: 130px;
+      height: 200px;
+    }
+    
+    .conn-4-5 .dot-item:nth-child(1) { bottom: 0%; left: 20%; animation-delay: 3.6s; }
+    .conn-4-5 .dot-item:nth-child(2) { bottom: 20%; left: 0%; animation-delay: 3.8s; }
+    .conn-4-5 .dot-item:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 4s; }
+    .conn-4-5 .dot-item:nth-child(4) { bottom: 50%; left: 20%; animation-delay: 4.2s; }
+    .conn-4-5 .dot-item:nth-child(5) { bottom: 70%; left: 30%; animation-delay: 4.4s; }
+    .conn-4-5 .dot-item:nth-child(6) { bottom: 90%; left: 0%; animation-delay: 4.6s; }
+    .conn-4-5 .dot-item:nth-child(7) { bottom: 100%; left: 20%; animation-delay: 4.8s; }
+    
+    /* De 05 a 01 (izquierda a arriba) */
+    .conn-5-1 {
+      top: 75px;
+      left: 180px;
+      width: 200px;
+      height: 170px;
+    }
+    
+    .conn-5-1 .dot-item:nth-child(1) { top: 100%; left: 0%; animation-delay: 4.8s; }
+    .conn-5-1 .dot-item:nth-child(2) { top: 80%; left: 15%; animation-delay: 5s; }
+    .conn-5-1 .dot-item:nth-child(3) { top: 60%; left: 30%; animation-delay: 5.2s; }
+    .conn-5-1 .dot-item:nth-child(4) { top: 40%; left: 45%; animation-delay: 5.4s; }
+    .conn-5-1 .dot-item:nth-child(5) { top: 20%; left: 60%; animation-delay: 5.6s; }
+    .conn-5-1 .dot-item:nth-child(6) { top: 10%; left: 75%; animation-delay: 5.8s; }
+    .conn-5-1 .dot-item:nth-child(7) { top: 0%; left: 90%; animation-delay: 6s; }
+    
+    /* Nodos del ciclo */
+    .cycle-node {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(138, 66, 255, 0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .cycle-node:hover .node-content::before {
-      opacity: 1;
-      animation: sheen 2s ease-in-out infinite;
-    }
-    
-    @keyframes sheen {
-      0%, 100% {
-        background-position: -100% -100%;
-      }
-      50% {
-        background-position: 200% 200%;
-      }
-    }
-    
-    .node-header {
+      z-index: 25;
       display: flex;
       align-items: center;
-      margin-bottom: 1rem;
+      justify-content: center;
+      animation: node-float 8s ease-in-out infinite;
+    }
+    
+    /* Posicionamiento mejorado y simétrico de nodos */
+    .node-1 {
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-delay: 0s;
+    }
+    
+    .node-2 {
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      animation-delay: 1.6s;
+    }
+    
+    .node-3 {
+      bottom: 50px;
+      right: 150px;
+      animation-delay: 3.2s;
+    }
+    
+    .node-4 {
+      bottom: 50px;
+      left: 150px;
+      animation-delay: 4.8s;
+    }
+    
+    .node-5 {
+      top: 50%;
+      left: 50px;
+      transform: translateY(-50%);
+      animation-delay: 6.4s;
+    }
+    
+    @keyframes node-float {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(5px, -5px);
+      }
+      50% {
+        transform: translate(0, -8px);
+      }
+      75% {
+        transform: translate(-5px, -5px);
+      }
+    }
+    
+    /* Ajustes específicos para nodos con transformación */
+    .node-1 {
+      animation-name: node-float-top;
+    }
+    
+    .node-2 {
+      animation-name: node-float-right;
+    }
+    
+    .node-5 {
+      animation-name: node-float-left;
+    }
+    
+    @keyframes node-float-top {
+      0%, 100% {
+        transform: translateX(-50%);
+      }
+      50% {
+        transform: translate(-50%, -8px);
+      }
+    }
+    
+    @keyframes node-float-right {
+      0%, 100% {
+        transform: translateY(-50%);
+      }
+      50% {
+        transform: translate(-8px, -50%);
+      }
+    }
+    
+    @keyframes node-float-left {
+      0%, 100% {
+        transform: translateY(-50%);
+      }
+      50% {
+        transform: translate(8px, -50%);
+      }
+    }
+    
+    .node-circle {
+      position: relative;
+      width: 68px;
+      height: 68px;
+      background: rgba(30, 20, 50, 0.9);
+      border: 2px solid rgba(138, 66, 255, 0.6);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 20px rgba(138, 66, 255, 0.4);
+      z-index: 30;
+    }
+    
+    .node-circle:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 30px rgba(138, 66, 255, 0.8);
+      border-color: rgba(138, 66, 255, 0.9);
+    }
+    
+    .node-pulse {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: transparent;
+      z-index: 9;
+    }
+    
+    .node-pulse::before, .node-pulse::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid rgba(138, 66, 255, 0.6);
+      animation: pulse-rings 3s cubic-bezier(0.1, 0.2, 0.3, 1) infinite;
+      opacity: 0;
+    }
+    
+    .node-pulse::after {
+      animation-delay: 1s;
+    }
+    
+    @keyframes pulse-rings {
+      0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+      }
+      100% {
+        width: 150%;
+        height: 150%;
+        opacity: 0;
+      }
     }
     
     .node-number {
-      font-size: 1.5rem;
-      font-family: var(--font-mono);
-      font-weight: 800;
-      color: var(--purple);
-      margin-right: 1rem;
+      font-family: var(--font-mono, 'Space Mono', monospace);
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--purple, #8a42ff);
       text-shadow: 0 0 10px rgba(138, 66, 255, 0.5);
+      margin-bottom: 0.3rem;
     }
     
     .node-icon {
-      color: var(--purple);
-      width: 30px;
-      height: 30px;
+      width: 24px;
+      height: 24px;
+      color: var(--purple, #8a42ff);
       filter: drop-shadow(0 0 5px rgba(138, 66, 255, 0.5));
     }
     
-    .cycle-node h3 {
-      font-size: 1.3rem;
-      color: white;
-      margin-bottom: 1rem;
-      position: relative;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    }
-    
-    .node-desc {
-      position: relative;
-    }
-    
-    .desc-line {
+    /* Contenido expandible */
+    .node-content {
       position: absolute;
-      width: 3px;
-      height: 100%;
-      background: var(--purple);
-      top: 0;
-      left: -10px;
-      opacity: 0.7;
-      border-radius: 3px;
+      width: 250px;
+      background: rgba(20, 15, 35, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 1.2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(138, 66, 255, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      z-index: 100; /* Valor alto para estar siempre por encima */
+      pointer-events: none;
+      transform: scale(0.95);
     }
     
-    .cycle-node p {
-      color: rgba(255, 255, 255, 0.85);
+    .cycle-node:hover .node-content {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+    
+    /* Posicionamiento adaptativo de contenido para cada nodo */
+    .node-1 .node-content {
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.95);
+      transform-origin: top center;
+    }
+    
+    .node-1:hover .node-content {
+      transform: translateX(-50%) scale(1);
+    }
+    
+    .node-2 .node-content {
+      top: 50%;
+      right: 80px;
+      transform: translateY(-50%) scale(0.95);
+    }
+    
+    .node-2:hover .node-content {
+      transform: translateY(-50%) scale(1);
+    }
+    
+    .node-3 .node-content {
+      bottom: 80px;
+      right: 0;
+    }
+    
+    .node-4 .node-content {
+      bottom: 80px;
+      left: 0;
+    }
+    
+    .node-5 .node-content {
+      top: 50%;
+      left: 80px;
+      transform: translateY(-50%) scale(0.95);
+    }
+    
+    .node-5:hover .node-content {
+      transform: translateY(-50%) scale(1);
+    }
+    
+    /* Estilo del contenido */
+    .node-content h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      position: relative;
+    }
+    
+    .node-content h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--purple, #8a42ff);
+      box-shadow: 0 0 10px var(--purple, #8a42ff);
+    }
+    
+    .node-content p {
       font-size: 0.95rem;
       line-height: 1.6;
-      padding-left: 5px;
+      color: rgba(255, 255, 255, 0.9);
     }
     
-    /* Animación para que aparezcan los nodos secuencialmente */
-    .cycle-node {
-      opacity: 0;
-      animation: node-appear 0.5s ease forwards;
-    }
-    
-    .node-1 { animation-delay: 0.2s; }
-    .node-2 { animation-delay: 0.4s; }
-    .node-3 { animation-delay: 0.6s; }
-    .node-4 { animation-delay: 0.8s; }
-    .node-5 { animation-delay: 1s; }
-    
-    @keyframes node-appear {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Efecto glitch ocasional */
-    .cycle-node::after {
-      content: '';
+    /* Partículas flotantes */
+    .floating-particles {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, transparent, rgba(138, 66, 255, 0.3), transparent);
-      opacity: 0;
+      z-index: 1;
       pointer-events: none;
     }
     
-    .cycle-node:nth-child(3n)::after {
-      animation: glitch-effect 5s infinite;
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(138, 66, 255, 0.8);
+      box-shadow: 0 0 10px rgba(138, 66, 255, 0.8);
+      animation: float-particle 15s infinite ease-in-out;
     }
     
-    @keyframes glitch-effect {
-      0%, 90%, 100% {
-        opacity: 0;
-        transform: translateX(0);
+    .p1 { top: 20%; left: 30%; animation-delay: 0s; }
+    .p2 { top: 70%; left: 80%; animation-delay: 3s; }
+    .p3 { top: 30%; left: 70%; animation-delay: 6s; }
+    .p4 { top: 80%; left: 40%; animation-delay: 9s; }
+    .p5 { top: 60%; left: 20%; animation-delay: 12s; }
+    .p6 { top: 40%; left: 60%; animation-delay: 15s; }
+    .p7 { top: 15%; left: 50%; animation-delay: 18s; }
+    .p8 { top: 85%; left: 15%; animation-delay: 21s; }
+    
+    @keyframes float-particle {
+      0%, 100% {
+        transform: translate(0, 0);
       }
-      92% {
-        opacity: 0.8;
-        transform: translateX(5px);
+      25% {
+        transform: translate(40px, 20px);
       }
-      94% {
-        opacity: 0.4;
-        transform: translateX(-5px);
+      50% {
+        transform: translate(20px, 40px);
       }
-      96% {
-        opacity: 0.9;
-        transform: translateX(2px);
-      }
-      98% {
-        opacity: 0.5;
-        transform: translateX(-2px);
+      75% {
+        transform: translate(-20px, 30px);
       }
     }
     
-    /* Adaptación para móviles y tablets */
-    @media (max-width: 1200px) {
-      .cyber-cycle {
-        height: 900px;
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .cycle-container {
+        transform: scale(0.9);
+        height: 585px;
       }
-      
-      .cycle-node {
-        width: 350px;
-      }
-      
-      .node-1 { top: 5%; }
-      .node-2 { top: 25%; left: 5%; }
-      .node-3 { top: 45%; right: 5%; }
-      .node-4 { bottom: 25%; left: 5%; }
-      .node-5 { bottom: 5%; }
     }
     
-    @media (max-width: 992px) {
-      .cyber-cycle {
-        height: auto;
+    @media (max-width: 768px) {
+      .cycle-container {
+        transform: scale(0.8);
+        height: 520px;
       }
       
-      .core-hub {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 4rem;
-      }
-      
-      .cycle-orbit {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-      }
-      
-      .cycle-node {
-        position: relative;
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 0;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none !important;
-      }
-      
-      .cycle-node:hover {
-        transform: translateY(-10px) !important;
-      }
-      
-      .node-ring {
-        left: 10px;
-      }
-      
-      .node-connector {
-        top: 44px;
-        left: 40px;
-        width: 40px !important;
-        transform: none !important;
-        background: linear-gradient(90deg, var(--purple), transparent) !important;
-      }
-      
-      .node-1 .node-connector, 
-      .node-2 .node-connector, 
-      .node-3 .node-connector, 
-      .node-4 .node-connector, 
-      .node-5 .node-connector {
-        left: 40px;
-        right: auto;
-      }
-      
-      .node-content {
-        margin-left: 50px;
-      }
-      
-      /* Añadir un elemento visual que conecte los nodos en móvil */
-      .cycle-node::before {
-        content: '';
-        position: absolute;
-        width: 2px;
-        height: 40px;
-        background: var(--purple);
-        opacity: 0.5;
-        top: -40px;
-        left: 24px;
-      }
-      
-      .cycle-node:first-child::before {
+      /* Ajustes para móviles */
+      .dot-connection, 
+      .radial-lines {
         display: none;
+      }
+      
+      /* Ajuste para que los paneles de contenido se vean completos */
+      .node-1 .node-content,
+      .node-2 .node-content,
+      .node-3 .node-content,
+      .node-4 .node-content,
+      .node-5 .node-content {
+        width: 220px;
+      }
+      
+      .node-1 .node-content {
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.95);
+      }
+      
+      .node-2 .node-content {
+        top: auto;
+        bottom: 80px;
+        right: 0;
+        transform: scale(0.95);
+      }
+      
+      .node-3 .node-content {
+        bottom: 80px;
+        right: 0;
+      }
+      
+      .node-4 .node-content {
+        bottom: 80px;
+        left: 0;
+      }
+      
+      .node-5 .node-content {
+        top: auto;
+        bottom: 80px;
+        left: 0;
+        transform: scale(0.95);
+      }
+      
+      .node-1:hover .node-content {
+        transform: translateX(-50%) scale(1);
+      }
+      
+      .node-2:hover .node-content,
+      .node-5:hover .node-content {
+        transform: scale(1);
       }
     }
     
     @media (max-width: 576px) {
-      .core-hub {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 3rem;
-      }
-      
-      .core-inner {
-        width: 100px;
-        height: 100px;
-      }
-      
-      .core-icon {
-        width: 30px;
-        height: 30px;
-      }
-      
-      .core-label {
-        font-size: 0.9rem;
-      }
-      
-      .cycle-node {
-        max-width: 100%;
+      .cycle-container {
+        transform: scale(0.65);
+        height: 422px;
       }
       
       .node-content {
-        padding: 15px;
+        padding: 1rem;
       }
       
-      .node-number {
-        font-size: 1.3rem;
+      .node-content h3 {
+        font-size: 1.1rem;
       }
       
-      .node-icon {
-        width: 25px;
-        height: 25px;
-      }
-      
-      .cycle-node h3 {
-        font-size: 1.2rem;
-      }
-      
-      .cycle-node p {
+      .node-content p {
         font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .cycle-container {
+        transform: scale(0.55);
+        height: 370px;
+      }
+      
+      /* Asegurar que todos los contenidos se vean bien en móvil */
+      .node-1 .node-content {
+        top: 80px;
+        left: 50%;
+        width: 200px;
+      }
+      
+      .node-2 .node-content {
+        bottom: 80px;
+        right: -20px;
+        width: 190px;
+      }
+      
+      .node-3 .node-content {
+        bottom: 80px;
+        right: -20px;
+        width: 190px;
+      }
+      
+      .node-4 .node-content {
+        bottom: 80px;
+        left: -20px;
+        width: 190px;
+      }
+      
+      .node-5 .node-content {
+        bottom: 80px;
+        left: -20px;
+        width: 190px;
       }
     }
   </style>

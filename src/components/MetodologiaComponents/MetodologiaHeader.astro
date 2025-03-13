@@ -2,123 +2,126 @@
 // MetodologiaHeader.astro - Componente retrofuturista para el encabezado
 ---
 
-<div class="cyber-header">
+<div class="cyber-header-metodologia">
     <!-- Elementos técnicos decorativos superiores -->
-    <div class="tech-decorations">
-      <div class="tech-line left-line"></div>
-      <div class="tech-module">
-        <div class="module-dot"></div>
-        <div class="module-label">TF.01</div>
+    <div class="tech-decorations-metodologia">
+      <div class="tech-line-metodologia left-line-metodologia"></div>
+      <div class="tech-module-metodologia">
+        <div class="module-dot-metodologia"></div>
+        <div class="module-label-metodologia">TF.01</div>
       </div>
-      <div class="tech-line center-line"></div>
-      <div class="tech-module">
-        <div class="module-dot"></div>
-        <div class="module-label">TF.02</div>
+      <div class="tech-line-metodologia center-line-metodologia"></div>
+      <div class="tech-module-metodologia">
+        <div class="module-dot-metodologia"></div>
+        <div class="module-label-metodologia">TF.02</div>
       </div>
-      <div class="tech-line right-line"></div>
+      <div class="tech-line-metodologia right-line-metodologia"></div>
     </div>
     
     <!-- Contenedor principal del encabezado -->
-    <div class="header-container">
+    <div class="header-container-metodologia">
       <!-- Elemento de interfaz izquierdo -->
-      <div class="side-ui left-ui">
-        <div class="ui-line"></div>
-        <div class="ui-circle"></div>
-        <div class="ui-bracket">{</div>
+      <div class="side-ui-metodologia left-ui-metodologia">
+        <div class="ui-line-metodologia"></div>
+        <div class="ui-circle-metodologia"></div>
+        <div class="ui-bracket-metodologia">{</div>
       </div>
       
       <!-- Contenido principal -->
-      <div class="header-content">
-        <div class="header-badge">
-          <div class="badge-text">CÓMO TRABAJAMOS</div>
-          <div class="badge-border"></div>
-          <div class="badge-pulse"></div>
+      <div class="header-content-metodologia">
+        <div class="header-badge-metodologia">
+          <div class="badge-text-metodologia">CÓMO TRABAJAMOS</div>
+          <div class="badge-border-metodologia"></div>
+          <div class="badge-pulse-metodologia"></div>
         </div>
         
-        <h2 class="header-title">
-          <div class="glitch-wrapper">
-            <div class="glitch" data-text="METODOLOGÍA">METODOLOGÍA</div>
+        <h2 class="header-title-metodologia">
+          <div class="glitch-wrapper-metodologia">
+            <div class="glitch-metodologia" data-text="METODOLOGÍA">METODOLOGÍA</div>
           </div>
-          <span class="highlight">ÁGIL</span>
+          <span class="highlight-metodologia">ÁGIL</span>
         </h2>
         
-        <div class="header-decoration">
-          <div class="dec-line"></div>
-          <div class="dec-box">
-            <div class="box-inner"></div>
+        <div class="header-decoration-metodologia">
+          <div class="dec-line-metodologia"></div>
+          <div class="dec-box-metodologia">
+            <div class="box-inner-metodologia"></div>
           </div>
-          <div class="dec-line"></div>
+          <div class="dec-line-metodologia"></div>
         </div>
         
-        <p class="header-description">
-          <span class="terminal-prompt">></span> 
-          <span class="typing-text">En Transformia trabajamos mediante métodos ágiles que nos permiten colaborar estrechamente 
-          con nuestros clientes para entregar el máximo valor en el menor tiempo posible,
-          adaptándonos rápidamente a las necesidades del mercado.</span>
+        <p class="header-description-metodologia">
+          <span class="terminal-prompt-metodologia">></span> 
+          <span class="typing-text-metodologia">En Transformia trabajamos mediante métodos ágiles que nos permiten colaborar estrechamente con nuestros clientes para entregar el máximo valor en el menor tiempo posible, adaptándonos rápidamente a las necesidades del mercado.</span>
         </p>
       </div>
       
       <!-- Elemento de interfaz derecho -->
-      <div class="side-ui right-ui">
-        <div class="ui-bracket">}</div>
-        <div class="ui-circle"></div>
-        <div class="ui-line"></div>
+      <div class="side-ui-metodologia right-ui-metodologia">
+        <div class="ui-bracket-metodologia">}</div>
+        <div class="ui-circle-metodologia"></div>
+        <div class="ui-line-metodologia"></div>
       </div>
     </div>
     
     <!-- Data scan effect -->
-    <div class="data-scan"></div>
+    <div class="data-scan-metodologia"></div>
   </div>
   
   <style>
     /* Variables y estilos base */
-    .cyber-header {
+    .cyber-header-metodologia {
       position: relative;
       width: 100%;
       margin-bottom: 5rem;
       perspective: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     /* Decoraciones técnicas superiores */
-    .tech-decorations {
+    .tech-decorations-metodologia {
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 2rem;
       gap: 5px;
+      width: 100%;
+      max-width: 1000px;
     }
     
-    .tech-line {
+    .tech-line-metodologia {
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--purple), transparent);
       position: relative;
     }
     
-    .left-line, .right-line {
+    .left-line-metodologia, .right-line-metodologia {
       width: 100px;
     }
     
-    .center-line {
+    .center-line-metodologia {
       width: 50px;
     }
     
-    .tech-module {
+    .tech-module-metodologia {
       display: flex;
       align-items: center;
       gap: 5px;
       position: relative;
     }
     
-    .module-dot {
+    .module-dot-metodologia {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background-color: var(--purple);
       box-shadow: 0 0 10px var(--purple);
-      animation: dot-pulse 3s infinite alternate;
+      animation: dot-pulse-metodologia 3s infinite alternate;
     }
     
-    @keyframes dot-pulse {
+    @keyframes dot-pulse-metodologia {
       0%, 100% {
         transform: scale(1);
         opacity: 0.7;
@@ -129,7 +132,7 @@
       }
     }
     
-    .module-label {
+    .module-label-metodologia {
       font-size: 0.7rem;
       color: var(--purple);
       font-family: var(--font-mono);
@@ -137,16 +140,18 @@
     }
     
     /* Contenedor principal */
-    .header-container {
+    .header-container-metodologia {
       display: flex;
       align-items: stretch;
+      justify-content: center;
+      width: 100%;
       max-width: 1000px;
       margin: 0 auto;
       position: relative;
     }
     
     /* Elementos de interfaz laterales */
-    .side-ui {
+    .side-ui-metodologia {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -154,14 +159,14 @@
       width: 40px;
     }
     
-    .ui-line {
+    .ui-line-metodologia {
       width: 2px;
       height: 100px;
       background-color: rgba(138, 66, 255, 0.5);
       position: relative;
     }
     
-    .ui-line::before, .ui-line::after {
+    .ui-line-metodologia::before, .ui-line-metodologia::after {
       content: '';
       position: absolute;
       width: 6px;
@@ -170,15 +175,15 @@
       left: -2px;
     }
     
-    .ui-line::before {
+    .ui-line-metodologia::before {
       top: 20px;
     }
     
-    .ui-line::after {
+    .ui-line-metodologia::after {
       bottom: 20px;
     }
     
-    .ui-circle {
+    .ui-circle-metodologia {
       width: 10px;
       height: 10px;
       border: 1px solid var(--purple);
@@ -186,7 +191,7 @@
       margin: 10px 0;
     }
     
-    .ui-bracket {
+    .ui-bracket-metodologia {
       font-size: 2rem;
       color: var(--purple);
       line-height: 1;
@@ -194,20 +199,22 @@
     }
     
     /* Contenido principal */
-    .header-content {
+    .header-content-metodologia {
       flex: 1;
       text-align: center;
       padding: 0 2rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
     
     /* Badge estilo tech */
-    .header-badge {
+    .header-badge-metodologia {
       display: inline-block;
       position: relative;
       margin-bottom: 1.5rem;
     }
     
-    .badge-text {
+    .badge-text-metodologia {
       background: rgba(20, 20, 40, 0.6);
       color: var(--purple);
       font-family: var(--font-mono);
@@ -222,7 +229,7 @@
       text-shadow: 0 0 5px rgba(138, 66, 255, 0.5);
     }
     
-    .badge-border {
+    .badge-border-metodologia {
       position: absolute;
       top: -5px;
       left: -5px;
@@ -233,7 +240,7 @@
       z-index: 1;
     }
     
-    .badge-pulse {
+    .badge-pulse-metodologia {
       position: absolute;
       top: 0;
       left: 0;
@@ -242,10 +249,10 @@
       background: linear-gradient(90deg, transparent, rgba(138, 66, 255, 0.5), transparent);
       z-index: 0;
       opacity: 0;
-      animation: badge-pulse 3s infinite;
+      animation: badge-pulse-metodologia 3s infinite;
     }
     
-    @keyframes badge-pulse {
+    @keyframes badge-pulse-metodologia {
       0%, 100% {
         opacity: 0;
         transform: translateX(-100%);
@@ -257,7 +264,7 @@
     }
     
     /* Título con efecto glitch */
-    .header-title {
+    .header-title-metodologia {
       font-size: clamp(2.5rem, 6vw, 4rem);
       line-height: 1.2;
       margin-bottom: 1.5rem;
@@ -265,21 +272,22 @@
       font-family: var(--font-mono);
       color: white;
       position: relative;
+      white-space: nowrap;
     }
     
-    .glitch-wrapper {
+    .glitch-wrapper-metodologia {
       position: relative;
       display: inline-block;
       margin-right: 0.5rem;
     }
     
-    .glitch {
+    .glitch-metodologia {
       position: relative;
       color: white;
     }
     
-    .glitch::before,
-    .glitch::after {
+    .glitch-metodologia::before,
+    .glitch-metodologia::after {
       content: attr(data-text);
       position: absolute;
       top: 0;
@@ -290,19 +298,19 @@
       opacity: 0.8;
     }
     
-    .glitch::before {
+    .glitch-metodologia::before {
       color: #0ff;
       z-index: -1;
-      animation: glitch-effect 3s infinite alternate-reverse;
+      animation: glitch-effect-metodologia 3s infinite alternate-reverse;
     }
     
-    .glitch::after {
+    .glitch-metodologia::after {
       color: #f0f;
       z-index: -2;
-      animation: glitch-effect 2s infinite alternate;
+      animation: glitch-effect-metodologia 2s infinite alternate;
     }
     
-    @keyframes glitch-effect {
+    @keyframes glitch-effect-metodologia {
       0% {
         transform: none;
         opacity: 0.8;
@@ -351,14 +359,14 @@
       }
     }
     
-    .highlight {
+    .highlight-metodologia {
       color: var(--purple);
       text-shadow: 0 0 20px rgba(138, 66, 255, 0.7);
       position: relative;
       display: inline-block;
     }
     
-    .highlight::after {
+    .highlight-metodologia::after {
       content: '';
       position: absolute;
       left: 0;
@@ -366,10 +374,10 @@
       width: 100%;
       height: 5px;
       background: var(--purple);
-      animation: highlight-glow 3s infinite alternate;
+      animation: highlight-glow-metodologia 3s infinite alternate;
     }
     
-    @keyframes highlight-glow {
+    @keyframes highlight-glow-metodologia {
       0%, 100% {
         opacity: 0.7;
         box-shadow: 0 0 10px var(--purple);
@@ -381,7 +389,7 @@
     }
     
     /* Decoración central */
-    .header-decoration {
+    .header-decoration-metodologia {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -389,13 +397,13 @@
       gap: 10px;
     }
     
-    .dec-line {
+    .dec-line-metodologia {
       height: 2px;
       width: 100px;
       background: linear-gradient(90deg, transparent, var(--purple), transparent);
     }
     
-    .dec-box {
+    .dec-box-metodologia {
       width: 20px;
       height: 20px;
       border: 1px solid var(--purple);
@@ -403,7 +411,7 @@
       position: relative;
     }
     
-    .box-inner {
+    .box-inner-metodologia {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -411,10 +419,10 @@
       width: 10px;
       height: 10px;
       background-color: var(--purple);
-      animation: box-pulse 3s infinite alternate;
+      animation: box-pulse-metodologia 3s infinite alternate;
     }
     
-    @keyframes box-pulse {
+    @keyframes box-pulse-metodologia {
       0%, 100% {
         transform: translate(-50%, -50%) scale(0.6);
         opacity: 0.7;
@@ -426,36 +434,37 @@
     }
     
     /* Descripción con efecto de terminal */
-    .header-description {
-      max-width: 800px;
+    .header-description-metodologia {
+      max-width: 900px;
       margin: 0 auto;
       font-size: clamp(1rem, 2vw, 1.1rem);
       line-height: 1.7;
       color: rgba(255, 255, 255, 0.85);
       text-align: left;
       position: relative;
+      min-height: 120px;
     }
     
-    .terminal-prompt {
+    .terminal-prompt-metodologia {
       color: var(--purple);
       margin-right: 10px;
       font-family: var(--font-mono);
       font-weight: bold;
-      animation: prompt-blink 1s infinite;
+      animation: prompt-blink-metodologia 1s infinite;
     }
     
-    @keyframes prompt-blink {
+    @keyframes prompt-blink-metodologia {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
     
-    .typing-text {
+    .typing-text-metodologia {
       opacity: 0;
-      animation: typing 3s forwards;
+      animation: typing-metodologia 3s forwards;
       position: relative;
     }
     
-    @keyframes typing {
+    @keyframes typing-metodologia {
       0% {
         width: 0;
         opacity: 0;
@@ -469,7 +478,7 @@
     }
     
     /* Efecto de escaneo de datos */
-    .data-scan {
+    .data-scan-metodologia {
       position: absolute;
       top: 0;
       left: 0;
@@ -477,12 +486,12 @@
       height: 4px;
       background: linear-gradient(90deg, transparent, var(--purple), transparent);
       opacity: 0.7;
-      animation: scan-move 4s ease-in-out infinite;
+      animation: scan-move-metodologia 4s ease-in-out infinite;
       z-index: 5;
       pointer-events: none;
     }
     
-    @keyframes scan-move {
+    @keyframes scan-move-metodologia {
       0%, 100% {
         top: 0;
         opacity: 0;
@@ -501,114 +510,137 @@
     
     /* Responsive */
     @media (max-width: 992px) {
-      .cyber-header {
+      .cyber-header-metodologia {
         margin-bottom: 4rem;
       }
       
-      .left-line, .right-line {
+      .left-line-metodologia, .right-line-metodologia {
         width: 70px;
       }
       
-      .side-ui {
+      .side-ui-metodologia {
         width: 30px;
       }
       
-      .ui-line {
+      .ui-line-metodologia {
         height: 80px;
       }
     }
     
     @media (max-width: 768px) {
-      .tech-decorations {
+      .tech-decorations-metodologia {
         margin-bottom: 1.5rem;
       }
       
-      .header-container {
+      .header-container-metodologia {
         padding: 0 1rem;
       }
       
-      .left-line, .right-line {
+      .left-line-metodologia, .right-line-metodologia {
         width: 50px;
       }
       
-      .center-line {
+      .center-line-metodologia {
         width: 30px;
       }
       
-      .header-content {
+      .header-content-metodologia {
         padding: 0 1rem;
       }
       
-      .dec-line {
+      .dec-line-metodologia {
         width: 70px;
+      }
+      
+      .header-title-metodologia {
+        white-space: normal;
       }
     }
     
     @media (max-width: 576px) {
-      .cyber-header {
+      .cyber-header-metodologia {
         margin-bottom: 3rem;
+        padding: 0 1rem;
       }
       
-      .tech-decorations {
+      .tech-decorations-metodologia {
         display: none;
       }
       
-      .side-ui {
+      .side-ui-metodologia {
         display: none;
       }
       
-      .header-content {
+      .header-content-metodologia {
         padding: 0;
+        width: 100%;
       }
       
-      .badge-text {
+      .badge-text-metodologia {
         font-size: 0.8rem;
         padding: 0.5rem 1.2rem;
       }
       
-      .header-title {
+      .header-title-metodologia {
         font-size: 2.2rem;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
       }
       
-      .dec-line {
+      .dec-line-metodologia {
         width: 50px;
       }
       
-      .header-description {
+      .header-description-metodologia {
         font-size: 0.95rem;
+        min-height: 150px;
       }
     }
   </style>
   
-  <script>
-    // Animación de la descripción con efecto de terminal
-    document.addEventListener('DOMContentLoaded', function() {
-      const headerContent = document.querySelector('.header-content');
-      const textElement = headerContent.querySelector('.typing-text');
-      const text = textElement.textContent;
-      
-      textElement.textContent = '';
+<script>
+  // Animación de la descripción con efecto de terminal
+  document.addEventListener('DOMContentLoaded', function() {
+    const headerContent = document.querySelector('.header-content-metodologia');
+    if (!headerContent) return;
+    
+    const textElement = headerContent.querySelector('.typing-text-metodologia');
+    // Si no existe el elemento, salir de la función
+    if (!textElement) return;
+    
+    const text = textElement.textContent || '';
+    
+    // Preparar el contenedor antes de la animación
+    textElement.textContent = '';
+    // Corregido: Asegurarse de que estamos tratando con un HTMLElement
+    if (textElement instanceof HTMLElement) {
       textElement.style.opacity = '1';
-      
-      let i = 0;
-      function typeWriter() {
-        if (i < text.length) {
-          textElement.textContent += text.charAt(i);
-          i++;
-          setTimeout(typeWriter, Math.random() * 30 + 10); // Velocidad de escritura aleatoria para efecto más realista
-        }
+    }
+    
+    // Velocidad mejorada: reducida para mejor experiencia de usuario
+    const typingSpeed = 8;
+    
+    let i = 0;
+    function typeWriter() {
+      // Verificar nuevamente que textElement existe en cada iteración
+      if (i < text.length && textElement) {
+        textElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, typingSpeed);
       }
-      
-      // Solo iniciar la animación si está en el viewport
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setTimeout(typeWriter, 500);
-            observer.disconnect();
-          }
-        });
+    }
+    
+    // Iniciar animación cuando el elemento está en viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(typeWriter, 300);
+          observer.disconnect();
+        }
       });
-      
-      observer.observe(headerContent);
     });
-  </script>
+    
+    observer.observe(headerContent);
+  });
+</script>
