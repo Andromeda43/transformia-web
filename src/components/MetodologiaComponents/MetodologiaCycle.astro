@@ -1,272 +1,391 @@
 ---
-// MetodologiaCycle.astro - Ciclo de metodología con conexiones corregidas
+// MetodologiaCycle.astro - Timeline interactivo mejorado con alineación perfecta
 ---
 
-<div class="cycle-container">
-    <!-- Elemento central (CLIENTE) -->
-    <div class="central-element">
-      <div class="central-circle">
-        <div class="central-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
+<div class="cyber-cycle">
+    <!-- Fondo con grid animado -->
+    <div class="grid-background"></div>
+    
+    <!-- Timeline interactivo completo -->
+    <div class="timeline-container">
+      <!-- Núcleo central: cliente (ahora parte del timeline) -->
+      <div class="core-hub">
+        <div class="core-glow"></div>
+        <div class="core-inner">
+          <div class="core-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="core-label">CLIENTE</div>
         </div>
-        <div class="central-label">CLIENTE</div>
+        <div class="core-ring"></div>
+        <div class="core-particles">
+          <div class="c-particle p1"></div>
+          <div class="c-particle p2"></div>
+          <div class="c-particle p3"></div>
+          <div class="c-particle p4"></div>
+          <div class="c-particle p5"></div>
+        </div>
       </div>
-      <div class="glow-ring"></div>
-    </div>
     
-    <!-- Líneas radiales hacia el centro -->
-    <div class="radial-lines">
-      <div class="rad-line line-1"></div>
-      <div class="rad-line line-2"></div>
-      <div class="rad-line line-3"></div>
-      <div class="rad-line line-4"></div>
-      <div class="rad-line line-5"></div>
-    </div>
-    
-    <!-- Conexiones de puntos entre nodos (solo entre nodos, no hacia el centro) -->
-    <div class="dot-connections">
-      <!-- 01 a 02 -->
-      <div class="dot-connection conn-1-2">
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
+      <!-- Línea del timeline que sale del centro del cliente -->
+      <div class="timeline-line">
+        <!-- Efectos decorativos en la línea -->
+        <div class="timeline-pulse pulse-1"></div>
+        <div class="timeline-pulse pulse-2"></div>
+        <div class="timeline-pulse pulse-3"></div>
       </div>
       
-      <!-- 02 a 03 -->
-      <div class="dot-connection conn-2-3">
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-      </div>
-      
-      <!-- 03 a 04 -->
-      <div class="dot-connection conn-3-4">
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-      </div>
-      
-      <!-- 04 a 05 -->
-      <div class="dot-connection conn-4-5">
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-      </div>
-      
-      <!-- 05 a 01 - Cierra el ciclo -->
-      <div class="dot-connection conn-5-1">
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-        <div class="dot-item"></div>
-      </div>
-    </div>
-    
-    <!-- Paso 1: Descubrimiento (Arriba) -->
-    <div class="cycle-node node-1" data-index="1">
-      <div class="node-circle">
-        <div class="node-pulse"></div>
-        <div class="node-number">01</div>
-        <div class="node-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-          </svg>
+      <!-- Iconos interactivos del timeline -->
+      <div class="timeline-icons">
+        <!-- Paso 1: Descubrimiento -->
+        <div class="timeline-icon-wrapper" data-step="1">
+          <div class="icon-connector"></div>
+          <div class="timeline-icon" aria-label="Descubrimiento">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span class="icon-number">01</span>
+            <div class="icon-glow"></div>
+          </div>
+          
+          <!-- Tarjeta de información (oculta inicialmente) -->
+          <div class="info-card">
+            <div class="card-decoration top-left"></div>
+            <div class="card-decoration top-right"></div>
+            <div class="card-decoration bottom-left"></div>
+            <div class="card-decoration bottom-right"></div>
+            <div class="card-header">
+              <h3><span class="glitch-text" data-text="Descubrimiento">Descubrimiento</span></h3>
+              <button class="close-btn" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="content-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <p>Entendemos tus necesidades y objetivos de negocio para definir claramente el alcance del proyecto.</p>
+            </div>
+            <div class="card-light"></div>
+            <div class="card-scanline"></div>
+          </div>
+        </div>
+        
+        <!-- Paso 2: Planificación -->
+        <div class="timeline-icon-wrapper" data-step="2">
+          <div class="icon-connector"></div>
+          <div class="timeline-icon" aria-label="Planificación">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span class="icon-number">02</span>
+            <div class="icon-glow"></div>
+          </div>
+          
+          <div class="info-card">
+            <div class="card-decoration top-left"></div>
+            <div class="card-decoration top-right"></div>
+            <div class="card-decoration bottom-left"></div>
+            <div class="card-decoration bottom-right"></div>
+            <div class="card-header">
+              <h3><span class="glitch-text" data-text="Planificación">Planificación</span></h3>
+              <button class="close-btn" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="content-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <p>Creamos sprints de trabajo priorizando las características que aportan mayor valor a tu negocio.</p>
+            </div>
+            <div class="card-light"></div>
+            <div class="card-scanline"></div>
+          </div>
+        </div>
+        
+        <!-- Paso 3: Desarrollo -->
+        <div class="timeline-icon-wrapper" data-step="3">
+          <div class="icon-connector"></div>
+          <div class="timeline-icon" aria-label="Desarrollo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            <span class="icon-number">03</span>
+            <div class="icon-glow"></div>
+          </div>
+          
+          <div class="info-card">
+            <div class="card-decoration top-left"></div>
+            <div class="card-decoration top-right"></div>
+            <div class="card-decoration bottom-left"></div>
+            <div class="card-decoration bottom-right"></div>
+            <div class="card-header">
+              <h3><span class="glitch-text" data-text="Desarrollo">Desarrollo</span></h3>
+              <button class="close-btn" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="content-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <p>Implementamos soluciones en ciclos cortos, manteniendo la flexibilidad para adaptarnos a nuevos requisitos.</p>
+            </div>
+            <div class="card-light"></div>
+            <div class="card-scanline"></div>
+          </div>
+        </div>
+        
+        <!-- Paso 4: Pruebas -->
+        <div class="timeline-icon-wrapper" data-step="4">
+          <div class="icon-connector"></div>
+          <div class="timeline-icon" aria-label="Pruebas">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span class="icon-number">04</span>
+            <div class="icon-glow"></div>
+          </div>
+          
+          <div class="info-card">
+            <div class="card-decoration top-left"></div>
+            <div class="card-decoration top-right"></div>
+            <div class="card-decoration bottom-left"></div>
+            <div class="card-decoration bottom-right"></div>
+            <div class="card-header">
+              <h3><span class="glitch-text" data-text="Pruebas">Pruebas</span></h3>
+              <button class="close-btn" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="content-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </div>
+              <p>Validamos continuamente las soluciones con usuarios reales para garantizar una experiencia óptima.</p>
+            </div>
+            <div class="card-light"></div>
+            <div class="card-scanline"></div>
+          </div>
+        </div>
+        
+        <!-- Paso 5: Entrega -->
+        <div class="timeline-icon-wrapper" data-step="5">
+          <div class="icon-connector"></div>
+          <div class="timeline-icon" aria-label="Entrega">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span class="icon-number">05</span>
+            <div class="icon-glow"></div>
+          </div>
+          
+          <div class="info-card">
+            <div class="card-decoration top-left"></div>
+            <div class="card-decoration top-right"></div>
+            <div class="card-decoration bottom-left"></div>
+            <div class="card-decoration bottom-right"></div>
+            <div class="card-header">
+              <h3><span class="glitch-text" data-text="Entrega">Entrega</span></h3>
+              <button class="close-btn" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <div class="card-content">
+              <div class="content-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <p>Implementamos las versiones finales y aseguramos una transición sin problemas a la operación.</p>
+            </div>
+            <div class="card-light"></div>
+            <div class="card-scanline"></div>
+          </div>
         </div>
       </div>
-      <div class="node-content">
-        <h3>Descubrimiento</h3>
-        <p>Entendemos tus necesidades y objetivos de negocio para definir claramente el alcance del proyecto.</p>
-      </div>
-    </div>
-    
-    <!-- Paso 2: Planificación (Derecha) -->
-    <div class="cycle-node node-2" data-index="2">
-      <div class="node-circle">
-        <div class="node-pulse"></div>
-        <div class="node-number">02</div>
-        <div class="node-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-        </div>
-      </div>
-      <div class="node-content">
-        <h3>Planificación</h3>
-        <p>Creamos sprints de trabajo priorizando las características que aportan mayor valor a tu negocio.</p>
-      </div>
-    </div>
-    
-    <!-- Paso 3: Desarrollo (Abajo derecha) -->
-    <div class="cycle-node node-3" data-index="3">
-      <div class="node-circle">
-        <div class="node-pulse"></div>
-        <div class="node-number">03</div>
-        <div class="node-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-        </div>
-      </div>
-      <div class="node-content">
-        <h3>Desarrollo</h3>
-        <p>Implementamos soluciones en ciclos cortos, manteniendo la flexibilidad para adaptarnos a nuevos requisitos.</p>
-      </div>
-    </div>
-    
-    <!-- Paso 4: Pruebas (Abajo izquierda) -->
-    <div class="cycle-node node-4" data-index="4">
-      <div class="node-circle">
-        <div class="node-pulse"></div>
-        <div class="node-number">04</div>
-        <div class="node-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-          </svg>
-        </div>
-      </div>
-      <div class="node-content">
-        <h3>Pruebas</h3>
-        <p>Validamos continuamente las soluciones con usuarios reales para garantizar una experiencia óptima.</p>
-      </div>
-    </div>
-    
-    <!-- Paso 5: Entrega (Izquierda) -->
-    <div class="cycle-node node-5" data-index="5">
-      <div class="node-circle">
-        <div class="node-pulse"></div>
-        <div class="node-number">05</div>
-        <div class="node-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-        </div>
-      </div>
-      <div class="node-content">
-        <h3>Entrega</h3>
-        <p>Implementamos las versiones finales y aseguramos una transición sin problemas a la operación.</p>
-      </div>
-    </div>
-    
-    <!-- Partículas flotantes -->
-    <div class="floating-particles">
-      <div class="particle p1"></div>
-      <div class="particle p2"></div>
-      <div class="particle p3"></div>
-      <div class="particle p4"></div>
-      <div class="particle p5"></div>
-      <div class="particle p6"></div>
-      <div class="particle p7"></div>
-      <div class="particle p8"></div>
     </div>
   </div>
   
   <style>
-    /* Estilos base y variables */
-    .cycle-container {
+    /* Variables y estilos base */
+    .cyber-cycle {
       position: relative;
       width: 100%;
-      height: 650px;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 3rem auto 6rem;
-      perspective: 1200px;
+      padding: 0 1.5rem;
+      box-sizing: border-box;
     }
     
-    /* Elemento central - CLIENTE */
-    .central-element {
+    /* Fondo con grid */
+    .grid-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(to right, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(128, 90, 213, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      opacity: 0.4;
+    }
+    
+    /* Contenedor de timeline completo */
+    .timeline-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      min-height: 250px;
+    }
+    
+    /* Núcleo central - Cliente */
+    .core-hub {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      z-index: 10;
+      flex-shrink: 0;
+    }
+    
+    .core-glow {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 150px;
-      height: 150px;
-      z-index: 20;
+      width: 130px;
+      height: 130px;
+      background: rgba(138, 66, 255, 0.3);
+      border-radius: 50%;
+      filter: blur(20px);
+      z-index: -1;
+      animation: core-glow-pulse 3s ease-in-out infinite alternate;
     }
     
-    .central-circle {
+    @keyframes core-glow-pulse {
+      0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.3);
+      }
+    }
+    
+    .core-inner {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 120px;
-      height: 120px;
-      background: rgba(30, 20, 50, 0.9);
-      border: 2px solid rgba(138, 66, 255, 0.8);
+      width: 110px;
+      height: 110px;
+      background: rgba(20, 20, 40, 0.7);
+      border: 2px solid rgba(138, 66, 255, 0.6);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 10;
-      box-shadow: 0 0 30px rgba(138, 66, 255, 0.6);
-      animation: gentle-float 6s ease-in-out infinite alternate;
+      box-shadow: 
+        0 0 20px rgba(138, 66, 255, 0.5),
+        inset 0 0 15px rgba(138, 66, 255, 0.5);
+      backdrop-filter: blur(5px);
+      animation: core-pulse 5s ease-in-out infinite alternate;
     }
     
-    @keyframes gentle-float {
+    @keyframes core-pulse {
       0%, 100% {
-        transform: translate(-50%, -50%);
-        box-shadow: 0 0 30px rgba(138, 66, 255, 0.6);
+        box-shadow: 
+          0 0 20px rgba(138, 66, 255, 0.5),
+          inset 0 0 15px rgba(138, 66, 255, 0.5);
       }
       50% {
-        transform: translate(-50%, -55%);
-        box-shadow: 0 0 40px rgba(138, 66, 255, 0.8);
+        box-shadow: 
+          0 0 30px rgba(138, 66, 255, 0.7),
+          inset 0 0 25px rgba(138, 66, 255, 0.7);
       }
     }
     
-    .central-icon {
-      color: var(--purple, #8a42ff);
-      width: 42px;
-      height: 42px;
-      margin-bottom: 0.6rem;
-      filter: drop-shadow(0 0 8px rgba(138, 66, 255, 0.8));
+    .core-icon {
+      color: var(--purple);
+      width: 38px;
+      height: 38px;
+      margin-bottom: 0.25rem;
+      filter: drop-shadow(0 0 5px rgba(138, 66, 255, 0.8));
     }
     
-    .central-label {
-      font-family: var(--font-mono, 'Space Mono', monospace);
+    .core-label {
+      font-family: var(--font-mono);
       font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--purple, #8a42ff);
-      letter-spacing: 2px;
+      font-size: 0.85rem;
+      color: var(--purple);
+      letter-spacing: 1px;
       text-shadow: 0 0 10px rgba(138, 66, 255, 0.8);
     }
     
-    .glow-ring {
+    .core-ring {
       position: absolute;
-      top: -10px;
-      left: -10px;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
-      border: 1px solid rgba(138, 66, 255, 0.4);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(138, 66, 255, 0.6);
       border-radius: 50%;
-      animation: ring-rotate 60s linear infinite;
+      animation: ring-rotate 20s linear infinite;
+    }
+    
+    .core-ring::before, .core-ring::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--purple);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--purple), 0 0 20px var(--purple);
+    }
+    
+    .core-ring::before {
+      top: 50%;
+      left: -3px;
+      transform: translateY(-50%);
+    }
+    
+    .core-ring::after {
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
     }
     
     @keyframes ring-rotate {
@@ -278,623 +397,882 @@
       }
     }
     
-    /* Líneas radiales desde los nodos al centro */
-    .radial-lines {
+    .core-particles {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 5;
     }
     
-    .rad-line {
+    .c-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--purple);
+      border-radius: 50%;
+      opacity: 0.7;
+      box-shadow: 0 0 10px var(--purple);
+    }
+    
+    .p1 { top: 0; left: 50%; animation: particle-orbit 3s linear infinite; }
+    .p2 { top: 50%; left: 0; animation: particle-orbit 5s linear infinite; animation-delay: 1s; }
+    .p3 { top: 100%; left: 50%; animation: particle-orbit 7s linear infinite; animation-delay: 2s; }
+    .p4 { top: 50%; left: 100%; animation: particle-orbit 6s linear infinite; animation-delay: 0.5s; }
+    .p5 { top: 25%; left: 75%; animation: particle-orbit 4s linear infinite; animation-delay: 1.5s; }
+    
+    @keyframes particle-orbit {
+      0% {
+        transform: rotate(0deg) translateX(65px) rotate(0deg); /* Aumentado de 50px */
+    }
+      100% {
+        transform: rotate(360deg) translateX(65px) rotate(-360deg); /* Aumentado de 50px */
+    }
+    }
+    
+    /* Línea del timeline */
+    .timeline-line {
       position: absolute;
       background: rgba(138, 66, 255, 0.4);
-      z-index: 5;
-      transform-origin: 0 0;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+      z-index: 1;
+      border-radius: 4px;
     }
     
-    .line-1 {
-      width: 2px;
-      height: 200px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-90deg);
+    /* Pulsos que recorren la línea */
+    .timeline-pulse {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, var(--purple), transparent);
+      opacity: 0.7;
+      border-radius: 4px;
     }
     
-    .line-2 {
-      width: 220px;
-      height: 2px;
-      top: 50%;
-      left: 50%;
-      transform: translate(0, -50%);
+    /* Contenedor de iconos */
+    .timeline-icons {
+      position: relative;
+      z-index: 2;
+      display: flex;
     }
     
-    .line-3 {
-      width: 2px;
-      height: 200px;
-      bottom: 0;
-      right: 180px;
-      transform: rotate(45deg);
+    /* Íconos individuales con conectores */
+    .timeline-icon-wrapper {
+      position: relative;
     }
     
-    .line-4 {
-      width: 2px;
-      height: 200px;
-      bottom: 0;
-      left: 180px;
-      transform: rotate(-45deg);
+    .icon-connector {
+      position: absolute;
+      background: var(--purple);
+      z-index: 1;
     }
     
-    .line-5 {
-      width: 220px;
-      height: 2px;
-      top: 50%;
-      right: 50%;
-      transform: translate(0, -50%);
+    .timeline-icon {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: rgba(20, 20, 40, 0.8);
+      border: 2px solid rgba(138, 66, 255, 0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
     }
     
-    /* Conexiones de puntos entre nodos */
-    .dot-connections {
+    .timeline-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--purple);
+      filter: drop-shadow(0 0 5px rgba(138, 66, 255, 0.8));
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .icon-number {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      width: 24px;
+      height: 24px;
+      background: var(--purple);
+      color: white;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(138, 66, 255, 0.7);
+    }
+    
+    /* Efecto glow en los iconos */
+    .icon-glow {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 10;
-    }
-    
-    .dot-connection {
-      position: absolute;
-      z-index: 15;
-    }
-    
-    .dot-item {
-      position: absolute;
-      width: 8px;
-      height: 8px;
       border-radius: 50%;
-      background: rgba(138, 66, 255, 0.8);
-      box-shadow: 0 0 10px rgba(138, 66, 255, 0.8);
-      animation: dot-pulse 2s infinite alternate;
+      background: transparent;
+      z-index: -1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    @keyframes dot-pulse {
+    /* Hover effect para desktops */
+    @media (hover: hover) {
+      .timeline-icon:hover {
+        transform: translateY(-5px);
+      }
+      
+      .timeline-icon:hover .icon-glow {
+        box-shadow: 0 0 20px var(--purple), 0 0 30px var(--purple);
+        animation: icon-pulse 1.5s infinite alternate;
+      }
+      
+      .timeline-icon:hover svg {
+        transform: scale(1.1);
+      }
+    }
+    
+    /* Animación para el efecto de hover */
+    @keyframes icon-pulse {
       0% {
-        transform: scale(0.8);
-        opacity: 0.5;
+        box-shadow: 0 0 20px var(--purple), 0 0 30px var(--purple);
+        opacity: 0.8;
       }
       100% {
-        transform: scale(1.2);
+        box-shadow: 0 0 25px var(--purple), 0 0 40px var(--purple);
         opacity: 1;
       }
     }
     
-    /* De 01 a 02 (arriba a derecha) */
-    .conn-1-2 {
-      top: 75px;
-      left: 50%;
-      width: 250px;
-      height: 130px;
-    }
-    
-    .conn-1-2 .dot-item:nth-child(1) { top: 0%; left: 0%; animation-delay: 0s; }
-    .conn-1-2 .dot-item:nth-child(2) { top: 0%; left: 20%; animation-delay: 0.2s; }
-    .conn-1-2 .dot-item:nth-child(3) { top: 20%; left: 40%; animation-delay: 0.4s; }
-    .conn-1-2 .dot-item:nth-child(4) { top: 40%; left: 50%; animation-delay: 0.6s; }
-    .conn-1-2 .dot-item:nth-child(5) { top: 60%; left: 60%; animation-delay: 0.8s; }
-    .conn-1-2 .dot-item:nth-child(6) { top: 80%; left: 80%; animation-delay: 1s; }
-    .conn-1-2 .dot-item:nth-child(7) { top: 100%; left: 100%; animation-delay: 1.2s; }
-    
-    /* De 02 a 03 (derecha a abajo derecha) */
-    .conn-2-3 {
-      top: 50%;
-      right: 75px;
-      width: 130px;
-      height: 200px;
-    }
-    
-    .conn-2-3 .dot-item:nth-child(1) { top: 0%; right: 0%; animation-delay: 1.2s; }
-    .conn-2-3 .dot-item:nth-child(2) { top: 20%; right: 10%; animation-delay: 1.4s; }
-    .conn-2-3 .dot-item:nth-child(3) { top: 30%; right: 30%; animation-delay: 1.6s; }
-    .conn-2-3 .dot-item:nth-child(4) { top: 50%; right: 40%; animation-delay: 1.8s; }
-    .conn-2-3 .dot-item:nth-child(5) { top: 70%; right: 50%; animation-delay: 2s; }
-    .conn-2-3 .dot-item:nth-child(6) { top: 90%; right: 30%; animation-delay: 2.2s; }
-    .conn-2-3 .dot-item:nth-child(7) { top: 100%; right: 10%; animation-delay: 2.4s; }
-    
-    /* De 03 a 04 (abajo derecha a abajo izquierda) */
-    .conn-3-4 {
-      bottom: 75px;
-      right: 200px;
-      width: 300px;
-      height: 100px;
-    }
-    
-    .conn-3-4 .dot-item:nth-child(1) { bottom: 50%; right: 0%; animation-delay: 2.4s; }
-    .conn-3-4 .dot-item:nth-child(2) { bottom: 30%; right: 15%; animation-delay: 2.6s; }
-    .conn-3-4 .dot-item:nth-child(3) { bottom: 50%; right: 30%; animation-delay: 2.8s; }
-    .conn-3-4 .dot-item:nth-child(4) { bottom: 70%; right: 45%; animation-delay: 3s; }
-    .conn-3-4 .dot-item:nth-child(5) { bottom: 50%; right: 60%; animation-delay: 3.2s; }
-    .conn-3-4 .dot-item:nth-child(6) { bottom: 30%; right: 75%; animation-delay: 3.4s; }
-    .conn-3-4 .dot-item:nth-child(7) { bottom: 50%; right: 90%; animation-delay: 3.6s; }
-    
-    /* De 04 a 05 (abajo izquierda a izquierda) */
-    .conn-4-5 {
-      bottom: 250px;
-      left: 75px;
-      width: 130px;
-      height: 200px;
-    }
-    
-    .conn-4-5 .dot-item:nth-child(1) { bottom: 0%; left: 20%; animation-delay: 3.6s; }
-    .conn-4-5 .dot-item:nth-child(2) { bottom: 20%; left: 0%; animation-delay: 3.8s; }
-    .conn-4-5 .dot-item:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 4s; }
-    .conn-4-5 .dot-item:nth-child(4) { bottom: 50%; left: 20%; animation-delay: 4.2s; }
-    .conn-4-5 .dot-item:nth-child(5) { bottom: 70%; left: 30%; animation-delay: 4.4s; }
-    .conn-4-5 .dot-item:nth-child(6) { bottom: 90%; left: 0%; animation-delay: 4.6s; }
-    .conn-4-5 .dot-item:nth-child(7) { bottom: 100%; left: 20%; animation-delay: 4.8s; }
-    
-    /* De 05 a 01 (izquierda a arriba) */
-    .conn-5-1 {
-      top: 75px;
-      left: 180px;
-      width: 200px;
-      height: 170px;
-    }
-    
-    .conn-5-1 .dot-item:nth-child(1) { top: 100%; left: 0%; animation-delay: 4.8s; }
-    .conn-5-1 .dot-item:nth-child(2) { top: 80%; left: 15%; animation-delay: 5s; }
-    .conn-5-1 .dot-item:nth-child(3) { top: 60%; left: 30%; animation-delay: 5.2s; }
-    .conn-5-1 .dot-item:nth-child(4) { top: 40%; left: 45%; animation-delay: 5.4s; }
-    .conn-5-1 .dot-item:nth-child(5) { top: 20%; left: 60%; animation-delay: 5.6s; }
-    .conn-5-1 .dot-item:nth-child(6) { top: 10%; left: 75%; animation-delay: 5.8s; }
-    .conn-5-1 .dot-item:nth-child(7) { top: 0%; left: 90%; animation-delay: 6s; }
-    
-    /* Nodos del ciclo */
-    .cycle-node {
+    /* Tarjetas de información */
+    .info-card {
       position: absolute;
-      z-index: 25;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: node-float 8s ease-in-out infinite;
-    }
-    
-    /* Posicionamiento mejorado y simétrico de nodos */
-    .node-1 {
-      top: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation-delay: 0s;
-    }
-    
-    .node-2 {
-      top: 50%;
-      right: 50px;
-      transform: translateY(-50%);
-      animation-delay: 1.6s;
-    }
-    
-    .node-3 {
-      bottom: 50px;
-      right: 150px;
-      animation-delay: 3.2s;
-    }
-    
-    .node-4 {
-      bottom: 50px;
-      left: 150px;
-      animation-delay: 4.8s;
-    }
-    
-    .node-5 {
-      top: 50%;
-      left: 50px;
-      transform: translateY(-50%);
-      animation-delay: 6.4s;
-    }
-    
-    @keyframes node-float {
-      0%, 100% {
-        transform: translate(0, 0);
-      }
-      25% {
-        transform: translate(5px, -5px);
-      }
-      50% {
-        transform: translate(0, -8px);
-      }
-      75% {
-        transform: translate(-5px, -5px);
-      }
-    }
-    
-    /* Ajustes específicos para nodos con transformación */
-    .node-1 {
-      animation-name: node-float-top;
-    }
-    
-    .node-2 {
-      animation-name: node-float-right;
-    }
-    
-    .node-5 {
-      animation-name: node-float-left;
-    }
-    
-    @keyframes node-float-top {
-      0%, 100% {
-        transform: translateX(-50%);
-      }
-      50% {
-        transform: translate(-50%, -8px);
-      }
-    }
-    
-    @keyframes node-float-right {
-      0%, 100% {
-        transform: translateY(-50%);
-      }
-      50% {
-        transform: translate(-8px, -50%);
-      }
-    }
-    
-    @keyframes node-float-left {
-      0%, 100% {
-        transform: translateY(-50%);
-      }
-      50% {
-        transform: translate(8px, -50%);
-      }
-    }
-    
-    .node-circle {
-      position: relative;
-      width: 68px;
-      height: 68px;
-      background: rgba(30, 20, 50, 0.9);
-      border: 2px solid rgba(138, 66, 255, 0.6);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 0 20px rgba(138, 66, 255, 0.4);
-      z-index: 30;
-    }
-    
-    .node-circle:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 30px rgba(138, 66, 255, 0.8);
-      border-color: rgba(138, 66, 255, 0.9);
-    }
-    
-    .node-pulse {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: transparent;
-      z-index: 9;
-    }
-    
-    .node-pulse::before, .node-pulse::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: transparent;
-      border: 2px solid rgba(138, 66, 255, 0.6);
-      animation: pulse-rings 3s cubic-bezier(0.1, 0.2, 0.3, 1) infinite;
-      opacity: 0;
-    }
-    
-    .node-pulse::after {
-      animation-delay: 1s;
-    }
-    
-    @keyframes pulse-rings {
-      0% {
-        width: 100%;
-        height: 100%;
-        opacity: 0.8;
-      }
-      100% {
-        width: 150%;
-        height: 150%;
-        opacity: 0;
-      }
-    }
-    
-    .node-number {
-      font-family: var(--font-mono, 'Space Mono', monospace);
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--purple, #8a42ff);
-      text-shadow: 0 0 10px rgba(138, 66, 255, 0.5);
-      margin-bottom: 0.3rem;
-    }
-    
-    .node-icon {
-      width: 24px;
-      height: 24px;
-      color: var(--purple, #8a42ff);
-      filter: drop-shadow(0 0 5px rgba(138, 66, 255, 0.5));
-    }
-    
-    /* Contenido expandible */
-    .node-content {
-      position: absolute;
-      width: 250px;
-      background: rgba(20, 15, 35, 0.95);
+      background: rgba(20, 20, 40, 0.85);
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(138, 66, 255, 0.4);
       border-radius: 12px;
-      padding: 1.2rem;
+      padding: 1.5rem;
+      width: 320px;
+      z-index: 4;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid rgba(138, 66, 255, 0.4);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      z-index: 100; /* Valor alto para estar siempre por encima */
-      pointer-events: none;
-      transform: scale(0.95);
+      transform: scale(0.95) translateY(0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
     }
     
-    .cycle-node:hover .node-content {
+    .info-card.active {
       opacity: 1;
       visibility: visible;
-      transform: scale(1);
-      pointer-events: auto;
+      transform: scale(1) translateY(0);
+      transition-duration: 0.5s;
     }
     
-    /* Posicionamiento adaptativo de contenido para cada nodo */
-    .node-1 .node-content {
-      top: 80px;
-      left: 50%;
-      transform: translateX(-50%) scale(0.95);
-      transform-origin: top center;
+    /* Decoraciones de las tarjetas */
+    .card-decoration {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
     }
     
-    .node-1:hover .node-content {
-      transform: translateX(-50%) scale(1);
-    }
-    
-    .node-2 .node-content {
-      top: 50%;
-      right: 80px;
-      transform: translateY(-50%) scale(0.95);
-    }
-    
-    .node-2:hover .node-content {
-      transform: translateY(-50%) scale(1);
-    }
-    
-    .node-3 .node-content {
-      bottom: 80px;
-      right: 0;
-    }
-    
-    .node-4 .node-content {
-      bottom: 80px;
+    .top-left {
+      top: 0;
       left: 0;
+      border-top: 2px solid var(--purple);
+      border-left: 2px solid var(--purple);
+      border-top-left-radius: 8px;
     }
     
-    .node-5 .node-content {
-      top: 50%;
-      left: 80px;
-      transform: translateY(-50%) scale(0.95);
+    .top-right {
+      top: 0;
+      right: 0;
+      border-top: 2px solid var(--purple);
+      border-right: 2px solid var(--purple);
+      border-top-right-radius: 8px;
     }
     
-    .node-5:hover .node-content {
-      transform: translateY(-50%) scale(1);
+    .bottom-left {
+      bottom: 0;
+      left: 0;
+      border-bottom: 2px solid var(--purple);
+      border-left: 2px solid var(--purple);
+      border-bottom-left-radius: 8px;
     }
     
-    /* Estilo del contenido */
-    .node-content h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
+    .bottom-right {
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid var(--purple);
+      border-right: 2px solid var(--purple);
+      border-bottom-right-radius: 8px;
+    }
+    
+    /* Estilización de contenido de tarjetas */
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(138, 66, 255, 0.3);
+    }
+    
+    .card-header h3 {
+      margin: 0;
+      font-size: 1.5rem;
       color: white;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      font-weight: 700;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       position: relative;
     }
     
-    .node-content h3::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background: var(--purple, #8a42ff);
-      box-shadow: 0 0 10px var(--purple, #8a42ff);
+    /* Efecto glitch para los títulos */
+    .glitch-text {
+      position: relative;
+      display: inline-block;
     }
     
-    .node-content p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.9);
-    }
-    
-    /* Partículas flotantes */
-    .floating-particles {
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
-      pointer-events: none;
+      opacity: 0.8;
     }
     
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
+    .glitch-text::before {
+      color: #0ff;
+      z-index: -1;
+      animation: glitch-anim-1 5s infinite linear alternate-reverse;
+    }
+    
+    .glitch-text::after {
+      color: #f0f;
+      z-index: -2;
+      animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    }
+    
+    @keyframes glitch-anim-1 {
+      0%, 100% { transform: none; opacity: 0.2; }
+      50% { transform: translate(-2px, 1px); opacity: 0.4; }
+      51% { transform: none; opacity: 0.2; }
+      60% { transform: translate(1px, -1px); opacity: 0.3; }
+      90% { transform: none; opacity: 0.2; }
+    }
+    
+    @keyframes glitch-anim-2 {
+      0%, 100% { transform: none; opacity: 0.2; }
+      25% { transform: translate(2px, 0); opacity: 0.3; }
+      35% { transform: none; opacity: 0.2; }
+      75% { transform: translate(-1px, 1px); opacity: 0.4; }
+      85% { transform: none; opacity: 0.2; }
+    }
+    
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: rgba(138, 66, 255, 0.8);
-      box-shadow: 0 0 10px rgba(138, 66, 255, 0.8);
-      animation: float-particle 15s infinite ease-in-out;
+      transition: all 0.2s ease;
     }
     
-    .p1 { top: 20%; left: 30%; animation-delay: 0s; }
-    .p2 { top: 70%; left: 80%; animation-delay: 3s; }
-    .p3 { top: 30%; left: 70%; animation-delay: 6s; }
-    .p4 { top: 80%; left: 40%; animation-delay: 9s; }
-    .p5 { top: 60%; left: 20%; animation-delay: 12s; }
-    .p6 { top: 40%; left: 60%; animation-delay: 15s; }
-    .p7 { top: 15%; left: 50%; animation-delay: 18s; }
-    .p8 { top: 85%; left: 15%; animation-delay: 21s; }
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
     
-    @keyframes float-particle {
-      0%, 100% {
-        transform: translate(0, 0);
+    .close-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .card-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .content-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      color: var(--purple);
+      filter: drop-shadow(0 0 5px rgba(138, 66, 255, 0.8));
+      animation: content-icon-pulse 3s infinite alternate;
+    }
+    
+    @keyframes content-icon-pulse {
+      0% {
+        filter: drop-shadow(0 0 3px rgba(138, 66, 255, 0.6));
+        transform: scale(1);
       }
-      25% {
-        transform: translate(40px, 20px);
-      }
-      50% {
-        transform: translate(20px, 40px);
-      }
-      75% {
-        transform: translate(-20px, 30px);
+      100% {
+        filter: drop-shadow(0 0 8px rgba(138, 66, 255, 0.9));
+        transform: scale(1.1);
       }
     }
     
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .cycle-container {
-        transform: scale(0.9);
-        height: 585px;
+    .card-content p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Efectos especiales */
+    .card-light {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(138, 66, 255, 0.2), transparent);
+      z-index: -1;
+      animation: card-light 3s infinite;
+    }
+    
+    @keyframes card-light {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
       }
     }
     
-    @media (max-width: 768px) {
-      .cycle-container {
-        transform: scale(0.8);
-        height: 520px;
+    .card-scanline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(138, 66, 255, 0.05) 50%,
+        transparent 100%
+      );
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.3;
+      animation: scanline 8s linear infinite;
+    }
+    
+    @keyframes scanline {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 100%;
+      }
+    }
+    
+    /* Modo Horizontal (Desktop) */
+    @media (min-width: 769px) {
+      .timeline-container {
+        flex-direction: row;
+        margin-top: 3rem;
+        min-height: 150px;
       }
       
-      /* Ajustes para móviles */
-      .dot-connection, 
-      .radial-lines {
-        display: none;
+      /* La línea sale exactamente del centro del círculo cliente */
+      .timeline-line {
+        top: 50%;
+        left: 130px; /* Centro del cliente */
+        width: calc(100% - 130px);
+        height: 4px;
+        transform: translateY(-50%);
+        /* Asegurar que comienza exactamente en medio del círculo cliente */
+        left: 100px; /* Ancho del core-hub */
       }
       
-      /* Ajuste para que los paneles de contenido se vean completos */
-      .node-1 .node-content,
-      .node-2 .node-content,
-      .node-3 .node-content,
-      .node-4 .node-content,
-      .node-5 .node-content {
-        width: 220px;
+      .timeline-pulse {
+        top: 0;
+        width: 40%;
+        height: 100%;
       }
       
-      .node-1 .node-content {
-        top: 80px;
+      .pulse-1 { animation: pulse-horizontal 5s linear infinite; }
+      .pulse-2 { animation: pulse-horizontal 5s linear infinite; animation-delay: 1.66s; }
+      .pulse-3 { animation: pulse-horizontal 5s linear infinite; animation-delay: 3.33s; }
+      
+      @keyframes pulse-horizontal {
+        0% {
+          left: -40%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+      
+      .timeline-icons {
+        width: calc(100% - 130px); /* Descontar el ancho del core-hub */
+        margin-left: 20px; /* Espacio para separar del cliente */
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .timeline-icon-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        position: relative;
+        flex: 1;
+      }
+      
+      /* Conectores verticales en desktop */
+      .icon-connector {
+        width: 2px;
+        height: 40px;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+      }
+      
+      /* Alternancia arriba/abajo para las tarjetas en escritorio */
+      .timeline-icon-wrapper:nth-child(odd) .info-card {
+        bottom: calc(100% + 20px);
         left: 50%;
         transform: translateX(-50%) scale(0.95);
+        transform-origin: bottom center;
       }
       
-      .node-2 .node-content {
-        top: auto;
-        bottom: 80px;
-        right: 0;
-        transform: scale(0.95);
-      }
-      
-      .node-3 .node-content {
-        bottom: 80px;
-        right: 0;
-      }
-      
-      .node-4 .node-content {
-        bottom: 80px;
-        left: 0;
-      }
-      
-      .node-5 .node-content {
-        top: auto;
-        bottom: 80px;
-        left: 0;
-        transform: scale(0.95);
-      }
-      
-      .node-1:hover .node-content {
+      .timeline-icon-wrapper:nth-child(odd) .info-card.active {
         transform: translateX(-50%) scale(1);
       }
       
-      .node-2:hover .node-content,
-      .node-5:hover .node-content {
-        transform: scale(1);
+      .timeline-icon-wrapper:nth-child(odd) .info-card::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid rgba(20, 20, 40, 0.85);
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .info-card {
+        top: calc(100% + 20px);
+        left: 50%;
+        transform: translateX(-50%) scale(0.95);
+        transform-origin: top center;
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .info-card.active {
+        transform: translateX(-50%) scale(1);
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .info-card::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid rgba(20, 20, 40, 0.85);
+      }
+      
+      /* Ajustes para primer y último elemento */
+      .timeline-icon-wrapper:first-child .info-card {
+        left: 0;
+        transform: translateX(0) scale(0.95);
+      }
+      
+      .timeline-icon-wrapper:first-child .info-card.active {
+        transform: translateX(0) scale(1);
+      }
+      
+      .timeline-icon-wrapper:first-child .info-card::after {
+        left: 32px;
+      }
+      
+      .timeline-icon-wrapper:last-child .info-card {
+        left: auto;
+        right: 0;
+        transform: translateX(0) scale(0.95);
+      }
+      
+      .timeline-icon-wrapper:last-child .info-card.active {
+        transform: translateX(0) scale(1);
+      }
+      
+      .timeline-icon-wrapper:last-child .info-card::after {
+        left: auto;
+        right: 32px;
+      }
+      
+      /* Agregar conectores verticales entre la línea y los íconos */
+      .timeline-icon-wrapper:nth-child(odd) .icon-connector {
+        top: 50%;
+        bottom: auto;
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .timeline-icon {
+        margin-top: auto;
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .icon-connector {
+        top: 0;
+        bottom: auto;
+        margin-bottom: 0;
+        margin-top: 10px;
       }
     }
     
-    @media (max-width: 576px) {
-      .cycle-container {
-        transform: scale(0.65);
-        height: 422px;
+    /* Modo Vertical (Mobile) */
+    @media (max-width: 768px) {
+      .cyber-cycle {
+        margin: 2rem auto 4rem;
       }
       
-      .node-content {
-        padding: 1rem;
+      .timeline-container {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 2rem;
+        margin-top: 1rem;
       }
       
-      .node-content h3 {
-        font-size: 1.1rem;
+      .core-hub {
+        margin-bottom: 3rem;
       }
       
-      .node-content p {
+      /* Centrar la línea vertical en mobile y hacerla salir del círculo cliente */
+      .timeline-line {
+        top: 130px; /* Sale desde abajo del cliente que tiene 100px de altura */
+        left: 50%; /* Centrado */
+        width: 4px;
+        height: calc(100% - 130px); /* Resto del espacio */
+        transform: translateX(-50%);
+      }
+      
+      .timeline-pulse {
+        left: 0;
+        width: 100%;
+        height: 30%;
+      }
+      
+      .pulse-1 { animation: pulse-vertical 5s linear infinite; }
+      .pulse-2 { animation: pulse-vertical 5s linear infinite; animation-delay: 1.66s; }
+      .pulse-3 { animation: pulse-vertical 5s linear infinite; animation-delay: 3.33s; }
+      
+      @keyframes pulse-vertical {
+        0% {
+          top: -30%;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+      
+      .timeline-icons {
+        flex-direction: column;
+        align-items: center; /* Centrado */
+        gap: 3rem;
+        width: 100%;
+        margin-top: 0;
+        padding-top: 20px;
+      }
+      
+      /* Conectores horizontales en móvil - ajustados para salir del centro */
+      .icon-connector {
+        height: 2px;
+        width: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      /* Alternar los conectores y las cards a derecha e izquierda */
+      .timeline-icon-wrapper:nth-child(odd) .icon-connector {
+        left: -30px;
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .icon-connector {
+        right: -30px;
+        left: auto;
+      }
+      
+      /* Alternancia derecha/izquierda para las tarjetas en móvil */
+      .timeline-icon-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .timeline-icon-wrapper:nth-child(odd) {
+        padding-left: 40px;
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) {
+        padding-right: 40px;
+      }
+      
+      .timeline-icon-wrapper:nth-child(odd) .info-card {
+        left: calc(100% + 15px);
+        top: 50%;
+        transform: translateY(-50%) scale(0.95);
+        transform-origin: left center;
+      }
+      
+      .timeline-icon-wrapper:nth-child(odd) .info-card.active {
+        transform: translateY(-50%) scale(1);
+      }
+      
+      .timeline-icon-wrapper:nth-child(odd) .info-card::after {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid rgba(20, 20, 40, 0.85);
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .info-card {
+        right: calc(100% + 15px);
+        left: auto;
+        top: 50%;
+        transform: translateY(-50%) scale(0.95);
+        transform-origin: right center;
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .info-card.active {
+        transform: translateY(-50%) scale(1);
+      }
+      
+      .timeline-icon-wrapper:nth-child(even) .info-card::after {
+        content: '';
+        position: absolute;
+        right: -10px;
+        left: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid rgba(20, 20, 40, 0.85);
+      }
+    }
+    
+    /* Ajustes para pantallas muy pequeñas */
+    @media (max-width: 480px) {
+      .info-card {
+        width: 270px;
+        padding: 1.25rem;
+        max-width: calc(100vw - 120px);
+      }
+      
+      .card-header h3 {
+        font-size: 1.25rem;
+      }
+      
+      .content-icon {
+        width: 36px;
+        height: 36px;
+      }
+      
+      .card-content p {
         font-size: 0.9rem;
       }
+      
+      .timeline-icon {
+        width: 54px;
+        height: 54px;
+      }
+      
+      .timeline-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+      
+      .timeline-icons {
+        gap: 2.5rem;
+      }
     }
     
-    @media (max-width: 480px) {
-      .cycle-container {
-        transform: scale(0.55);
-        height: 370px;
+    /* Estilo para iconos activos */
+    .timeline-icon.active {
+      transform: translateY(-5px);
+    }
+    
+    .timeline-icon.active .icon-glow {
+      box-shadow: 0 0 20px var(--purple), 0 0 30px var(--purple);
+      animation: icon-pulse 1.5s infinite alternate;
+    }
+    
+    .timeline-icon.active svg {
+      transform: scale(1.1);
+    }
+    
+    /* Animación para el efecto aleatorio de glow */
+    .timeline-icon.random-glow .icon-glow {
+      animation: random-icon-pulse 1.5s ease-in-out;
+    }
+    
+    @keyframes random-icon-pulse {
+      0%, 100% {
+        box-shadow: 0 0 5px var(--purple);
+        opacity: 0.2;
       }
-      
-      /* Asegurar que todos los contenidos se vean bien en móvil */
-      .node-1 .node-content {
-        top: 80px;
-        left: 50%;
-        width: 200px;
-      }
-      
-      .node-2 .node-content {
-        bottom: 80px;
-        right: -20px;
-        width: 190px;
-      }
-      
-      .node-3 .node-content {
-        bottom: 80px;
-        right: -20px;
-        width: 190px;
-      }
-      
-      .node-4 .node-content {
-        bottom: 80px;
-        left: -20px;
-        width: 190px;
-      }
-      
-      .node-5 .node-content {
-        bottom: 80px;
-        left: -20px;
-        width: 190px;
+      50% {
+        box-shadow: 0 0 25px var(--purple), 0 0 35px var(--purple);
+        opacity: 1;
       }
     }
   </style>
+  
+<script>
+  // Script para manejar la interactividad del timeline con correcciones TypeScript
+  document.addEventListener('DOMContentLoaded', () => {
+    const iconWrappers = document.querySelectorAll('.timeline-icon-wrapper');
+    // Definición de tipo explícito para activeCard
+    let activeCard: HTMLElement | null = null;
+    
+    // Función para cerrar todas las tarjetas
+    const closeAllCards = (): void => {
+      document.querySelectorAll('.info-card').forEach(card => {
+        card.classList.remove('active');
+      });
+      document.querySelectorAll('.timeline-icon').forEach(icon => {
+        icon.classList.remove('active');
+      });
+      activeCard = null;
+    };
+    
+    // Agregar manejadores de eventos para cada icono
+    iconWrappers.forEach(wrapper => {
+      const icon = wrapper.querySelector('.timeline-icon');
+      const card = wrapper.querySelector('.info-card');
+      const closeBtn = wrapper.querySelector('.close-btn');
+      
+      // Verificar que icon y card existan antes de continuar
+      if (!icon || !card) return;
+      
+      // Evento para abrir/cerrar tarjeta al hacer clic en el icono
+      icon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Si la tarjeta está activa, cerrarla
+        if (card.classList.contains('active')) {
+          card.classList.remove('active');
+          icon.classList.remove('active');
+          activeCard = null;
+        } else {
+          // Cerrar la tarjeta actualmente activa (si hay)
+          closeAllCards();
+          
+          // Abrir esta tarjeta
+          card.classList.add('active');
+          icon.classList.add('active');
+          activeCard = card as HTMLElement;
+        }
+      });
+      
+      // Evento para el botón de cerrar
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          card.classList.remove('active');
+          icon.classList.remove('active');
+          activeCard = null;
+        });
+      }
+    });
+    
+    // Cerrar tarjetas al hacer clic fuera de ellas
+    document.addEventListener('click', (e) => {
+      // Usar type casting para acceder a closest
+      const target = e.target as HTMLElement;
+      
+      if (target && !target.closest('.info-card') && !target.closest('.timeline-icon')) {
+        closeAllCards();
+      }
+    });
+    
+    // Prevenir que los clics dentro de las tarjetas las cierren
+    document.querySelectorAll('.info-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    });
+    
+    // Manejar eventos touch para móviles
+    let touchStartX = 0;
+    let touchStartY = 0;
+    
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    
+    document.addEventListener('touchend', (e) => {
+      // Usar type casting para acceder a closest
+      const target = e.target as HTMLElement;
+      
+      // Solo procesar si no estamos tocando un ícono o tarjeta
+      if (target && !target.closest('.info-card') && !target.closest('.timeline-icon')) {
+        const touchEndX = e.changedTouches[0].screenX;
+        const touchEndY = e.changedTouches[0].screenY;
+        
+        // Calcular distancia del swipe
+        const diffX = Math.abs(touchEndX - touchStartX);
+        const diffY = Math.abs(touchEndY - touchStartY);
+        
+        // Si el usuario hizo un swipe significativo, cerrar todas las tarjetas
+        if (diffX > 50 || diffY > 50) {
+          closeAllCards();
+        }
+      }
+    }, { passive: true });
+    
+    // Funcionalidad de animación aleatoria para los iconos cuando no hay nada abierto
+    const randomGlow = (): void => {
+      if (!activeCard) {
+        const randomWrapper = iconWrappers[Math.floor(Math.random() * iconWrappers.length)];
+        const randomIcon = randomWrapper.querySelector('.timeline-icon');
+        
+        if (randomIcon) {
+          randomIcon.classList.add('random-glow');
+          
+          setTimeout(() => {
+            randomIcon.classList.remove('random-glow');
+          }, 1500);
+        }
+      }
+    };
+    
+    // Ejecutar animaciones aleatorias cada cierto tiempo
+    setInterval(randomGlow, 3000);
+  });
+</script>
