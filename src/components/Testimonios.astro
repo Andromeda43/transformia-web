@@ -1,488 +1,1162 @@
 ---
+// Testimonios.astro - Componente para mostrar testimonios de clientes con estética cyberpunk
+
+// Data de testimonios (en un escenario real, esto podría venir de una API o CMS)
+const testimonios = [
+  {
+    id: "1",
+    nombre: "Carlos Rodríguez",
+    cargo: "CTO, TechVision",
+    empresa: "TechVision",
+    testimonio: "Transformia rediseñó por completo nuestros sistemas de gestión interna. Lograron una integración perfecta entre nuestros procesos y la nueva plataforma, resultando en un aumento del 40% en productividad.",
+    imagen: "/img/testimonios/t1.jpg",
+    color: "purple"
+  },
+  {
+    id: "2",
+    nombre: "Marta Herrera",
+    cargo: "CEO, Innovatech",
+    empresa: "Innovatech",
+    testimonio: "Su enfoque en entender nuestras necesidades antes de proponer soluciones marcó la diferencia. Desarrollaron exactamente lo que necesitábamos, no solo lo que pensábamos que queríamos.",
+    imagen: "/img/testimonios/t2.jpg",
+    color: "blue"
+  },
+  {
+    id: "3",
+    nombre: "Javier Méndez",
+    cargo: "Director de Operaciones, DataFlow",
+    empresa: "DataFlow",
+    testimonio: "La aplicación móvil que desarrollaron ha transformado nuestra operación en campo. El sistema de integración con sensores IoT funciona de manera impecable incluso en zonas remotas.",
+    imagen: "/img/testimonios/t3.jpg",
+    color: "pink"
+  },
+  {
+    id: "4",
+    nombre: "Laura Torres",
+    cargo: "CFO, Global Solutions",
+    empresa: "Global Solutions",
+    testimonio: "Nuestro antiguo sistema de finanzas era un laberinto de ineficiencias. Transformia implementó una solución que redujo nuestros tiempos de procesamiento en un 65% y eliminó errores manuales.",
+    imagen: "/img/testimonios/t4.jpg",
+    color: "green"
+  }
+];
 ---
-<section id="testimonios" class="py-20 bg-light relative overflow-hidden">
-  <!-- Elementos decorativos de fondo -->
-  <div class="decor-circle" style="--size: 400px; --top: -200px; --right: -200px; --color: rgba(176, 66, 255, 0.03);"></div>
-  <div class="decor-circle" style="--size: 300px; --bottom: -150px; --left: -150px; --color: rgba(66, 135, 255, 0.03);"></div>
+
+<section id="testimonios" class="testimonios-section">
+  <!-- Elementos de fondo -->
+  <div class="testimonios-background">
+    <div class="grid-lines"></div>
+    <div class="glow-effect"></div>
+    <div class="particles"></div>
+  </div>
   
-  <div class="decor-lines"></div>
-  
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark" style="font-family: var(--font-title);">LO QUE DICEN NUESTROS CLIENTES</h2>
-      <div class="w-24 h-1 bg-purple mx-auto"></div>
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Encabezado de sección -->
+    <div class="section-header">
+      <div class="header-badge">
+        <span>CLIENTES SATISFECHOS</span>
+        <div class="badge-light"></div>
+      </div>
+      
+      <h2 class="section-title">
+        <span class="title-text">TESTIMONIOS</span>
+      </h2>
+      
+      <p class="section-description">
+        Descubre por qué nuestros clientes confían en Transformia para impulsar sus negocios con soluciones tecnológicas de vanguardia.
+      </p>
     </div>
     
-    <div class="testimonials-slider">
-      <div class="testimonials-wrapper">
-        <div class="testimonial-card active">
-          <div class="testimonial-quote">"</div>
-          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">Transformia ha revolucionado nuestra forma de trabajar. Automatizaron procesos que antes nos llevaban días y ahora se completan en minutos. La inversión se ha recuperado en tiempo récord.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <div class="avatar-plac eholder"></div>
+    <!-- Terminal de interfaz futurista para testimonios -->
+    <div class="testimonios-terminal">
+      <!-- Barra superior del terminal -->
+      <div class="terminal-header">
+        <div class="terminal-status">
+          <div class="status-indicator">
+            <div class="status-led active"></div>
+            <span>Testimonios conectados</span>
+          </div>
+          
+          <div class="terminal-controls">
+            <div class="control-button prev" id="prev-testimonial" aria-label="Testimonio anterior">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6"></path>
+              </svg>
             </div>
-            <div>
-              <h4 class="font-bold" style="font-family: var(--font-title);">María López</h4>
-              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">Directora de Operaciones, TechSolutions</p>
+            
+            <div class="dots-indicator" id="dots-indicator">
+              {testimonios.map((_, index) => (
+                <div class={`dot ${index === 0 ? 'active' : ''}`} data-index={index}></div>
+              ))}
+            </div>
+            
+            <div class="control-button next" id="next-testimonial" aria-label="Testimonio siguiente">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6"></path>
+              </svg>
             </div>
           </div>
-          <div class="card-beam"></div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"</div>
-          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">Lo que más valoramos de Transformia es su capacidad para entender nuestro negocio. No solo implementaron tecnología, sino que adaptaron las soluciones a nuestra forma de trabajar y cultura empresarial.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <div class="avatar-placeholder"></div>
-            </div>
-            <div>
-              <h4 class="font-bold" style="font-family: var(--font-title);">Carlos Rodríguez</h4>
-              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">CEO, Innovatech</p>
-            </div>
-          </div>
-          <div class="card-beam"></div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"</div>
-          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">Gracias a la implementación de IA en nuestro análisis de datos, ahora podemos predecir tendencias y tomar decisiones basadas en información real. Ha sido un cambio transformador para nuestra estrategia de negocio.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <div class="avatar-placeholder"></div>
-            </div>
-            <div>
-              <h4 class="font-bold" style="font-family: var(--font-title);">Laura Sánchez</h4>
-              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">Directora de Marketing, DataCorp</p>
-            </div>
-          </div>
-          <div class="card-beam"></div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-quote">"</div>
-          <p class="mb-6 testimonial-text" style="font-family: var(--font-body);">La transformación digital que implementamos con Transformia nos permitió seguir operando incluso durante la pandemia. Ahora nuestros sistemas son más rápidos, seguros y fáciles de usar.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <div class="avatar-placeholder"></div>
-            </div>
-            <div>
-              <h4 class="font-bold" style="font-family: var(--font-title);">Javier Méndez</h4>
-              <p class="text-sm text-gray-600" style="font-family: var(--font-body);">CTO, Global Services</p>
-            </div>
-          </div>
-          <div class="card-beam"></div>
         </div>
       </div>
       
-      <!-- Botones de control -->
-      <div class="testimonials-nav">
-        <button class="nav-prev" aria-label="Testimonio anterior">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 18l-6-6 6-6"/>
-          </svg>
-        </button>
-        
-        <div class="testimonials-dots">
-          <span class="dot active" data-index="0"></span>
-          <span class="dot" data-index="1"></span>
-          <span class="dot" data-index="2"></span>
-          <span class="dot" data-index="3"></span>
+      <!-- Contenido del terminal - Carrusel de testimonios -->
+      <div class="testimonios-slider" id="testimonios-slider">
+        {testimonios.map((testimonio, index) => (
+          <div class={`testimonio-slide ${index === 0 ? 'active' : ''}`} data-color={testimonio.color}>
+            <div class="testimonio-content">
+              <div class="quote-icon" data-color={testimonio.color}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                  <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+                </svg>
+              </div>
+              
+              <blockquote class="testimonio-text">
+                {testimonio.testimonio}
+              </blockquote>
+              
+              <div class="testimonio-author">
+                <div class="author-avatar-container">
+                  <div class="author-avatar" style={{
+                    backgroundImage: `url(${testimonio.imagen})`,
+                    backgroundColor: `var(--neon-${testimonio.color}, var(--neon-purple))`
+                  }}>
+                    <!-- Imagen del cliente o iniciales -->
+                    <div class="avatar-frame"></div>
+                  </div>
+                </div>
+                
+                <div class="author-info">
+                  <div class="author-name">{testimonio.nombre}</div>
+                  <div class="author-position">{testimonio.cargo}</div>
+                  
+                  <div class="company-badge" data-color={testimonio.color}>
+                    {testimonio.empresa}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="testimonio-decorations">
+              <div class="circuit-path" data-color={testimonio.color}></div>
+              <div class="data-points">
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Barra inferior del terminal -->
+      <div class="terminal-footer">
+        <div class="data-stream">
+          <div class="data-bit"></div>
+          <div class="data-bit"></div>
+          <div class="data-bit"></div>
+          <div class="data-bit"></div>
+          <div class="data-bit"></div>
+          <div class="data-bit"></div>
+          <div class="data-bit"></div>
+          <div class="data-bit"></div>
         </div>
         
-        <button class="nav-next" aria-label="Testimonio siguiente">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 18l6-6-6-6"/>
-          </svg>
-        </button>
+        <div class="confidence-rating">
+          <div class="rating-label">ÍNDICE DE SATISFACCIÓN</div>
+          <div class="rating-value">98.5%</div>
+        </div>
       </div>
     </div>
     
-    <!-- KPIs de éxito -->
-    <div class="mt-20">
-      <h3 class="text-2xl font-bold mb-10 text-center text-dark" style="font-family: var(--font-title);">RESULTADOS MEDIBLES</h3>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="stats-card">
-          <div class="stats-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-            </svg>
-          </div>
-          <div class="stats-value">+62<span class="text-2xl">%</span></div>
-          <div class="stats-label">Aumento de Productividad</div>
-          <div class="stats-bar"></div>
-        </div>
-        
-        <div class="stats-card">
-          <div class="stats-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <div class="stats-value">-41<span class="text-2xl">%</span></div>
-          <div class="stats-label">Reducción de Costos</div>
-          <div class="stats-bar"></div>
-        </div>
-        
-        <div class="stats-card">
-          <div class="stats-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905A3.61 3.61 0 013.5 7.5v.416C3.5 9.624 4.5 11 6.414 11H7"/>
-            </svg>
-          </div>
-          <div class="stats-value">94<span class="text-2xl">%</span></div>
-          <div class="stats-label">Satisfacción de Clientes</div>
-          <div class="stats-bar"></div>
-        </div>
-      </div>
+    <!-- CTA discreta pero visible -->
+    <div class="testimonios-cta">
+      <p class="cta-text">¿Quieres ser parte de nuestros casos de éxito?</p>
+      <a href="#contactanos" class="cta-button">Conversemos</a>
     </div>
+  </div>
+  
+  <!-- Elementos decorativos flotantes -->
+  <div class="floating-elements">
+    <div class="floating-cube" style="--top: 20%; --left: 10%; --size: 30px; --rotation: 20deg;"></div>
+    <div class="floating-circle" style="--top: 70%; --left: 15%; --size: 40px;"></div>
+    <div class="floating-triangle" style="--top: 30%; --left: 85%; --size: 35px; --rotation: -15deg;"></div>
+    <div class="floating-plus" style="--top: 80%; --left: 80%; --size: 25px; --rotation: 45deg;"></div>
   </div>
 </section>
 
 <style>
-  /* Elementos decorativos */
-  .decor-circle {
-    position: absolute;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    background: var(--color);
-    top: var(--top, auto);
-    left: var(--left, auto);
-    right: var(--right, auto);
-    bottom: var(--bottom, auto);
-    z-index: 0;
+  /* Variables y estilos base */
+  :root {
+    --neon-purple: #b042ff;
+    --neon-blue: #4287ff;
+    --neon-pink: #ff42b0;
+    --neon-green: #42ff66;
+    --dark-bg: #0a0a14;
+    --darker-bg: #070710;
   }
   
-  .decor-lines {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(90deg, rgba(176, 66, 255, 0.05) 1px, transparent 1px),
-                      linear-gradient(rgba(176, 66, 255, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
-    z-index: 0;
-  }
-  
-  /* Testimonial Slider */
-  .testimonials-slider {
+  .testimonios-section {
     position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .testimonials-wrapper {
-    position: relative;
-    height: 320px;
-    overflow: hidden;
-  }
-  
-  .testimonial-card {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    padding: 2.5rem;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    opacity: 0;
-    transition: all 0.5s ease;
-    transform: translateX(50px);
-  }
-  
-  .testimonial-card.active {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  .testimonial-quote {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    font-size: 4rem;
-    line-height: 1;
-    font-family: var(--font-title);
-    color: rgba(176, 66, 255, 0.1);
-  }
-  
-  .testimonial-text {
-    position: relative;
-    z-index: 2;
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-  
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-  }
-  
-  .testimonial-avatar {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #f0f0f0;
-  }
-  
-  .avatar-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #6b46c1, #9f7aea);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
     color: white;
-    font-weight: bold;
+    padding: 7rem 0 5rem;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    align-items: center;
   }
   
-  .card-beam {
+  .container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Elementos de fondo */
+  .testimonios-background {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    width: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  
+  .glow-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(176, 66, 255, 0.15) 0%, transparent 70%);
+    z-index: 2;
+  }
+  
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 50% 50%, rgba(176, 66, 255, 0.2) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    z-index: 3;
+    animation: particles-float 60s linear infinite;
+  }
+  
+  @keyframes particles-float {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100px 100px;
+    }
+  }
+  
+  /* Encabezado de sección */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .header-badge {
+    display: inline-block;
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    background-color: rgba(176, 66, 255, 0.1);
+    border: 1px solid var(--neon-purple);
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  
+  .header-badge span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--neon-purple);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .badge-light {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(176, 66, 255, 0.3), transparent);
+    z-index: 0;
+    animation: badge-light 3s ease-in-out infinite;
+  }
+  
+  @keyframes badge-light {
+    0% {
+      left: -100%;
+    }
+    50%, 100% {
+      left: 100%;
+    }
+  }
+  
+  .section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin: 0.5rem 0 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .title-text {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .title-text::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
     height: 3px;
     background: linear-gradient(90deg, 
-      var(--neon-purple) 0%, 
-      var(--neon-blue) 50%, 
-      var(--neon-purple) 100%
+      transparent, 
+      var(--neon-purple), 
+      var(--neon-purple),
+      transparent
     );
-    transition: width 3s ease-in-out;
+    box-shadow: 0 0 10px var(--neon-purple);
   }
   
-  .testimonial-card.active .card-beam {
-    width: 100%;
+  .section-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-family: 'Space Grotesk', sans-serif;
   }
   
-  /* Controles del slider */
-  .testimonials-nav {
+  /* Terminal de testimonios */
+  .testimonios-terminal {
+    position: relative;
+    max-width: 900px;
+    margin: 3rem auto;
+    background: rgba(20, 20, 35, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(176, 66, 255, 0.4);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(176, 66, 255, 0.2);
+    transition: all 0.3s ease;
+    transform: perspective(1000px) rotateX(2deg);
+  }
+  
+  .testimonios-terminal:hover {
+    transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(176, 66, 255, 0.3);
+  }
+  
+  /* Barra superior del terminal */
+  .terminal-header {
+    background: rgba(20, 15, 35, 0.9);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(176, 66, 255, 0.4);
+  }
+  
+  .terminal-status {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    justify-content: space-between;
   }
   
-  .nav-prev, .nav-next {
-    background: white;
-    border: 1px solid rgba(176, 66, 255, 0.3);
-    color: var(--neon-purple);
-    width: 40px;
-    height: 40px;
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .status-led {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .status-led.active {
+    background: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+    animation: led-pulse 2s infinite alternate;
+  }
+  
+  @keyframes led-pulse {
+    0% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .status-indicator span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--neon-green);
+  }
+  
+  .terminal-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .control-button {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(176, 66, 255, 0.1);
+    border: 1px solid rgba(176, 66, 255, 0.4);
+    color: white;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   
-  .nav-prev:hover, .nav-next:hover {
-    background: var(--neon-purple);
-    color: white;
-    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+  .control-button:hover {
+    background: rgba(176, 66, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .testimonials-dots {
+  .dots-indicator {
     display: flex;
-    margin: 0 20px;
+    gap: 0.5rem;
   }
   
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: #e0e0e0;
-    margin: 0 5px;
+    background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
   }
   
   .dot.active {
     background: var(--neon-purple);
-    transform: scale(1.3);
-    box-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+    box-shadow: 0 0 8px var(--neon-purple);
   }
   
-  /* Cards de estadísticas */
-  .stats-card {
-    background: white;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    text-align: center;
+  /* Slider de testimonios */
+  .testimonios-slider {
     position: relative;
+    min-height: 400px;
     overflow: hidden;
-    transition: all 0.3s ease;
   }
   
-  .stats-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  .testimonio-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    transform: translateX(50px);
   }
   
-  .stats-icon {
-    width: 60px;
-    height: 60px;
-    background: rgba(176, 66, 255, 0.1);
+  .testimonio-slide.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+  
+  .testimonio-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .quote-icon {
+    margin-bottom: 1.5rem;
+    color: var(--neon-purple);
+  }
+  
+  .quote-icon[data-color="blue"] {
+    color: var(--neon-blue);
+  }
+  
+  .quote-icon[data-color="pink"] {
+    color: var(--neon-pink);
+  }
+  
+  .quote-icon[data-color="green"] {
+    color: var(--neon-green);
+  }
+  
+  .testimonio-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: white;
+    margin: 0 0 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--neon-purple);
+  }
+  
+  .testimonio-slide[data-color="blue"] .testimonio-text {
+    border-left-color: var(--neon-blue);
+  }
+  
+  .testimonio-slide[data-color="pink"] .testimonio-text {
+    border-left-color: var(--neon-pink);
+  }
+  
+  .testimonio-slide[data-color="green"] .testimonio-text {
+    border-left-color: var(--neon-green);
+  }
+  
+  .testimonio-author {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: auto;
+  }
+  
+  .author-avatar-container {
+    position: relative;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .author-avatar {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .avatar-frame {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    border-radius: 50%;
+    border: 2px solid rgba(176, 66, 255, 0.5);
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.3);
+    z-index: 2;
+    animation: avatar-frame-pulse 3s infinite;
+  }
+  
+  .testimonio-slide[data-color="blue"] .avatar-frame {
+    border-color: rgba(66, 135, 255, 0.5);
+    box-shadow: 0 0 15px rgba(66, 135, 255, 0.3);
+  }
+  
+  .testimonio-slide[data-color="pink"] .avatar-frame {
+    border-color: rgba(255, 66, 176, 0.5);
+    box-shadow: 0 0 15px rgba(255, 66, 176, 0.3);
+  }
+  
+  .testimonio-slide[data-color="green"] .avatar-frame {
+    border-color: rgba(66, 255, 102, 0.5);
+    box-shadow: 0 0 15px rgba(66, 255, 102, 0.3);
+  }
+  
+  @keyframes avatar-frame-pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .author-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .author-position {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .company-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(176, 66, 255, 0.1);
+    border: 1px solid rgba(176, 66, 255, 0.4);
+    border-radius: 4px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--neon-purple);
+  }
+  
+  .company-badge[data-color="blue"] {
+    background: rgba(66, 135, 255, 0.1);
+    border-color: rgba(66, 135, 255, 0.4);
+    color: var(--neon-blue);
+  }
+  
+  .company-badge[data-color="pink"] {
+    background: rgba(255, 66, 176, 0.1);
+    border-color: rgba(255, 66, 176, 0.4);
+    color: var(--neon-pink);
+  }
+  
+  .company-badge[data-color="green"] {
+    background: rgba(66, 255, 102, 0.1);
+    border-color: rgba(66, 255, 102, 0.4);
+    color: var(--neon-green);
+  }
+  
+  .testimonio-decorations {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60px;
+    padding: 1rem 0;
+  }
+  
+  .circuit-path {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23b042ff' stroke-width='1' fill='none' d='M30,0 L30,40 M30,40 L50,40 M50,40 L50,60 M50,60 L30,60 M30,60 L30,100 M10,40 L20,40'/%3E%3Ccircle cx='30' cy='40' r='3' fill='%23b042ff'/%3E%3Ccircle cx='50' cy='40' r='3' fill='%23b042ff'/%3E%3Ccircle cx='50' cy='60' r='3' fill='%23b042ff'/%3E%3Ccircle cx='30' cy='60' r='3' fill='%23b042ff'/%3E%3Ccircle cx='10' cy='40' r='3' fill='%23b042ff'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+  }
+  
+  .circuit-path[data-color="blue"] {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%234287ff' stroke-width='1' fill='none' d='M30,0 L30,40 M30,40 L50,40 M50,40 L50,60 M50,60 L30,60 M30,60 L30,100 M10,40 L20,40'/%3E%3Ccircle cx='30' cy='40' r='3' fill='%234287ff'/%3E%3Ccircle cx='50' cy='40' r='3' fill='%234287ff'/%3E%3Ccircle cx='50' cy='60' r='3' fill='%234287ff'/%3E%3Ccircle cx='30' cy='60' r='3' fill='%234287ff'/%3E%3Ccircle cx='10' cy='40' r='3' fill='%234287ff'/%3E%3C/svg%3E");
+  }
+  
+  .circuit-path[data-color="pink"] {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23ff42b0' stroke-width='1' fill='none' d='M30,0 L30,40 M30,40 L50,40 M50,40 L50,60 M50,60 L30,60 M30,60 L30,100 M10,40 L20,40'/%3E%3Ccircle cx='30' cy='40' r='3' fill='%23ff42b0'/%3E%3Ccircle cx='50' cy='40' r='3' fill='%23ff42b0'/%3E%3Ccircle cx='50' cy='60' r='3' fill='%23ff42b0'/%3E%3Ccircle cx='30' cy='60' r='3' fill='%23ff42b0'/%3E%3Ccircle cx='10' cy='40' r='3' fill='%23ff42b0'/%3E%3C/svg%3E");
+  }
+  
+  .circuit-path[data-color="green"] {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%2342ff66' stroke-width='1' fill='none' d='M30,0 L30,40 M30,40 L50,40 M50,40 L50,60 M50,60 L30,60 M30,60 L30,100 M10,40 L20,40'/%3E%3Ccircle cx='30' cy='40' r='3' fill='%2342ff66'/%3E%3Ccircle cx='50' cy='40' r='3' fill='%2342ff66'/%3E%3Ccircle cx='50' cy='60' r='3' fill='%2342ff66'/%3E%3Ccircle cx='30' cy='60' r='3' fill='%2342ff66'/%3E%3Ccircle cx='10' cy='40' r='3' fill='%2342ff66'/%3E%3C/svg%3E");
+  }
+  
+  .data-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .data-point {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--neon-purple);
+    opacity: 0.7;
+    animation: data-point-pulse 1.5s infinite alternate;
+  }
+  
+  .testimonio-slide[data-color="blue"] .data-point {
+    background-color: var(--neon-blue);
+  }
+  
+  .testimonio-slide[data-color="pink"] .data-point {
+    background-color: var(--neon-pink);
+  }
+  
+  .testimonio-slide[data-color="green"] .data-point {
+    background-color: var(--neon-green);
+  }
+  
+  .data-point:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .data-point:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  .data-point:nth-child(3) {
+    animation-delay: 1s;
+  }
+  
+  @keyframes data-point-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1.3);
+      opacity: 1;
+    }
+  }
+  
+  /* Barra inferior del terminal */
+  .terminal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(20, 15, 35, 0.9);
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(176, 66, 255, 0.4);
+  }
+  
+  .data-stream {
+    display: flex;
+    height: 20px;
+    gap: 3px;
+    flex-grow: 1;
+    max-width: 200px;
+  }
+  
+  .data-bit {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(176, 66, 255, 0.3);
+  }
+  
+  .data-bit:nth-child(odd) {
+    animation: data-bit-1 1.5s infinite alternate;
+  }
+  
+  .data-bit:nth-child(even) {
+    animation: data-bit-2 2s infinite alternate-reverse;
+  }
+  
+  @keyframes data-bit-1 {
+    0%, 100% {
+      opacity: 0.3;
+      height: 30%;
+    }
+    50% {
+      opacity: 0.8;
+      height: 100%;
+    }
+  }
+  
+  @keyframes data-bit-2 {
+    0%, 100% {
+      opacity: 0.3;
+      height: 50%;
+    }
+    50% {
+      opacity: 0.8;
+      height: 100%;
+    }
+  }
+  
+  .confidence-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .rating-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.25rem;
+  }
+  
+  .rating-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--neon-green);
+  }
+  
+  /* CTA discreta */
+  .testimonios-cta {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
-    color: var(--neon-purple);
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: rgba(20, 20, 35, 0.5);
+    border-radius: 8px;
+    border: 1px solid rgba(176, 66, 255, 0.2);
+  }
+  
+  .cta-text {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .cta-button {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
     transition: all 0.3s ease;
   }
   
-  .stats-card:hover .stats-icon {
-    background: var(--neon-purple);
-    color: white;
-    box-shadow: 0 0 15px rgba(176, 66, 255, 0.5);
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(176, 66, 255, 0.3);
   }
   
-  .stats-value {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--neon-purple);
-    margin-bottom: 0.5rem;
-    font-family: var(--font-mono);
-  }
-  
-  .stats-label {
-    color: #666;
-    font-size: 1rem;
-    font-family: var(--font-sans);
-  }
-  
-  .stats-bar {
+  /* Elementos decorativos flotantes */
+  .floating-elements {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    height: 4px;
     width: 100%;
-    background: linear-gradient(90deg, 
-      var(--neon-purple) 0%, 
-      var(--neon-blue) 100%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
   }
   
-  .stats-card:hover .stats-bar {
-    opacity: 1;
+  .floating-cube,
+  .floating-circle,
+  .floating-triangle,
+  .floating-plus {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    width: var(--size);
+    height: var(--size);
+    opacity: 0.5;
+    animation: float-animation 15s infinite ease-in-out;
   }
   
-  /* Responsive */
+  .floating-cube {
+    background: rgba(176, 66, 255, 0.2);
+    border: 1px solid rgba(176, 66, 255, 0.4);
+    transform: rotate(var(--rotation));
+  }
+  
+  .floating-circle {
+    background: rgba(66, 135, 255, 0.2);
+    border: 1px solid rgba(66, 135, 255, 0.4);
+    border-radius: 50%;
+  }
+  
+  .floating-triangle {
+    width: 0;
+    height: 0;
+    border-left: calc(var(--size) / 2) solid transparent;
+    border-right: calc(var(--size) / 2) solid transparent;
+    border-bottom: var(--size) solid rgba(255, 66, 176, 0.2);
+    background: transparent;
+    transform: rotate(var(--rotation));
+  }
+  
+  .floating-plus {
+    position: relative;
+    background: transparent;
+    transform: rotate(var(--rotation));
+  }
+  
+  .floating-plus::before,
+  .floating-plus::after {
+    content: '';
+    position: absolute;
+    background: rgba(66, 255, 102, 0.4);
+  }
+  
+  .floating-plus::before {
+    width: 100%;
+    height: 25%;
+    top: 37.5%;
+    left: 0;
+  }
+  
+  .floating-plus::after {
+    width: 25%;
+    height: 100%;
+    top: 0;
+    left: 37.5%;
+  }
+  
+  @keyframes float-animation {
+    0%, 100% {
+      transform: translate(0, 0) rotate(var(--rotation));
+    }
+    25% {
+      transform: translate(15px, -15px) rotate(calc(var(--rotation) + 5deg));
+    }
+    50% {
+      transform: translate(0, 20px) rotate(var(--rotation));
+    }
+    75% {
+      transform: translate(-15px, -10px) rotate(calc(var(--rotation) - 5deg));
+    }
+  }
+  
+  /* Media queries */
+  @media (max-width: 1200px) {
+    .section-title {
+      font-size: 2.8rem;
+    }
+    
+    .testimonios-terminal {
+      max-width: 800px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .testimonio-slide {
+      padding: 2.5rem;
+    }
+    
+    .testimonio-text {
+      font-size: 1.2rem;
+    }
+    
+    .testimonio-decorations {
+      display: none;
+    }
+    
+    .testimonios-cta {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  
   @media (max-width: 768px) {
-    .testimonials-wrapper {
-      height: 360px;
+    .testimonios-section {
+      padding: 5rem 0 4rem;
     }
     
-    .testimonial-card {
-      padding: 2rem;
+    .section-title {
+      font-size: 2.4rem;
     }
     
-    .stats-card {
+    .section-description {
+      font-size: 1rem;
+    }
+    
+    .testimonio-slide {
+      padding: 2rem 1.5rem;
+    }
+    
+    .testimonio-text {
+      font-size: 1.1rem;
       margin-bottom: 1.5rem;
+    }
+    
+    .confidence-rating {
+      display: none;
+    }
+    
+    .data-stream {
+      max-width: 100%;
+    }
+    
+    .cta-text {
+      font-size: 1.1rem;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .section-title {
+      font-size: 2.2rem;
+    }
+    
+    .testimonio-slide {
+      padding: 1.5rem 1rem;
+    }
+    
+    .testimonio-text {
+      font-size: 1rem;
+      padding-left: 1rem;
+    }
+    
+    .author-avatar-container {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .testimonio-author {
+      gap: 1rem;
+    }
+    
+    .terminal-header,
+    .terminal-footer {
+      padding: 0.75rem 1rem;
+    }
+    
+    .status-indicator span {
+      display: none;
     }
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.testimonial-card');
+    // Elementos DOM
+    const slider = document.getElementById('testimonios-slider');
+    const slides = document.querySelectorAll('.testimonio-slide');
+    const prevButton = document.getElementById('prev-testimonial');
+    const nextButton = document.getElementById('next-testimonial');
     const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.nav-prev');
-    const nextBtn = document.querySelector('.nav-next');
     
+    // Variables de estado
     let currentIndex = 0;
-    const totalCards = cards.length;
-    let autoplayInterval;
+    const slideCount = slides.length;
     
-    function showCard(index) {
-      // Ocultar todas las tarjetas y desactivar todos los puntos
-      cards.forEach(card => {
-        card.classList.remove('active');
-      });
-      
-      dots.forEach(dot => {
-        dot.classList.remove('active');
-      });
-      
-      // Mostrar la tarjeta actual y activar el punto correspondiente
-      cards[index].classList.add('active');
-      dots[index].classList.add('active');
-      
-      // Reiniciar la barra de progreso
-      const activeBeam = cards[index].querySelector('.card-beam');
-      activeBeam.style.width = '0';
-      
-      // Permitir que el navegador renderice antes de animar
-      setTimeout(() => {
-        activeBeam.style.width = '100%';
-      }, 50);
-      
-      // Actualizar el índice actual
+    // Función para actualizar el slider
+    function updateSlider(index) {
+      // Actualizar índice actual
       currentIndex = index;
+      
+      // Remover clase activa de todos los slides
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+      });
+      
+      // Agregar clase activa al slide actual
+      slides[currentIndex].classList.add('active');
+      
+      // Actualizar indicadores de dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
     }
     
-    function nextCard() {
-      let nextIndex = currentIndex + 1;
-      if (nextIndex >= totalCards) {
-        nextIndex = 0;
-      }
-      showCard(nextIndex);
-    }
-    
-    function prevCard() {
-      let prevIndex = currentIndex - 1;
-      if (prevIndex < 0) {
-        prevIndex = totalCards - 1;
-      }
-      showCard(prevIndex);
-    }
-    
-    // Iniciar autoplay
-    function startAutoplay() {
-      autoplayInterval = setInterval(() => {
-        nextCard();
-      }, 6000); // Cambiar cada 6 segundos
-    }
-    
-    // Detener autoplay (al interactuar con los controles)
-    function stopAutoplay() {
-      clearInterval(autoplayInterval);
-    }
-    
-    // Event listeners para los botones de navegación
-    prevBtn.addEventListener('click', () => {
-      stopAutoplay();
-      prevCard();
-      startAutoplay();
+    // Event listener para el botón anterior
+    prevButton.addEventListener('click', () => {
+      const newIndex = (currentIndex - 1 + slideCount) % slideCount;
+      updateSlider(newIndex);
     });
     
-    nextBtn.addEventListener('click', () => {
-      stopAutoplay();
-      nextCard();
-      startAutoplay();
+    // Event listener para el botón siguiente
+    nextButton.addEventListener('click', () => {
+      const newIndex = (currentIndex + 1) % slideCount;
+      updateSlider(newIndex);
     });
     
-    // Event listeners para los puntos de navegación
+    // Event listeners para los dots indicadores
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        stopAutoplay();
-        showCard(index);
-        startAutoplay();
+        updateSlider(index);
       });
     });
     
-    // Iniciar la presentación
-    showCard(0);
-    startAutoplay();
+    // Rotación automática
+    let autoSlideInterval;
+    
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        const newIndex = (currentIndex + 1) % slideCount;
+        updateSlider(newIndex);
+      }, 6000); // Cambiar slide cada 6 segundos
+    }
+    
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+    
+    // Iniciar rotación automática
+    startAutoSlide();
+    
+    // Detener rotación al interactuar y reanudar después de un tiempo
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    prevButton.addEventListener('mouseenter', stopAutoSlide);
+    nextButton.addEventListener('mouseenter', stopAutoSlide);
+    
+    slider.addEventListener('mouseleave', startAutoSlide);
+    prevButton.addEventListener('mouseleave', startAutoSlide);
+    nextButton.addEventListener('mouseleave', startAutoSlide);
+    
+    // Efecto parallax para los elementos de fondo
+    const testimonialsSection = document.querySelector('.testimonios-section');
+    const glow = document.querySelector('.glow-effect');
+    const floatingElements = document.querySelectorAll('.floating-cube, .floating-circle, .floating-triangle, .floating-plus');
+    
+    testimonialsSection.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      glow.style.transform = `translate(${x * 30 - 15}px, ${y * 30 - 15}px)`;
+      
+      floatingElements.forEach(el => {
+        const speed = Math.random() * 20 + 10;
+        el.style.transform = `translate(${x * speed}px, ${y * speed}px) rotate(var(--rotation))`;
+      });
+    });
+    
+    // Swipe support para dispositivos móviles
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+    
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+    
+    function handleSwipe() {
+      if (touchEndX < touchStartX) {
+        // Swipe izquierda
+        const newIndex = (currentIndex + 1) % slideCount;
+        updateSlider(newIndex);
+      } else if (touchEndX > touchStartX) {
+        // Swipe derecha
+        const newIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlider(newIndex);
+      }
+    }
   });
 </script>

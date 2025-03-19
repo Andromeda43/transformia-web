@@ -1,62 +1,1458 @@
 ---
+// PorQueElegirnos.astro - Componente rediseñado con cards y animación de excelencia
 ---
-<section id="por-que-elegirnos" class="py-20 bg-gradient">
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-light" style="font-family: var(--font-title)">¿POR QUÉ ELEGIRNOS?</h2>
-        <div class="w-24 h-1 bg-light mx-auto"></div>
+
+<section id="porque-elegirnos" class="porque-elegirnos-section">
+  <!-- Elementos de fondo -->
+  <div class="cyber-background">
+    <div class="grid-lines"></div>
+    <div class="glow-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Encabezado con efecto glitch -->
+    <div class="section-header">
+      
+      <h2 class="section-title">
+        <span class="title-glitch" data-text="¿POR QUÉ ELEGIRNOS?">¿POR QUÉ ELEGIRNOS?</span>
+      </h2>
+      
+      <div class="title-line">
+        <div class="line-pulse"></div>
       </div>
       
-      <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
-        <div class="why-us-card">
-          <div class="why-us-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
+      <p class="section-description">
+        En Transformia llevamos tus ideas al siguiente nivel, con soluciones tecnológicas
+        que marcan la diferencia en un mercado en constante evolución.
+      </p>
+    </div>
+
+    <!-- Contenido principal en 2 columnas -->
+    <div class="main-content">
+      <!-- Columna izquierda con tarjetas -->
+      <div class="cards-column">
+        <div class="cards-wrapper">
+          <!-- Card 1: Cercanía y empatía -->
+          <div class="ventaja-card" data-index="1">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="ventaja-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                  </svg>
+                </div>
+                <h3 class="ventaja-title">CERCANÍA Y EMPATÍA</h3>
+              </div>
+              <p class="ventaja-text">Trabajamos codo a codo con nuestros clientes, entendiendo sus necesidades reales y convirtiéndonos en verdaderos aliados de su negocio.</p>
+              <div class="card-indicator">
+                <div class="indicator-dot"></div>
+              </div>
+            </div>
+            <div class="card-border-top"></div>
+            <div class="card-border-right"></div>
+            <div class="card-border-bottom"></div>
+            <div class="card-border-left"></div>
+            <div class="card-glow"></div>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-light" style="font-family: var(--font-title)">CERCANÍA Y EMPATÍA</h3>
-          <p class="text-light/90" style="font-family: var(--font-body)">Entendemos tus necesidades y trabajamos como parte de tu equipo.</p>
+
+          <!-- Card 2: Expertise multidisciplinario -->
+          <div class="ventaja-card" data-index="2">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="ventaja-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <h3 class="ventaja-title">EXPERTISE MULTIDISCIPLINARIO</h3>
+              </div>
+              <p class="ventaja-text">Nuestro equipo combina conocimientos en múltiples áreas de la tecnología, asegurando soluciones integrales y de vanguardia.</p>
+              <div class="card-indicator">
+                <div class="indicator-dot"></div>
+              </div>
+            </div>
+            <div class="card-border-top"></div>
+            <div class="card-border-right"></div>
+            <div class="card-border-bottom"></div>
+            <div class="card-border-left"></div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- Card 3: Resultados tangibles -->
+          <div class="ventaja-card" data-index="3">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="ventaja-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="4"></circle>
+                  </svg>
+                </div>
+                <h3 class="ventaja-title">RESULTADOS TANGIBLES</h3>
+              </div>
+              <p class="ventaja-text">Nos enfocamos en crear valor real y medible, con soluciones que impactan directamente en la eficiencia y rentabilidad de tu empresa.</p>
+              <div class="card-indicator">
+                <div class="indicator-dot"></div>
+              </div>
+            </div>
+            <div class="card-border-top"></div>
+            <div class="card-border-right"></div>
+            <div class="card-border-bottom"></div>
+            <div class="card-border-left"></div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- Card 4: Adaptabilidad constante -->
+          <div class="ventaja-card" data-index="4">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="ventaja-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 2v6h-6M3 22v-6h6M3 10l6-6M21 14l-6 6"></path>
+                  </svg>
+                </div>
+                <h3 class="ventaja-title">ADAPTABILIDAD CONSTANTE</h3>
+              </div>
+              <p class="ventaja-text">Evolucionamos con las tecnologías emergentes y las necesidades cambiantes del mercado para ofrecerte siempre soluciones actualizadas.</p>
+              <div class="card-indicator">
+                <div class="indicator-dot"></div>
+              </div>
+            </div>
+            <div class="card-border-top"></div>
+            <div class="card-border-right"></div>
+            <div class="card-border-bottom"></div>
+            <div class="card-border-left"></div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- Card 5: Visión de futuro -->
+          <div class="ventaja-card" data-index="5">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="ventaja-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3"></path>
+                  </svg>
+                </div>
+                <h3 class="ventaja-title">VISIÓN DE FUTURO</h3>
+              </div>
+              <p class="ventaja-text">Diseñamos soluciones pensando no solo en el presente sino en el potencial de crecimiento y los desafíos futuros de tu empresa.</p>
+              <div class="card-indicator">
+                <div class="indicator-dot"></div>
+              </div>
+            </div>
+            <div class="card-border-top"></div>
+            <div class="card-border-right"></div>
+            <div class="card-border-bottom"></div>
+            <div class="card-border-left"></div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- Card 6: Compromiso de calidad -->
+          <div class="ventaja-card" data-index="6">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="ventaja-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </div>
+                <h3 class="ventaja-title">COMPROMISO DE CALIDAD</h3>
+              </div>
+              <p class="ventaja-text">Garantizamos la excelencia en cada proyecto con soluciones robustas, escalables y seguras que superan las expectativas.</p>
+              <div class="card-indicator">
+                <div class="indicator-dot"></div>
+              </div>
+            </div>
+            <div class="card-border-top"></div>
+            <div class="card-border-right"></div>
+            <div class="card-border-bottom"></div>
+            <div class="card-border-left"></div>
+            <div class="card-glow"></div>
+          </div>
         </div>
-        
-        <div class="why-us-card">
-          <div class="why-us-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </svg>
+      </div>
+
+      <!-- Columna derecha con animación - AJUSTADA A LA IMAGEN DE REFERENCIA -->
+      <div class="animation-column">
+        <div class="excellence-animation">
+          <!-- Círculo principal rotatorio -->
+          <div class="circle-container">
+            <div class="main-circle">
+              <div class="inner-circle"></div>
+              
+              <!-- Efecto de escaneo -->
+              <div class="scan-line"></div>
+              
+              <!-- Órbita -->
+              <div class="orbit"></div>
+              
+              <!-- Puntos de órbita estratégicos -->
+              <div class="orbit-point" style="top: 50%; left: 15px;"></div>
+              <div class="orbit-point" style="top: 15px; left: 50%;"></div>
+              <div class="orbit-point" style="top: 50%; right: 15px;"></div>
+              <div class="orbit-point" style="bottom: 15px; left: 50%;"></div>
+              
+              <!-- Líneas de conexión como en la imagen -->
+              <div class="connection-lines">
+                <div class="connection-line line-1"></div>
+                <div class="connection-line line-2"></div>
+                <div class="connection-line line-3"></div>
+                <div class="connection-line line-4"></div>
+              </div>
+            </div>
+            
+            <!-- Mini-cards flotantes dentro del círculo -->
+            <div class="floating-cards-container">
+              <!-- Datos principales -->
+              <div class="floating-card fc-metric fc-1">
+                <div class="fc-value">100%</div>
+                <div class="fc-label">Compromiso</div>
+              </div>
+              
+              <div class="floating-card fc-metric fc-2">
+                <div class="fc-value">24/7</div>
+                <div class="fc-label">Soporte</div>
+              </div>
+              
+              <div class="floating-card fc-metric fc-3">
+                <div class="fc-value">+94%</div>
+                <div class="fc-label">Satisfacción</div>
+              </div>
+              
+              <!-- Palabras clave -->
+              <div class="floating-card fc-keyword fc-4">Rapidez</div>
+              <div class="floating-card fc-keyword fc-5">Eficacia</div>
+              <div class="floating-card fc-keyword fc-6">Excelencia</div>
+              <div class="floating-card fc-keyword fc-7">Innovación</div>
+            </div>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-light" style="font-family: var(--font-title)">EXPERTISE MULTIDISCIPLINARIO</h3>
-          <p class="text-light/90" style="font-family: var(--font-body)">Contamos con especialistas en diversas áreas tecnológicas.</p>
-        </div>
-        
-        <div class="why-us-card">
-          <div class="why-us-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2 text-light" style="font-family: var(--font-title)">RESULTADOS TANGIBLES</h3>
-          <p class="text-light/90" style="font-family: var(--font-body)">Nos enfocamos en generar impacto real y medible en tu negocio.</p>
-        </div>
-        
-        <div class="why-us-card">
-          <div class="why-us-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2 text-light" style="font-family: var(--font-title)">ADAPTABILIDAD CONSTANTE</h3>
-          <p class="text-light/90" style="font-family: var(--font-body)">Evolucionamos junto a tus necesidades y a los cambios del mercado.</p>
-        </div>
-        
-        <div class="why-us-card">
-          <div class="why-us-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2 text-light" style="font-family: var(--font-title)">VISIÓN DE FUTURO</h3>
-          <p class="text-light/90" style="font-family: var(--font-body)">Implementamos soluciones pensando en tu crecimiento a largo plazo.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  /* Variables y estilos base */
+  :root {
+    --neon-purple: #b042ff;
+    --neon-blue: #4287ff;
+    --neon-pink: #ff42b0;
+    --neon-yellow: #e8ff42;
+    --neon-green: #42ff66;
+    --dark-bg: #0a0a14;
+    --dark-purple: #1a142d;
+    --card-bg: rgba(15, 15, 30, 0.7);
+    --card-border: rgba(176, 66, 255, 0.4);
+    --card-glow: rgba(176, 66, 255, 0.2);
+  }
+  
+  .porque-elegirnos-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 7rem 0 5rem;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Elementos de fondo */
+  .cyber-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  
+  .glow-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.2;
+    z-index: 2;
+  }
+  
+  .orb-1 {
+    top: 20%;
+    left: 10%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, var(--neon-purple) 0%, transparent 70%);
+    animation: orb-float 20s ease-in-out infinite;
+  }
+  
+  .orb-2 {
+    bottom: 10%;
+    right: 5%;
+    width: 30vw;
+    height: 30vw;
+    background: radial-gradient(circle, var(--neon-blue) 0%, transparent 70%);
+    animation: orb-float 25s ease-in-out infinite reverse;
+  }
+  
+  .orb-3 {
+    top: 60%;
+    left: 20%;
+    width: 25vw;
+    height: 25vw;
+    background: radial-gradient(circle, var(--neon-pink) 0%, transparent 70%);
+    animation: orb-float 15s ease-in-out infinite;
+    animation-delay: 5s;
+  }
+  
+  @keyframes orb-float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(5vw, 3vh);
+    }
+  }
+  
+  /* Encabezado de sección */
+  /* ELIMINADOS ESTILOS DE BADGE */
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .section-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0.5rem 0 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .title-glitch {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .title-glitch::before,
+  .title-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+  }
+  
+  .title-glitch::before {
+    color: var(--neon-pink);
+    z-index: -1;
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+  }
+  
+  .title-glitch::after {
+    color: var(--neon-blue);
+    z-index: -2;
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+  
+  @keyframes glitch-anim-1 {
+    0%, 100% { opacity: 0; transform: translateX(0); }
+    5%, 30% { opacity: 0; transform: translateX(0); }
+    31% { opacity: 0.3; transform: translateX(2px); }
+    32% { opacity: 0; transform: translateX(0); }
+    98% { opacity: 0; transform: translateX(0); }
+    99% { opacity: 0.3; transform: translateX(-2px); }
+  }
+  
+  @keyframes glitch-anim-2 {
+    0%, 100% { opacity: 0; transform: translateX(0); }
+    10%, 40% { opacity: 0; transform: translateX(0); }
+    41% { opacity: 0.3; transform: translateX(-2px); }
+    42% { opacity: 0; transform: translateX(0); }
+    78% { opacity: 0; transform: translateX(0); }
+    79% { opacity: 0.3; transform: translateX(2px); }
+    80% { opacity: 0; transform: translateX(0); }
+  }
+  
+  .title-line {
+    position: relative;
+    width: 120px;
+    height: 3px;
+    background: rgba(176, 66, 255, 0.3);
+    margin: 1rem auto 2rem;
+    overflow: hidden;
+  }
+  
+  .line-pulse {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+    animation: line-pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes line-pulse {
+    0% {
+      left: -100%;
+    }
+    50%, 100% {
+      left: 100%;
+    }
+  }
+  
+  .section-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  /* Layout principal de dos columnas */
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+  
+  /* COLUMNA DE TARJETAS */
+  .cards-column {
+    position: relative;
+  }
+  
+  .cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+  }
+  
+  .ventaja-card {
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 220px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: card-appear 0.6s forwards ease-out;
+    animation-delay: calc(var(--index, 0) * 0.15s);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .ventaja-card[data-index="1"] { --index: 1; }
+  .ventaja-card[data-index="2"] { --index: 2; }
+  .ventaja-card[data-index="3"] { --index: 3; }
+  .ventaja-card[data-index="4"] { --index: 4; }
+  .ventaja-card[data-index="5"] { --index: 5; }
+  .ventaja-card[data-index="6"] { --index: 6; }
+  
+  @keyframes card-appear {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .ventaja-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Bordes animados de las tarjetas */
+  .card-border-top, 
+  .card-border-right, 
+  .card-border-bottom, 
+  .card-border-left {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+    transition: all 0.3s ease;
+  }
+  
+  .card-border-top, .card-border-bottom {
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0);
+  }
+  
+  .card-border-right, .card-border-left {
+    width: 1px;
+    height: 100%;
+    transform: scaleY(0);
+  }
+  
+  .card-border-top {
+    top: 0;
+    left: 0;
+    transform-origin: left;
+  }
+  
+  .card-border-right {
+    top: 0;
+    right: 0;
+    transform-origin: top;
+  }
+  
+  .card-border-bottom {
+    bottom: 0;
+    right: 0;
+    transform-origin: right;
+  }
+  
+  .card-border-left {
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom;
+  }
+  
+  .ventaja-card:hover .card-border-top {
+    transform: scaleX(1);
+    transition-delay: 0s;
+  }
+  
+  .ventaja-card:hover .card-border-right {
+    transform: scaleY(1);
+    transition-delay: 0.1s;
+  }
+  
+  .ventaja-card:hover .card-border-bottom {
+    transform: scaleX(1);
+    transition-delay: 0.2s;
+  }
+  
+  .ventaja-card:hover .card-border-left {
+    transform: scaleY(1);
+    transition-delay: 0.3s;
+  }
+  
+  .card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, var(--card-glow) 0%, transparent 70%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+  }
+  
+  .ventaja-card:hover .card-glow {
+    opacity: 0.5;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .ventaja-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(176, 66, 255, 0.1);
+    color: var(--neon-purple);
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
+  }
+  
+  .ventaja-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--neon-purple);
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    animation: icon-pulse 3s infinite;
+  }
+  
+  @keyframes icon-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+  
+  .ventaja-card:hover .ventaja-icon {
+    background: rgba(176, 66, 255, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(176, 66, 255, 0.3);
+  }
+  
+  .ventaja-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.3;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  
+  .ventaja-card:hover .ventaja-title {
+    color: var(--neon-purple);
+    text-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+  }
+  
+  .ventaja-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .card-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: auto;
+  }
+  
+  .indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--neon-purple);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .ventaja-card:hover .indicator-dot {
+    box-shadow: 0 0 10px var(--neon-purple);
+    opacity: 1;
+    animation: indicator-pulse 1.5s infinite alternate;
+  }
+  
+  @keyframes indicator-pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.3);
+    }
+  }
+  
+  /* COLUMNA DE ANIMACIÓN DE EXCELENCIA - MINI-CARDS FLOTANTES */
+  .animation-column {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .excellence-animation {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  /* Círculo principal giratorio */
+  .circle-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-circle {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    border: 2px solid rgba(176, 66, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slow-rotate 30s linear infinite;
+    box-shadow: 0 0 40px rgba(176, 66, 255, 0.2);
+    background: radial-gradient(circle, rgba(10, 10, 20, 0.8) 0%, rgba(10, 10, 20, 0.3) 80%);
+    backdrop-filter: blur(5px);
+  }
+  
+  .inner-circle {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    background: radial-gradient(circle, rgba(176, 66, 255, 0.1) 0%, transparent 80%);
+    animation: pulse 5s ease-in-out infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .inner-circle::after {
+    content: '<>';
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem;
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px rgba(176, 66, 255, 0.8);
+    animation: blink 2s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1.02);
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes slow-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Animación de escaneo */
+  .scan-line {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .scan-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+    box-shadow: 0 0 10px var(--neon-purple);
+    animation: scan 3s ease-in-out infinite alternate;
+    opacity: 0.7;
+  }
+  
+  @keyframes scan {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+  
+  /* Puntos de órbita */
+  .orbit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px dashed rgba(176, 66, 255, 0.3);
+    animation: orbit-pulse 4s ease-in-out infinite alternate;
+  }
+  
+  @keyframes orbit-pulse {
+    0% {
+      opacity: 0.3;
+      box-shadow: 0 0 5px rgba(176, 66, 255, 0.2) inset;
+    }
+    100% {
+      opacity: 0.6;
+      box-shadow: 0 0 15px rgba(176, 66, 255, 0.3) inset;
+    }
+  }
+  
+  .orbit-point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--neon-purple);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--neon-purple);
+    z-index: 3;
+  }
+  
+  /* Tarjetas flotantes */
+  /* Ajuste al contenedor de tarjetas flotantes para evitar el recorte */
+  .floating-cards-container {
+    position: absolute;
+    top: -70px; /* Ampliado para dar más espacio */
+    left: -70px; /* Ampliado para dar más espacio */
+    width: 500px; /* Considerablemente más grande que el círculo */
+    height: 500px; /* Considerablemente más grande que el círculo */
+    pointer-events: none;
+    z-index: 20; /* Mayor z-index para asegurar que esté por encima */
+  }
+  
+  .floating-card {
+    position: absolute;
+    background: rgba(15, 15, 30, 0.85);
+    border: 1px solid var(--neon-purple);
+    border-radius: 8px;
+    padding: 8px 12px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 25; /* Aseguramos que esté por encima de todo */
+    pointer-events: auto; /* Permitimos interacción con las tarjetas */
+  }
+  
+  /* Colores ajustados a la imagen de referencia */
+  .fc-1 { /* 100% Compromiso */
+    border-color: var(--neon-purple);
+    background: rgba(15, 15, 30, 0.85);
+  }
+  
+  .fc-2 { /* 24/7 Soporte */
+    border-color: var(--neon-blue);
+    background: rgba(15, 15, 30, 0.85);
+  }
+  
+  .fc-3 { /* +94% Satisfacción */
+    border-color: var(--neon-pink);
+    background: rgba(15, 15, 30, 0.85);
+  }
+  
+  .fc-4 { /* Rapidez */
+    border-color: var(--neon-purple);
+    background: rgba(15, 15, 30, 0.85);
+  }
+  
+  .fc-5 { /* Eficacia */
+    border-color: var(--neon-blue);
+    background: rgba(15, 15, 30, 0.85);
+  }
+  
+  .fc-6 { /* Excelencia */
+    border-color: var(--neon-pink);
+    background: rgba(15, 15, 30, 0.85);
+  }
+  
+  .fc-7 { /* Innovación */
+    border-color: var(--neon-yellow);
+    background: rgba(15, 15, 30, 0.85);
+  }
+  
+  /* Color del valor adaptado al borde según imagen */
+  .fc-1 .fc-value { color: var(--neon-purple); text-shadow: 0 0 5px rgba(176, 66, 255, 0.5); }
+  .fc-2 .fc-value { color: var(--neon-blue); text-shadow: 0 0 5px rgba(66, 135, 255, 0.5); }
+  .fc-3 .fc-value { color: var(--neon-pink); text-shadow: 0 0 5px rgba(255, 66, 176, 0.5); }
+  
+  /* Color de texto según la imagen */
+  .fc-4 { color: var(--neon-purple); }
+  .fc-5 { color: var(--neon-blue); }
+  .fc-6 { color: var(--neon-pink); }
+  .fc-7 { color: var(--neon-yellow); }
+  
+  /* Tamaños ajustados para que coincidan mejor con la imagen */
+  .fc-metric {
+    min-width: 110px;
+    padding: 10px 15px;
+  }
+  
+  .fc-value {
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+  }
+  
+  .fc-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .fc-keyword {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Posiciones ajustadas para acercar las tarjetas al círculo */
+  .fc-1 { /* 100% Compromiso */
+    top: 25%;
+    left: -5%;
+    animation-delay: 0s;
+  }
+  
+  .fc-2 { /* 24/7 Soporte */
+    top: 12%;
+    right: -15%;
+    animation-delay: 1s;
+  }
+  
+  .fc-3 { /* +94% Satisfacción */
+    bottom: 8%;
+    left: 28%;
+    animation-delay: 2s;
+  }
+  
+  .fc-4 { /* Rapidez */
+    top: 30%;
+    right: -25%;
+    animation-delay: 1.5s;
+  }
+  
+  .fc-5 { /* Eficacia */
+    bottom: 35%;
+    right: -15%;
+    animation-delay: 2.5s;
+  }
+  
+  .fc-6 { /* Excelencia */
+    top: 60%;
+    left: -5%;
+    animation-delay: 0.5s;
+  }
+  
+  .fc-7 { /* Innovación */
+    bottom: 42%;
+    left: 30%;
+    animation-delay: 3s;
+  }
+  
+  /* Animación de flotación mejorada con rangos variados para evitar solapamientos */
+  @keyframes float-random {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    20% {
+      transform: translateY(-5px) translateX(3px);
+    }
+    40% {
+      transform: translateY(-2px) translateX(-4px);
+    }
+    60% {
+      transform: translateY(4px) translateX(2px);
+    }
+    80% {
+      transform: translateY(2px) translateX(-3px);
+    }
+  }
+  
+  /* Diferentes animaciones para cada tarjeta para minimizar el riesgo de solapamiento */
+  .fc-1 {
+    animation: float-random-1 6s ease-in-out infinite;
+  }
+  
+  .fc-2 {
+    animation: float-random-2 7s ease-in-out infinite;
+  }
+  
+  .fc-3 {
+    animation: float-random-3 8s ease-in-out infinite;
+  }
+  
+  .fc-4 {
+    animation: float-random-4 7.5s ease-in-out infinite;
+  }
+  
+  .fc-5 {
+    animation: float-random-5 6.5s ease-in-out infinite;
+  }
+  
+  .fc-6 {
+    animation: float-random-6 7.2s ease-in-out infinite;
+  }
+  
+  .fc-7 {
+    animation: float-random-7 6.8s ease-in-out infinite;
+  }
+  
+  @keyframes float-random-1 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    30% { transform: translateY(-6px) translateX(4px); }
+    60% { transform: translateY(3px) translateX(-4px); }
+  }
+  
+  @keyframes float-random-2 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    40% { transform: translateY(6px) translateX(-3px); }
+    70% { transform: translateY(-4px) translateX(5px); }
+  }
+  
+  @keyframes float-random-3 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-7px) translateX(-3px); }
+    65% { transform: translateY(5px) translateX(4px); }
+  }
+  
+  @keyframes float-random-4 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    35% { transform: translateY(5px) translateX(6px); }
+    75% { transform: translateY(-3px) translateX(-4px); }
+  }
+  
+  @keyframes float-random-5 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    45% { transform: translateY(-4px) translateX(-5px); }
+    85% { transform: translateY(6px) translateX(3px); }
+  }
+  
+  @keyframes float-random-6 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    20% { transform: translateY(7px) translateX(4px); }
+    60% { transform: translateY(-5px) translateX(-3px); }
+  }
+  
+  @keyframes float-random-7 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    30% { transform: translateY(-3px) translateX(-6px); }
+    70% { transform: translateY(7px) translateX(2px); }
+  }
+  
+  /* Responsive - ACTUALIZADO PARA MINI-CARDS QUE SE EXTIENDEN FUERA DEL CÍRCULO */
+  @media (max-width: 1200px) {
+    .main-content {
+      gap: 2rem;
+    }
+    
+    .excellence-animation {
+      width: 440px;
+      height: 440px;
+    }
+    
+    .main-circle {
+      width: 320px;
+      height: 320px;
+    }
+    
+    .inner-circle {
+      width: 160px;
+      height: 160px;
+    }
+    
+    .scan-line {
+      width: 320px;
+      height: 320px;
+    }
+    
+    .floating-cards-container {
+      width: 460px;
+      height: 460px;
+      top: -70px;
+      left: -70px;
+    }
+    
+    .fc-metric {
+      min-width: 90px;
+    }
+    
+    .fc-value {
+      font-size: 1.2rem;
+    }
+    
+    .fc-label, .fc-keyword {
+      font-size: 0.75rem;
+    }
+    
+    .section-title {
+      font-size: 2.8rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .main-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .cards-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .excellence-animation {
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+    }
+    
+    .main-circle {
+      width: 320px;
+      height: 320px;
+    }
+    
+    .scan-line {
+      width: 320px;
+      height: 320px;
+    }
+    
+    .floating-cards-container {
+      width: 460px;
+      height: 460px;
+      top: -70px;
+      left: -70px;
+    }
+    
+    .animation-column {
+      order: -1; /* Coloca la animación arriba en tablet y móvil */
+    }
+    
+    /* Ajustes de posición para el diseño responsivo */
+    .fc-1 { left: -12%; }
+    .fc-2 { right: -22%; }
+    .fc-4 { right: -30%; }
+    .fc-5 { right: -22%; }
+    .fc-6 { left: -12%; }
+  }
+  
+  @media (max-width: 768px) {
+    .cards-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+    }
+    
+    .excellence-animation {
+      width: 360px;
+      height: 360px;
+    }
+    
+    .main-circle {
+      width: 280px;
+      height: 280px;
+    }
+    
+    .inner-circle {
+      width: 140px;
+      height: 140px;
+    }
+    
+    .scan-line {
+      width: 280px;
+      height: 280px;
+    }
+    
+    .floating-cards-container {
+      width: 420px;
+      height: 420px;
+      top: -70px;
+      left: -70px;
+    }
+    
+    .fc-metric {
+      min-width: 80px;
+      padding: 6px 10px;
+    }
+    
+    .fc-keyword {
+      padding: 4px 8px;
+    }
+    
+    .fc-value {
+      font-size: 1.1rem;
+    }
+    
+    .fc-label, .fc-keyword {
+      font-size: 0.7rem;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+    }
+    
+    .ventaja-title {
+      font-size: 1rem;
+    }
+    
+    /* Ajustes de posición para tablets */
+    .fc-1 { left: -10%; }
+    .fc-2 { right: -20%; }
+    .fc-4 { right: -25%; }
+    .fc-5 { right: -18%; }
+    .fc-6 { left: -10%; }
+  }
+  
+  @media (max-width: 576px) {
+    .porque-elegirnos-section {
+      padding: 5rem 0 3rem;
+    }
+    
+    .cards-wrapper {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .excellence-animation {
+      width: 320px;
+      height: 320px;
+    }
+    
+    .main-circle {
+      width: 260px;
+      height: 260px;
+    }
+    
+    .inner-circle {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .inner-circle::after {
+      font-size: 1.5rem;
+    }
+    
+    .scan-line {
+      width: 260px;
+      height: 260px;
+    }
+    
+    .floating-cards-container {
+      width: 380px;
+      height: 380px;
+      top: -60px;
+      left: -60px;
+    }
+    
+    .fc-metric {
+      min-width: 70px;
+      padding: 5px 8px;
+    }
+    
+    .fc-keyword {
+      padding: 3px 6px;
+      font-size: 0.65rem;
+    }
+    
+    .fc-value {
+      font-size: 1rem;
+    }
+    
+    .fc-label {
+      font-size: 0.65rem;
+    }
+    
+    .orbit-point {
+      width: 8px;
+      height: 8px;
+    }
+    
+    .ventaja-card {
+      min-height: 180px;
+    }
+    
+    .section-description {
+      font-size: 1rem;
+    }
+    
+    .card-content {
+      padding: 1.2rem;
+    }
+    
+    .ventaja-icon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    /* Ajustes de posición para móviles */
+    .fc-1 { left: -8%; }
+    .fc-2 { right: -15%; }
+    .fc-4 { right: -20%; }
+    .fc-5 { right: -15%; }
+    .fc-6 { left: -8%; }
+  }
+  
+  @media (max-width: 375px) {
+    .section-title {
+      font-size: 1.8rem;
+    }
+    
+    .excellence-animation {
+      width: 280px;
+      height: 280px;
+    }
+    
+    .main-circle {
+      width: 240px;
+      height: 240px;
+    }
+    
+    .inner-circle {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .scan-line {
+      width: 240px;
+      height: 240px;
+    }
+    
+    .floating-cards-container {
+      width: 340px;
+      height: 340px;
+      top: -50px;
+      left: -50px;
+    }
+    
+    .fc-metric {
+      min-width: 65px;
+      padding: 4px 6px;
+    }
+    
+    .fc-value {
+      font-size: 0.9rem;
+    }
+    
+    .ventaja-text {
+      font-size: 0.9rem;
+    }
+    
+    /* Ajustes de posición para móviles pequeños */
+    .fc-1 { left: -5%; }
+    .fc-2 { right: -12%; }
+    .fc-4 { right: -15%; }
+    .fc-5 { right: -12%; }
+    .fc-6 { left: -5%; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animación de entrada para tarjetas
+    const ventajaCards = document.querySelectorAll('.ventaja-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = entry.target.getAttribute('data-index');
+          const indexValue = index ? parseInt(index) : 0;
+          const targetElement = entry.target as HTMLElement;
+          targetElement.style.animationDelay = `${indexValue * 0.15}s`;
+          targetElement.style.animation = 'card-appear 0.6s forwards ease-out';
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    ventajaCards.forEach(card => {
+      observer.observe(card);
+    });
+    
+    // Efecto de mouse para tarjetas
+    ventajaCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const mouseEvent = e as MouseEvent;
+        const rect = card.getBoundingClientRect();
+        const x = mouseEvent.clientX - rect.left;
+        const y = mouseEvent.clientY - rect.top;
+        
+        // Posición relativa del mouse dentro de la tarjeta (0-1)
+        const posX = x / rect.width;
+        const posY = y / rect.height;
+        
+        // Mover el efecto de resplandor según la posición del ratón
+        const glow = card.querySelector('.card-glow') as HTMLElement;
+        if (glow) {
+          glow.style.background = `radial-gradient(circle at ${posX * 100}% ${posY * 100}%, var(--card-glow) 0%, transparent 70%)`;
+        }
+      });
+    });
+  });
+</script>

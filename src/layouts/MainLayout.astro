@@ -1,4 +1,8 @@
 ---
+// MainLayout.astro - Componente de layout principal que contiene elementos comunes
+
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 const { title } = Astro.props;
 ---
 
@@ -7,225 +11,160 @@ const { title } = Astro.props;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta
-    name="description"
-    content="Transformia convierte desafíos en oportunidades digitales mediante automatización, software personalizado y data analytics."
-  >
+  <meta name="description" content="Transformia - Soluciones digitales a medida para potenciar tu negocio">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Global styles -->
+  <link rel="stylesheet" href="/styles/global.css">
+  
+  <!-- SEO -->
   <title>{title}</title>
-  <!-- Importamos el CSS usando importación directa de Astro -->
+  
+  <!-- Estilos básicos para asegurar que no haya márgenes extra -->
   <style>
-    /* Variables CSS */
-    :root {
-      --color-dark: #0a0a14;
-      --color-dark-blue: #141428;
-      --color-dark-purple: #1a142d;
-      --neon-purple: #b042ff;
-      --neon-blue: #4287ff;
-      --neon-pink: #ff42b0;
-      --neon-yellow: #e8ff42;
-      --neon-orange: #ff7842;
-      --grid-line: rgba(128, 90, 213, 0.2);
-      
-      --font-mono: 'Space Mono', monospace;
-      --font-sans: 'Space Grotesk', sans-serif;
-    }
-
-    /* Estilos Base */
+    /* Reset básico para eliminar márgenes y padding por defecto */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--color-dark);
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #0a0a14;
       color: white;
-      line-height: 1.6;
       overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    /* Utilities */
-    .container {
       width: 100%;
-      max-width: 1280px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      height: 100%;
     }
-
-    .flex {
-      display: flex;
-    }
-
-    .justify-between {
-      justify-content: space-between;
-    }
-
-    .items-center {
-      align-items: center;
-    }
-
-    .py-4 {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .space-x-8 > * + * {
-      margin-left: 2rem;
-    }
-
-    .text-2xl {
-      font-size: 1.5rem;
-    }
-
-    .font-bold {
-      font-weight: bold;
-    }
-
-    .font-mono {
-      font-family: var(--font-mono);
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
+    
+    main {
       width: 100%;
-      z-index: 100;
-      background: rgba(10, 10, 20, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(176, 66, 255, 0.2);
-      transition: all 0.3s ease;
+      display: block;
     }
-
-    .hidden {
-      display: none;
-    }
-
-    .md\:flex {
-      display: flex;
-    }
-
-    .md\:hidden {
-      display: none;
-    }
-
-    /* Neon effects */
-    .neon-text {
-      color: white;
-      text-shadow: 0 0 5px rgba(176, 66, 255, 0.7), 0 0 10px rgba(176, 66, 255, 0.5);
-    }
-
-    .nav-link {
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.9rem;
-      position: relative;
-      padding: 0.5rem 0;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--neon-purple);
-      transition: width 0.3s ease;
-      box-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .md\:flex {
-        display: none;
-      }
+    
+    /* Variables CSS globales */
+    :root {
+      --font-sans: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
       
-      .md\:hidden {
-        display: block;
-      }
+      --neon-purple: #b042ff;
+      --neon-blue: #4287ff;
+      --neon-pink: #ff42b0;
+      --neon-yellow: #e8ff42;
+      --neon-green: #42ff66;
+      --dark-bg: #0a0a14;
+      --darker-bg: #070710;
+    }
+    
+    /* Estilo de scrollbar personalizada - estética cibernética */
+    /* Webkit browsers (Chrome, Safari, Opera) */
+    ::-webkit-scrollbar {
+      width: 10px;
+      background-color: var(--darker-bg);
+    }
+    
+    ::-webkit-scrollbar-track {
+      background-color: rgba(10, 10, 20, 0.8);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--neon-purple), var(--neon-blue));
+      border-radius: 10px;
+      border: 2px solid rgba(10, 10, 20, 0.8);
+      box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, var(--neon-pink), var(--neon-purple));
+    }
+    
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--neon-purple) var(--darker-bg);
     }
   </style>
-  <!-- Importamos fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Navbar -->
-  <header class="navbar">
-    <div class="container">
-      <div class="flex justify-between items-center py-4">
-        <a href="/" class="text-2xl font-bold font-mono neon-text">TRANSFORMIA</a>
-        <nav class="hidden md:flex space-x-8">
-          <a href="#servicios" class="nav-link">Servicios</a>
-          <a href="#nosotros" class="nav-link">Nosotros</a>
-          <a href="#soluciones" class="nav-link">Soluciones</a>
-          <a href="#metodologia" class="nav-link">Metodología</a>
-          <a href="/contacto" class="neon-button">Contacto</a>
-        </nav>
-        <button class="md:hidden mobile-menu-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: white;">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-    <!-- Mobile menu (hidden by default) -->
-    <div class="mobile-menu hidden">
-      <div class="container py-4 space-y-4">
-        <a href="#servicios" class="block py-2 nav-link">Servicios</a>
-        <a href="#nosotros" class="block py-2 nav-link">Nosotros</a>
-        <a href="#soluciones" class="block py-2 nav-link">Soluciones</a>
-        <a href="#metodologia" class="block py-2 nav-link">Metodología</a>
-        <a href="/contacto" class="block py-2" style="color: var(--neon-purple);">Contacto</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Contenido principal -->
+  <Navbar />
+  
+  <!-- Main content -->
   <main>
     <slot />
   </main>
-
-  <!-- Footer simple -->
-  <footer style="background-color: var(--color-dark); padding: 2rem 0; margin-top: 2rem; border-top: 1px solid rgba(176, 66, 255, 0.2);">
-    <div class="container">
-      <div style="text-align: center;">
-        <p>© {new Date().getFullYear()} Transformia. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </footer>
-
+  
+  <!-- Footer -->
+  <Footer />
+  
+  <!-- JavaScript -->
   <script>
-    // Script para el menú móvil
     document.addEventListener('DOMContentLoaded', () => {
-      const button = document.querySelector('.mobile-menu-button');
-      const menu = document.querySelector('.mobile-menu');
-      
-      if (button && menu) {
-        button.addEventListener('click', () => {
-          menu.classList.toggle('hidden');
+      // Smooth scroll para enlaces internos
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerOffset = 80; // Ajustar por la altura del navbar
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Cerrar menú móvil si está abierto
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+              mobileMenu.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          }
         });
+      });
+      
+      // Animación para elementos al hacer scroll
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elementPosition < windowHeight * 0.85) {
+            element.classList.add('animated');
+          }
+        });
+      };
+      
+      // Inicializar animaciones al cargar
+      setTimeout(animateOnScroll, 100);
+      
+      // Event listener para animaciones al hacer scroll
+      window.addEventListener('scroll', animateOnScroll);
+      
+      // Detectar dispositivos táctiles y desactivar algunos efectos
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      
+      if (isTouchDevice) {
+        document.body.classList.add('touch-device');
       }
     });
   </script>

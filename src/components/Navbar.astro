@@ -1,359 +1,711 @@
 ---
+// Navbar.astro - Barra de navegación con diseño cyberpunk
 ---
 
-<header class="navbar">
+<header id="header" class="site-header">
+  <!-- Fondo con efecto blur para navbar -->
+  <div class="header-background"></div>
+  
+  <!-- Línea de escáner -->
+  <div class="scan-line"></div>
+  
+  <!-- Barra de navegación principal -->
+  <nav class="main-navbar">
     <div class="container">
-      <!-- Efecto de brillo superior -->
-      <div class="navbar-glow"></div>
-      
       <div class="navbar-content">
+        <!-- Logo -->
         <a href="/" class="navbar-logo">
-          <span class="logo-text">TRANSFORMIA</span>
-          <div class="logo-glitch"></div>
+          <div class="logo-container">
+            <span class="logo-text">TRANSFORMIA</span>
+          </div>
         </a>
         
-        <nav class="navbar-links desktop-nav">
-          <a href="#servicios" class="nav-link">
-            <span class="nav-link-text">SERVICIOS</span>
-            <span class="nav-link-hover"></span>
-          </a>
-          <a href="#nosotros" class="nav-link">
-            <span class="nav-link-text">NOSOTROS</span>
-            <span class="nav-link-hover"></span>
-          </a>
-          <a href="#soluciones" class="nav-link">
-            <span class="nav-link-text">SOLUCIONES</span>
-            <span class="nav-link-hover"></span>
-          </a>
-          <a href="#metodologia" class="nav-link">
-            <span class="nav-link-text">METODOLOGÍA</span>
-            <span class="nav-link-hover"></span>
-          </a>
-        </nav>
+        <!-- Menú de navegación -->
+        <div class="navbar-menu" id="navbar-menu">
+          <ul class="menu-items">
+            <li class="menu-item">
+              <a href="#nosotros" class="menu-link">
+                <span class="link-number">01</span>
+                <span class="link-text">Quiénes Somos</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#servicios" class="menu-link">
+                <span class="link-number">02</span>
+                <span class="link-text">Qué Hacemos</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#soluciones" class="menu-link">
+                <span class="link-number">03</span>
+                <span class="link-text">Soluciones</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#metodologia" class="menu-link">
+                <span class="link-number">04</span>
+                <span class="link-text">Metodología</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#porque-elegirnos" class="menu-link">
+                <span class="link-number">05</span>
+                <span class="link-text">Por Qué Elegirnos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
         
-        <a href="/contacto" class="contact-button">
-          <span class="contact-text">Contacto</span>
-          <span class="contact-glow"></span>
+        <!-- Botón de contacto -->
+        <a href="#contactanos" class="contact-button">
+          <span class="button-text">CONTACTAR</span>
+          <span class="button-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </span>
         </a>
         
-        <button class="mobile-toggle">
-          <span class="toggle-bar"></span>
-          <span class="toggle-bar"></span>
-          <span class="toggle-bar"></span>
+        <!-- Botón menú móvil -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+          <div class="toggle-line"></div>
+          <div class="toggle-line"></div>
+          <div class="toggle-line"></div>
         </button>
       </div>
     </div>
-    
-    <!-- Menú móvil -->
-    <div class="mobile-menu">
-      <nav class="mobile-nav">
-        <a href="#servicios" class="mobile-link">SERVICIOS</a>
-        <a href="#nosotros" class="mobile-link">NOSOTROS</a>
-        <a href="#soluciones" class="mobile-link">SOLUCIONES</a>
-        <a href="#metodologia" class="mobile-link">METODOLOGÍA</a>
-        <a href="/contacto" class="mobile-contact">CONTACTO</a>
-      </nav>
-    </div>
-  </header>
+  </nav>
   
-  <style>
-    .navbar {
-      position: fixed;
+  <!-- Menú móvil -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+      <span class="mobile-menu-title">MENÚ</span>
+      <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <ul class="mobile-menu-items">
+      <li class="mobile-menu-item">
+        <a href="#nosotros" class="mobile-menu-link">
+          <span class="link-number">01</span>
+          <span class="link-text">Quiénes Somos</span>
+        </a>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#servicios" class="mobile-menu-link">
+          <span class="link-number">02</span>
+          <span class="link-text">Qué Hacemos</span>
+        </a>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#soluciones" class="mobile-menu-link">
+          <span class="link-number">03</span>
+          <span class="link-text">Soluciones</span>
+        </a>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#metodologia" class="mobile-menu-link">
+          <span class="link-number">04</span>
+          <span class="link-text">Metodología</span>
+        </a>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#porque-elegirnos" class="mobile-menu-link">
+          <span class="link-number">05</span>
+          <span class="link-text">Por Qué Elegirnos</span>
+        </a>
+      </li>
+    </ul>
+    
+    <div class="mobile-contact">
+      <a href="#contactanos" class="mobile-contact-button">CONTACTAR AHORA</a>
+      
+      <div class="mobile-contact-info">
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>+52 (55) 1234 5678</span>
+        </div>
+        
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>contacto@transformia.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Variables y estilos base */
+  :root {
+    --neon-purple: #b042ff;
+    --neon-blue: #4287ff;
+    --neon-pink: #ff42b0;
+    --neon-green: #42ff66;
+    --dark-bg: #0a0a14;
+    --header-bg: rgba(10, 10, 20, 0.85);
+    --header-height: 80px;
+  }
+  
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 100%;
+  }
+  
+  /* Fondo con efecto blur */
+  .header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: -1;
+    border-bottom: 1px solid rgba(176, 66, 255, 0.3);
+  }
+  
+  /* Línea de escaneo */
+  .scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, 
+      transparent, 
+      var(--neon-purple), 
+      var(--neon-blue),
+      var(--neon-purple),
+      transparent
+    );
+    opacity: 0;
+    z-index: 1;
+    animation: scan-animation 3s ease-in-out infinite;
+  }
+  
+  @keyframes scan-animation {
+    0%, 100% {
       top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(10, 10, 20, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(176, 66, 255, 0.3);
-    }
-    
-    .container {
-      width: 90%;
-      max-width: 1280px;
-      margin: 0 auto;
-      position: relative;
-    }
-    
-    .navbar-glow {
-      position: absolute;
-      top: -10px;
-      left: 0;
-      width: 100%;
-      height: 10px;
-      background: linear-gradient(to bottom, rgba(176, 66, 255, 0.5), transparent);
-      opacity: 0.5;
-    }
-    
-    .navbar-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-    
-    .navbar-logo {
-      position: relative;
-      font-family: 'Space Mono', monospace;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #b042ff;
-      text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
-      transition: all 0.3s ease;
-      z-index: 1;
-    }
-    
-    .logo-glitch {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      z-index: -1;
       opacity: 0;
     }
-    
-    .navbar-logo:hover {
-      color: white;
-      text-shadow: 0 0 10px rgba(176, 66, 255, 1), 0 0 20px rgba(176, 66, 255, 0.8);
-    }
-    
-    .navbar-logo:hover .logo-glitch {
+    10% {
       opacity: 1;
-      animation: logo-glitch 0.5s steps(2) infinite;
+    }
+    50% {
+      top: calc(var(--header-height) + var(--status-bar-height));
+      opacity: 1;
+    }
+    90% {
+      opacity: 0;
+    }
+  }
+  
+  /* Barra de estado superior - eliminada, pero mantenemos algunas utilidades para otros componentes */
+  
+  /* Barra de navegación principal */
+  .main-navbar {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Logo */
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  
+  .logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--neon-purple), transparent);
+  }
+  
+  /* Menú de navegación */
+  .navbar-menu {
+    height: 100%;
+  }
+  
+  .menu-items {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+  
+  .menu-item {
+    height: 100%;
+    position: relative;
+  }
+  
+  .menu-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 1.5rem;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .link-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--neon-purple);
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .link-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--neon-purple);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  
+  .menu-link:hover {
+    color: var(--neon-purple);
+  }
+  
+  .menu-link:hover .link-number {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  
+  .menu-link:hover .link-text {
+    transform: translateY(2px);
+  }
+  
+  .menu-link:hover::after {
+    width: 60%;
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
+  }
+  
+  /* Botón de contacto */
+  .contact-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(176, 66, 255, 0.1);
+    border: 1px solid var(--neon-purple);
+    border-radius: 4px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .button-text {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .contact-button:hover {
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(176, 66, 255, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .contact-button:hover::before {
+    opacity: 1;
+  }
+  
+  .contact-button:hover .button-icon {
+    transform: translateX(3px);
+  }
+  
+  /* Botón menú móvil */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+  
+  .toggle-line {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+  
+  /* Menú móvil */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(15, 12, 30, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1001;
+    padding: 2rem;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(176, 66, 255, 0.3);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .mobile-menu.active {
+    right: 0;
+  }
+  
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .mobile-menu-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--neon-purple);
+    letter-spacing: 2px;
+  }
+  
+  .mobile-menu-close {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-close:hover {
+    color: var(--neon-purple);
+    transform: rotate(90deg);
+  }
+  
+  .mobile-menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  
+  .mobile-menu-item {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mobile-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+  }
+  
+  .mobile-menu-link .link-number {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+  
+  .mobile-menu-link .link-text {
+    font-size: 1.1rem;
+  }
+  
+  .mobile-menu-link:hover {
+    color: var(--neon-purple);
+    transform: translateX(10px);
+  }
+  
+  .mobile-contact {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .mobile-contact-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-contact-button:hover {
+    box-shadow: 0 5px 15px rgba(176, 66, 255, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .mobile-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .mobile-contact-info .contact-item {
+    font-size: 0.9rem;
+  }
+  
+  /* Estilos para navbar scrolled */
+  .site-header.scrolled .header-background {
+    background: rgba(10, 10, 20, 0.95);
+  }
+  
+  .site-header.scrolled .main-navbar {
+    height: 70px;
+  }
+  
+  /* Media queries */
+  @media (max-width: 1200px) {
+    .menu-link {
+      padding: 0 1rem;
     }
     
-    @keyframes logo-glitch {
-      0%, 100% {
-        transform: translate(0);
-        text-shadow: 0 0 5px rgba(176, 66, 255, 0.7);
-      }
-      25% {
-        transform: translate(-2px, 1px);
-        text-shadow: 2px 0 5px rgba(66, 135, 255, 0.7), -2px 0 5px rgba(255, 66, 176, 0.7);
-      }
-      50% {
-        transform: translate(1px, -1px);
-        text-shadow: -2px 0 5px rgba(176, 66, 255, 0.7), 2px 0 5px rgba(232, 255, 66, 0.7);
-      }
-      75% {
-        transform: translate(-1px, -2px);
-        text-shadow: 2px 0 5px rgba(255, 66, 176, 0.7), -2px 0 5px rgba(66, 135, 255, 0.7);
-      }
+    .status-bar {
+      padding: 0 1rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .menu-link {
+      padding: 0 0.75rem;
     }
     
-    .navbar-links {
-      display: flex;
-      gap: 2rem;
+    .link-text {
+      font-size: 0.85rem;
     }
-    
-    .nav-link {
-      position: relative;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 0.5rem 0;
-      transition: all 0.3s ease;
-    }
-    
-    .nav-link-hover {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #b042ff;
-      transition: width 0.3s ease;
-      box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
-    }
-    
-    .nav-link:hover .nav-link-hover {
-      width: 100%;
-    }
-    
-    .nav-link:hover {
-      color: #b042ff;
-      text-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none;
     }
     
     .contact-button {
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
-      color: white;
-      font-family: 'Space Mono', monospace;
-      font-weight: bold;
-      font-size: 0.9rem;
-      padding: 0.5rem 1.5rem;
-      border-radius: 4px;
-      border: 1px solid rgba(176, 66, 255, 0.5);
-      transition: all 0.3s ease;
-      overflow: hidden;
-      z-index: 1;
-    }
-    
-    .contact-glow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, #6b46c1 0%, #9f7aea 100%);
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .contact-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(176, 66, 255, 0.4);
-    }
-    
-    .contact-button:hover .contact-glow {
-      opacity: 0.8;
-      animation: contact-pulse 2s infinite;
-    }
-    
-    @keyframes contact-pulse {
-      0%, 100% {
-        box-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(176, 66, 255, 1), 0 0 30px rgba(176, 66, 255, 0.5);
-      }
-    }
-    
-    .mobile-toggle {
       display: none;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 100;
     }
     
-    .toggle-bar {
-      display: block;
-      width: 25px;
-      height: 2px;
-      margin: 5px 0;
-      background: white;
-      transition: all 0.3s ease;
-    }
-    
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(10, 10, 20, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 999;
-      transform: translateY(-100%);
-      transition: transform 0.4s ease;
-    }
-    
-    .mobile-nav {
+    .menu-toggle {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      gap: 2rem;
     }
     
-    .mobile-link {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.5rem;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 5px rgba(176, 66, 255, 0.5);
-      transition: all 0.3s ease;
+    .status-bar {
+      padding: 0 1.5rem;
     }
-    
-    .mobile-link:hover {
-      color: #b042ff;
-      text-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
-    }
-    
-    .mobile-contact {
-      margin-top: 1rem;
-      font-family: 'Space Mono', monospace;
-      font-size: 1.5rem;
-      color: #b042ff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .desktop-nav {
-        display: none;
-      }
-      
-      .mobile-toggle {
-        display: block;
-      }
-      
-      .mobile-menu {
-        display: block;
-      }
-      
-      .mobile-menu.active {
-        transform: translateY(0);
-      }
-      
-      .mobile-toggle.active .toggle-bar:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-        background: #b042ff;
-      }
-      
-      .mobile-toggle.active .toggle-bar:nth-child(2) {
-        opacity: 0;
-      }
-      
-      .mobile-toggle.active .toggle-bar:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-        background: #b042ff;
-      }
-    }
-  </style>
+  }
   
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const mobileToggle = document.querySelector('.mobile-toggle');
-      const mobileMenu = document.querySelector('.mobile-menu');
-      const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-contact');
-      
-      mobileToggle.addEventListener('click', () => {
-        mobileToggle.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
-      });
-      
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileToggle.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          document.body.classList.remove('no-scroll');
-        });
-      });
-      
-      // Cambio de color del navbar al hacer scroll
-      const navbar = document.querySelector('.navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
+  @media (max-width: 576px) {
+    .mobile-menu {
+      max-width: 100%;
+    }
+    
+    .main-navbar {
+      height: 70px;
+    }
+    
+    .logo-text {
+      font-size: 1.3rem;
+    }
+    
+    .mobile-menu-link .link-text {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Variables
+    const header = document.getElementById('header');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+    
+    // Función para manejar el scroll
+    function handleScroll() {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+    
+    // Evento de scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Evento inicial para comprobar el estado del scroll
+    handleScroll();
+    
+    // Funcionalidad del menú móvil
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Evitar scroll en el body
+    });
+    
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = ''; // Restaurar scroll
+    });
+    
+    // Cerrar menú al hacer clic en un enlace
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = ''; // Restaurar scroll
       });
     });
-  </script>
+    
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('active') && 
+          !mobileMenu.contains(e.target) && 
+          !menuToggle.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = ''; // Restaurar scroll
+      }
+    });
+    
+    // Efecto de línea activa al hacer scroll
+    const sections = document.querySelectorAll('section[id]');
+    const menuLinks = document.querySelectorAll('.menu-link');
+    
+    function highlightCurrentSection() {
+      const scrollY = window.scrollY;
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 200;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          menuLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', highlightCurrentSection);
+  });
+</script>

@@ -1,100 +1,1338 @@
 ---
+// Contacto.astro - Formulario de contacto con estética tecnológica
 ---
-<section id="formulario-contacto" class="py-20 bg-light">
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-dark" style="font-family: var(--font-title)">CONTACTO</h2>
-        <div class="w-24 h-1 bg-purple mx-auto"></div>
-        <p class="mt-6 text-lg" style="font-family: var(--font-body)">Completa el formulario y te contactaremos en menos de 24 horas</p>
+
+<section id="contacto" class="contacto-section">
+  <!-- Elementos de fondo -->
+  <div class="contacto-background">
+    <div class="grid-lines"></div>
+    <div class="radial-glow"></div>
+    <div class="data-streams">
+      <div class="data-stream"></div>
+      <div class="data-stream"></div>
+      <div class="data-stream"></div>
+    </div>
+  </div>
+  
+  <!-- Elementos decorativos -->
+  <div class="tech-decorations">
+    <div class="corner-element top-left"></div>
+    <div class="corner-element top-right"></div>
+    <div class="corner-element bottom-left"></div>
+    <div class="corner-element bottom-right"></div>
+    
+    <div class="data-node" style="--top: 20%; --left: 5%;"></div>
+    <div class="data-node" style="--top: 80%; --left: 8%;"></div>
+    <div class="data-node" style="--top: 15%; --left: 90%;"></div>
+    <div class="data-node" style="--top: 85%; --left: 92%;"></div>
+  </div>
+  
+  <div class="container">
+    <div class="contacto-container">
+      <!-- Columna de información -->
+      <div class="info-column">
+        <!-- Encabezado sección de contacto -->
+        <div class="info-header">
+          <div class="header-badge">
+            <span class="badge-text">CONVERSEMOS</span>
+            <div class="badge-light"></div>
+          </div>
+          
+          <h2 class="info-title">CONTACTA CON NOSOTROS</h2>
+          
+          <div class="title-separator">
+            <div class="separator-glow"></div>
+          </div>
+          
+          <p class="info-description">
+            ¿Listo para transformar tus desafíos en oportunidades? Comparte con nosotros tus necesidades y descubre cómo podemos potenciar tu negocio con soluciones tecnológicas a medida.
+          </p>
+        </div>
+        
+        <!-- Opciones de contacto -->
+        <div class="contact-options">
+          <div class="contact-option">
+            <div class="option-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div class="option-details">
+              <h3 class="option-title">Llámanos</h3>
+              <p class="option-value">+52 (55) 1234 5678</p>
+            </div>
+          </div>
+          
+          <div class="contact-option">
+            <div class="option-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="option-details">
+              <h3 class="option-title">Escríbenos</h3>
+              <p class="option-value">contacto@transformia.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-option">
+            <div class="option-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="option-details">
+              <h3 class="option-title">Visítanos</h3>
+              <p class="option-value">Av. Tecnología #123, CDMX</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Redes sociales -->
+        <div class="social-section">
+          <div class="social-title">
+            <span>Síguenos</span>
+            <div class="social-line"></div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
       
-      <div class="max-w-2xl mx-auto">
-        <form class="grid grid-cols-1 gap-6">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label for="nombre" class="block mb-2 font-medium" style="font-family: var(--font-body)">Nombre</label>
-              <input 
-                type="text" 
-                id="nombre" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple focus:border-transparent"
-                placeholder="Tu nombre"
-                required
-              />
+      <!-- Columna de formulario -->
+      <div class="form-column">
+        <div class="tech-form-container">
+          <!-- Barra superior tipo terminal -->
+          <div class="form-header">
+            <div class="header-status">
+              <div class="status-dot active"></div>
+              <span>SISTEMA: LISTO PARA ENVÍO</span>
             </div>
-            <div>
-              <label for="empresa" class="block mb-2 font-medium" style="font-family: var(--font-body)">Empresa</label>
-              <input 
-                type="text" 
-                id="empresa" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple focus:border-transparent"
-                placeholder="Nombre de tu empresa"
-              />
+            
+            <div class="form-id">ID: CTF-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}</div>
+          </div>
+          
+          <!-- Formulario -->
+          <form id="contactForm" class="tech-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre" class="tech-label">
+                  <span class="label-text">Nombre</span>
+                  <span class="label-req">*</span>
+                </label>
+                <div class="input-container">
+                  <input type="text" id="nombre" name="nombre" class="tech-input" placeholder="Tu nombre" required>
+                  <div class="input-border"></div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="empresa" class="tech-label">
+                  <span class="label-text">Empresa</span>
+                </label>
+                <div class="input-container">
+                  <input type="text" id="empresa" name="empresa" class="tech-input" placeholder="Tu empresa">
+                  <div class="input-border"></div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="tech-label">
+                  <span class="label-text">Email</span>
+                  <span class="label-req">*</span>
+                </label>
+                <div class="input-container">
+                  <input type="email" id="email" name="email" class="tech-input" placeholder="tu@email.com" required>
+                  <div class="input-border"></div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="telefono" class="tech-label">
+                  <span class="label-text">Teléfono</span>
+                </label>
+                <div class="input-container">
+                  <input type="tel" id="telefono" name="telefono" class="tech-input" placeholder="Tu teléfono">
+                  <div class="input-border"></div>
+                </div>
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="servicio" class="tech-label">
+                  <span class="label-text">Servicio de interés</span>
+                </label>
+                <div class="input-container">
+                  <select id="servicio" name="servicio" class="tech-input tech-select">
+                    <option value="" disabled selected>Selecciona un servicio</option>
+                    <option value="desarrollo">Desarrollo de Software a Medida</option>
+                    <option value="transformacion">Transformación Digital</option>
+                    <option value="ia">Inteligencia Artificial y Data</option>
+                    <option value="asesoria">Asesoría en Optimización</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                  <div class="input-border"></div>
+                </div>
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="mensaje" class="tech-label">
+                  <span class="label-text">Mensaje</span>
+                  <span class="label-req">*</span>
+                </label>
+                <div class="input-container">
+                  <textarea id="mensaje" name="mensaje" class="tech-input tech-textarea" placeholder="Cuéntanos sobre tu proyecto o necesidad" required></textarea>
+                  <div class="input-border"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Sistema de verificación futurista -->
+            <div class="verification-system">
+              <div class="verification-header">
+                <span class="verification-title">VERIFICACIÓN</span>
+                <div class="verification-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              
+              <div class="verification-content">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="human-verify" name="human-verify" required>
+                  <label for="human-verify" class="checkbox-label">
+                    <span class="checkbox-box">
+                      <svg class="checkbox-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </span>
+                    <span class="checkbox-text">Confirmo que soy un humano y acepto la política de privacidad</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Botón de envío -->
+            <div class="form-submit">
+              <button type="submit" class="submit-button">
+                <span class="button-text">ENVIAR MENSAJE</span>
+                <div class="button-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </div>
+                <div class="button-glow"></div>
+              </button>
+            </div>
+          </form>
+          
+          <!-- Barra inferior con datos -->
+          <div class="form-footer">
+            <div class="footer-data-bits">
+              <div class="data-bit"></div>
+              <div class="data-bit"></div>
+              <div class="data-bit"></div>
+              <div class="data-bit"></div>
+              <div class="data-bit"></div>
+              <div class="data-bit"></div>
+              <div class="data-bit"></div>
+              <div class="data-bit"></div>
+            </div>
+            
+            <div class="connection-status">
+              <span class="status-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </span>
+              <span class="status-text">CONEXIÓN SEGURA</span>
             </div>
           </div>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label for="email" class="block mb-2 font-medium" style="font-family: var(--font-body)">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple focus:border-transparent"
-                placeholder="tu@email.com"
-                required
-              />
-            </div>
-            <div>
-              <label for="telefono" class="block mb-2 font-medium" style="font-family: var(--font-body)">Teléfono</label>
-              <input 
-                type="tel" 
-                id="telefono" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple focus:border-transparent"
-                placeholder="+34 XXX XX XX XX"
-              />
-            </div>
-          </div>
-          
-          <div>
-            <label for="servicio" class="block mb-2 font-medium" style="font-family: var(--font-body)">Servicio de interés</label>
-            <select 
-              id="servicio" 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple focus:border-transparent"
-            >
-              <option value="">Selecciona un servicio</option>
-              <option value="desarrollo">Desarrollo de software a medida</option>
-              <option value="transformacion">Transformación digital y automatización</option>
-              <option value="ia">Inteligencia artificial y data analytics</option>
-              <option value="asesoria">Asesoría en optimización de procesos</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-          
-          <div>
-            <label for="mensaje" class="block mb-2 font-medium" style="font-family: var(--font-body)">Mensaje</label>
-            <textarea 
-              id="mensaje" 
-              rows="5" 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple focus:border-transparent"
-              placeholder="Cuéntanos un poco sobre tu proyecto o necesidad"
-            ></textarea>
-          </div>
-          
-          <div class="flex items-center">
-            <input 
-              type="checkbox" 
-              id="politica" 
-              class="h-5 w-5 text-purple focus:ring-purple border-gray-300 rounded"
-              required
-            />
-            <label for="politica" class="ml-2 text-sm text-gray-700" style="font-family: var(--font-body)">
-              Acepto la <a href="/politica-privacidad" class="text-purple hover:underline">política de privacidad</a>
-            </label>
-          </div>
-          
-          <div class="text-center mt-4">
-            <button type="submit" class="btn-primary px-8 py-3">Enviar mensaje</button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  /* Variables y estilos base */
+  :root {
+    --neon-purple: #b042ff;
+    --neon-blue: #4287ff;
+    --neon-pink: #ff42b0;
+    --neon-green: #42ff66;
+    --dark-bg: #0a0a14;
+    --darker-bg: #070710;
+    --form-bg: rgba(26, 20, 45, 0.7);
+    --input-bg: rgba(15, 12, 30, 0.7);
+  }
+  
+  .contacto-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 7rem 0 5rem;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Elementos de fondo */
+  .contacto-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 90, 213, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.6;
+    z-index: 1;
+  }
+  
+  .radial-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(176, 66, 255, 0.15) 0%, transparent 70%);
+    z-index: 2;
+  }
+  
+  .data-streams {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+  
+  .data-stream {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--neon-purple), transparent);
+    opacity: 0.5;
+    z-index: 1;
+  }
+  
+  .data-stream::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(to bottom, 
+      transparent 0%, 
+      transparent 5%,
+      var(--neon-purple) 5%,
+      var(--neon-purple) 7%,
+      transparent 7%,
+      transparent 12%
+    );
+    opacity: 0.8;
+  }
+  
+  .data-stream:nth-child(1) {
+    left: 20%;
+    animation: data-stream-move 20s linear infinite;
+  }
+  
+  .data-stream:nth-child(2) {
+    left: 50%;
+    animation: data-stream-move 15s linear infinite;
+    animation-delay: 2s;
+  }
+  
+  .data-stream:nth-child(3) {
+    left: 80%;
+    animation: data-stream-move 18s linear infinite;
+    animation-delay: 5s;
+  }
+  
+  @keyframes data-stream-move {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  
+  /* Elementos decorativos */
+  .tech-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .corner-element {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.6;
+  }
+  
+  .corner-element::before,
+  .corner-element::after {
+    content: '';
+    position: absolute;
+    background-color: var(--neon-purple);
+  }
+  
+  .corner-element::before {
+    width: 100%;
+    height: 2px;
+    box-shadow: 0 0 10px var(--neon-purple);
+  }
+  
+  .corner-element::after {
+    width: 2px;
+    height: 100%;
+    box-shadow: 0 0 10px var(--neon-purple);
+  }
+  
+  .top-left {
+    top: 30px;
+    left: 30px;
+  }
+  
+  .top-left::before {
+    top: 0;
+    left: 0;
+  }
+  
+  .top-left::after {
+    top: 0;
+    left: 0;
+  }
+  
+  .top-right {
+    top: 30px;
+    right: 30px;
+  }
+  
+  .top-right::before {
+    top: 0;
+    right: 0;
+  }
+  
+  .top-right::after {
+    top: 0;
+    right: 0;
+  }
+  
+  .bottom-left {
+    bottom: 30px;
+    left: 30px;
+  }
+  
+  .bottom-left::before {
+    bottom: 0;
+    left: 0;
+  }
+  
+  .bottom-left::after {
+    bottom: 0;
+    left: 0;
+  }
+  
+  .bottom-right {
+    bottom: 30px;
+    right: 30px;
+  }
+  
+  .bottom-right::before {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .bottom-right::after {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .data-node {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    width: 6px;
+    height: 6px;
+    background-color: var(--neon-purple);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-purple);
+    animation: data-node-pulse 3s infinite alternate;
+  }
+  
+  @keyframes data-node-pulse {
+    0% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
+  
+  /* Contenedor principal de contacto */
+  .contacto-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: stretch;
+  }
+  
+  /* Columna de información */
+  .info-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .info-header {
+    margin-bottom: 2rem;
+  }
+  
+  .header-badge {
+    display: inline-block;
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    background-color: rgba(176, 66, 255, 0.1);
+    border: 1px solid var(--neon-purple);
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  
+  .badge-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--neon-purple);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .badge-light {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(176, 66, 255, 0.3), transparent);
+    z-index: 0;
+    animation: badge-light 3s ease-in-out infinite;
+  }
+  
+  @keyframes badge-light {
+    0% {
+      left: -100%;
+    }
+    50%, 100% {
+      left: 100%;
+    }
+  }
+  
+  .info-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .title-separator {
+    width: 80px;
+    height: 3px;
+    background: var(--neon-purple);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .separator-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent,
+      white,
+      transparent
+    );
+    animation: separator-glow 3s ease-in-out infinite;
+  }
+  
+  @keyframes separator-glow {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  .info-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  /* Opciones de contacto */
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-option {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: rgba(20, 15, 35, 0.4);
+    border-radius: 8px;
+    border: 1px solid rgba(176, 66, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .contact-option:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 15px rgba(176, 66, 255, 0.2);
+    transform: translateY(-3px);
+  }
+  
+  .option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(176, 66, 255, 0.1);
+    border-radius: 50%;
+    border: 1px solid rgba(176, 66, 255, 0.3);
+    color: var(--neon-purple);
+    transition: all 0.3s ease;
+  }
+  
+  .contact-option:hover .option-icon {
+    background: rgba(176, 66, 255, 0.2);
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.3);
+  }
+  
+  .option-details {
+    flex-grow: 1;
+  }
+  
+  .option-title {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.25rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 600;
+  }
+  
+  .option-value {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  /* Redes sociales */
+  .social-section {
+    margin-top: auto;
+  }
+  
+  .social-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .social-title span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-right: 1rem;
+  }
+  
+  .social-line {
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(176, 66, 255, 0.5), transparent);
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(176, 66, 255, 0.1);
+    border: 1px solid rgba(176, 66, 255, 0.3);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .social-link:hover {
+    background: rgba(176, 66, 255, 0.2);
+    border-color: var(--neon-purple);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Columna de formulario */
+  .form-column {
+    width: 100%;
+  }
+  
+  .tech-form-container {
+    background: var(--form-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(176, 66, 255, 0.4);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(176, 66, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tech-form-container:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(176, 66, 255, 0.3);
+  }
+  
+  /* Barra superior del formulario */
+  .form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 12, 30, 0.8);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(176, 66, 255, 0.4);
+  }
+  
+  .header-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .status-dot.active {
+    background: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+    animation: dot-pulse 2s infinite alternate;
+  }
+  
+  @keyframes dot-pulse {
+    0% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .header-status span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--neon-green);
+  }
+  
+  .form-id {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Formulario */
+  .tech-form {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-group {
+    position: relative;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 2;
+  }
+  
+  .tech-label {
+    display: flex;
+    margin-bottom: 0.5rem;
+    font-family: 'Space Mono', monospace;
+  }
+  
+  .label-text {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .label-req {
+    color: var(--neon-pink);
+    margin-left: 0.25rem;
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .tech-input {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid rgba(176, 66, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .tech-textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  .tech-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23b042ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 2.5rem;
+  }
+  
+  .input-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--neon-purple);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  .tech-input:focus {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.2);
+  }
+  
+  .tech-input:focus ~ .input-border {
+    width: 100%;
+  }
+  
+  /* Sistema de verificación */
+  .verification-system {
+    background: rgba(15, 12, 30, 0.5);
+    border: 1px solid rgba(176, 66, 255, 0.2);
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  
+  .verification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: rgba(20, 15, 35, 0.8);
+    border-bottom: 1px solid rgba(176, 66, 255, 0.2);
+  }
+  
+  .verification-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--neon-purple);
+  }
+  
+  .verification-dots {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .verification-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(176, 66, 255, 0.5);
+  }
+  
+  .verification-content {
+    padding: 1rem;
+  }
+  
+  .checkbox-container {
+    position: relative;
+  }
+  
+  .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+  }
+  
+  .checkbox-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid rgba(176, 66, 255, 0.5);
+    border-radius: 4px;
+    background: rgba(15, 12, 30, 0.7);
+    transition: all 0.3s ease;
+  }
+  
+  .checkbox-icon {
+    display: none;
+    color: white;
+  }
+  
+  .checkbox-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .checkbox-container input:checked ~ .checkbox-label .checkbox-box {
+    background: var(--neon-purple);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px rgba(176, 66, 255, 0.3);
+  }
+  
+  .checkbox-container input:checked ~ .checkbox-label .checkbox-icon {
+    display: block;
+  }
+  
+  /* Botón de envío */
+  .form-submit {
+    margin-top: auto;
+  }
+  
+  .submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(176, 66, 255, 0.1), rgba(66, 135, 255, 0.1));
+    border: 2px solid var(--neon-purple);
+    border-radius: 6px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .button-text {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  
+  .button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(176, 66, 255, 0.5), 
+      transparent
+    );
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+  
+  .submit-button:hover {
+    background: rgba(176, 66, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(176, 66, 255, 0.3);
+  }
+  
+  .submit-button:hover .button-icon {
+    transform: translateX(5px);
+  }
+  
+  .submit-button:hover .button-glow {
+    left: 100%;
+    opacity: 1;
+  }
+  
+  /* Barra inferior del formulario */
+  .form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 12, 30, 0.8);
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgba(176, 66, 255, 0.4);
+  }
+  
+  .footer-data-bits {
+    display: flex;
+    height: 15px;
+    gap: 3px;
+    flex-grow: 1;
+    max-width: 150px;
+  }
+  
+  .data-bit {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(176, 66, 255, 0.3);
+  }
+  
+  .data-bit:nth-child(odd) {
+    animation: data-bit-1 1.5s infinite alternate;
+  }
+  
+  .data-bit:nth-child(even) {
+    animation: data-bit-2 2s infinite alternate-reverse;
+  }
+  
+  @keyframes data-bit-1 {
+    0%, 100% {
+      opacity: 0.3;
+      height: 30%;
+    }
+    50% {
+      opacity: 0.8;
+      height: 100%;
+    }
+  }
+  
+  @keyframes data-bit-2 {
+    0%, 100% {
+      opacity: 0.3;
+      height: 50%;
+    }
+    50% {
+      opacity: 0.8;
+      height: 100%;
+    }
+  }
+  
+  .connection-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .status-icon {
+    color: var(--neon-green);
+  }
+  
+  .status-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--neon-green);
+  }
+  
+  /* Media queries */
+  @media (max-width: 1200px) {
+    .contacto-container {
+      gap: 2rem;
+    }
+    
+    .info-title {
+      font-size: 2.2rem;
+    }
+    
+    .tech-form {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .contacto-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .info-column {
+      order: 2;
+    }
+    
+    .form-column {
+      order: 1;
+    }
+    
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    
+    .contact-option {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    
+    .option-icon {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contacto-section {
+      padding: 5rem 0 4rem;
+    }
+    
+    .info-title {
+      font-size: 2rem;
+    }
+    
+    .contact-options {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-option {
+      flex-direction: row;
+      text-align: left;
+      padding: 1rem;
+    }
+    
+    .option-icon {
+      margin-bottom: 0;
+    }
+    
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-group.full-width {
+      grid-column: span 1;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .header-status span,
+    .status-text {
+      display: none;
+    }
+    
+    .tech-form {
+      padding: 1.25rem;
+    }
+    
+    .tech-label {
+      margin-bottom: 0.25rem;
+    }
+    
+    .verification-system {
+      margin-bottom: 1.5rem;
+    }
+    
+    .submit-button {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Validación de formulario
+    const contactForm = document.getElementById('contactForm');
+    const inputs = document.querySelectorAll('.tech-input');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Aquí iría la lógica para enviar el formulario
+        // Por ahora, simulamos un envío exitoso con una animación
+        
+        const submitButton = document.querySelector('.submit-button');
+        const buttonText = submitButton.querySelector('.button-text');
+        const buttonIcon = submitButton.querySelector('.button-icon');
+        
+        // Cambiar el texto y deshabilitar el botón durante el "envío"
+        buttonText.textContent = "ENVIANDO...";
+        submitButton.disabled = true;
+        
+        // Simular envío
+        setTimeout(() => {
+          buttonText.textContent = "¡MENSAJE ENVIADO!";
+          buttonIcon.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          `;
+          
+          // Restaurar el botón después de un tiempo
+          setTimeout(() => {
+            buttonText.textContent = "ENVIAR MENSAJE";
+            buttonIcon.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            `;
+            submitButton.disabled = false;
+            contactForm.reset();
+          }, 3000);
+        }, 2000);
+      });
+    }
+    
+    // Efectos de input focus y interactividad
+    inputs.forEach(input => {
+      // Animación al focus
+      input.addEventListener('focus', () => {
+        const border = input.nextElementSibling;
+        border.style.width = '100%';
+      });
+      
+      input.addEventListener('blur', () => {
+        if (!input.value) {
+          const border = input.nextElementSibling;
+          border.style.width = '0';
+        }
+      });
+      
+      // Mantener el borde si hay valor
+      if (input.value) {
+        const border = input.nextElementSibling;
+        border.style.width = '100%';
+      }
+    });
+    
+    // Efecto parallax para elementos de fondo
+    const section = document.querySelector('.contacto-section');
+    const glow = document.querySelector('.radial-glow');
+    const dataNodes = document.querySelectorAll('.data-node');
+    
+    section.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      // Mover el efecto de brillo
+      glow.style.transform = `translate(${x * 30 - 15}px, ${y * 30 - 15}px)`;
+      
+      // Mover los nodos de datos
+      dataNodes.forEach(node => {
+        const speed = Math.random() * 20 + 10;
+        node.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+      });
+    });
+  });
+</script>
