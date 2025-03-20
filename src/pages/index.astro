@@ -11,10 +11,78 @@ import CallToAction from '../components/CallToAction.astro';
 
 <Layout title="Transformia - Soluciones digitales a medida">
   <Hero />
-  <QuienesSomos />
-  <QueHacemos />
-  <Soluciones />
-  <MetodologiaTrabajo />
-  <PorQueElegirnos />
-  <CallToAction />
+  
+  <section id="nosotros" class="section-anchor">
+    <QuienesSomos />
+  </section>
+  
+  <section id="servicios" class="section-anchor">
+    <QueHacemos />
+  </section>
+  
+  <section id="soluciones" class="section-anchor">
+    <Soluciones />
+  </section>
+  
+  <section id="metodologia" class="section-anchor">
+    <MetodologiaTrabajo />
+  </section>
+  
+  <section id="porque-elegirnos" class="section-anchor">
+    <PorQueElegirnos />
+  </section>
+  
+  <section id="contactanos" class="section-anchor">
+    <CallToAction />
+  </section>
 </Layout>
+
+<style>
+  /* Estilos para las secciones de anclaje */
+  .section-anchor {
+    position: relative;
+    /* Ajuste del margen de scroll para que las secciones aparezcan completas al inicio */
+    scroll-margin-top: 80px; /* Altura del navbar */
+  }
+</style>
+
+<!-- Script de navegación limpio sin logs -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los enlaces del navbar
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    // Agregar controlador de eventos a cada enlace
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        // Prevenir comportamiento por defecto
+        e.preventDefault();
+        
+        // Obtener el ID objetivo
+        const targetId = this.getAttribute('href');
+        
+        // Validar enlace
+        if (!targetId || targetId === '#') return;
+        
+        // Buscar el elemento por ID (sin el #)
+        const cleanId = targetId.replace('#', '');
+        const targetElement = document.getElementById(cleanId);
+        
+        if (targetElement) {
+          // Usar el método nativo scrollIntoView para navegación
+          targetElement.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Cerrar menú móvil si está abierto
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (mobileMenu && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        }
+      });
+    });
+  });
+</script>

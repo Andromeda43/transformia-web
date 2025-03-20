@@ -112,12 +112,14 @@ const { title } = Astro.props;
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Smooth scroll para enlaces internos
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+      document.querySelectorAll('a[href^="#"]').forEach((anchor: Element) => {
+        anchor.addEventListener('click', (e: Event) => {
           e.preventDefault();
           
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
+          const element = e.currentTarget as HTMLAnchorElement;
+          const targetId = element.getAttribute('href');
+          
+          if (!targetId || targetId === '#') return;
           
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
@@ -166,6 +168,16 @@ const { title } = Astro.props;
       if (isTouchDevice) {
         document.body.classList.add('touch-device');
       }
+
+      // Asegurarse de que las animaciones también funcionen después de la navegación
+      // Verificar animaciones después de cada click en enlaces del navbar
+      const navLinks = document.querySelectorAll('.navbar-link, .menu-link, .mobile-menu-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          // Dar tiempo para que el scroll termine
+          setTimeout(animateOnScroll, 800);
+        });
+      });
     });
   </script>
 </body>

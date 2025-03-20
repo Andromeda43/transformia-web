@@ -71,24 +71,6 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
       
-      <!-- Columna de enlaces rápidos -->
-      <div class="footer-links-column">
-        <h3 class="footer-title">Enlaces</h3>
-        
-        <div class="footer-links">
-          <div class="links-column">
-            <a href="#nosotros" class="footer-link">Quiénes Somos</a>
-            <a href="#servicios" class="footer-link">Qué Hacemos</a>
-            <a href="#soluciones" class="footer-link">Soluciones</a>
-          </div>
-          <div class="links-column">
-            <a href="#metodologia" class="footer-link">Metodología</a>
-            <a href="#porque-elegirnos" class="footer-link">Por Qué Elegirnos</a>
-            <a href="#contactanos" class="footer-link">Contáctanos</a>
-          </div>
-        </div>
-      </div>
-      
       <!-- Columna de contacto -->
       <div class="footer-contact-column">
         <h3 class="footer-title">Contacto</h3>
@@ -140,12 +122,10 @@ const currentYear = new Date().getFullYear();
     
     <!-- Certificaciones -->
     <div class="certifications">
-      <div class="cert-label">Tecnologías y certificaciones</div>
+      <div class="cert-label">Tecnologías</div>
       <div class="cert-logos">
-        <div class="cert-logo">AWS</div>
         <div class="cert-logo">AZURE</div>
-        <div class="cert-logo">REACT</div>
-        <div class="cert-logo">NODE</div>
+        <div class="cert-logo">JS</div>
         <div class="cert-logo">PYTHON</div>
       </div>
     </div>
@@ -302,7 +282,7 @@ const currentYear = new Date().getFullYear();
   /* Estructura del contenido */
   .footer-content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
     margin-bottom: 3rem;
   }
@@ -411,7 +391,7 @@ const currentYear = new Date().getFullYear();
     box-shadow: 0 5px 15px rgba(176, 66, 255, 0.2);
   }
   
-  /* Columna de enlaces */
+  /* Columna de contacto */
   .footer-title {
     font-family: 'Space Mono', monospace;
     font-size: 1.2rem;
@@ -433,52 +413,6 @@ const currentYear = new Date().getFullYear();
     box-shadow: 0 0 10px var(--neon-purple);
   }
   
-  .footer-links {
-    display: flex;
-    gap: 3rem;
-  }
-  
-  .links-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .footer-link {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    position: relative;
-    padding-left: 1rem;
-  }
-  
-  .footer-link::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 5px;
-    height: 5px;
-    background-color: var(--neon-purple);
-    border-radius: 50%;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-  }
-  
-  .footer-link:hover {
-    color: white;
-    transform: translateX(5px);
-  }
-  
-  .footer-link:hover::before {
-    opacity: 1;
-    box-shadow: 0 0 5px var(--neon-purple);
-  }
-  
-  /* Columna de contacto */
   .contact-info {
     display: flex;
     flex-direction: column;
@@ -668,27 +602,17 @@ const currentYear = new Date().getFullYear();
     opacity: 0.2;
   }
   
-  /* Eliminadas las animaciones para mejorar rendimiento */
-  
   /* Responsive */
   @media (max-width: 1200px) {
     .footer-content {
       gap: 3rem;
     }
-    
-    .footer-links {
-      gap: 2rem;
-    }
   }
   
   @media (max-width: 992px) {
     .footer-content {
-      grid-template-columns: 1fr 1fr;
-    }
-    
-    .footer-logo-column {
-      grid-column: span 2;
-      margin-bottom: 1rem;
+      grid-template-columns: 1fr;
+      gap: 3rem;
     }
   }
   
@@ -700,10 +624,6 @@ const currentYear = new Date().getFullYear();
     .footer-content {
       grid-template-columns: 1fr;
       gap: 2.5rem;
-    }
-    
-    .footer-logo-column {
-      grid-column: span 1;
     }
     
     .copyright-bar {
@@ -725,11 +645,6 @@ const currentYear = new Date().getFullYear();
     .container {
       width: 95%;
       padding: 2.5rem 0 1rem;
-    }
-    
-    .footer-links {
-      flex-direction: column;
-      gap: 1.5rem;
     }
     
     .cert-logos {
@@ -768,17 +683,17 @@ const currentYear = new Date().getFullYear();
         // Añadir color aleatorio al hover
         const colors = ['--neon-purple', '--neon-blue', '--neon-pink'];
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        logo.style.color = `var(${randomColor})`;
-        logo.style.borderColor = `var(${randomColor})`;
+        const logoElement = logo as HTMLElement;
+        logoElement.style.color = `var(${randomColor})`;
+        logoElement.style.borderColor = `var(${randomColor})`;
       });
       
       logo.addEventListener('mouseleave', () => {
         // Restaurar color original
-        logo.style.color = '';
-        logo.style.borderColor = '';
+        const logoElement = logo as HTMLElement;
+        logoElement.style.color = '';
+        logoElement.style.borderColor = '';
       });
     });
-    
-    // Eliminados los efectos pesados para mejor rendimiento
   });
 </script>
