@@ -1,16 +1,18 @@
 ---
+import GridBackground from './ui/GridBackground.astro';
+import SectionHeader from './ui/SectionHeader.astro';
 ---
 
 <section id="nosotros" class="nosotros-section">
   <!-- Fondo con patrón de grid estrictamente limitado a esta sección -->
-  <div class="nosotros-grid-bg"></div>
-  
+  <GridBackground opacity={0.4} />
+
   <div class="container nosotros-container">
-    <div class="nosotros-header">
-      <h2 class="nosotros-title"><span class="glitch-effect">¿QUIÉNES SOMOS?</span></h2>
-      <div class="nosotros-line"></div>
-    </div>
-    
+    <SectionHeader
+      title="¿QUIÉNES SOMOS?"
+      subtitle="El aliado tecnológico que traduce desafíos empresariales en crecimiento digital."
+    />
+
     <div class="nosotros-cards">
       <!-- Tarjeta 1 -->
       <div class="nosotros-card">
@@ -104,8 +106,8 @@
               <h3 class="quote-title">PENSAMIENTO INNOVADOR:</h3>
               
               <div class="terminal-output">
-                <p class="quote-text">"La innovación distingue a los líderes de los seguidores."</p>
-                <p class="quote-author">— Steve Jobs</p>
+                <p class="quote-text">"No vendemos software: construimos la infraestructura digital sobre la que tu empresa va a crecer."</p>
+                <p class="quote-author">— Equipo Transformia</p>
               </div>
               
               <div class="circuit-decoration left"></div>
@@ -178,6 +180,14 @@
   </div>
 </section>
 
+<script>
+  import { revealOnScroll } from '../scripts/animations/scrollReveal';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    revealOnScroll('.nosotros-card', { stagger: 0.15 });
+  });
+</script>
+
 <style>
   /* REGLAS GENERALES - Todo selector comienza con .nosotros para evitar conflictos */
   .nosotros-section {
@@ -211,111 +221,6 @@
       width: 92%;
       padding: 0 10px;
     }
-  }
-  
-  /* FONDO CON GRID - Estrictamente limitado a esta sección */
-  .nosotros-grid-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      linear-gradient(to right, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(128, 90, 213, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: 0;
-    opacity: 0.4;
-  }
-  
-  /* ENCABEZADO */
-  .nosotros-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  
-  .nosotros-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: white;
-    font-family: var(--font-title);
-    position: relative;
-    display: inline-block;
-  }
-  
-  .nosotros-line {
-    width: 120px;
-    height: 3px;
-    background: linear-gradient(90deg, 
-      transparent, 
-      var(--neon-purple) 30%, 
-      var(--neon-purple) 70%, 
-      transparent 100%
-    );
-    margin: 1rem auto 0;
-    position: relative;
-  }
-  
-  .nosotros-line::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background-color: var(--neon-purple);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--neon-purple);
-  }
-  
-  /* Efecto glitch sutil */
-  .glitch-effect {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .glitch-effect::before,
-  .glitch-effect::after {
-    content: "¿QUIÉNES SOMOS?";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-  }
-  
-  .glitch-effect::before {
-    color: #ff00ff;
-    z-index: -1;
-    animation: glitch-anim-1 3s infinite linear alternate;
-  }
-  
-  .glitch-effect::after {
-    color: #00ffff;
-    z-index: -2;
-    animation: glitch-anim-2 2s infinite linear alternate;
-  }
-  
-  @keyframes glitch-anim-1 {
-    0%, 100% { opacity: 0; transform: translateX(0); }
-    5%, 30% { opacity: 0; transform: translateX(0); }
-    31% { opacity: 0.3; transform: translateX(2px); }
-    32% { opacity: 0; transform: translateX(0); }
-    98% { opacity: 0; transform: translateX(0); }
-    99% { opacity: 0.3; transform: translateX(-2px); }
-  }
-  
-  @keyframes glitch-anim-2 {
-    0%, 100% { opacity: 0; transform: translateX(0); }
-    10%, 40% { opacity: 0; transform: translateX(0); }
-    41% { opacity: 0.3; transform: translateX(-2px); }
-    42% { opacity: 0; transform: translateX(0); }
-    78% { opacity: 0; transform: translateX(0); }
-    79% { opacity: 0.3; transform: translateX(2px); }
-    80% { opacity: 0; transform: translateX(0); }
   }
   
   /* TARJETAS - Anchos ajustados para coincidir con la imagen de referencia */
@@ -1008,15 +913,7 @@
     .valores-title {
       font-size: 1.75rem;
     }
-    
-    .nosotros-title {
-      font-size: 2.5rem;
-    }
-    
-    .nosotros-header {
-      margin-bottom: 3rem;
-    }
-    
+
     .nosotros-section {
       padding: 4rem 0;
     }
