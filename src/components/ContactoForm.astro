@@ -59,7 +59,7 @@
             </div>
             <div class="option-details">
               <h3 class="option-title">Llámanos</h3>
-              <p class="option-value">+52 (55) 1234 5678</p>
+              <p class="option-value">+57 321 259 6437</p>
             </div>
           </div>
           
@@ -72,7 +72,7 @@
             </div>
             <div class="option-details">
               <h3 class="option-title">Escríbenos</h3>
-              <p class="option-value">contacto@transformia.com</p>
+              <p class="option-value">transformia.desarrollo@gmail.com</p>
             </div>
           </div>
           
@@ -85,7 +85,7 @@
             </div>
             <div class="option-details">
               <h3 class="option-title">Visítanos</h3>
-              <p class="option-value">Av. Tecnología #123, CDMX</p>
+              <p class="option-value">Tauramena, Casanare, Colombia</p>
             </div>
           </div>
         </div>
@@ -252,8 +252,14 @@
                 <div class="button-glow"></div>
               </button>
             </div>
+
+            <div id="form-pending-notice" class="form-pending-notice" style="display: none;">
+              Este formulario todavía no envía mensajes automáticamente. Mientras lo conectamos,
+              escribinos directo a <a href="mailto:transformia.desarrollo@gmail.com">transformia.desarrollo@gmail.com</a>
+              o llamanos al <a href="tel:+573212596437">+57 321 259 6437</a>.
+            </div>
           </form>
-          
+
           <!-- Barra inferior con datos -->
           <div class="form-footer">
             <div class="footer-data-bits">
@@ -1074,7 +1080,29 @@
     left: 100%;
     opacity: 1;
   }
-  
+
+  .submit-button--pending {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .form-pending-notice {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(var(--neon-yellow-rgb, 232, 255, 66), 0.08);
+    border: 1px solid rgba(232, 255, 66, 0.4);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .form-pending-notice a {
+    color: var(--neon-yellow, #e8ff42);
+    text-decoration: underline;
+  }
+
   /* Barra inferior del formulario */
   .form-footer {
     display: flex;
@@ -1248,52 +1276,29 @@
 </style>
 
 <script>
+  import { initParallax } from '../scripts/animations/parallax';
+
   document.addEventListener('DOMContentLoaded', () => {
     // Validación de formulario
     const contactForm = document.getElementById('contactForm');
     const inputs = document.querySelectorAll('.tech-input');
-    
+
     if (contactForm) {
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Aquí iría la lógica para enviar el formulario
-        // Por ahora, simulamos un envío exitoso con una animación
-        
-        const submitButton = document.querySelector('.submit-button');
-        const buttonText = submitButton.querySelector('.button-text');
-        const buttonIcon = submitButton.querySelector('.button-icon');
-        
-        // Cambiar el texto y deshabilitar el botón durante el "envío"
-        buttonText.textContent = "ENVIANDO...";
+
+        const submitButton = document.querySelector('.submit-button') as HTMLButtonElement;
+        const buttonText = submitButton.querySelector('.button-text') as HTMLElement;
+
+        buttonText.textContent = 'ENVÍO DIRECTO AÚN NO DISPONIBLE';
         submitButton.disabled = true;
-        
-        // Simular envío
-        setTimeout(() => {
-          buttonText.textContent = "¡MENSAJE ENVIADO!";
-          buttonIcon.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-          `;
-          
-          // Restaurar el botón después de un tiempo
-          setTimeout(() => {
-            buttonText.textContent = "ENVIAR MENSAJE";
-            buttonIcon.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
-            `;
-            submitButton.disabled = false;
-            contactForm.reset();
-          }, 3000);
-        }, 2000);
+        submitButton.classList.add('submit-button--pending');
+
+        const notice = document.getElementById('form-pending-notice');
+        if (notice) notice.style.display = 'block';
       });
     }
-    
+
     // Efectos de input focus y interactividad
     inputs.forEach(input => {
       // Animación al focus
@@ -1301,38 +1306,29 @@
         const border = input.nextElementSibling;
         border.style.width = '100%';
       });
-      
+
       input.addEventListener('blur', () => {
         if (!input.value) {
           const border = input.nextElementSibling;
           border.style.width = '0';
         }
       });
-      
+
       // Mantener el borde si hay valor
       if (input.value) {
         const border = input.nextElementSibling;
         border.style.width = '100%';
       }
     });
-    
+
     // Efecto parallax para elementos de fondo
-    const section = document.querySelector('.contacto-section');
-    const glow = document.querySelector('.radial-glow');
-    const dataNodes = document.querySelectorAll('.data-node');
-    
-    section.addEventListener('mousemove', (e) => {
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      
-      // Mover el efecto de brillo
-      glow.style.transform = `translate(${x * 30 - 15}px, ${y * 30 - 15}px)`;
-      
-      // Mover los nodos de datos
-      dataNodes.forEach(node => {
-        const speed = Math.random() * 20 + 10;
-        node.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-      });
-    });
+    const section = document.querySelector<HTMLElement>('.contacto-section');
+    const glow = document.querySelector<HTMLElement>('.radial-glow');
+    const dataNodes = document.querySelectorAll<HTMLElement>('.data-node');
+
+    if (section && glow) {
+      const targets = [{ el: glow, strength: 15 }, ...Array.from(dataNodes).map((el) => ({ el, strength: 20 }))];
+      initParallax(section, targets);
+    }
   });
 </script>
