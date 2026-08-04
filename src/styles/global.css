@@ -6,14 +6,9 @@
   --color-dark: #0a0a14;
   --color-dark-blue: #141428;
   --color-dark-purple: #1a142d;
-  --neon-purple: #b042ff;
-  --neon-blue: #4287ff;
-  --neon-pink: #ff42b0;
-  --neon-yellow: #e8ff42;
   --neon-orange: #ff7842;
   --grid-line: rgba(128, 90, 213, 0.2);
-  
-  --font-mono: 'Space Mono', monospace;
+
   --font-sans: 'Space Grotesk', sans-serif;
 }
 
