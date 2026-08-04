@@ -1,25 +1,22 @@
 ---
+import GridBackground from './ui/GridBackground.astro';
+import SectionHeader from './ui/SectionHeader.astro';
 ---
 
 <section id="servicios" class="servicios-section">
-  <!-- Efectos de fondo cibernético -->
-  <div class="cyber-background">
-    <div class="grid-lines"></div>
-    <div class="floating-particles"></div>
-    <div class="data-stream"></div>
-  </div>
-  
+  <GridBackground opacity={0.3} />
+
+  <!-- Efectos de fondo cibernético adicionales -->
+  <div class="floating-particles"></div>
+  <div class="data-stream"></div>
+
   <!-- Contenedor principal -->
   <div class="container">
-    <!-- Encabezado con efecto glitch -->
-    <div class="section-header">
-      <h2 class="section-title glitch-text" data-text="¿QUÉ HACEMOS?">¿QUÉ HACEMOS?</h2>
-      <div class="title-underline">
-        <span class="line-glow"></span>
-      </div>
-      <p class="section-subtitle">Transformamos ideas en soluciones digitales de alto impacto</p>
-    </div>
-    
+    <SectionHeader
+      title="¿QUÉ HACEMOS?"
+      subtitle="Transformamos ideas en soluciones digitales de alto impacto"
+    />
+
     <!-- Tarjetas de servicios con animación escalonada -->
     <div class="servicios-cards">
       <!-- Tarjeta 1: Observamos -->
@@ -42,7 +39,11 @@
           </div>
           
           <h3 class="servicio-title">Observamos</h3>
-          <p class="servicio-description">Analizamos tus procesos y detectamos oportunidades de mejora a través de diagnósticos profundos y tecnologías avanzadas de análisis de datos.</p>
+          <p class="servicio-description">
+            Antes de escribir una línea de código, mapeamos tus procesos reales.
+            El resultado: sabes exactamente dónde estás perdiendo tiempo y dinero,
+            con datos — no con suposiciones.
+          </p>
           
           <div class="tech-details">
             <div class="tech-badge">Análisis de Datos</div>
@@ -81,7 +82,11 @@
           </div>
           
           <h3 class="servicio-title">Diseñamos</h3>
-          <p class="servicio-description">Creamos soluciones personalizadas utilizando metodologías de diseño centradas en el usuario y las últimas tecnologías de desarrollo para potenciar tu negocio.</p>
+          <p class="servicio-description">
+            Diseño centrado en quien realmente usa el sistema todos los días,
+            no en lo que se ve bien en una presentación. Menos capacitación,
+            más adopción desde el primer día.
+          </p>
           
           <div class="tech-details">
             <div class="tech-badge">UI/UX Design</div>
@@ -120,7 +125,11 @@
           </div>
           
           <h3 class="servicio-title">Desarrollamos</h3>
-          <p class="servicio-description">Construimos aplicaciones robustas, escalables y seguras adaptadas a las necesidades específicas de tu empresa con las tecnologías más avanzadas del mercado.</p>
+          <p class="servicio-description">
+            Construimos pensando en cómo vas a operar en un año, no solo en
+            el día del lanzamiento. El resultado: una base sólida que soporta
+            más usuarios y funcionalidades sin que haya que reescribirla desde cero.
+          </p>
           
           <div class="tech-details">
             <div class="tech-badge">Web</div>
@@ -159,7 +168,11 @@
           </div>
           
           <h3 class="servicio-title">Optimizamos</h3>
-          <p class="servicio-description">Mejoramos continuamente tus soluciones digitales para garantizar máximo rendimiento, seguridad y relevancia en un entorno tecnológico en constante evolución.</p>
+          <p class="servicio-description">
+            No optimizamos para un número en un reporte: vigilamos tu sistema
+            en producción y corregimos antes de que una falla te cueste
+            clientes. Menos incidentes sorpresa, más tranquilidad para tu equipo.
+          </p>
           
           <div class="tech-details">
             <div class="tech-badge">Performance</div>
@@ -198,7 +211,11 @@
           </div>
           
           <h3 class="servicio-title">Integramos</h3>
-          <p class="servicio-description">Conectamos tus sistemas digitales con componentes físicos y periféricos externos como básculas, termómetros, lectores, escáneres y sensores para soluciones completas.</p>
+          <p class="servicio-description">
+            Tu software no vive aislado: lo conectamos con básculas, sensores
+            y equipos que ya usás en planta o en tienda. Menos digitación
+            manual, menos errores, información real llegando sola al sistema.
+          </p>
           
           <div class="tech-details">
             <div class="tech-badge">IoT</div>
@@ -346,29 +363,7 @@
     z-index: 2;
   }
   
-  /* Efectos de fondo cibernético */
-  .cyber-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  
-  .grid-lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      linear-gradient(to right, rgba(128, 90, 213, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(128, 90, 213, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: 0;
-  }
-  
+  /* Efectos de fondo cibernético adicionales (el patrón de grid lo aporta GridBackground) */
   .floating-particles {
     position: absolute;
     top: 0;
@@ -412,114 +407,6 @@
     }
   }
   
-  /* Estilos del encabezado */
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-  }
-  
-  .section-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
-    font-family: var(--font-mono);
-    position: relative;
-    display: inline-block;
-  }
-  
-  .title-underline {
-    position: relative;
-    width: 120px;
-    height: 3px;
-    background: rgba(176, 66, 255, 0.3);
-    margin: 1rem auto 2rem;
-    overflow: hidden;
-  }
-  
-  .line-glow {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      var(--neon-purple), 
-      transparent
-    );
-    animation: lineGlow 3s ease-in-out infinite;
-  }
-  
-  @keyframes lineGlow {
-    0% {
-      left: -100%;
-    }
-    50% {
-      left: 100%;
-    }
-    100% {
-      left: 100%;
-    }
-  }
-  
-  .section-subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 700px;
-    margin: 0 auto;
-    font-family: var(--font-body);
-  }
-  
-  /* Efecto glitch para el título */
-  .glitch-text {
-    position: relative;
-    color: white;
-  }
-  
-  .glitch-text::before,
-  .glitch-text::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-  }
-  
-  .glitch-text::before {
-    color: #ff00ff;
-    z-index: -1;
-    animation: glitch-anim-1 3s infinite linear alternate;
-  }
-  
-  .glitch-text::after {
-    color: #00ffff;
-    z-index: -2;
-    animation: glitch-anim-2 2s infinite linear alternate;
-  }
-  
-  @keyframes glitch-anim-1 {
-    0%, 100% { opacity: 0; transform: translateX(0); }
-    5%, 30% { opacity: 0; transform: translateX(0); }
-    31% { opacity: 0.3; transform: translateX(2px); }
-    32% { opacity: 0; transform: translateX(0); }
-    98% { opacity: 0; transform: translateX(0); }
-    99% { opacity: 0.3; transform: translateX(-2px); }
-  }
-  
-  @keyframes glitch-anim-2 {
-    0%, 100% { opacity: 0; transform: translateX(0); }
-    10%, 40% { opacity: 0; transform: translateX(0); }
-    41% { opacity: 0.3; transform: translateX(-2px); }
-    42% { opacity: 0; transform: translateX(0); }
-    78% { opacity: 0; transform: translateX(0); }
-    79% { opacity: 0.3; transform: translateX(2px); }
-    80% { opacity: 0; transform: translateX(0); }
-  }
-  
   /* Tarjetas de servicios */
   .servicios-cards {
     display: grid;
@@ -551,51 +438,30 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: cardFadeIn 0.6s forwards ease-out;
-    animation-delay: calc(var(--card-index, 0) * 0.1s);
   }
-  
+
   /* Colores de tarjetas */
   .servicio-card[data-color="purple"] {
     --card-color: var(--neon-purple);
-    --card-index: 0;
   }
-  
+
   .servicio-card[data-color="blue"] {
     --card-color: var(--neon-blue);
-    --card-index: 1;
   }
-  
+
   .servicio-card[data-color="pink"] {
     --card-color: var(--neon-pink);
-    --card-index: 2;
   }
-  
+
   .servicio-card[data-color="yellow"] {
     --card-color: var(--neon-yellow);
-    --card-index: 3;
   }
-  
+
   .servicio-card[data-color="green"] {
     --card-color: var(--neon-green, #42ff66);
-    --card-index: 4;
   }
-  
-  @keyframes cardFadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+
   .servicio-card:hover {
-    transform: translateY(-15px) scale(1.03);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(var(--card-color), 0.2);
     border-color: var(--card-color);
     z-index: 3;
@@ -1106,14 +972,6 @@
   
   /* Media queries adicionales para mejorar responsividad */
   @media (max-width: 768px) {
-    .section-title {
-      font-size: 2.5rem;
-    }
-    
-    .section-subtitle {
-      font-size: 1rem;
-    }
-    
     .highlight-title {
       font-size: 1.5rem;
     }
@@ -1132,10 +990,6 @@
   }
   
   @media (max-width: 480px) {
-    .section-title {
-      font-size: 2rem;
-    }
-    
     .servicios-section {
       padding: 4rem 0;
     }
@@ -1159,95 +1013,14 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Animación de entrada para las tarjetas
-    const cards = document.querySelectorAll('.servicio-card');
-    cards.forEach((card, index) => {
-      const cardElement = card as HTMLElement;
-      cardElement.style.setProperty('--card-index', index.toString());
-      
-      // Observador de intersección para activar animaciones cuando las tarjetas entran en vista
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      observer.observe(card);
-      
-      // Efecto interactivo en hover
-      card.addEventListener('mousemove', (e) => {
-        const mouseEvent = e as MouseEvent;
-        const rect = card.getBoundingClientRect();
-        const x = mouseEvent.clientX - rect.left;
-        const y = mouseEvent.clientY - rect.top;
-        
-        // Calcular la posición relativa (0-1)
-        const xPercent = x / rect.width;
-        const yPercent = y / rect.height;
-        
-        // Aplicar transformación 3D sutil
-        (card as HTMLElement).style.transform = `
-          translateY(-15px) scale(1.03)
-          rotateX(${(0.5 - yPercent) * 5}deg)
-          rotateY(${(xPercent - 0.5) * 5}deg)
-        `;
-        
-        // Efecto de iluminación dinámica
-        const glowEffect = card.querySelector('.glow-effect');
-        if (glowEffect) {
-          (glowEffect as HTMLElement).style.background = `radial-gradient(circle at ${xPercent * 100}% ${yPercent * 100}%, rgba(176, 66, 255, 0.2) 0%, transparent 70%)`;
-        }
-      });
-      
-      // Restablecer al salir del hover
-      card.addEventListener('mouseleave', () => {
-        (card as HTMLElement).style.transform = '';
-        
-        // Restablecer el fondo del efecto de brillo
-        const glowEffect = card.querySelector('.glow-effect');
-        if (glowEffect) {
-          (glowEffect as HTMLElement).style.background = '';
-        }
-      });
-    });
-    
-    // Efecto parallax para elementos decorativos
-    document.addEventListener('mousemove', (e) => {
-      const mouseEvent = e as MouseEvent;
-      const mouseX = mouseEvent.clientX;
-      const mouseY = mouseEvent.clientY;
-      
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-      
-      // Mover partículas en función de la posición del ratón
-      const particles = document.querySelector('.floating-particles');
-      if (particles) {
-        const moveX = (mouseX / windowWidth - 0.5) * 20;
-        const moveY = (mouseY / windowHeight - 0.5) * 20;
-        (particles as HTMLElement).style.transform = `translate(${moveX}px, ${moveY}px)`;
-      }
-    });
-    
-    // Animación para la barra de energía en las tarjetas
-    cards.forEach(card => {
-      const energyLevel = card.querySelector('.energy-level');
-      
-      card.addEventListener('mouseenter', () => {
-        if (energyLevel) {
-          (energyLevel as HTMLElement).style.width = '100%';
-        }
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        if (energyLevel) {
-          (energyLevel as HTMLElement).style.width = '0';
-        }
-      });
+  import { initMagneticHover } from '../scripts/animations/magnetic';
+  import { revealOnScroll } from '../scripts/animations/scrollReveal';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    revealOnScroll('.servicio-card', { stagger: 0.1 });
+
+    document.querySelectorAll<HTMLElement>('.servicio-card').forEach((card) => {
+      initMagneticHover(card, 8);
     });
   });
 </script>
