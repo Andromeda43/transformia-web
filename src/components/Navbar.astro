@@ -24,40 +24,40 @@
         <div class="navbar-menu" id="navbar-menu">
           <ul class="menu-items">
             <li class="menu-item">
-              <a href="#nosotros" class="menu-link">
+              <a href="/#nosotros" class="menu-link">
                 <span class="link-number">01</span>
                 <span class="link-text">Quiénes Somos</span>
               </a>
             </li>
             <li class="menu-item">
-              <a href="#servicios" class="menu-link">
+              <a href="/#servicios" class="menu-link">
                 <span class="link-number">02</span>
                 <span class="link-text">Qué Hacemos</span>
               </a>
             </li>
             <li class="menu-item">
-              <a href="#soluciones" class="menu-link">
+              <a href="/#soluciones" class="menu-link">
                 <span class="link-number">03</span>
                 <span class="link-text">Soluciones</span>
               </a>
             </li>
             <li class="menu-item">
-              <a href="#metodologia" class="menu-link">
+              <a href="/#metodologia" class="menu-link">
                 <span class="link-number">04</span>
                 <span class="link-text">Metodología</span>
               </a>
             </li>
             <li class="menu-item">
-              <a href="#porque-elegirnos" class="menu-link">
+              <a href="/#porque-elegirnos" class="menu-link">
                 <span class="link-number">05</span>
                 <span class="link-text">Por Qué Elegirnos</span>
               </a>
             </li>
           </ul>
         </div>
-        
+
         <!-- Botón de contacto -->
-        <a href="#contactanos" class="contact-button">
+        <a href="/#contactanos" class="contact-button">
           <span class="button-text">CONTACTAR</span>
           <span class="button-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -90,39 +90,39 @@
     
     <ul class="mobile-menu-items">
       <li class="mobile-menu-item">
-        <a href="#nosotros" class="mobile-menu-link">
+        <a href="/#nosotros" class="mobile-menu-link">
           <span class="link-number">01</span>
           <span class="link-text">Quiénes Somos</span>
         </a>
       </li>
       <li class="mobile-menu-item">
-        <a href="#servicios" class="mobile-menu-link">
+        <a href="/#servicios" class="mobile-menu-link">
           <span class="link-number">02</span>
           <span class="link-text">Qué Hacemos</span>
         </a>
       </li>
       <li class="mobile-menu-item">
-        <a href="#soluciones" class="mobile-menu-link">
+        <a href="/#soluciones" class="mobile-menu-link">
           <span class="link-number">03</span>
           <span class="link-text">Soluciones</span>
         </a>
       </li>
       <li class="mobile-menu-item">
-        <a href="#metodologia" class="mobile-menu-link">
+        <a href="/#metodologia" class="mobile-menu-link">
           <span class="link-number">04</span>
           <span class="link-text">Metodología</span>
         </a>
       </li>
       <li class="mobile-menu-item">
-        <a href="#porque-elegirnos" class="mobile-menu-link">
+        <a href="/#porque-elegirnos" class="mobile-menu-link">
           <span class="link-number">05</span>
           <span class="link-text">Por Qué Elegirnos</span>
         </a>
       </li>
     </ul>
-    
+
     <div class="mobile-contact">
-      <a href="#contactanos" class="mobile-contact-button">CONTACTAR AHORA</a>
+      <a href="/#contactanos" class="mobile-contact-button">CONTACTAR AHORA</a>
       
       <div class="mobile-contact-info">
         <div class="contact-item">
@@ -712,7 +712,7 @@
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
           menuLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${sectionId}`) {
+            if (link.getAttribute('href') === `/#${sectionId}`) {
               link.classList.add('active');
             }
           });

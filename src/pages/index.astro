@@ -49,23 +49,23 @@ import CallToAction from '../components/CallToAction.astro';
 <!-- Script de navegación limpio sin logs -->
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todos los enlaces del navbar
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    
+    // Seleccionar todos los enlaces del navbar (anclas locales "#..." y "/#...")
+    const navLinks = document.querySelectorAll('a[href^="#"], a[href^="/#"]');
+
     // Agregar controlador de eventos a cada enlace
     navLinks.forEach(function(link) {
       link.addEventListener('click', function(e) {
         // Prevenir comportamiento por defecto
         e.preventDefault();
-        
+
         // Obtener el ID objetivo
         const targetId = this.getAttribute('href');
-        
+
         // Validar enlace
-        if (!targetId || targetId === '#') return;
-        
-        // Buscar el elemento por ID (sin el #)
-        const cleanId = targetId.replace('#', '');
+        if (!targetId || targetId === '#' || targetId === '/#') return;
+
+        // Buscar el elemento por ID (sin el # ni el / inicial)
+        const cleanId = targetId.replace(/^\/?#/, '');
         const targetElement = document.getElementById(cleanId);
         
         if (targetElement) {
