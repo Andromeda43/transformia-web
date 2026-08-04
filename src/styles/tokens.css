@@ -1,0 +1,28 @@
+/* src/styles/tokens.css */
+:root {
+  /* Paleta Transformia — única fuente de verdad, no redeclarar en componentes */
+  --neon-purple: #b042ff;
+  --neon-blue: #4287ff;
+  --neon-pink: #ff42b0;
+  --neon-green: #42ff66;
+  --neon-yellow: #e8ff42;
+  --dark-bg: #0a0a14;
+  --darker-bg: #070710;
+  --dark-purple: #1a142d;
+
+  /* Tipografía */
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  /* Layout */
+  --section-padding-y: 7rem;
+  --section-padding-y-mobile: 4rem;
+  --radius-card: 12px;
+  --container-max: 1280px;
+
+  /* RGB para usar en rgba() dinámicos */
+  --neon-purple-rgb: 176, 66, 255;
+  --neon-blue-rgb: 66, 135, 255;
+  --neon-pink-rgb: 255, 66, 176;
+  --neon-green-rgb: 66, 255, 102;
+}
