@@ -1,47 +1,29 @@
 ---
 // Componente principal de Soluciones que integra el sistema de tabs y cards
 import SolucionesTabCards from './SolucionesComponents/SolucionesTabCards.astro';
+import GridBackground from './ui/GridBackground.astro';
+import SectionHeader from './ui/SectionHeader.astro';
 ---
 
 <section id="soluciones" class="soluciones-section">
   <!-- Elemento de transición hacia la sección anterior -->
   <div class="section-transition"></div>
-  
-  <!-- Efectos de fondo -->
-  <div class="grid-background"></div>
-  <div class="matrix-bg"></div>
-  
+
+  <GridBackground opacity={0.5} perspective />
+
   <div class="container">
-    <!-- Encabezado de sección -->
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="title-text">SOLUCIONES</span>
-        <span class="separator">/</span>
-        <span class="title-text">SERVICIOS</span>
-      </h2>
-      
-      <div class="badge-container">
-        <div class="tech-badge">
-          <span class="badge-glow"></span>
-          ALTA TECNOLOGÍA
-        </div>
-      </div>
-      
-      <div class="title-line">
-        <span class="line-pulse"></span>
-      </div>
-      
-      <p class="section-description">
-        Soluciones digitales de vanguardia que transforman desafíos en oportunidades de crecimiento para tu negocio.
-      </p>
-    </div>
-    
+    <SectionHeader
+      title="SOLUCIONES / SERVICIOS"
+      badge="ALTA TECNOLOGÍA"
+      subtitle="Soluciones digitales de vanguardia que transforman desafíos en oportunidades de crecimiento para tu negocio."
+    />
+
     <!-- Componente de Tabs y Cards -->
     <div class="tab-cards-wrapper">
       <SolucionesTabCards />
     </div>
   </div>
-  
+
   <!-- Elementos decorativos flotantes -->
   <div class="floating-elements">
     <div class="element el1"></div>
@@ -97,177 +79,6 @@ import SolucionesTabCards from './SolucionesComponents/SolucionesTabCards.astro'
     flex-direction: column;
     align-items: center; /* Centrar contenido */
     box-sizing: border-box;
-  }
-  
-  /* Fondo con grid animado */
-  .grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      linear-gradient(to right, rgba(128, 90, 213, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(128, 90, 213, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    transform: perspective(1000px) rotateX(60deg);
-    transform-origin: center top;
-    animation: grid-animation 20s linear infinite;
-    z-index: 1;
-    opacity: 0.5;
-  }
-  
-  @keyframes grid-animation {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 0 1000px;
-    }
-  }
-  
-  /* Fondo tipo Matrix */
-  .matrix-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.2;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='150' viewBox='0 0 300 150'%3E%3Cstyle%3E @keyframes fall %7B 0%25 %7B transform: translateY(-100%25); %7D 100%25 %7B transform: translateY(100%25); %7D %7D .t %7B opacity: 0.6; font-family: monospace; animation: fall linear infinite; %7D %3C/style%3E%3Cg fill='%23b042ff'%3E%3Ctext x='10' y='0' class='t' style='animation-duration: 5s; animation-delay: 0s;'%3E10110%3C/text%3E%3Ctext x='40' y='0' class='t' style='animation-duration: 7s; animation-delay: 0.5s;'%3E01001%3C/text%3E%3Ctext x='70' y='0' class='t' style='animation-duration: 6s; animation-delay: 1s;'%3E11010%3C/text%3E%3Ctext x='100' y='0' class='t' style='animation-duration: 8s; animation-delay: 1.5s;'%3E10101%3C/text%3E%3Ctext x='130' y='0' class='t' style='animation-duration: 9s; animation-delay: 2s;'%3E01011%3C/text%3E%3Ctext x='160' y='0' class='t' style='animation-duration: 5.5s; animation-delay: 2.5s;'%3E10110%3C/text%3E%3Ctext x='190' y='0' class='t' style='animation-duration: 7.5s; animation-delay: 3s;'%3E01001%3C/text%3E%3Ctext x='220' y='0' class='t' style='animation-duration: 6.5s; animation-delay: 3.5s;'%3E11010%3C/text%3E%3Ctext x='250' y='0' class='t' style='animation-duration: 8.5s; animation-delay: 4s;'%3E10101%3C/text%3E%3Ctext x='280' y='0' class='t' style='animation-duration: 7s; animation-delay: 4.5s;'%3E01011%3C/text%3E%3C/g%3E%3C/svg%3E");
-  }
-  
-  /* Encabezado de sección */
-  .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-    width: 100%;
-    max-width: 1100px; /* Anchura controlada */
-  }
-  
-  .section-title {
-    font-size: 3.8rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    display: inline-block;
-    position: relative;
-  }
-  
-  .title-text {
-    color: white;
-    text-shadow: 0 0 10px rgba(176, 66, 255, 0.7);
-    animation: title-flicker 5s infinite alternate;
-    font-family: var(--font-mono);
-  }
-  
-  @keyframes title-flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-      text-shadow: 0 0 10px rgba(176, 66, 255, 0.7), 
-                   0 0 20px rgba(176, 66, 255, 0.5);
-    }
-    20%, 24%, 55% {
-      text-shadow: none;
-    }
-  }
-  
-  .separator {
-    margin: 0 1rem;
-    color: var(--pink);
-    animation: separator-pulse 2s infinite alternate;
-  }
-  
-  @keyframes separator-pulse {
-    0% {
-      opacity: 0.7;
-      text-shadow: 0 0 5px rgba(255, 66, 176, 0.5);
-    }
-    100% {
-      opacity: 1;
-      text-shadow: 0 0 15px rgba(255, 66, 176, 0.9), 0 0 25px rgba(255, 66, 176, 0.5);
-    }
-  }
-  
-  /* Badge Alta Tecnología */
-  .badge-container {
-    margin-top: 0.5rem;
-  }
-  
-  .tech-badge {
-    display: inline-block;
-    background: rgba(176, 66, 255, 0.15);
-    border: 1px solid var(--purple);
-    padding: 0.5rem 2rem;
-    border-radius: 30px;
-    color: var(--purple);
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(176, 66, 255, 0.3);
-  }
-  
-  .badge-glow {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(176, 66, 255, 0.5), transparent);
-    animation: badge-slide 3s ease-in-out infinite;
-  }
-  
-  @keyframes badge-slide {
-    0% {
-      left: -100%;
-    }
-    50%, 100% {
-      left: 100%;
-    }
-  }
-  
-  /* Línea divisoria */
-  .title-line {
-    position: relative;
-    width: 150px;
-    height: 3px;
-    background: rgba(176, 66, 255, 0.3);
-    margin: 1.5rem auto 2rem;
-    overflow: hidden;
-  }
-  
-  .line-pulse {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, var(--purple), transparent);
-    animation: line-slide 3s ease-in-out infinite;
-  }
-  
-  @keyframes line-slide {
-    0% {
-      left: -100%;
-    }
-    50%, 100% {
-      left: 100%;
-    }
-  }
-  
-  /* Descripción */
-  .section-description {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    font-family: var(--font-sans);
   }
   
   /* Wrapper del nuevo sistema de tabs y cards */
@@ -353,89 +164,47 @@ import SolucionesTabCards from './SolucionesComponents/SolucionesTabCards.astro'
   
   /* Responsive */
   @media (max-width: 1200px) {
-    .section-title {
-      font-size: 3.2rem;
-    }
-    
     .container {
       padding: 0 1.5rem;
     }
   }
-  
+
   @media (max-width: 992px) {
     .soluciones-section {
       padding: 7rem 0 5rem;
     }
-    
+
     .container {
       padding: 0 1.25rem;
     }
   }
-  
+
   @media (max-width: 768px) {
     .soluciones-section {
       padding: 6rem 0 4rem;
     }
-    
+
     .container {
       padding: 0 1rem;
     }
-    
-    .section-title {
-      font-size: 2.5rem;
-    }
-    
-    .separator {
-      margin: 0 0.5rem;
-    }
-    
-    .tech-badge {
-      padding: 0.4rem 1.5rem;
-      font-size: 0.9rem;
-    }
-    
-    .section-description {
-      font-size: 1.1rem;
-    }
   }
-  
+
   @media (max-width: 576px) {
     .soluciones-section {
       padding: 5rem 0 3rem;
     }
-    
+
     .container {
       padding: 0 0.75rem;
     }
-    
-    .section-title {
-      font-size: 2rem;
-    }
-    
-    .tech-badge {
-      padding: 0.3rem 1.2rem;
-      font-size: 0.8rem;
-    }
-    
-    .section-description {
-      font-size: 1rem;
-    }
-    
+
     .element {
       display: none; /* Ocultar elementos decorativos en pantallas muy pequeñas */
     }
   }
-  
+
   @media (max-width: 375px) {
     .container {
       padding: 0 0.5rem;
-    }
-    
-    .section-title {
-      font-size: 1.75rem;
-    }
-    
-    .separator {
-      margin: 0 0.25rem;
     }
   }
