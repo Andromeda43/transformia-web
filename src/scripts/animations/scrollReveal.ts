@@ -19,6 +19,7 @@ export function revealOnScroll(selector: string, options: RevealOptions = {}): v
   targets.forEach((target, index) => {
     ScrollTrigger.create({
       trigger: target,
+      scroller: document.body,
       start: 'top 85%',
       once: true,
       onEnter: () => {
