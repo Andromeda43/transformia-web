@@ -528,13 +528,22 @@ import GlitchTitle from './HeroComponents/GlitchTitle.astro';
   import { initParallax } from '../scripts/animations/parallax';
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Parallax de los círculos de brillo de fondo (antes: mousemove manual)
+    // Parallax de los elementos decorativos de fondo (antes: mousemove manual)
     const container = document.querySelector<HTMLElement>('.hero');
     const glowCircles = document.querySelectorAll<HTMLElement>('.neon-circle');
+    const geometricElements = document.querySelectorAll<HTMLElement>('.geometric-element');
+    const showcaseWrapper = document.querySelector<HTMLElement>('.showcase-wrapper');
 
-    if (container && glowCircles.length > 0) {
-      const targets = Array.from(glowCircles).map((el) => ({ el, strength: 30 }));
-      initParallax(container, targets);
+    if (container) {
+      const targets = [
+        ...Array.from(glowCircles).map((el) => ({ el, strength: 30 })),
+        ...Array.from(geometricElements).map((el) => ({ el, strength: 20 })),
+        ...(showcaseWrapper ? [{ el: showcaseWrapper, strength: 10 }] : []),
+      ];
+
+      if (targets.length > 0) {
+        initParallax(container, targets);
+      }
     }
 
     // Animación de grid según scroll (no relacionada con el mousemove/parallax)
