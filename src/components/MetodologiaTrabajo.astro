@@ -3,29 +3,15 @@
 import MetodologiaHeader from './MetodologiaComponents/MetodologiaHeader.astro';
 import MetodologiaCycle from './MetodologiaComponents/MetodologiaCycle.astro';
 import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios.astro';
+import GridBackground from './ui/GridBackground.astro';
 ---
 
 <section id="metodologia" class="metodologia-section">
   <!-- Elemento de transición hacia la sección anterior -->
   <div class="section-transition"></div>
-  
-  <!-- Fondos simplificados y efectos visuales esenciales -->
-  <div class="cyberpunk-background">
-    <!-- Efecto de rejilla digital -->
-    <div class="digital-grid"></div>
-    
-    <!-- Efecto de líneas de código (lluvia) -->
-    <div class="code-lines">
-      <div class="code-line"></div>
-      <div class="code-line"></div>
-      <div class="code-line"></div>
-      <div class="code-line"></div>
-    </div>
-    
-    <!-- Overlay para dar profundidad -->
-    <div class="depth-overlay"></div>
-  </div>
-  
+
+  <GridBackground opacity={0.5} perspective />
+
   <!-- Decoración de interfaz de alta tecnología - bordes de la sección -->
   <div class="tech-ui-elements">
     <div class="tech-corner top-left">
@@ -122,103 +108,6 @@ import MetodologiaBeneficios from './MetodologiaComponents/MetodologiaBeneficios
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-  }
-  
-  /* Fondo cyberpunk retrofuturista */
-  .cyberpunk-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    overflow: hidden;
-  }
-  
-  /* Rejilla digital en perspectiva */
-  .digital-grid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 200%;
-    background-image: 
-      linear-gradient(to right, rgba(138, 66, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(138, 66, 255, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-    transform: perspective(1000px) rotateX(60deg);
-    transform-origin: center top;
-    animation: grid-movement 30s linear infinite;
-    opacity: 0.5;
-  }
-  
-  @keyframes grid-movement {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 0 1000px;
-    }
-  }
-  
-  /* Líneas de código que se mueven verticalmente (efecto lluvia) */
-  .code-lines {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.3;
-  }
-  
-  .code-line {
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, var(--purple), transparent);
-    top: 0;
-    animation: code-line-movement 15s linear infinite;
-  }
-  
-  .code-line::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(to bottom, 
-      transparent 0%, 
-      transparent 10%,
-      var(--purple-light) 10%,
-      var(--purple-light) 15%,
-      transparent 15%,
-      transparent 20%
-    );
-    opacity: 0.8;
-  }
-  
-  .code-line:nth-child(1) { left: 15%; animation-duration: 15s; animation-delay: 2s; }
-  .code-line:nth-child(2) { left: 35%; animation-duration: 12s; animation-delay: 4s; }
-  .code-line:nth-child(3) { left: 65%; animation-duration: 10s; animation-delay: 3s; }
-  .code-line:nth-child(4) { left: 85%; animation-duration: 14s; animation-delay: 1s; }
-  
-  @keyframes code-line-movement {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(100%);
-    }
-  }
-  
-  /* Overlay para añadir profundidad */
-  .depth-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, transparent 0%, rgba(8, 8, 20, 0.5) 100%);
-    z-index: 2;
   }
   
   /* Elementos de interfaz de alta tecnología - bordes de la sección */
