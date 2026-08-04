@@ -41,7 +41,9 @@ import GlitchTitle from './HeroComponents/GlitchTitle.astro';
         <GlitchTitle />
         
         <p class="tagline">
-          El aliado que traduce tus desafíos en <span class="highlight">oportunidades</span> de crecimiento.
+          Transformación digital + Inteligencia Artificial <span class="highlight">a la medida de tu empresa</span>:
+          diseñamos, desarrollamos e integramos soluciones propias para que tu negocio opere más rápido,
+          con menos fricción y con datos que sí puedes usar.
         </p>
         
         <div class="btn-container">
@@ -523,68 +525,32 @@ import GlitchTitle from './HeroComponents/GlitchTitle.astro';
 </style>
 
 <script>
+  import { initParallax } from '../scripts/animations/parallax';
+
   document.addEventListener('DOMContentLoaded', () => {
-    // Función para hacer que los elementos respondan al movimiento del mouse
-    function mouseParallax() {
-      const hero = document.querySelector('.hero');
-      if (!hero) return;
-      
-      const elements = {
-        geometrics: document.querySelectorAll('.geometric-element'),
-        particles: document.querySelectorAll('.particle'),
-        showcase: document.querySelector('.showcase-wrapper'),
-        glowCircles: document.querySelectorAll('.neon-circle')
-      };
-      
-      hero.addEventListener('mousemove', (e: Event) => {
-        const mouseEvent = e as MouseEvent;
-        const x = mouseEvent.clientX / window.innerWidth;
-        const y = mouseEvent.clientY / window.innerHeight;
-        
-        // Mover elementos geométricos
-        elements.geometrics.forEach(el => {
-          const moveX = (x - 0.5) * 20;
-          const moveY = (y - 0.5) * 20;
-          const htmlEl = el as HTMLElement;
-          htmlEl.style.transform = `translate(${moveX}px, ${moveY}px) rotate(var(--rotate))`;
-        });
-        
-        // Mover contenedor de showcase
-        if (elements.showcase) {
-          const moveX = (x - 0.5) * 10;
-          const moveY = (y - 0.5) * 10;
-          const showcaseEl = elements.showcase as HTMLElement;
-          showcaseEl.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        }
-        
-        // Mover círculos de brillo
-        elements.glowCircles.forEach(el => {
-          const moveX = (x - 0.5) * 30;
-          const moveY = (y - 0.5) * 30;
-          const glowEl = el as HTMLElement;
-          glowEl.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-      });
+    // Parallax de los círculos de brillo de fondo (antes: mousemove manual)
+    const container = document.querySelector<HTMLElement>('.hero');
+    const glowCircles = document.querySelectorAll<HTMLElement>('.neon-circle');
+
+    if (container && glowCircles.length > 0) {
+      const targets = Array.from(glowCircles).map((el) => ({ el, strength: 30 }));
+      initParallax(container, targets);
     }
-    
-    // Animación de grid según scroll
+
+    // Animación de grid según scroll (no relacionada con el mousemove/parallax)
     function animateGrid() {
       const grid = document.querySelector('.grid-background');
       if (!grid) return;
-      
+
       window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
         const rotationX = 60 - (scrollY * 0.05);
-        
+
         const gridEl = grid as HTMLElement;
         gridEl.style.transform = `perspective(500px) rotateX(${Math.max(30, rotationX)}deg)`;
       });
     }
-    
-    // Iniciar animaciones
-    setTimeout(() => {
-      mouseParallax();
-      animateGrid();
-    }, 100);
+
+    animateGrid();
   });
 </script>

@@ -638,6 +638,8 @@
 </style>
 
 <script>
+  import gsap from 'gsap';
+
   // Extender la interfaz Window para el timeout
   declare global {
     interface Window {
@@ -841,17 +843,19 @@
     function propagateSignal(layerIndex: number, originNodeIndex: number) {
       // Si hemos llegado al final, terminar
       if (layerIndex >= layers.length) return;
-      
+
       // Obtener la capa actual
       const currentLayer = layers[layerIndex];
       const currentNodes = currentLayer.querySelectorAll('.node');
-      
+
       // Seleccionar nodos para activar (entre 1 y 3)
       const nodesToActivate = Math.floor(Math.random() * 3) + 1;
-      
+
+      const tl = gsap.timeline();
+
       for (let i = 0; i < nodesToActivate; i++) {
         // Seleccionar un nodo aleatorio o próximo al origen para simular una red real
-        let nodeIndex;
+        let nodeIndex: number;
         if (Math.random() > 0.7) {
           // Nodo cercano al origen
           const offset = Math.floor(Math.random() * 3) - 1; // -1, 0, o 1
@@ -860,20 +864,18 @@
           // Nodo aleatorio
           nodeIndex = Math.floor(Math.random() * currentNodes.length);
         }
-        
-        const node = currentNodes[nodeIndex];
-        
-        // Activar con un pequeño retraso para simular propagación
-        setTimeout(() => {
+
+        const node = currentNodes[nodeIndex] as HTMLElement;
+
+        // Activar con un pequeño retraso para simular propagación (antes: setTimeout anidado)
+        tl.call(() => {
           activateNode(node);
-          
+
           // Continuar propagación a la siguiente capa
           if (layerIndex < layers.length - 1) {
-            setTimeout(() => {
-              propagateSignal(layerIndex + 1, nodeIndex);
-            }, 100);
+            gsap.delayedCall(0.1, () => propagateSignal(layerIndex + 1, nodeIndex));
           }
-        }, 50 * i);
+        }, undefined, i * 0.05);
       }
     }
     
@@ -947,13 +949,24 @@
       window.addEventListener('resize', handleResize);
     }
     
+    // Respetar prefers-reduced-motion: sin animaciones periódicas, solo conexiones estáticas
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function start() {
+      if (prefersReducedMotion) {
+        generateConnections();
+      } else {
+        initialize();
+      }
+    }
+
     // Asegurarse de que el DOM está listo
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(initialize, 1000);
+        setTimeout(start, 1000);
       });
     } else {
-      setTimeout(initialize, 1000);
+      setTimeout(start, 1000);
     }
   });
 </script>
