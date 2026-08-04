@@ -1,0 +1,41 @@
+---
+// src/components/ui/GridBackground.astro
+interface Props {
+  opacity?: number;
+  size?: number;
+  perspective?: boolean;
+}
+const { opacity = 0.4, size = 40, perspective = false } = Astro.props;
+---
+<div
+  class="ui-grid-background"
+  class:list={{ 'ui-grid-background--perspective': perspective }}
+  style={`--grid-opacity:${opacity}; --grid-size:${size}px;`}
+  aria-hidden="true"
+></div>
+
+<style>
+  .ui-grid-background {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(var(--neon-purple-rgb), 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(var(--neon-purple-rgb), 0.1) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    opacity: var(--grid-opacity);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .ui-grid-background--perspective {
+    height: 200%;
+    transform: perspective(1000px) rotateX(60deg);
+    transform-origin: center top;
+    animation: ui-grid-scroll 20s linear infinite;
+  }
+
+  @keyframes ui-grid-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 1000px; }
+  }
+</style>

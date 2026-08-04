@@ -1,0 +1,54 @@
+---
+// src/components/ui/CornerFrame.astro
+interface Props {
+  size?: number;
+}
+const { size = 80 } = Astro.props;
+---
+<div class="ui-corner-frame" style={`--corner-size:${size}px;`} aria-hidden="true">
+  <div class="ui-corner top-left"><span class="h"></span><span class="v"></span></div>
+  <div class="ui-corner top-right"><span class="h"></span><span class="v"></span></div>
+  <div class="ui-corner bottom-left"><span class="h"></span><span class="v"></span></div>
+  <div class="ui-corner bottom-right"><span class="h"></span><span class="v"></span></div>
+</div>
+
+<style>
+  .ui-corner-frame {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .ui-corner {
+    position: absolute;
+    width: var(--corner-size);
+    height: var(--corner-size);
+  }
+
+  .ui-corner .h, .ui-corner .v {
+    position: absolute;
+    background: var(--neon-purple);
+    opacity: 0.6;
+    box-shadow: 0 0 10px var(--neon-purple);
+  }
+
+  .ui-corner .h { height: 2px; width: 100%; }
+  .ui-corner .v { width: 2px; height: 100%; }
+
+  .top-left { top: 30px; left: 30px; }
+  .top-left .h, .top-left .v { top: 0; left: 0; }
+
+  .top-right { top: 30px; right: 30px; }
+  .top-right .h, .top-right .v { top: 0; right: 0; }
+
+  .bottom-left { bottom: 30px; left: 30px; }
+  .bottom-left .h, .bottom-left .v { bottom: 0; left: 0; }
+
+  .bottom-right { bottom: 30px; right: 30px; }
+  .bottom-right .h, .bottom-right .v { bottom: 0; right: 0; }
+
+  @media (max-width: 768px) {
+    .ui-corner-frame { display: none; }
+  }
+</style>

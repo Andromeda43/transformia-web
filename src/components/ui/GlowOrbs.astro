@@ -1,0 +1,42 @@
+---
+// src/components/ui/GlowOrbs.astro
+interface Props {
+  count?: 2 | 3;
+}
+const { count = 3 } = Astro.props;
+const colors = ['var(--neon-purple)', 'var(--neon-blue)', 'var(--neon-pink)'].slice(0, count);
+---
+<div class="ui-glow-orbs" aria-hidden="true">
+  {colors.map((color, i) => (
+    <div class="ui-orb" style={`--orb-color:${color}; --orb-delay:${i * 5}s;`} data-orb={i}></div>
+  ))}
+</div>
+
+<style>
+  .ui-glow-orbs {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .ui-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.2;
+    background: radial-gradient(circle, var(--orb-color) 0%, transparent 70%);
+    animation: ui-orb-float 20s ease-in-out infinite;
+    animation-delay: var(--orb-delay);
+  }
+
+  .ui-orb[data-orb="0"] { top: 20%; left: 10%; width: 40vw; height: 40vw; }
+  .ui-orb[data-orb="1"] { bottom: 10%; right: 5%; width: 30vw; height: 30vw; animation-direction: reverse; }
+  .ui-orb[data-orb="2"] { top: 60%; left: 20%; width: 25vw; height: 25vw; }
+
+  @keyframes ui-orb-float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(5vw, 3vh); }
+  }
+</style>
