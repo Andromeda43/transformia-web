@@ -12,7 +12,7 @@
 
 - Mantener el stack Astro 5 + React 19 + Tailwind 4; `gsap` es la única dependencia nueva.
 - Paleta de color obligatoria (no cambiar valores): `--neon-purple: #b042ff`, `--neon-blue: #4287ff`, `--neon-pink: #ff42b0`, `--neon-green: #42ff66`, `--neon-yellow: #e8ff42`, `--dark-bg: #0a0a14`, `--darker-bg: #070710`.
-- No introducir un framework de testing nuevo. Verificación = `npm run build` (compila sin errores) + revisión visual manual en `npm run dev` (desktop y viewport 375px).
+- No introducir un framework de testing nuevo. Verificación = `npm run build` (compila sin errores) + revisión visual manual en `npm run dev` (desktop y viewport 375px). **Ruling confirmado con el usuario:** ningún implementador ni reviewer debe agregar Vitest/Playwright/etc. ni pedir "tests que cubran el cambio" — la evidencia válida en el reporte de cada tarea es el output de `npm run build` más la verificación visual descrita en esa tarea.
 - El formulario de contacto NO debe simular un envío exitoso falso. Debe mostrar honestamente que el envío directo aún no está conectado.
 - No fabricar métricas de negocio (porcentajes, cifras de clientes, uptime, etc.) sin respaldo real.
 - Todos los anchors internos existentes deben seguir funcionando: `#nosotros`, `#servicios`, `#soluciones`, `#metodologia`, `#porque-elegirnos`, `#contactanos`.
@@ -1428,34 +1428,37 @@ git commit -m "feat: add /contacto page and fix fake contact info and fake form 
 ## Task 16: Páginas placeholder /privacidad y /terminos
 
 **Files:**
+- Create: `src/components/ui/LegalPagePlaceholder.astro`
 - Create: `src/pages/privacidad.astro`
 - Create: `src/pages/terminos.astro`
 
 **Interfaces:**
 - Consumes: `MainLayout.astro`.
-- Produces: rutas `/privacidad` y `/terminos` responden 200 (dejan de ser 404 desde los links del footer).
+- Produces:
+  - `<LegalPagePlaceholder title="..." />` — componente compartido, sin duplicar el bloque de estilos entre las dos páginas.
+  - Rutas `/privacidad` y `/terminos` responden 200 (dejan de ser 404 desde los links del footer).
 
-- [ ] **Step 1: Crear privacidad.astro**
+- [ ] **Step 1: Crear el componente compartido LegalPagePlaceholder.astro**
 
 ```astro
 ---
-// src/pages/privacidad.astro
-import MainLayout from '../layouts/MainLayout.astro';
+// src/components/ui/LegalPagePlaceholder.astro
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
 ---
-
-<MainLayout title="Política de Privacidad | Transformia">
-  <section class="legal-placeholder">
-    <div class="legal-placeholder-content">
-      <h1>Política de Privacidad</h1>
-      <p>Estamos preparando el contenido de esta página.</p>
-      <p>
-        Si tenés alguna consulta sobre el manejo de tus datos mientras tanto,
-        escribinos a <a href="mailto:transformia.desarrollo@gmail.com">transformia.desarrollo@gmail.com</a>.
-      </p>
-      <a href="/" class="legal-placeholder-back">Volver al inicio</a>
-    </div>
-  </section>
-</MainLayout>
+<section class="legal-placeholder">
+  <div class="legal-placeholder-content">
+    <h1>{title}</h1>
+    <p>Estamos preparando el contenido de esta página.</p>
+    <p>
+      Si tenés alguna consulta mientras tanto, escribinos a
+      <a href="mailto:transformia.desarrollo@gmail.com">transformia.desarrollo@gmail.com</a>.
+    </p>
+    <a href="/" class="legal-placeholder-back">Volver al inicio</a>
+  </div>
+</section>
 
 <style>
   .legal-placeholder {
@@ -1510,19 +1513,43 @@ import MainLayout from '../layouts/MainLayout.astro';
 </style>
 ```
 
-- [ ] **Step 2: Crear terminos.astro**
+- [ ] **Step 2: Crear privacidad.astro usando el componente compartido**
 
-Mismo componente que `privacidad.astro`, cambiando el título a `"Términos de Uso | Transformia"` y el `<h1>` a `"Términos de Uso"` (reutilizar exactamente el mismo bloque `<style>`).
+```astro
+---
+// src/pages/privacidad.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import LegalPagePlaceholder from '../components/ui/LegalPagePlaceholder.astro';
+---
 
-- [ ] **Step 3: Verificar en el navegador**
+<MainLayout title="Política de Privacidad | Transformia">
+  <LegalPagePlaceholder title="Política de Privacidad" />
+</MainLayout>
+```
+
+- [ ] **Step 3: Crear terminos.astro usando el mismo componente compartido**
+
+```astro
+---
+// src/pages/terminos.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import LegalPagePlaceholder from '../components/ui/LegalPagePlaceholder.astro';
+---
+
+<MainLayout title="Términos de Uso | Transformia">
+  <LegalPagePlaceholder title="Términos de Uso" />
+</MainLayout>
+```
+
+- [ ] **Step 4: Verificar en el navegador**
 
 Run: `npm run dev`
 Navegar a `http://localhost:4321/privacidad` y `http://localhost:4321/terminos`, confirmar que ambas cargan (sin 404) con el mensaje placeholder y el link "Volver al inicio" funciona. Confirmar desde `/` que los links del footer "Política de Privacidad" y "Términos de Uso" navegan correctamente.
 
-- [ ] **Step 4: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
-git add src/pages/privacidad.astro src/pages/terminos.astro
+git add src/components/ui/LegalPagePlaceholder.astro src/pages/privacidad.astro src/pages/terminos.astro
 git commit -m "feat: add placeholder privacy and terms pages to fix broken footer links"
 ```
 
