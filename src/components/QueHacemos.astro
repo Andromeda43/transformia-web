@@ -213,7 +213,7 @@ import SectionHeader from './ui/SectionHeader.astro';
           <h3 class="servicio-title">Integramos</h3>
           <p class="servicio-description">
             Tu software no vive aislado: lo conectamos con básculas, sensores
-            y equipos que ya usás en planta o en tienda. Menos digitación
+            y equipos que ya usas en planta o en tienda. Menos digitación
             manual, menos errores, información real llegando sola al sistema.
           </p>
           
@@ -336,14 +336,8 @@ import SectionHeader from './ui/SectionHeader.astro';
 </section>
 
 <style>
-:root {
-    --neon-purple: rgb(176, 66, 255);
-    --neon-blue: rgb(66, 135, 255);
-    --neon-pink: rgb(255, 66, 176);
-    --neon-yellow: rgb(232, 255, 66);
-    --neon-green: rgb(66, 255, 102);
-  }
-  
+  /* Paleta compartida vía tokens.css (--neon-purple, --neon-blue, --neon-pink, --neon-yellow, --neon-green) */
+
   /* Estilos principales */
   .servicios-section {
     position: relative;
@@ -434,7 +428,7 @@ import SectionHeader from './ui/SectionHeader.astro';
     border-radius: 10px;
     border: 1px solid rgba(176, 66, 255, 0.2);
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 100%;
     display: flex;
     flex-direction: column;

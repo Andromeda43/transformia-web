@@ -7,6 +7,9 @@ interface ParallaxTarget {
 }
 
 export function initParallax(container: HTMLElement, targets: ParallaxTarget[]): void {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
   const movers = targets.map(({ el, strength }) => ({
     el,
     strength,

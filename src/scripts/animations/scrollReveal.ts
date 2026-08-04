@@ -14,6 +14,9 @@ export function revealOnScroll(selector: string, options: RevealOptions = {}): v
   const targets = gsap.utils.toArray<HTMLElement>(selector);
   if (targets.length === 0) return;
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
   gsap.set(targets, { opacity: 0, y });
 
   targets.forEach((target, index) => {
@@ -28,6 +31,7 @@ export function revealOnScroll(selector: string, options: RevealOptions = {}): v
           duration: 0.6,
           delay: index * stagger,
           ease: 'power2.out',
+          clearProps: 'transform',
         });
       },
     });

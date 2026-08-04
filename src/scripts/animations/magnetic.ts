@@ -2,7 +2,10 @@
 import gsap from 'gsap';
 
 export function initMagneticHover(el: HTMLElement, strength = 20): void {
-  const mapRotation = gsap.utils.mapRange(0, 1, -8, 8);
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  const mapRotation = gsap.utils.mapRange(0, 1, -strength, strength);
 
   el.addEventListener('mousemove', (e) => {
     const rect = el.getBoundingClientRect();
@@ -22,7 +25,4 @@ export function initMagneticHover(el: HTMLElement, strength = 20): void {
   el.addEventListener('mouseleave', () => {
     gsap.to(el, { rotateX: 0, rotateY: 0, y: 0, duration: 0.5, ease: 'power2.out' });
   });
-
-  // strength reservado para casos donde el llamador quiera un giro más pronunciado
-  void strength;
 }
