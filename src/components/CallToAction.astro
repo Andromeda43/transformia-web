@@ -1,5 +1,6 @@
 ---
 // CallToAction.astro - Componente CTA con estética futurista
+import CornerFrame from './ui/CornerFrame.astro';
 ---
 
 <section id="contactanos" class="cta-section">
@@ -9,38 +10,22 @@
     <div class="glow-layer"></div>
     <div class="circuit-overlay"></div>
   </div>
-  
+
+  <CornerFrame />
+
   <!-- Elementos decorativos -->
   <div class="cta-decorations">
     <!-- Líneas de energía -->
     <div class="energy-line top"></div>
     <div class="energy-line bottom"></div>
-    
+
     <!-- Puntos de datos -->
     <div class="data-point" style="--top: 20%; --left: 10%;"></div>
     <div class="data-point" style="--top: 70%; --left: 15%;"></div>
     <div class="data-point" style="--top: 30%; --left: 90%;"></div>
     <div class="data-point" style="--top: 80%; --left: 85%;"></div>
-    
-    <!-- Esquinas techno -->
-    <div class="tech-corner top-left">
-      <div class="corner-line horizontal"></div>
-      <div class="corner-line vertical"></div>
-    </div>
-    <div class="tech-corner top-right">
-      <div class="corner-line horizontal"></div>
-      <div class="corner-line vertical"></div>
-    </div>
-    <div class="tech-corner bottom-left">
-      <div class="corner-line horizontal"></div>
-      <div class="corner-line vertical"></div>
-    </div>
-    <div class="tech-corner bottom-right">
-      <div class="corner-line horizontal"></div>
-      <div class="corner-line vertical"></div>
-    </div>
   </div>
-  
+
   <div class="container">
     <div class="cta-container">
       <!-- Interfaz futurista -->
@@ -72,13 +57,13 @@
             
             <h2 class="cta-headline">
               <span class="text-highlight-start">&lt;</span>
-              POTENCIA TU EMPRESA CON SOLUCIONES TECNOLÓGICAS A MEDIDA
+              HABLEMOS DE TU PRÓXIMO PROYECTO
               <span class="text-highlight-end">/&gt;</span>
             </h2>
-            
+
             <p class="cta-text">
-              ¿Listo para dar el salto y convertir tus procesos en motores de innovación y rentabilidad? 
-              En Transformia estamos preparados para acompañarte en cada paso del camino.
+              Contanos qué proceso te está frenando y en una primera llamada te decimos,
+              sin rodeos, si podemos ayudarte y cómo. Sin compromiso.
             </p>
             
             <div class="status-line">
@@ -303,90 +288,6 @@
       transform: scale(1.5);
       opacity: 1;
     }
-  }
-  
-  .tech-corner {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    z-index: 4;
-  }
-  
-  .corner-line {
-    position: absolute;
-    background: var(--neon-purple);
-    opacity: 0.6;
-    box-shadow: 0 0 8px var(--neon-purple);
-  }
-  
-  .horizontal {
-    height: 2px;
-    width: 100%;
-  }
-  
-  .vertical {
-    width: 2px;
-    height: 100%;
-  }
-  
-  .top-left {
-    top: 30px;
-    left: 30px;
-  }
-  
-  .top-left .horizontal {
-    top: 0;
-    left: 0;
-  }
-  
-  .top-left .vertical {
-    top: 0;
-    left: 0;
-  }
-  
-  .top-right {
-    top: 30px;
-    right: 30px;
-  }
-  
-  .top-right .horizontal {
-    top: 0;
-    right: 0;
-  }
-  
-  .top-right .vertical {
-    top: 0;
-    right: 0;
-  }
-  
-  .bottom-left {
-    bottom: 30px;
-    left: 30px;
-  }
-  
-  .bottom-left .horizontal {
-    bottom: 0;
-    left: 0;
-  }
-  
-  .bottom-left .vertical {
-    bottom: 0;
-    left: 0;
-  }
-  
-  .bottom-right {
-    bottom: 30px;
-    right: 30px;
-  }
-  
-  .bottom-right .horizontal {
-    bottom: 0;
-    right: 0;
-  }
-  
-  .bottom-right .vertical {
-    bottom: 0;
-    right: 0;
   }
   
   /* Contenedor principal */
@@ -800,12 +701,7 @@
     .cta-action {
       align-items: flex-start;
     }
-    
-    .tech-corner {
-      width: 60px;
-      height: 60px;
-    }
-    
+
     .stats-display {
       gap: 1.5rem;
     }
@@ -848,12 +744,7 @@
     .stats-display {
       gap: 1rem;
     }
-    
-    .tech-corner {
-      width: 40px;
-      height: 40px;
-    }
-    
+
     .connection-text {
       display: none;
     }
@@ -894,90 +785,38 @@
     .data-stream {
       max-width: 100%;
     }
-    
+
     .system-data {
       display: none;
-    }
-    
-    .tech-corner {
-      width: 30px;
-      height: 30px;
-    }
-    
-    .top-left, .top-right, .bottom-left, .bottom-right {
-      opacity: 0.5;
     }
   }
 </style>
 
 <script>
+  import { initParallax } from '../scripts/animations/parallax';
+  import { initMagneticHover } from '../scripts/animations/magnetic';
+
   document.addEventListener('DOMContentLoaded', () => {
-    // Efecto parallax para fondo
-    const ctaSection = document.querySelector('.cta-section');
-    const glow = document.querySelector('.glow-layer');
-    const dataPoints = document.querySelectorAll('.data-point');
-    
-    if (ctaSection && glow) {
-      ctaSection.addEventListener('mousemove', (e) => {
-        // Corregido: convertir a MouseEvent
-        const mouseEvent = e as MouseEvent;
-        const mouseX = mouseEvent.clientX / window.innerWidth;
-        const mouseY = mouseEvent.clientY / window.innerHeight;
-        
-        // Mover la capa de brillo
-        const glowElement = glow as HTMLElement;
-        glowElement.style.transform = `translate(${mouseX * 50 - 25}px, ${mouseY * 50 - 25}px)`;
-        
-        // Mover los puntos de datos
-        dataPoints.forEach(point => {
-          const speed = Math.random() * 20 + 10;
-          const pointElement = point as HTMLElement;
-          pointElement.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
-        });
-      });
+    const section = document.querySelector<HTMLElement>('.cta-section');
+    const glow = document.querySelector<HTMLElement>('.glow-layer');
+    const dataPoints = document.querySelectorAll<HTMLElement>('.data-point');
+
+    if (section && glow) {
+      const targets = [{ el: glow, strength: 25 }, ...Array.from(dataPoints).map((el) => ({ el, strength: 15 }))];
+      initParallax(section, targets);
     }
-    
-    // Animación pulsante para los LEDs
-    const activeLeds = document.querySelectorAll('.led.active');
-    
-    activeLeds.forEach((led, index) => {
-      const ledElement = led as HTMLElement;
-      ledElement.style.animationDelay = `${index * 0.5}s`;
-    });
-    
-    // Animación de hover 3D para el botón
-    const cyberButton = document.querySelector('.cyber-button');
-    
+
+    const cyberButton = document.querySelector<HTMLElement>('.cyber-button');
     if (cyberButton) {
-      cyberButton.addEventListener('mousemove', (e) => {
-        const buttonElement = cyberButton as HTMLElement;
-        const rect = buttonElement.getBoundingClientRect();
-        // Corregido: convertir a MouseEvent
-        const mouseEvent = e as MouseEvent;
-        const x = mouseEvent.clientX - rect.left;
-        const y = mouseEvent.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (centerY - y) / 20;
-        const rotateY = (x - centerX) / 20;
-        
-        buttonElement.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-      });
-      
-      cyberButton.addEventListener('mouseleave', () => {
-        const buttonElement = cyberButton as HTMLElement;
-        buttonElement.style.transform = '';
-      });
+      initMagneticHover(cyberButton, 10);
     }
-    
-    // Animación para los data-bits en la barra inferior
-    const dataBits = document.querySelectorAll('.data-bit');
-    
-    dataBits.forEach((bit, index) => {
-      const bitElement = bit as HTMLElement;
-      bitElement.style.animationDelay = `${index * 0.2}s`;
+
+    document.querySelectorAll<HTMLElement>('.led.active').forEach((led, index) => {
+      led.style.animationDelay = `${index * 0.5}s`;
+    });
+
+    document.querySelectorAll<HTMLElement>('.data-bit').forEach((bit, index) => {
+      bit.style.animationDelay = `${index * 0.2}s`;
     });
   });
 </script>
