@@ -1,0 +1,71 @@
+---
+// src/pages/servicios/index.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+
+const services = [
+  { slug: 'desarrollo', title: 'Desarrollo de Software a Medida', description: 'Aplicaciones web, móviles y sistemas de gestión construidos para tu operación específica, no para un caso de uso genérico.' },
+  { slug: 'transformacion', title: 'Transformación Digital y Automatización', description: 'Digitalizamos procesos analógicos y automatizamos flujos repetitivos con tecnología a la medida de tu operación.' },
+  { slug: 'ia', title: 'Inteligencia Artificial y Data Analytics', description: 'IA aplicada a un cuello de botella operativo concreto, no un chatbot genérico — con datos reales y un humano en el loop donde importa.' },
+  { slug: 'asesoria', title: 'Asesoría en Optimización de Procesos', description: 'Identificamos cuellos de botella operativos y proponemos soluciones tecnológicas concretas para eliminarlos.' },
+  { slug: 'iot', title: 'Internet of Things y Sistemas Físicos', description: 'Conectamos hardware — sensores, básculas, impresoras — con software que captura datos en tiempo real desde el mundo físico.' },
+  { slug: 'arquitectura', title: 'Arquitectura de Software', description: 'Diseño técnico, modelado de casos de uso y decisiones de arquitectura antes de escribir una línea de código de producción.' },
+  { slug: 'database', title: 'Gestión de Bases de Datos', description: 'Diseño, implementación y optimización de bases de datos SQL y NoSQL para operaciones que necesitan rendimiento y trazabilidad reales.' },
+];
+
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/servicios' },
+];
+---
+
+<MainLayout
+  title="Servicios | Transformia"
+  description="Desarrollo de software a medida, inteligencia artificial aplicada, IoT, arquitectura y bases de datos. Las 7 líneas de trabajo de Transformia."
+  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+>
+  <section class="servicios-hub">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      <SectionHeader
+        title="SERVICIOS"
+        badge="ALTA TECNOLOGÍA"
+        subtitle="Siete líneas de trabajo, un mismo equipo boutique especializado en inteligencia artificial aplicada."
+      />
+      <div class="services-grid">
+        {services.map((service) => <ServiceCard {...service} />)}
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .servicios-hub {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .servicios-hub {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>

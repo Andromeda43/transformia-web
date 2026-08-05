@@ -1,0 +1,55 @@
+---
+// src/components/ServiceCard.astro
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+}
+
+const { slug, title, description } = Astro.props;
+---
+
+<a href={`/servicios/${slug}`} class="service-card-link">
+  <h3 class="service-card-link-title">{title}</h3>
+  <p class="service-card-link-description">{description}</p>
+  <span class="service-card-link-cta">Conocer más →</span>
+</a>
+
+<style>
+  .service-card-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.75rem;
+    background: rgba(26, 20, 45, 0.6);
+    border: 1px solid rgba(var(--neon-purple-rgb), 0.25);
+    border-radius: var(--radius-card);
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .service-card-link:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 10px 30px rgba(var(--neon-purple-rgb), 0.15);
+    transform: translateY(-4px);
+  }
+
+  .service-card-link-title {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+  }
+
+  .service-card-link-description {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .service-card-link-cta {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--neon-blue);
+  }
+</style>

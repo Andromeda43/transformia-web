@@ -1,0 +1,126 @@
+---
+// src/pages/servicios/desarrollo.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import DesarrolloSlide from '../../components/SolucionesComponents/CarouselSlides/DesarrolloSlide.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import { serviceSchema } from '../../lib/seo/service';
+
+const url = new URL('/servicios/desarrollo', Astro.site).toString();
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: 'Desarrollo de Software', path: '/servicios/desarrollo' },
+];
+
+const relatedSlugs = ['tesla-gps', 'frigorinoquia'];
+const relatedCases = (await getCollection('casos-de-exito')).filter((c) => relatedSlugs.includes(c.id));
+---
+
+<MainLayout
+  title="Desarrollo de Software a Medida | Transformia"
+  description="Aplicaciones web, móviles y sistemas de gestión construidos para tu operación específica, no para un caso de uso genérico. Desarrollo de software a medida en Transformia."
+  jsonLd={[
+    breadcrumbSchema(breadcrumbItems, Astro.site!),
+    serviceSchema({ name: 'Desarrollo de Software a Medida', description: 'Aplicaciones web, móviles y sistemas de gestión construidos para tu operación específica.', url }),
+  ]}
+>
+  <section class="service-page">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      <SectionHeader title="DESARROLLO DE SOFTWARE A MEDIDA" badge="SERVICIO" />
+
+      <DesarrolloSlide />
+
+      <div class="service-content">
+        <section class="block">
+          <h2>Qué resuelve</h2>
+          <p>
+            La mayoría de los problemas operativos serios no caben en un SaaS genérico: tienen roles específicos, integraciones con hardware propio, o una lógica de negocio que ningún producto de estante contempla. Ahí es donde construimos software a medida — aplicaciones web, apps móviles y sistemas de gestión diseñados alrededor de tu proceso real, no al revés.
+          </p>
+        </section>
+
+        <section class="block">
+          <h2>Cómo trabajamos</h2>
+          <p>
+            Levantamos el modelo de datos y la arquitectura antes de escribir código de producción, construimos por módulos en etapas aprobadas, y entregamos con migración de datos históricos, capacitación por rol y manuales de usuario — no solo el código.
+          </p>
+        </section>
+
+        {relatedCases.length > 0 && (
+          <section class="block">
+            <h2>Casos de éxito relacionados</h2>
+            <div class="related-grid">
+              {relatedCases.map((entry) => <CaseStudyCard entry={entry} />)}
+            </div>
+          </section>
+        )}
+
+        <a href="/contacto" class="cta-link">Hablemos de tu proyecto →</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .service-page {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-content {
+    margin-top: 3rem;
+  }
+
+  .block {
+    margin-bottom: 2.5rem;
+  }
+
+  .block h2 {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: var(--neon-purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .block p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.9rem 1.75rem;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    border-radius: 4px;
+    color: white;
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .service-page {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>

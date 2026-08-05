@@ -1,0 +1,106 @@
+---
+// src/pages/servicios/ia.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import InteligenciaSlide from '../../components/SolucionesComponents/CarouselSlides/InteligenciaSlide.astro';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import { serviceSchema } from '../../lib/seo/service';
+
+const url = new URL('/servicios/ia', Astro.site).toString();
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: 'Inteligencia Artificial', path: '/servicios/ia' },
+];
+---
+
+<MainLayout
+  title="Inteligencia Artificial y Data Analytics | Transformia"
+  description="IA aplicada a un cuello de botella operativo concreto — no un chatbot genérico. Especialización en inteligencia artificial aplicada a software a medida."
+  jsonLd={[
+    breadcrumbSchema(breadcrumbItems, Astro.site!),
+    serviceSchema({ name: 'Inteligencia Artificial y Data Analytics', description: 'Soluciones de IA y análisis de datos aplicadas a procesos operativos concretos.', url }),
+  ]}
+>
+  <section class="service-page">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      <SectionHeader title="INTELIGENCIA ARTIFICIAL Y DATA ANALYTICS" badge="SERVICIO — ESPECIALIDAD" />
+
+      <InteligenciaSlide />
+
+      <div class="service-content">
+        <section class="block">
+          <h2>Qué resuelve</h2>
+          <p>
+            No vendemos IA como feature de marketing. La aplicamos donde hay un cuello de botella operativo específico — clasificar, predecir, extraer, validar — que hoy alguien hace a mano y no escala. Esta es la línea donde Transformia se diferencia: no es un módulo que le agregamos a un sistema, es el punto de partida del diseño cuando el problema lo pide.
+          </p>
+        </section>
+
+        <section class="block">
+          <h2>Cómo trabajamos</h2>
+          <p>
+            Antes de proponer un modelo, validamos tres cosas: qué tarea repetitiva se automatiza exactamente, si hay datos reales propios para darle contexto al modelo, y qué pasa cuando se equivoca — si el costo de un error es alto, diseñamos con un humano en el loop, no automatización ciega.
+          </p>
+        </section>
+
+        <a href="/contacto" class="cta-link">Hablemos de tu proyecto →</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .service-page {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-content {
+    margin-top: 3rem;
+  }
+
+  .block {
+    margin-bottom: 2.5rem;
+  }
+
+  .block h2 {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: var(--neon-purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .block p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+  }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.9rem 1.75rem;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    border-radius: 4px;
+    color: white;
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .service-page {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>
