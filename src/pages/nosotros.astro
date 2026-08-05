@@ -1,0 +1,38 @@
+---
+// src/pages/nosotros.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import QuienesSomos from '../components/QuienesSomos.astro';
+import QueHacemos from '../components/QueHacemos.astro';
+import MetodologiaTrabajo from '../components/MetodologiaTrabajo.astro';
+import PorQueElegirnos from '../components/PorQueElegirnos.astro';
+import { breadcrumbSchema } from '../lib/seo/breadcrumb';
+
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Nosotros', path: '/nosotros' },
+];
+---
+
+<MainLayout
+  title="Nosotros | Transformia"
+  description="Transformia es un equipo boutique especializado en inteligencia artificial aplicada y desarrollo de software a medida. Conocé quiénes somos, cómo trabajamos y por qué elegirnos."
+  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+>
+  <div class="nosotros-spacer"></div>
+  <QuienesSomos />
+  <QueHacemos />
+  <MetodologiaTrabajo />
+  <PorQueElegirnos />
+</MainLayout>
+
+<style>
+  .nosotros-spacer {
+    height: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    .nosotros-spacer {
+      height: 3rem;
+    }
+  }
+</style>
