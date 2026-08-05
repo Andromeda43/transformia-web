@@ -1,0 +1,24 @@
+---
+cliente: "Tesla GPS"
+industria: "Instalación y monitoreo de GPS vehicular"
+dolor: "Tesla GPS es una empresa de instalación y monitoreo de dispositivos GPS vehiculares en Cali. Su operación —clientes, vehículos, instalaciones, inventario de equipos, planes de monitoreo— se llevaba de forma dispersa, apoyada en hojas de cálculo y registros manuales: sin trazabilidad confiable del GPS y la SIM instalados en cada vehículo, inventario a ciegas sin descuento automático, renovaciones de planes que se perdían por falta de alertas, información fragmentada entre cliente/vehículo/plan/historial, y sin control de acceso por roles."
+solucion: "Un sistema web centralizado, hecho a la medida del flujo real de Tesla GPS, que ordena toda la operación en una sola plataforma con acceso diferenciado por rol. Se apoya en trazabilidad de punta a punta (vehículo, GPS y SIM identificados por IMEI y número, con historial de reemplazos), control operativo real (inventario serializado que se descuenta solo al cerrar una orden, renovaciones con alertas automáticas) y orden por roles (Administrador, Administrador de Punto, Recepcionista, Técnico y Soporte, con seguridad garantizada a nivel de base de datos)."
+capacidades:
+  - "Gestión de clientes y vehículos con múltiples teléfonos de contacto"
+  - "Órdenes de servicio con ciclo completo (pendiente → en proceso → cerrada) y cierre técnico con firma en pantalla"
+  - "Cumplimiento de habeas data (Ley 1581) con aceptación de términos versionados"
+  - "Inventario serializado de GPS y SIM con alta por lote y trazabilidad por unidad"
+  - "Planes y renovaciones con cálculo automático de vencimiento y alertas de fidelización"
+  - "Notificaciones al cliente por WhatsApp"
+  - "Dashboards por rol y módulo de soporte de solo lectura"
+stack:
+  - "React"
+  - "Supabase"
+  - "PostgreSQL"
+  - "Row Level Security"
+resultado: "Tesla GPS pasa de una operación dispersa en hojas de cálculo a una plataforma única donde cada cliente, vehículo, dispositivo y plan es trazable, cada rol tiene su espacio, y la información está disponible en tiempo real para tomar decisiones — sin perder de vista una renovación ni un equipo."
+status: "ejecutado"
+featured: true
+---
+
+Sistema de gestión operativa construido por Transformia para Tesla GPS, empresa de instalación y monitoreo de dispositivos GPS vehiculares en Cali.

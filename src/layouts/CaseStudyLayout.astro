@@ -1,0 +1,160 @@
+---
+// src/layouts/CaseStudyLayout.astro
+import MainLayout from './MainLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import GridBackground from '../components/ui/GridBackground.astro';
+import TechBadge from '../components/ui/TechBadge.astro';
+import { breadcrumbSchema } from '../lib/seo/breadcrumb';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'casos-de-exito'>;
+}
+
+const { entry } = Astro.props;
+const { cliente, industria, dolor, solucion, capacidades, stack, resultado, status } = entry.data;
+
+const pageTitle = `${cliente} — Caso de éxito | Transformia`;
+const description = `${cliente} (${industria}): ${dolor.slice(0, 140)}...`;
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Casos de éxito', path: '/casos-de-exito' },
+  { name: cliente, path: `/casos-de-exito/${entry.id}` },
+];
+---
+
+<MainLayout
+  title={pageTitle}
+  description={description}
+  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+>
+  <article class="case-study">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      {status === 'propuesta' && (
+        <div class="status-badge">Propuesta técnica — no ejecutada</div>
+      )}
+      <SectionHeader
+        title={cliente}
+        subtitle={industria}
+        badge={status === 'ejecutado' ? 'CASO DE ÉXITO' : 'PROPUESTA TÉCNICA'}
+      />
+
+      <section class="block">
+        <h2>El punto de partida</h2>
+        <p>{dolor}</p>
+      </section>
+
+      <section class="block">
+        <h2>La solución</h2>
+        <p>{solucion}</p>
+      </section>
+
+      <section class="block">
+        <h2>Capacidades</h2>
+        <ul class="capacidades-list">
+          {capacidades.map((c) => <li>{c}</li>)}
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Stack</h2>
+        <div class="stack-tags">
+          {stack.map((tech) => <TechBadge label={tech} />)}
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>{status === 'propuesta' ? 'Resultado esperado (no verificado)' : 'El resultado'}</h2>
+        <p>{resultado}</p>
+      </section>
+
+      <a href="/casos-de-exito" class="back-link">← Ver todos los casos de éxito</a>
+    </div>
+  </article>
+</MainLayout>
+
+<style>
+  .case-study {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .status-badge {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(var(--neon-yellow-rgb), 0.12);
+    border: 1px solid var(--neon-yellow);
+    color: var(--neon-yellow);
+  }
+
+  .block {
+    margin-bottom: 2.5rem;
+  }
+
+  .block h2 {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: var(--neon-purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .block p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+  }
+
+  .capacidades-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .capacidades-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+  }
+
+  .capacidades-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--neon-purple);
+  }
+
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--neon-purple);
+    font-family: var(--font-mono);
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+</style>

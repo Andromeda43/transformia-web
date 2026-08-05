@@ -1,0 +1,98 @@
+---
+// src/pages/casos-de-exito/index.astro
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+
+const allCases = await getCollection('casos-de-exito');
+const ejecutados = allCases.filter((c) => c.data.status === 'ejecutado');
+const propuestas = allCases.filter((c) => c.data.status === 'propuesta');
+
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Casos de éxito', path: '/casos-de-exito' },
+];
+---
+
+<MainLayout
+  title="Casos de Éxito | Transformia"
+  description="Proyectos reales de Transformia: sistemas de trazabilidad, gestión operativa y marketplaces construidos a medida para clientes en Colombia y LatAm."
+  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+>
+  <section class="casos-section">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      <SectionHeader
+        title="CASOS DE ÉXITO"
+        badge="PROYECTOS REALES"
+        subtitle="Sistemas que ya están resolviendo problemas operativos concretos para nuestros clientes."
+      />
+
+      <div class="cards-grid">
+        {ejecutados.map((entry) => <CaseStudyCard entry={entry} />)}
+      </div>
+
+      {propuestas.length > 0 && (
+        <div class="propuestas-block">
+          <h2 class="propuestas-title">Propuestas técnicas</h2>
+          <p class="propuestas-subtitle">
+            Proyectos formulados por Transformia que aún no fueron financiados o ejecutados. Se documentan por transparencia, no como resultados entregados.
+          </p>
+          <div class="cards-grid">
+            {propuestas.map((entry) => <CaseStudyCard entry={entry} />)}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .casos-section {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .propuestas-block {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(var(--neon-purple-rgb), 0.2);
+  }
+
+  .propuestas-title {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .propuestas-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 640px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .casos-section {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+// src/components/CaseStudyCard.astro
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'casos-de-exito'>;
+}
+
+const { entry } = Astro.props;
+const { cliente, industria, resultado, status } = entry.data;
+---
+
+<a href={`/casos-de-exito/${entry.id}`} class="case-card">
+  {status === 'propuesta' && <span class="case-card-badge">Propuesta técnica</span>}
+  <h3 class="case-card-title">{cliente}</h3>
+  <p class="case-card-industry">{industria}</p>
+  <p class="case-card-result">{resultado.slice(0, 140)}...</p>
+  <span class="case-card-link">Ver caso completo →</span>
+</a>
+
+<style>
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.75rem;
+    background: rgba(26, 20, 45, 0.6);
+    border: 1px solid rgba(var(--neon-purple-rgb), 0.25);
+    border-radius: var(--radius-card);
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .case-card:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 10px 30px rgba(var(--neon-purple-rgb), 0.15);
+    transform: translateY(-4px);
+  }
+
+  .case-card-badge {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--neon-yellow);
+    border: 1px solid var(--neon-yellow);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .case-card-title {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    color: white;
+  }
+
+  .case-card-industry {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--neon-purple);
+  }
+
+  .case-card-result {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .case-card-link {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--neon-blue);
+  }
+</style>
