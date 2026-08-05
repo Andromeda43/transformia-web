@@ -1,9 +1,127 @@
 ---
 // src/pages/privacidad.astro
 import MainLayout from '../layouts/MainLayout.astro';
-import LegalPagePlaceholder from '../components/ui/LegalPagePlaceholder.astro';
+import GridBackground from '../components/ui/GridBackground.astro';
+import { breadcrumbSchema } from '../lib/seo/breadcrumb';
+
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Política de Privacidad', path: '/privacidad' },
+];
 ---
 
-<MainLayout title="Política de Privacidad | Transformia">
-  <LegalPagePlaceholder title="Política de Privacidad" />
+<MainLayout
+  title="Política de Privacidad | Transformia"
+  description="Cómo Transformia recolecta, usa y protege los datos personales de quienes usan este sitio o contratan nuestros servicios, conforme a la Ley 1581 de 2012 de Colombia."
+  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+>
+  <section class="legal-page">
+    <GridBackground opacity={0.2} />
+    <div class="container">
+      <h1>Política de Privacidad</h1>
+      <p class="legal-updated">Última actualización: agosto de 2026</p>
+
+      <p>
+        Transformia ("nosotros") respeta tu privacidad y se compromete a proteger los datos personales que recolectamos a través de este sitio web y de la prestación de nuestros servicios, en cumplimiento de la Ley 1581 de 2012 de Colombia (Régimen General de Protección de Datos Personales) y sus decretos reglamentarios.
+      </p>
+
+      <h2>Qué datos recolectamos</h2>
+      <p>
+        Recolectamos los datos que nos proporcionás voluntariamente al contactarnos por el formulario de <a href="/contacto">contacto</a>, por correo o por teléfono: nombre, correo electrónico, teléfono y la información del proyecto que nos compartas. No recolectamos datos sensibles ni datos de menores de edad a través de este sitio.
+      </p>
+
+      <h2>Para qué usamos tus datos</h2>
+      <p>
+        Usamos tus datos exclusivamente para responder tu consulta, elaborar propuestas o cotizaciones, y dar seguimiento a proyectos en curso. No vendemos ni compartimos tus datos con terceros con fines comerciales.
+      </p>
+
+      <h2>Tus derechos</h2>
+      <p>
+        Como titular de tus datos, tenés derecho a conocer, actualizar, rectificar y solicitar la eliminación de la información que Transformia tenga sobre vos, así como a revocar tu autorización en cualquier momento. Para ejercer estos derechos, escribinos a <a href="mailto:transformia.desarrollo@gmail.com">transformia.desarrollo@gmail.com</a>.
+      </p>
+
+      <h2>Contacto</h2>
+      <p>
+        Si tenés preguntas sobre esta política, escribinos a <a href="mailto:transformia.desarrollo@gmail.com">transformia.desarrollo@gmail.com</a> o llamanos al <a href="tel:+573212596437">+57 321 259 6437</a>.
+      </p>
+
+      <p class="legal-disclaimer">
+        Este documento es un borrador base y no reemplaza una revisión legal profesional antes de considerarse la política definitiva de la empresa.
+      </p>
+
+      <a href="/" class="legal-back">Volver al inicio</a>
+    </div>
+  </section>
 </MainLayout>
+
+<style>
+  .legal-page {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .container h1 {
+    font-family: var(--font-body);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-updated {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+  }
+
+  .container h2 {
+    font-family: var(--font-body);
+    color: var(--neon-purple);
+    font-size: 1.3rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .container p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .container a {
+    color: var(--neon-blue);
+  }
+
+  .legal-disclaimer {
+    margin-top: 2.5rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(var(--neon-yellow-rgb), 0.4);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .legal-back {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.65rem 1.5rem;
+    border: 1px solid var(--neon-purple);
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 768px) {
+    .legal-page {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>
