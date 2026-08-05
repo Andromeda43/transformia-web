@@ -1,0 +1,80 @@
+---
+// src/components/BlogPostCard.astro
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, pubDate, tags } = entry.data;
+
+const formattedDate = pubDate.toLocaleDateString('es-CO', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<a href={`/blog/${entry.id}`} class="post-card">
+  <span class="post-card-date">{formattedDate}</span>
+  <h3 class="post-card-title">{title}</h3>
+  <p class="post-card-description">{description}</p>
+  <div class="post-card-tags">
+    {tags.map((tag) => <span class="post-card-tag">{tag}</span>)}
+  </div>
+</a>
+
+<style>
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.75rem;
+    background: rgba(26, 20, 45, 0.6);
+    border: 1px solid rgba(var(--neon-purple-rgb), 0.25);
+    border-radius: var(--radius-card);
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .post-card:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 10px 30px rgba(var(--neon-purple-rgb), 0.15);
+    transform: translateY(-4px);
+  }
+
+  .post-card-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--neon-blue);
+  }
+
+  .post-card-title {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+  }
+
+  .post-card-description {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .post-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
+  .post-card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    padding: 0.15rem 0.5rem;
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+// src/pages/blog/index.astro
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import BlogPostCard from '../../components/BlogPostCard.astro';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Blog', path: '/blog' },
+];
+---
+
+<MainLayout
+  title="Blog | Transformia"
+  description="Artículos de Transformia sobre desarrollo de software a medida, inteligencia artificial aplicada y arquitectura de sistemas."
+  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+>
+  <section class="blog-section">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      <SectionHeader
+        title="BLOG"
+        badge="TRANSFORMIA"
+        subtitle="Ideas y aprendizajes de proyectos reales de desarrollo de software e inteligencia artificial aplicada."
+      />
+
+      {allPosts.length > 0 ? (
+        <div class="posts-grid">
+          {allPosts.map((entry) => <BlogPostCard entry={entry} />)}
+        </div>
+      ) : (
+        <p class="empty-state">Todavía no hay artículos publicados. Volvé pronto.</p>
+      )}
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .blog-section {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  @media (max-width: 768px) {
+    .blog-section {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>

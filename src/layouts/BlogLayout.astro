@@ -1,0 +1,116 @@
+---
+// src/layouts/BlogLayout.astro
+import { render, type CollectionEntry } from 'astro:content';
+import MainLayout from './MainLayout.astro';
+import GridBackground from '../components/ui/GridBackground.astro';
+import { breadcrumbSchema } from '../lib/seo/breadcrumb';
+import { articleSchema } from '../lib/seo/article';
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, pubDate, updatedDate } = entry.data;
+const { Content } = await render(entry);
+
+const formattedDate = pubDate.toLocaleDateString('es-CO', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const url = new URL(`/blog/${entry.id}`, Astro.site).toString();
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Blog', path: '/blog' },
+  { name: title, path: `/blog/${entry.id}` },
+];
+---
+
+<MainLayout
+  title={`${title} | Blog Transformia`}
+  description={description}
+  type="article"
+  jsonLd={[
+    breadcrumbSchema(breadcrumbItems, Astro.site!),
+    articleSchema({ title, description, pubDate, updatedDate, url, image: new URL('/og-default.jpg', Astro.site).toString() }),
+  ]}
+>
+  <article class="post">
+    <GridBackground opacity={0.25} />
+    <div class="container">
+      <span class="post-date">{formattedDate}</span>
+      <h1 class="post-title">{title}</h1>
+      <div class="post-body">
+        <Content />
+      </div>
+      <a href="/blog" class="back-link">← Ver todos los artículos</a>
+    </div>
+  </article>
+</MainLayout>
+
+<style>
+  .post {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    color: var(--neon-blue);
+    font-size: 0.9rem;
+  }
+
+  .post-title {
+    font-family: var(--font-body);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin: 1rem 0 2rem;
+  }
+
+  .post-body {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+  }
+
+  .post-body :global(h2) {
+    font-family: var(--font-body);
+    color: var(--neon-purple);
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+  }
+
+  .post-body :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    margin: 0 0 1.25rem 1.5rem;
+  }
+
+  .post-body :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 3rem;
+    color: var(--neon-purple);
+    font-family: var(--font-mono);
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+</style>
