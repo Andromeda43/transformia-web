@@ -14,8 +14,8 @@ interface Props {
 const { entry } = Astro.props;
 const { cliente, industria, dolor, solucion, capacidades, stack, resultado, status } = entry.data;
 
-const pageTitle = `${cliente} — Caso de éxito | Transformia`;
-const description = `${cliente} (${industria}): ${dolor.slice(0, 140)}...`;
+const pageTitle = `${cliente} — ${status === 'propuesta' ? 'Propuesta Técnica' : 'Caso de Éxito'} | Transformia`;
+const description = `${cliente} (${industria})${status === 'propuesta' ? ' — propuesta técnica no ejecutada' : ''}: ${dolor.slice(0, 140)}...`;
 const breadcrumbItems = [
   { name: 'Inicio', path: '/' },
   { name: 'Casos de éxito', path: '/casos-de-exito' },

@@ -18,6 +18,7 @@ const formattedDate = pubDate.toLocaleDateString('es-CO', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+  timeZone: 'UTC',
 });
 
 const url = new URL(`/blog/${entry.id}`, Astro.site).toString();
