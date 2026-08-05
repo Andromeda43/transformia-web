@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cotizacion
+
+Sitemap: https://transformia.dev/sitemap-index.xml
