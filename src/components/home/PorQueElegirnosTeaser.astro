@@ -1,0 +1,98 @@
+---
+// src/components/home/PorQueElegirnosTeaser.astro
+import SectionHeader from '../ui/SectionHeader.astro';
+import GlowOrbs from '../ui/GlowOrbs.astro';
+
+const diferenciadores = [
+  { title: 'Especialización en IA', text: 'No agregamos IA como feature — la aplicamos donde hay un cuello de botella operativo real que justifica automatizarlo.' },
+  { title: 'Equipo boutique', text: 'Sin capas de gestión innecesarias entre vos y quien construye tu sistema. Decisiones rápidas, entregas rápidas.' },
+  { title: 'Arquitectura antes que código', text: 'Modelamos el problema antes de escribir producción, para no pagar deuda técnica evitable más adelante.' },
+];
+---
+
+<section class="porque-teaser">
+  <GlowOrbs count={2} />
+  <div class="container">
+    <SectionHeader
+      title="POR QUÉ ELEGIRNOS"
+      subtitle="En Transformia llevamos tus ideas al siguiente nivel, con soluciones tecnológicas que marcan la diferencia en un mercado en constante evolución."
+    />
+    <div class="diferenciadores-grid">
+      {diferenciadores.map((d) => (
+        <div class="diferenciador-card">
+          <h3>{d.title}</h3>
+          <p>{d.text}</p>
+        </div>
+      ))}
+    </div>
+    <a href="/nosotros" class="teaser-cta">Conocer más sobre nosotros →</a>
+  </div>
+</section>
+
+<style>
+  .porque-teaser {
+    position: relative;
+    width: 100%;
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 6rem 0;
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .diferenciadores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .diferenciador-card {
+    padding: 1.75rem;
+    background: rgba(26, 20, 45, 0.6);
+    border: 1px solid rgba(var(--neon-purple-rgb), 0.25);
+    border-radius: var(--radius-card);
+    text-align: center;
+  }
+
+  .diferenciador-card h3 {
+    font-family: var(--font-body);
+    color: var(--neon-purple);
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .diferenciador-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .teaser-cta {
+    margin-top: 3rem;
+    color: var(--neon-purple);
+    font-family: var(--font-mono);
+    text-decoration: none;
+  }
+
+  .teaser-cta:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .porque-teaser {
+      padding: 4rem 0;
+    }
+  }
+</style>

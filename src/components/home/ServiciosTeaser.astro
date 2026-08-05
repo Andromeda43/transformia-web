@@ -1,0 +1,70 @@
+---
+// src/components/home/ServiciosTeaser.astro
+import SectionHeader from '../ui/SectionHeader.astro';
+import GridBackground from '../ui/GridBackground.astro';
+import SolucionesTabCards from '../SolucionesComponents/SolucionesTabCards.astro';
+---
+
+<section class="servicios-teaser">
+  <GridBackground opacity={0.3} perspective />
+  <div class="container">
+    <SectionHeader
+      title="QUÉ HACEMOS"
+      badge="ALTA TECNOLOGÍA"
+      subtitle="Siete líneas de trabajo, un mismo equipo boutique especializado en inteligencia artificial aplicada."
+    />
+    <div class="tab-cards-wrapper">
+      <SolucionesTabCards />
+    </div>
+    <a href="/servicios" class="teaser-cta">Ver todos los servicios →</a>
+  </div>
+</section>
+
+<style>
+  .servicios-teaser {
+    position: relative;
+    width: 100%;
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 6rem 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-cards-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 2rem;
+  }
+
+  .teaser-cta {
+    margin-top: 3rem;
+    color: var(--neon-purple);
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .teaser-cta:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .servicios-teaser {
+      padding: 4rem 0;
+    }
+  }
+</style>

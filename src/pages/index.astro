@@ -1,68 +1,24 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
 import Hero from '../components/Hero.astro';
-import Soluciones from '../components/Soluciones.astro';
+import ServiciosTeaser from '../components/home/ServiciosTeaser.astro';
+import CasosDeExitoTeaser from '../components/home/CasosDeExitoTeaser.astro';
+import PorQueElegirnosTeaser from '../components/home/PorQueElegirnosTeaser.astro';
+import BlogTeaser from '../components/home/BlogTeaser.astro';
 import CallToAction from '../components/CallToAction.astro';
 ---
 
-<Layout title="Transformia - Soluciones digitales a medida">
+<Layout
+  title="Transformia - Software a medida e Inteligencia Artificial aplicada"
+  description="Transformia diseña y desarrolla software a medida para empresas en LatAm, con especialización en inteligencia artificial aplicada y un equipo boutique enfocado en velocidad de entrega."
+>
   <Hero />
+  <ServiciosTeaser />
+  <CasosDeExitoTeaser />
+  <PorQueElegirnosTeaser />
+  <BlogTeaser />
 
-  <section id="soluciones" class="section-anchor">
-    <Soluciones />
-  </section>
-
-  <section id="contactanos" class="section-anchor">
+  <section id="contactanos">
     <CallToAction />
   </section>
 </Layout>
-
-<style>
-  /* Estilos para las secciones de anclaje */
-  .section-anchor {
-    position: relative;
-    /* Ajuste del margen de scroll para que las secciones aparezcan completas al inicio */
-    scroll-margin-top: 80px; /* Altura del navbar */
-  }
-</style>
-
-<!-- Script de navegación limpio sin logs -->
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todos los enlaces del navbar (anclas locales "#..." y "/#...")
-    const navLinks = document.querySelectorAll('a[href^="#"], a[href^="/#"]');
-
-    // Agregar controlador de eventos a cada enlace
-    navLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        // Prevenir comportamiento por defecto
-        e.preventDefault();
-
-        // Obtener el ID objetivo
-        const targetId = this.getAttribute('href');
-
-        // Validar enlace
-        if (!targetId || targetId === '#' || targetId === '/#') return;
-
-        // Buscar el elemento por ID (sin el # ni el / inicial)
-        const cleanId = targetId.replace(/^\/?#/, '');
-        const targetElement = document.getElementById(cleanId);
-        
-        if (targetElement) {
-          // Usar el método nativo scrollIntoView para navegación
-          targetElement.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-          
-          // Cerrar menú móvil si está abierto
-          const mobileMenu = document.getElementById('mobile-menu');
-          if (mobileMenu && mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        }
-      });
-    });
-  });
-</script>

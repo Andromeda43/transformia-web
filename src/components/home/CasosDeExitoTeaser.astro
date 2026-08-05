@@ -1,0 +1,71 @@
+---
+// src/components/home/CasosDeExitoTeaser.astro
+import { getCollection } from 'astro:content';
+import SectionHeader from '../ui/SectionHeader.astro';
+import GridBackground from '../ui/GridBackground.astro';
+import CaseStudyCard from '../CaseStudyCard.astro';
+
+const featured = (await getCollection('casos-de-exito', ({ data }) => data.featured)).slice(0, 3);
+---
+
+<section class="casos-teaser">
+  <GridBackground opacity={0.25} />
+  <div class="container">
+    <SectionHeader
+      title="CASOS DE ÉXITO"
+      badge="PROYECTOS REALES"
+      subtitle="Sistemas que ya están resolviendo problemas operativos concretos para nuestros clientes."
+    />
+    <div class="cards-grid">
+      {featured.map((entry) => <CaseStudyCard entry={entry} />)}
+    </div>
+    <a href="/casos-de-exito" class="teaser-cta">Ver todos los casos de éxito →</a>
+  </div>
+</section>
+
+<style>
+  .casos-teaser {
+    position: relative;
+    width: 100%;
+    background-color: var(--dark-purple);
+    color: white;
+    padding: 6rem 0;
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .teaser-cta {
+    margin-top: 3rem;
+    color: var(--neon-purple);
+    font-family: var(--font-mono);
+    text-decoration: none;
+  }
+
+  .teaser-cta:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .casos-teaser {
+      padding: 4rem 0;
+    }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+// src/components/home/BlogTeaser.astro
+import { getCollection } from 'astro:content';
+import SectionHeader from '../ui/SectionHeader.astro';
+import GridBackground from '../ui/GridBackground.astro';
+import BlogPostCard from '../BlogPostCard.astro';
+
+const latest = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+{latest.length > 0 && (
+  <section class="blog-teaser">
+    <GridBackground opacity={0.25} />
+    <div class="container">
+      <SectionHeader
+        title="DEL BLOG"
+        subtitle="Ideas y aprendizajes de proyectos reales de desarrollo de software e inteligencia artificial aplicada."
+      />
+      <div class="posts-grid">
+        {latest.map((entry) => <BlogPostCard entry={entry} />)}
+      </div>
+      <a href="/blog" class="teaser-cta">Ver todos los artículos →</a>
+    </div>
+  </section>
+)}
+
+<style>
+  .blog-teaser {
+    position: relative;
+    width: 100%;
+    background-color: var(--dark-purple);
+    color: white;
+    padding: 6rem 0;
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .teaser-cta {
+    margin-top: 3rem;
+    color: var(--neon-purple);
+    font-family: var(--font-mono);
+    text-decoration: none;
+  }
+
+  .teaser-cta:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .blog-teaser {
+      padding: 4rem 0;
+    }
+  }
+</style>
