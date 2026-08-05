@@ -1,0 +1,126 @@
+---
+// src/pages/servicios/database.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import DatabaseSlide from '../../components/SolucionesComponents/CarouselSlides/DatabaseSlide.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import { serviceSchema } from '../../lib/seo/service';
+
+const url = new URL('/servicios/database', Astro.site).toString();
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: 'Bases de Datos', path: '/servicios/database' },
+];
+
+const relatedSlugs = ['tesla-gps'];
+const relatedCases = (await getCollection('casos-de-exito')).filter((c) => relatedSlugs.includes(c.id));
+---
+
+<MainLayout
+  title="Gestión de Bases de Datos | Transformia"
+  description="Diseño, implementación y optimización de bases de datos SQL y NoSQL para operaciones que necesitan rendimiento, seguridad y trazabilidad reales."
+  jsonLd={[
+    breadcrumbSchema(breadcrumbItems, Astro.site!),
+    serviceSchema({ name: 'Gestión de Bases de Datos', description: 'Diseño e implementación de bases de datos SQL y NoSQL.', url }),
+  ]}
+>
+  <section class="service-page">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      <SectionHeader title="GESTIÓN DE BASES DE DATOS" badge="SERVICIO" />
+
+      <DatabaseSlide />
+
+      <div class="service-content">
+        <section class="block">
+          <h2>Qué resuelve</h2>
+          <p>
+            Un modelo de datos mal diseñado se nota tarde — cuando el sistema ya está en producción y cada consulta lenta o cada tabla sin normalizar cuesta caro cambiar. Diseñamos el modelo de datos pensando en el volumen y el patrón de acceso real de tu operación desde el principio.
+          </p>
+        </section>
+
+        <section class="block">
+          <h2>Cómo trabajamos</h2>
+          <p>
+            Trabajamos tanto con bases relacionales (PostgreSQL) como no relacionales (MongoDB, Redis) según lo que el caso de uso pida, con seguridad a nivel de datos cuando el sistema lo requiere (por ejemplo, Row Level Security en Supabase para control de acceso por rol) y funciones transaccionales para operaciones que no pueden quedar a mitad de camino.
+          </p>
+        </section>
+
+        {relatedCases.length > 0 && (
+          <section class="block">
+            <h2>Casos de éxito relacionados</h2>
+            <div class="related-grid">
+              {relatedCases.map((entry) => <CaseStudyCard entry={entry} />)}
+            </div>
+          </section>
+        )}
+
+        <a href="/contacto" class="cta-link">Hablemos de tu proyecto →</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .service-page {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-content {
+    margin-top: 3rem;
+  }
+
+  .block {
+    margin-bottom: 2.5rem;
+  }
+
+  .block h2 {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: var(--neon-purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .block p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.9rem 1.75rem;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    border-radius: 4px;
+    color: white;
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .service-page {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+// src/pages/servicios/asesoria.astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import AsesoriaSlide from '../../components/SolucionesComponents/CarouselSlides/AsesoriaSlide.astro';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import { serviceSchema } from '../../lib/seo/service';
+
+const url = new URL('/servicios/asesoria', Astro.site).toString();
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: 'Asesoría en Procesos', path: '/servicios/asesoria' },
+];
+---
+
+<MainLayout
+  title="Asesoría en Optimización de Procesos | Transformia"
+  description="Identificamos cuellos de botella operativos y proponemos soluciones tecnológicas concretas para eliminarlos, antes de comprometer presupuesto en desarrollo."
+  jsonLd={[
+    breadcrumbSchema(breadcrumbItems, Astro.site!),
+    serviceSchema({ name: 'Asesoría en Optimización de Procesos', description: 'Auditoría y estrategia para eliminar cuellos de botella operativos.', url }),
+  ]}
+>
+  <section class="service-page">
+    <GridBackground opacity={0.3} />
+    <div class="container">
+      <SectionHeader title="ASESORÍA EN OPTIMIZACIÓN DE PROCESOS" badge="SERVICIO" />
+
+      <AsesoriaSlide />
+
+      <div class="service-content">
+        <section class="block">
+          <h2>Qué resuelve</h2>
+          <p>
+            No todos los problemas operativos necesitan un sistema nuevo desde el día uno. Antes de proponer desarrollo, auditamos el proceso real, identificamos dónde se pierde tiempo o plata, y proponemos la intervención mínima que resuelve el cuello de botella — que a veces es reordenar un flujo, y a veces sí es construir software.
+          </p>
+        </section>
+
+        <section class="block">
+          <h2>Cómo trabajamos</h2>
+          <p>
+            Auditoría del proceso actual, definición de la estrategia de intervención y acompañamiento en la implementación, con foco en retorno medible — no en vender horas de consultoría sin un cambio operativo concreto al final.
+          </p>
+        </section>
+
+        <a href="/contacto" class="cta-link">Hablemos de tu proyecto →</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .service-page {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .service-content {
+    margin-top: 3rem;
+  }
+
+  .block {
+    margin-bottom: 2.5rem;
+  }
+
+  .block h2 {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: var(--neon-purple);
+    margin-bottom: 0.75rem;
+  }
+
+  .block p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+  }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.9rem 1.75rem;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    border-radius: 4px;
+    color: white;
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .service-page {
+      padding: 8rem 0 4rem;
+    }
+  }
+</style>
