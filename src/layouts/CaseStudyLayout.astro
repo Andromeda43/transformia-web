@@ -5,21 +5,27 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 import GridBackground from '../components/ui/GridBackground.astro';
 import TechBadge from '../components/ui/TechBadge.astro';
 import { breadcrumbSchema } from '../lib/seo/breadcrumb';
-import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  entry: CollectionEntry<'casos-de-exito'>;
+  slug: string;
+  cliente: string;
+  industria: string;
+  dolor: string;
+  solucion: string;
+  capacidades: string[];
+  stack: string[];
+  resultado: string;
+  status: 'ejecutado' | 'propuesta';
 }
 
-const { entry } = Astro.props;
-const { cliente, industria, dolor, solucion, capacidades, stack, resultado, status } = entry.data;
+const { slug, cliente, industria, dolor, solucion, capacidades, stack, resultado, status } = Astro.props;
 
 const pageTitle = `${cliente} — ${status === 'propuesta' ? 'Propuesta Técnica' : 'Caso de Éxito'} | Transformia`;
 const description = `${cliente} (${industria})${status === 'propuesta' ? ' — propuesta técnica no ejecutada' : ''}: ${dolor.slice(0, 140)}...`;
 const breadcrumbItems = [
   { name: 'Inicio', path: '/' },
   { name: 'Casos de éxito', path: '/casos-de-exito' },
-  { name: cliente, path: `/casos-de-exito/${entry.id}` },
+  { name: cliente, path: `/casos-de-exito/${slug}` },
 ];
 ---
 

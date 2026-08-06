@@ -1,15 +1,14 @@
 ---
 // src/pages/casos-de-exito/index.astro
-import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 import GridBackground from '../../components/ui/GridBackground.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import CaseStudyCard from '../../components/CaseStudyCard.astro';
 import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import { casosDeExito } from '../../data/casosDeExito';
 
-const allCases = await getCollection('casos-de-exito');
-const ejecutados = allCases.filter((c) => c.data.status === 'ejecutado');
-const propuestas = allCases.filter((c) => c.data.status === 'propuesta');
+const ejecutados = casosDeExito.filter((c) => c.status === 'ejecutado');
+const propuestas = casosDeExito.filter((c) => c.status === 'propuesta');
 
 const breadcrumbItems = [
   { name: 'Inicio', path: '/' },
@@ -32,7 +31,7 @@ const breadcrumbItems = [
       />
 
       <div class="cards-grid">
-        {ejecutados.map((entry) => <CaseStudyCard entry={entry} />)}
+        {ejecutados.map((c) => <CaseStudyCard {...c} />)}
       </div>
 
       {propuestas.length > 0 && (
@@ -42,7 +41,7 @@ const breadcrumbItems = [
             Proyectos formulados por Transformia que aún no fueron financiados o ejecutados. Se documentan por transparencia, no como resultados entregados.
           </p>
           <div class="cards-grid">
-            {propuestas.map((entry) => <CaseStudyCard entry={entry} />)}
+            {propuestas.map((c) => <CaseStudyCard {...c} />)}
           </div>
         </div>
       )}

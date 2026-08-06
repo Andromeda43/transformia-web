@@ -1,0 +1,23 @@
+---
+// src/pages/casos-de-exito/feriaapp.astro
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+---
+
+<CaseStudyLayout
+  slug="feriaapp"
+  cliente="FeriaApp (patrocinado por Frigorinoquia)"
+  industria="Marketplace de ganado — Orinoquía colombiana"
+  dolor="La compraventa de ganado en la Orinoquía colombiana (Casanare, Meta, Arauca, Vichada) ocurre en un mercado fragmentado y mayormente informal: sin canal directo entre ganadero y comerciante, sin forma de validar confianza entre desconocidos, comunicación lenta por llamadas o mensajes sueltos sin seguimiento estructurado, y una gran parte de los usuarios potenciales operan con conectividad rural intermitente que la mayoría de apps no contempla."
+  solucion="Una aplicación móvil (Expo + React Native) que funciona como marketplace de ganado, conectando dos roles: ganaderos, que publican animales de forma gratuita e ilimitada, y comerciantes, que acceden mediante membresía mensual. Sobre esa base, la plataforma resuelve solicitudes de compra estructuradas, chat en tiempo real, reseñas y calificación de perfiles, y búsqueda avanzada por ubicación geográfica — todo optimizado para conectividad limitada en zonas rurales."
+  capacidades={[
+    'Registro y publicación de animales, gratuita e ilimitada para ganaderos',
+    'Acceso de comerciantes por membresía mensual con notificación de vencimiento',
+    'Solicitudes de compra sobre publicaciones específicas y chat en tiempo real',
+    'Sistema de reseñas y calificación de perfiles',
+    'Búsqueda avanzada con filtros y ubicación geográfica por departamento/municipio',
+    'Notificaciones push e in-app, diseño optimizado para conectividad limitada',
+  ]}
+  stack={['React Native (Expo)', 'TypeScript', 'Supabase', 'TanStack React Query', 'Zustand']}
+  resultado="FeriaApp le da a la Orinoquía ganadera un canal formal de compraventa que antes no existía: los ganaderos publican sin costo, los comerciantes acceden mediante un modelo de membresía que sostiene la operación, y ambos negocian con chat directo, solicitudes rastreables y reputación visible por reseñas — pensado para funcionar incluso con la conectividad limitada típica de las fincas alejadas."
+  status="ejecutado"
+/>

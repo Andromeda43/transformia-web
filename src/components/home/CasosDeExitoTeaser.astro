@@ -1,11 +1,11 @@
 ---
 // src/components/home/CasosDeExitoTeaser.astro
-import { getCollection } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
 import GridBackground from '../ui/GridBackground.astro';
 import CaseStudyCard from '../CaseStudyCard.astro';
+import { casosDeExito } from '../../data/casosDeExito';
 
-const featured = (await getCollection('casos-de-exito', ({ data }) => data.featured)).slice(0, 3);
+const featured = casosDeExito.filter((c) => c.featured).slice(0, 3);
 ---
 
 <section class="casos-teaser">
@@ -17,7 +17,7 @@ const featured = (await getCollection('casos-de-exito', ({ data }) => data.featu
       subtitle="Sistemas que ya están resolviendo problemas operativos concretos para nuestros clientes."
     />
     <div class="cards-grid">
-      {featured.map((entry) => <CaseStudyCard entry={entry} />)}
+      {featured.map((c) => <CaseStudyCard {...c} />)}
     </div>
     <a href="/casos-de-exito" class="teaser-cta">Ver todos los casos de éxito →</a>
   </div>

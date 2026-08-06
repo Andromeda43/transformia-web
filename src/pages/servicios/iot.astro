@@ -5,7 +5,7 @@ import GridBackground from '../../components/ui/GridBackground.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import IoTSlide from '../../components/SolucionesComponents/CarouselSlides/IoTSlide.astro';
 import CaseStudyCard from '../../components/CaseStudyCard.astro';
-import { getCollection } from 'astro:content';
+import { casosDeExito } from '../../data/casosDeExito';
 import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 import { serviceSchema } from '../../lib/seo/service';
 
@@ -17,7 +17,7 @@ const breadcrumbItems = [
 ];
 
 const relatedSlugs = ['frigorinoquia', 'tracing-colombina'];
-const relatedCases = (await getCollection('casos-de-exito')).filter((c) => relatedSlugs.includes(c.id));
+const relatedCases = casosDeExito.filter((c) => relatedSlugs.includes(c.slug));
 ---
 
 <MainLayout
@@ -54,7 +54,7 @@ const relatedCases = (await getCollection('casos-de-exito')).filter((c) => relat
           <section class="block">
             <h2>Casos de éxito relacionados</h2>
             <div class="related-grid">
-              {relatedCases.map((entry) => <CaseStudyCard entry={entry} />)}
+              {relatedCases.map((c) => <CaseStudyCard {...c} />)}
             </div>
           </section>
         )}

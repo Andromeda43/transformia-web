@@ -1,0 +1,23 @@
+---
+// src/pages/casos-de-exito/tracing-b4.astro
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+---
+
+<CaseStudyLayout
+  slug="tracing-b4"
+  cliente="ACFEC — Organizaciones ganaderas campesinas de la Orinoquía"
+  industria="Trazabilidad agroalimentaria bovina"
+  dolor="Las organizaciones de Agricultura Campesina, Familiar, Étnica y Comunitaria (ACFEC) bovinas de la Orinoquía colombiana (Boyacá, Casanare, Arauca y Meta) están excluidas de las cadenas agroalimentarias formales: más del 80% no tiene registro activo en SINIGAN, los intermediarios informales capturan hasta el 40% del valor final por falta de registros verificables, entre el 8% y el 15% de los bovinos son rechazados en planta por documentación sanitaria incompleta, y las soluciones de trazabilidad comerciales existentes no aplican a un contexto con conectividad rural del 18%-34%."
+  solucion="TRACING B-4.0: una propuesta técnica de sistema de trazabilidad agroalimentaria co-diseñado con las comunidades ACFEC, con cuatro módulos — trazabilidad de campo con identificación RFID y app móvil offline-first, integración oficial con SINIGAN-ICA en planta de beneficio, comercialización con código QR trazable al consumidor final, y gobernanza de datos colectiva donde la información queda en propiedad de cada organización ACFEC, no de la plataforma."
+  capacidades={[
+    'Identificación individual por arete RFID con lectura desde app móvil offline-first',
+    'Sincronización automática asíncrona en cuanto detecta señal',
+    'Integración con el protocolo oficial API SINIGAN-ICA',
+    'Certificado digital de inocuidad y origen vinculado al historial RFID',
+    'Código QR trazable al consumidor final con panel de precios de mercado en tiempo real',
+    'Dashboard de gobernanza de datos por organización, con control de acceso y auditoría',
+  ]}
+  stack={['RFID', 'App móvil offline-first (Android/iOS)', 'Integración SINIGAN-ICA', 'Cloud en COP (AWS/Azure Colombia)']}
+  resultado="Propuesta presentada a la Convocatoria No. 47 de Minciencias/SGR, con un piloto especificado de 25 fincas y ~2.500 bovinos en cuatro departamentos. El proyecto no fue financiado ni ejecutado — quedó en fase de formulación técnica. Ninguna cifra de impacto fue verificada en campo."
+  status="propuesta"
+/>
