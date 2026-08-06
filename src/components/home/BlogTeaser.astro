@@ -3,6 +3,7 @@
 import { getCollection } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
 import GridBackground from '../ui/GridBackground.astro';
+import GlowOrbs from '../ui/GlowOrbs.astro';
 import BlogPostCard from '../BlogPostCard.astro';
 
 const latest = (await getCollection('blog', ({ data }) => !data.draft))
@@ -12,11 +13,14 @@ const latest = (await getCollection('blog', ({ data }) => !data.draft))
 
 {latest.length > 0 && (
   <section class="blog-teaser">
+    <div class="section-transition"></div>
     <GridBackground opacity={0.25} />
+    <GlowOrbs count={2} />
     <div class="container">
       <SectionHeader
         title="DEL BLOG"
-        subtitle="Ideas y aprendizajes de proyectos reales de desarrollo de software e inteligencia artificial aplicada."
+        badge="IDEAS Y APRENDIZAJES"
+        subtitle="Notas de proyectos reales de desarrollo de software e inteligencia artificial aplicada."
       />
       <div class="posts-grid">
         {latest.map((entry) => <BlogPostCard entry={entry} />)}
@@ -34,6 +38,17 @@ const latest = (await getCollection('blog', ({ data }) => !data.draft))
     color: white;
     padding: 6rem 0;
     overflow: hidden;
+  }
+
+  .section-transition {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--dark-purple));
+    z-index: 1;
+    pointer-events: none;
   }
 
   .container {

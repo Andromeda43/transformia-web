@@ -2,6 +2,7 @@
 // src/components/home/CasosDeExitoTeaser.astro
 import SectionHeader from '../ui/SectionHeader.astro';
 import GridBackground from '../ui/GridBackground.astro';
+import GlowOrbs from '../ui/GlowOrbs.astro';
 import CaseStudyCard from '../CaseStudyCard.astro';
 import { casosDeExito } from '../../data/casosDeExito';
 
@@ -9,7 +10,9 @@ const featured = casosDeExito.filter((c) => c.featured).slice(0, 3);
 ---
 
 <section class="casos-teaser">
+  <div class="section-transition"></div>
   <GridBackground opacity={0.25} />
+  <GlowOrbs count={2} />
   <div class="container">
     <SectionHeader
       title="CASOS DE ÉXITO"
@@ -31,6 +34,17 @@ const featured = casosDeExito.filter((c) => c.featured).slice(0, 3);
     color: white;
     padding: 6rem 0;
     overflow: hidden;
+  }
+
+  .section-transition {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--dark-purple));
+    z-index: 1;
+    pointer-events: none;
   }
 
   .container {

@@ -1,4 +1,7 @@
 // src/data/casosDeExito.ts
+import type { ImageMetadata } from 'astro';
+import frigorinoquiaThumb from '../assets/casos-de-exito/frigorinoquia/screenshot-reporte-beneficio-animales.png';
+
 export interface CasoDeExito {
   slug: string;
   cliente: string;
@@ -6,6 +9,7 @@ export interface CasoDeExito {
   resultadoCorto: string;
   status: 'ejecutado' | 'propuesta';
   featured: boolean;
+  image?: ImageMetadata;
 }
 
 export const casosDeExito: CasoDeExito[] = [
@@ -26,6 +30,7 @@ export const casosDeExito: CasoDeExito[] = [
       'Frigorinoquia pasa de un proceso documentado en papel y Excel a una suite conectada donde cada animal, lote, corte y despacho queda trazado de punta a punta, con el peso capturado directamente de báscula, las etiquetas impresas automáticamente, el inventario descontado en tiempo real, y la cobranza generada a partir de los mismos datos operativos, sin doble digitación.',
     status: 'ejecutado',
     featured: true,
+    image: frigorinoquiaThumb,
   },
   {
     slug: 'tracing-colombina',
