@@ -1,20 +1,21 @@
 ---
 // src/components/CaseStudyCard.astro
-import type { CollectionEntry } from 'astro:content';
-
 interface Props {
-  entry: CollectionEntry<'casos-de-exito'>;
+  slug: string;
+  cliente: string;
+  industria: string;
+  resultadoCorto: string;
+  status: 'ejecutado' | 'propuesta';
 }
 
-const { entry } = Astro.props;
-const { cliente, industria, resultado, status } = entry.data;
+const { slug, cliente, industria, resultadoCorto, status } = Astro.props;
 ---
 
-<a href={`/casos-de-exito/${entry.id}`} class="case-card">
+<a href={`/casos-de-exito/${slug}`} class="case-card">
   {status === 'propuesta' && <span class="case-card-badge">Propuesta técnica</span>}
   <h3 class="case-card-title">{cliente}</h3>
   <p class="case-card-industry">{industria}</p>
-  <p class="case-card-result">{resultado.slice(0, 140)}...</p>
+  <p class="case-card-result">{resultadoCorto.slice(0, 140)}...</p>
   <span class="case-card-link">Ver caso completo →</span>
 </a>
 
