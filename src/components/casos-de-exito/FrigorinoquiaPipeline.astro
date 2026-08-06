@@ -1,0 +1,146 @@
+---
+// src/components/casos-de-exito/FrigorinoquiaPipeline.astro
+const nodes = [
+  { label: 'Apertura', desc: 'Apertura de lote' },
+  { label: 'Presa', desc: 'Pesaje individual' },
+  { label: 'Granel', desc: 'Pesaje por canastilla' },
+  { label: 'Despacho', desc: 'Guías y certificados' },
+  { label: 'Reportes', desc: 'KPIs en tiempo real' },
+  { label: 'Cobranza', desc: 'Liquidación de maquila' },
+];
+---
+
+<div class="pipeline" id="frigorinoquia-pipeline">
+  <svg class="pipeline-lines" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="100" y1="20" x2="1100" y2="20" class="pipeline-line-track"></line>
+    <line x1="100" y1="20" x2="1100" y2="20" class="pipeline-line-draw"></line>
+  </svg>
+  <div class="pipeline-nodes">
+    {nodes.map((node) => (
+      <div class="pipeline-node">
+        <span class="node-dot"></span>
+        <span class="node-label">{node.label}</span>
+        <span class="node-desc">{node.desc}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .pipeline {
+    position: relative;
+    padding: 3rem 0 1rem;
+  }
+
+  .pipeline-lines {
+    position: absolute;
+    top: 1.6rem;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    display: none;
+  }
+
+  .pipeline-line-track {
+    stroke: rgba(var(--neon-purple-rgb), 0.15);
+    stroke-width: 2;
+  }
+
+  .pipeline-line-draw {
+    stroke: var(--neon-purple);
+    stroke-width: 2;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+
+  .pipeline-nodes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pipeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    opacity: 0;
+  }
+
+  .node-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--dark-bg);
+    border: 2px solid var(--neon-purple);
+    box-shadow: 0 0 10px rgba(var(--neon-purple-rgb), 0.5);
+  }
+
+  .node-label {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 600;
+  }
+
+  .node-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  @media (min-width: 769px) {
+    .pipeline-lines {
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pipeline-nodes {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('frigorinoquia-pipeline');
+    if (!container) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const nodes = container.querySelectorAll('.pipeline-node');
+    const line = container.querySelector('.pipeline-line-draw');
+
+    if (prefersReducedMotion) {
+      gsap.set(nodes, { opacity: 1 });
+      if (line) gsap.set(line, { strokeDashoffset: 0 });
+      return;
+    }
+
+    ScrollTrigger.create({
+      trigger: container,
+      start: 'top 75%',
+      once: true,
+      onEnter: () => {
+        if (line) {
+          gsap.to(line, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut' });
+        }
+        gsap.to(nodes, {
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.15,
+          ease: 'power2.out',
+          delay: 0.2,
+        });
+      },
+    });
+  });
+</script>

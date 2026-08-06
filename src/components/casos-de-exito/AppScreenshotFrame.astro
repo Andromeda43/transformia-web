@@ -1,0 +1,80 @@
+---
+// src/components/casos-de-exito/AppScreenshotFrame.astro
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  label?: string;
+}
+
+const { src, alt, label } = Astro.props;
+---
+
+<figure class="screenshot-frame">
+  <div class="frame-chrome">
+    <span class="frame-dot frame-dot--red"></span>
+    <span class="frame-dot frame-dot--yellow"></span>
+    <span class="frame-dot frame-dot--green"></span>
+    {label && <span class="frame-label">{label}</span>}
+  </div>
+  <Image src={src} alt={alt} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 600px" loading="lazy" />
+</figure>
+
+<style>
+  .screenshot-frame {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid rgba(var(--neon-purple-rgb), 0.25);
+    background: rgba(10, 10, 20, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .screenshot-frame:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px rgba(var(--neon-purple-rgb), 0.2);
+  }
+
+  .frame-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(var(--neon-purple-rgb), 0.2);
+  }
+
+  .frame-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+
+  .frame-dot--red {
+    background: #ff5f57;
+  }
+
+  .frame-dot--yellow {
+    background: #febc2e;
+  }
+
+  .frame-dot--green {
+    background: #28c840;
+  }
+
+  .frame-label {
+    margin-left: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .screenshot-frame :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
