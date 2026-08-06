@@ -1,0 +1,399 @@
+---
+// src/pages/casos-de-exito/frigorinoquia.astro
+import { Image } from 'astro:assets';
+import MainLayout from '../../layouts/MainLayout.astro';
+import GridBackground from '../../components/ui/GridBackground.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import TechBadge from '../../components/ui/TechBadge.astro';
+import AppScreenshotFrame from '../../components/casos-de-exito/AppScreenshotFrame.astro';
+import FrigorinoquiaPipeline from '../../components/casos-de-exito/FrigorinoquiaPipeline.astro';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+
+import screenshotApertura from '../../assets/casos-de-exito/frigorinoquia/screenshot-apertura.png';
+import screenshotPesaje from '../../assets/casos-de-exito/frigorinoquia/screenshot-pesaje.png';
+import screenshotRecepcionDashboard from '../../assets/casos-de-exito/frigorinoquia/screenshot-recepcion-dashboard.png';
+import screenshotDespachoDesposte from '../../assets/casos-de-exito/frigorinoquia/screenshot-despacho-desposte.png';
+import screenshotReporteBeneficio from '../../assets/casos-de-exito/frigorinoquia/screenshot-reporte-beneficio-animales.png';
+import fotoImpresora from '../../assets/casos-de-exito/frigorinoquia/foto-etiqueta-zpl-impresora-test.jpg';
+import fotoProductoTerminado from '../../assets/casos-de-exito/frigorinoquia/foto-etiqueta-zpl-producto-terminado.jpg';
+import screenshotGuiaDespacho from '../../assets/casos-de-exito/frigorinoquia/screenshot-guia-despacho.png';
+
+const breadcrumbItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Casos de éxito', path: '/casos-de-exito' },
+  { name: 'Frigorinoquia', path: '/casos-de-exito/frigorinoquia' },
+];
+
+const capacidades = [
+  'app_apertura: apertura de lote, fichas técnicas de cortes, consolidados diarios',
+  'app_presa y app_granel: pesaje en báscula serial en tiempo real con impresión automática de etiqueta ZPL',
+  'app_despacho: guías, certificados de rendimiento y calidad, despacho de canales enteras y de cortes empacados',
+  'app_reportes: dashboard de KPIs y exportación a PDF/Excel',
+  'app_cobranza: liquidación automática de maquila y cuentas por cobrar',
+  'Trazabilidad completa por lote: beneficio → desposte → pesaje → despacho → cliente',
+];
+
+const stack = ['Python', 'FastAPI', 'Supabase (PostgreSQL)', 'PySerial', 'ZPL/Zebra'];
+---
+
+<MainLayout
+  title="Frigorinoquia — Caso de Éxito | Transformia"
+  description="Suite de 6 aplicaciones construida por Transformia para Frigorinoquia: trazabilidad completa de beneficio y desposte, desde el animal hasta el despacho, con captura de datos en tiempo real."
+  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+>
+  <article class="case-frigorinoquia">
+    <GridBackground opacity={0.3} perspective />
+
+    <section class="case-hero">
+      <div class="container container--hero">
+        <SectionHeader
+          title="FRIGORINOQUIA"
+          badge="CASO DE ÉXITO"
+          subtitle="Planta de beneficio animal y desposte — Tauramena, Casanare"
+        />
+        <p class="hero-lead">
+          Seis aplicaciones conectadas que llevan la trazabilidad de Frigorinoquia del papel y el Excel a un sistema en tiempo real: desde que el animal ingresa a la planta hasta que el corte empacado sale hacia el cliente, cada dato queda registrado en el momento en que ocurre — sin doble digitación, sin reconstrucción manual al final del turno.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value">6</span>
+            <span class="hero-stat-label">Aplicaciones conectadas</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">1</span>
+            <span class="hero-stat-label">Base de datos, trazabilidad única</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">0</span>
+            <span class="hero-stat-label">Doble digitación</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="block">
+        <h2>El punto de partida</h2>
+        <p>
+          Frigorinoquia es una planta de beneficio animal (sacrificio) y sala de desposte mixto. Todo el proceso —desde el ingreso del animal hasta la salida del producto— se documentaba en papel y Excel: apertura de lote manual, pesaje sin sistema, sin visibilidad de inventario en cámara fría, despacho propenso a error en guías escritas a mano, reportes gerenciales tardíos, cobranza de maquila calculada manualmente y trazabilidad animal incompleta entre el ingreso, el examen ante/post mortem y el destino final de cada corte.
+        </p>
+      </section>
+
+      <section class="block">
+        <h2>La solución</h2>
+        <p>
+          Una suite de seis aplicaciones web independientes, cada una responsable de una estación física de la planta, conectadas a la misma base de datos con trazabilidad de extremo a extremo: desde el animal vivo hasta el corte empacado despachado al cliente. El peso se captura directamente de báscula serial en tiempo real, las etiquetas se generan automáticamente en ZPL, el inventario de cámara fría se actualiza solo con cada pesaje vía funciones transaccionales, y la liquidación de maquila se genera a partir de esos mismos datos operativos.
+        </p>
+        <FrigorinoquiaPipeline />
+      </section>
+
+      <section class="block">
+        <h2>El sistema en operación</h2>
+        <p class="block-intro">Seis pantallas, una sola fuente de verdad. Así se ve la trazabilidad en cada estación de la planta.</p>
+        <div class="screenshot-grid">
+          <AppScreenshotFrame src={screenshotApertura} alt="Pantalla de apertura de lote de desposte en Frigorinoquia" label="Apertura de Lote" />
+          <AppScreenshotFrame src={screenshotPesaje} alt="Pantalla de pesaje de presas en tiempo real conectada a báscula" label="Pesaje en Tiempo Real" />
+          <AppScreenshotFrame src={screenshotRecepcionDashboard} alt="Dashboard de recepción de animales en planta" label="Dashboard de Recepción" />
+          <AppScreenshotFrame src={screenshotDespachoDesposte} alt="Pantalla de despacho de cortes de desposte" label="Despacho de Desposte" />
+          <AppScreenshotFrame src={screenshotReporteBeneficio} alt="Reporte de beneficio de animales con KPIs de rendimiento" label="Reportería de Beneficio" />
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>De la pantalla a la planta</h2>
+        <p class="block-intro">
+          Cada pesaje se traduce en una etiqueta física impresa al instante, y cada despacho sale con su guía generada automáticamente por el sistema — no hay paso manual entre lo que se registra y lo que se imprime.
+        </p>
+        <div class="evidence-grid">
+          <figure class="evidence-card evidence-card--wide">
+            <Image src={fotoImpresora} alt="Impresora Zebra imprimiendo etiquetas ZPL con datos de Frigorinoquia en tiempo real" widths={[500, 900]} sizes="(max-width: 768px) 100vw, 500px" loading="lazy" />
+            <figcaption>Impresión de etiquetas en tiempo real, directo desde el pesaje</figcaption>
+          </figure>
+          <figure class="evidence-card">
+            <Image src={fotoProductoTerminado} alt="Etiqueta ZPL impresa sobre producto cárnico empacado" widths={[400, 700]} sizes="(max-width: 768px) 100vw, 400px" loading="lazy" />
+            <figcaption>Etiqueta sobre producto empacado, lista para despacho</figcaption>
+          </figure>
+          <figure class="evidence-card evidence-card--document">
+            <Image src={screenshotGuiaDespacho} alt="Guía de despacho generada automáticamente por el sistema, con datos del cliente protegidos" widths={[350, 600]} sizes="(max-width: 768px) 100vw, 350px" loading="lazy" />
+            <figcaption>Guía de despacho generada automáticamente por el sistema</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Capacidades</h2>
+        <ul class="capacidades-list">
+          {capacidades.map((c) => <li>{c}</li>)}
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Stack</h2>
+        <div class="stack-tags">
+          {stack.map((tech) => <TechBadge label={tech} />)}
+        </div>
+      </section>
+
+      <section class="block block--resultado">
+        <h2>El resultado</h2>
+        <p>
+          Frigorinoquia pasa de un proceso documentado en papel y Excel a una suite conectada donde cada animal, lote, corte y despacho queda trazado de punta a punta, con el peso capturado directamente de báscula, las etiquetas impresas automáticamente, el inventario descontado en tiempo real, y la cobranza generada a partir de los mismos datos operativos, sin doble digitación.
+        </p>
+        <div class="result-counter">
+          <span class="counter" data-target="56.57" data-suffix="%">0%</span>
+          <span class="result-counter-label">Rendimiento promedio de beneficio, medido en tiempo real por el sistema</span>
+        </div>
+      </section>
+
+      <div class="case-actions">
+        <a href="/contacto" class="cta-link">Hablemos de tu proyecto →</a>
+        <a href="/casos-de-exito" class="back-link">← Ver todos los casos de éxito</a>
+      </div>
+    </div>
+  </article>
+</MainLayout>
+
+<style>
+  .case-frigorinoquia {
+    position: relative;
+    padding: 10rem 0 6rem;
+    color: white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .container--hero {
+    max-width: 900px;
+    text-align: center;
+  }
+
+  .hero-lead {
+    max-width: 720px;
+    margin: 1.5rem auto 2.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-stat-value {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--neon-purple);
+    text-shadow: 0 0 20px rgba(var(--neon-purple-rgb), 0.5);
+  }
+
+  .hero-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 160px;
+    text-align: center;
+  }
+
+  .block {
+    margin-bottom: 4rem;
+  }
+
+  .block h2 {
+    font-family: var(--font-body);
+    font-size: 1.75rem;
+    color: var(--neon-purple);
+    margin-bottom: 1rem;
+  }
+
+  .block > p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+  }
+
+  .block-intro {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+  }
+
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .evidence-card {
+    margin: 0;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid rgba(var(--neon-purple-rgb), 0.25);
+    background: rgba(10, 10, 20, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease;
+  }
+
+  .evidence-card:nth-child(even) {
+    transform: rotate(1deg);
+  }
+
+  .evidence-card:hover {
+    transform: rotate(0deg) translateY(-4px);
+  }
+
+  .evidence-card :global(img) {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .evidence-card--document :global(img) {
+    height: 320px;
+    object-fit: contain;
+    background: white;
+    padding: 0.5rem;
+  }
+
+  .evidence-card figcaption {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(var(--neon-purple-rgb), 0.2);
+  }
+
+  .capacidades-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .capacidades-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+  }
+
+  .capacidades-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--neon-purple);
+  }
+
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .block--resultado {
+    padding: 2.5rem;
+    background: rgba(26, 20, 45, 0.5);
+    border: 1px solid rgba(var(--neon-purple-rgb), 0.2);
+    border-radius: var(--radius-card);
+  }
+
+  .result-counter {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .counter {
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--neon-purple);
+    text-shadow: 0 0 20px rgba(var(--neon-purple-rgb), 0.5);
+  }
+
+  .result-counter-label {
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 320px;
+    font-size: 0.95rem;
+  }
+
+  .case-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .cta-link {
+    padding: 0.9rem 1.75rem;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+    border-radius: 4px;
+    color: white;
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .back-link {
+    color: var(--neon-purple);
+    font-family: var(--font-mono);
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .evidence-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .case-frigorinoquia {
+      padding: 8rem 0 4rem;
+    }
+
+    .hero-stats {
+      gap: 2rem;
+    }
+  }
+</style>
+
+<script>
+  import { revealOnScroll } from '../../scripts/animations/scrollReveal';
+  import { animateCounters } from '../../scripts/animations/counter';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    revealOnScroll('.screenshot-grid > *', { stagger: 0.12 });
+    revealOnScroll('.evidence-card', { stagger: 0.15 });
+    animateCounters('.counter[data-target]');
+  });
+</script>
