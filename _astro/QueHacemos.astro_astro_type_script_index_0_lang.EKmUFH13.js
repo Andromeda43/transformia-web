@@ -1,0 +1,1 @@
+import{i as e}from"./magnetic.D3cKKh_u.js";import{r as o}from"./scrollReveal.SWkBYg6N.js";import"./index.Da40SJzp.js";import"./ScrollTrigger.CezCZ8EY.js";document.addEventListener("DOMContentLoaded",()=>{o(".servicio-card",{stagger:.1}),document.querySelectorAll(".servicio-card").forEach(r=>{e(r,8)})});
