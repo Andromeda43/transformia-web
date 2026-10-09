@@ -1,0 +1,1 @@
+const e=window.matchMedia("(prefers-reduced-motion: reduce)").matches||new URLSearchParams(window.location.search).has("sinmovimiento"),o=window.matchMedia("(hover: hover) and (pointer: fine)").matches;export{o as f,e as r};

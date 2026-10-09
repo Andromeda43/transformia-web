@@ -1,0 +1,1 @@
+import{g as r}from"./index.Da40SJzp.js";import{S as s}from"./ScrollTrigger.CezCZ8EY.js";import{r as i}from"./env.Dq8KP-ak.js";r.registerPlugin(s);if(!i){const t=r.utils.toArray("[data-stack-card]");t.forEach((a,e)=>{const o=t[e+1];o&&r.to(a,{scale:.94,opacity:.55,ease:"none",scrollTrigger:{trigger:o,start:"top 85%",end:"top 25%",scrub:!0}})})}

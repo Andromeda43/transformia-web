@@ -1,0 +1,1 @@
+import{g as o}from"./index.Da40SJzp.js";import{S as t}from"./ScrollTrigger.CezCZ8EY.js";import{r as e}from"./env.Dq8KP-ak.js";o.registerPlugin(t);e||document.querySelectorAll("[data-scroll-highlight]").forEach(r=>{o.fromTo(r.querySelectorAll(".sh-word"),{opacity:.16},{opacity:1,ease:"none",stagger:.1,scrollTrigger:{trigger:r,start:"top 80%",end:"bottom 45%",scrub:!0}})});
