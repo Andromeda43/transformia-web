@@ -1,0 +1,410 @@
+---
+// src/components/home/Traceability.astro — especialidad: un lote recorre las estaciones con el scroll.
+import SectionHeader from '../ui/SectionHeader.astro';
+import Icon from '../ui/Icon.astro';
+
+const stations = [
+  { name: 'Origen', sub: 'Proveedor o finca', time: '06:42', event: 'Lote A-2041 registrado en origen' },
+  { name: 'Recepción', sub: 'Ingreso y validación', time: '07:15', event: 'Cantidad validada contra lo esperado' },
+  { name: 'Proceso', sub: 'Transformación', time: '09:03', event: 'Etiqueta generada · 24 unidades' },
+  { name: 'Inventario', sub: 'Stock en tiempo real', time: '09:04', event: 'Stock actualizado automáticamente' },
+  { name: 'Entrega', sub: 'Despacho al cliente', time: '14:30', event: 'Despachado · guía #3381 emitida' },
+];
+---
+
+<section class="trace" data-trace>
+  <div class="trace-pin">
+    <div class="container">
+      <div class="trace-head">
+        <SectionHeader
+          eyebrow="02 — Nuestra especialidad"
+          title="Trazabilidad de punta a punta."
+          lead="Seguimos cada unidad, lote o pedido desde que entra hasta que sale, con el dato capturado donde ocurre. Nada se reconstruye a mano al final del día."
+        />
+        <div class="trace-proof" data-reveal>
+          <p class="mono trace-proof-label">En operación en</p>
+          <a href="/casos-de-exito/frigorinoquia">Planta de beneficio y desposte <Icon name="arrow" size={14} /></a>
+          <a href="/casos-de-exito/tracing-colombina">Manufactura de alimentos <Icon name="arrow" size={14} /></a>
+        </div>
+      </div>
+
+      <div class="trace-stage">
+        <div class="trace-track-wrap">
+        <div class="trace-rail" aria-hidden="true">
+          <span class="trace-fill" data-trace-fill></span>
+          <span class="trace-runner" data-trace-runner>
+            <span class="trace-token mono">A-2041</span>
+          </span>
+        </div>
+
+        <ol class="trace-track" role="list">
+          {stations.map((s, i) => (
+            <li class="station is-on" data-station={i}>
+              <span class="station-dot" aria-hidden="true"><Icon name="check" size={12} strokeWidth={2.6} /></span>
+              <span class="station-num mono">{String(i + 1).padStart(2, '0')}</span>
+              <span class="station-name">{s.name}</span>
+              <span class="station-sub">{s.sub}</span>
+            </li>
+          ))}
+        </ol>
+        </div>
+
+        <div class="trace-log" aria-label="Registro de eventos del lote A-2041">
+          <div class="trace-log-head mono">
+            <span><i class="live-dot"></i> registro · lote A-2041</span>
+            <span>trazabilidad.log</span>
+          </div>
+          <ul role="list">
+            {stations.map((s, i) => (
+              <li class="log-line is-on" data-log={i}>
+                <span class="log-time">{s.time}</span>
+                <span class="log-tag">{s.name.toUpperCase()}</span>
+                <span class="log-event">{s.event}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trace {
+    position: relative;
+    border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg));
+  }
+  .trace-pin {
+    padding-block: var(--section-y);
+  }
+  .trace-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+  .trace-proof {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+    flex-shrink: 0;
+  }
+  .trace-proof-label {
+    font-size: var(--text-label);
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .trace-proof a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    font-size: var(--text-small);
+    transition: color var(--dur-fast);
+  }
+  .trace-proof a:hover {
+    color: var(--accent-text);
+  }
+
+  .trace-track-wrap {
+    position: relative;
+  }
+  .trace-rail {
+    position: absolute;
+    top: 15px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--border);
+  }
+  .trace-fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--accent), var(--signal));
+    transform-origin: left center;
+  }
+  .trace-runner {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+  }
+  .trace-token {
+    position: absolute;
+    top: -38px;
+    left: 0;
+    transform: translateX(-50%);
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    box-shadow: var(--glow-accent);
+  }
+  .trace-token::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .trace-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    text-align: center;
+  }
+  .station-dot {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: var(--bg);
+    color: transparent;
+    transition: background var(--dur) var(--ease-out), border-color var(--dur), color var(--dur), box-shadow var(--dur);
+  }
+  .station-num {
+    font-size: 0.72rem;
+    color: var(--text-subtle);
+  }
+  .station-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    transition: color var(--dur);
+  }
+  .station-sub {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+  }
+  .station.is-on .station-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.15);
+  }
+  .station.is-on .station-name {
+    color: var(--text);
+  }
+
+  .trace-log {
+    max-width: 760px;
+    margin: clamp(2.5rem, 2rem + 2vw, 3.5rem) auto 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .trace-log-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-1);
+    font-size: 0.72rem;
+    color: var(--text-subtle);
+  }
+  .trace-log-head span:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--signal);
+  }
+  .trace-log ul {
+    padding: 0.6rem 0;
+  }
+  .log-line {
+    display: grid;
+    grid-template-columns: 3.5rem 6.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.35rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    opacity: 0.18;
+    transition: opacity 0.4s var(--ease-out);
+  }
+  .log-line.is-on {
+    opacity: 1;
+  }
+  .log-time {
+    color: var(--text-subtle);
+  }
+  .log-tag {
+    color: var(--accent-text);
+  }
+  .log-event {
+    color: var(--text);
+  }
+
+  /* Con JS (clase .js puesta en el <head> antes de pintar) la sección ya nace con su alto final y queda fija
+     en escritorio: así el layout no salta cuando carga el script. */
+  @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+    :global(.js) .trace {
+      height: 260vh;
+    }
+    :global(.js) .trace .trace-pin {
+      position: sticky;
+      top: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-block: calc(var(--nav-height) + 1rem) 2rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .trace-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .trace-rail {
+      top: 0;
+      bottom: 0;
+      left: 15px;
+      right: auto;
+      width: 2px;
+      height: auto;
+    }
+    .trace-fill {
+      transform-origin: center top;
+    }
+    .trace-runner {
+      transform: translateY(100%);
+    }
+    .trace-token {
+      top: 0;
+      left: 26px;
+      transform: translateY(-50%);
+    }
+    .trace-token::after {
+      left: -3px;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .trace-track {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+    .station {
+      display: grid;
+      grid-template-columns: 32px auto 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 1rem;
+      align-items: center;
+      text-align: left;
+    }
+    .station-dot {
+      grid-row: span 2;
+      margin: 0;
+    }
+    .station-num {
+      grid-row: span 2;
+      align-self: center;
+    }
+    .station-name {
+      grid-column: 3;
+    }
+    .station-sub {
+      grid-column: 3;
+    }
+    .trace-token {
+      display: none;
+    }
+    .log-line {
+      grid-template-columns: 3rem 1fr;
+    }
+    .log-tag {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.querySelector<HTMLElement>('[data-trace]');
+  import { reduceMotion as reduce } from '../../scripts/env';
+
+  if (section && !reduce) {
+    const fill = section.querySelector<HTMLElement>('[data-trace-fill]')!;
+    const runner = section.querySelector<HTMLElement>('[data-trace-runner]')!;
+    const stations = Array.from(section.querySelectorAll<HTMLElement>('[data-station]'));
+    const logs = Array.from(section.querySelectorAll<HTMLElement>('[data-log]'));
+    const total = stations.length;
+
+
+    const setActive = (progress: number) => {
+      // La estación i se enciende cuando el lote llega a su posición.
+      const reached = Math.floor(progress * (total - 1) + 0.02);
+      stations.forEach((s, i) => s.classList.toggle('is-on', i <= reached));
+      logs.forEach((l, i) => l.classList.toggle('is-on', i <= reached));
+    };
+
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 901px)', () => {
+      gsap.set(fill, { scaleX: 0, scaleY: 1 });
+      gsap.set(runner, { xPercent: 0, yPercent: 0, x: 0 });
+      setActive(0);
+      const tl = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.6,
+          onUpdate: (self) => setActive(self.progress),
+        },
+      });
+      tl.fromTo(fill, { scaleX: 0 }, { scaleX: 1 }, 0).fromTo(runner, { xPercent: 0 }, { xPercent: 100 }, 0);
+    });
+
+    mm.add('(max-width: 900px)', () => {
+      gsap.set(fill, { scaleY: 0, scaleX: 1 });
+      setActive(0);
+      gsap.fromTo(
+        fill,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section.querySelector('.trace-track-wrap'),
+            start: 'top 70%',
+            end: 'bottom 55%',
+            scrub: 0.5,
+            onUpdate: (self) => setActive(self.progress),
+          },
+        }
+      );
+    });
+  }
+</script>

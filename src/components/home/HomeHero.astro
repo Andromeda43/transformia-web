@@ -1,0 +1,171 @@
+---
+// src/components/home/HomeHero.astro
+import HeroTransform from './HeroTransform.astro';
+import Button from '../ui/Button.astro';
+import StatusChip from '../ui/StatusChip.astro';
+import { whatsappLink } from '../../data/site';
+
+const rotating = ['plataformas web', 'apps móviles', 'bots de WhatsApp', 'automatizaciones', 'IA aplicada', 'sistemas de trazabilidad'];
+---
+
+<section class="hero">
+  <div class="blueprint"></div>
+  <div class="hero-aura" aria-hidden="true"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div data-reveal>
+        <StatusChip tone="signal" pulse>De la idea a la operación</StatusChip>
+      </div>
+
+      <h1 class="display hero-title" data-split>
+        Construimos el software que <span class="gradient-text">tu operación</span> necesita.
+      </h1>
+
+      <p class="hero-rotator mono" data-reveal data-reveal-delay="0.15">
+        <span class="hero-prompt">&gt;</span>
+        <span class="hero-word" data-rotate={JSON.stringify(rotating)}>{rotating[0]}</span><span class="hero-caret"></span>
+      </p>
+
+      <p class="lead" data-reveal data-reveal-delay="0.2">
+        Diseñamos, construimos y acompañamos sistemas para empresas que ya no caben en Excel ni en un software
+        genérico. Por fases, con precio fijo y sin sorpresas.
+      </p>
+
+      <div class="hero-actions" data-reveal data-reveal-delay="0.3">
+        <Button href="/contacto" icon="arrow" magnetic>Agenda un diagnóstico</Button>
+        <Button href={whatsappLink()} variant="secondary" iconStart="whatsapp" external>Escríbenos por WhatsApp</Button>
+      </div>
+
+      <dl class="hero-proof" data-reveal data-reveal-delay="0.4">
+        <div>
+          <dt>Apps conectadas en una sola planta</dt>
+          <dd class="mono">6</dd>
+        </div>
+        <div>
+          <dt>Para validar un pago con IA</dt>
+          <dd class="mono">&lt;10 s</dd>
+        </div>
+        <div>
+          <dt>Productos propios en operación</dt>
+          <dd class="mono">2</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-visual">
+      <HeroTransform />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-height) + 3.5rem) 0 4rem;
+    overflow: hidden;
+  }
+  .hero-aura {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 70vw;
+    height: 70vw;
+    max-width: 1000px;
+    max-height: 1000px;
+    background: radial-gradient(closest-side, rgba(var(--accent-rgb), 0.16), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .hero-title {
+    margin-top: 0.5rem;
+    font-size: clamp(2.5rem, 1.2rem + 3.6vw, 4.4rem);
+  }
+  .hero-rotator {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    min-height: 1.6em;
+  }
+  .hero-prompt {
+    color: var(--accent-text);
+  }
+  .hero-word {
+    color: var(--text);
+  }
+  .hero-caret {
+    width: 0.55em;
+    height: 1.1em;
+    background: var(--accent);
+    animation: caret 1.1s steps(1) infinite;
+  }
+  @keyframes caret {
+    50% { opacity: 0; }
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .hero-proof {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .hero-proof div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.2rem;
+  }
+  .hero-proof dd {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .hero-proof dt {
+    font-size: 0.8rem;
+    color: var(--text-subtle);
+    line-height: 1.35;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-visual {
+      max-width: 640px;
+      width: 100%;
+      margin-inline: auto;
+    }
+  }
+  @media (max-width: 520px) {
+    .hero-actions :global(.btn) {
+      width: 100%;
+    }
+    .hero-proof dd {
+      font-size: 1.3rem;
+    }
+  }
+</style>

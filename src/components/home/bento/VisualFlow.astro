@@ -1,0 +1,118 @@
+---
+// Automatización: una solicitud avanza sola por el tablero y dispara notificaciones. Solo CSS.
+import Icon from '../../ui/Icon.astro';
+const columnas = ['Solicitud', 'Aprobación', 'Listo'];
+---
+
+<div class="vf">
+  <div class="vf-board">
+    {columnas.map((c) => (
+      <div class="vf-col">
+        <span class="vf-col-head mono">{c}</span>
+        <span class="vf-slot"></span>
+      </div>
+    ))}
+    <div class="vf-card">
+      <b>Compra de insumos</b>
+      <span class="mono">$ 2,4 M</span>
+      <span class="vf-avatar">LM</span>
+    </div>
+  </div>
+  <div class="vf-events">
+    <span class="vf-ev vf-ev--1"><Icon name="check" size={12} strokeWidth={2.6} /> Aprobado por gerencia</span>
+    <span class="vf-ev vf-ev--2"><Icon name="whatsapp" size={12} /> Aviso enviado por WhatsApp</span>
+  </div>
+</div>
+
+<style>
+  .vf { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 330px; }
+  .vf-board {
+    --gap: 6px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+  }
+  .vf-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 9px;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+  }
+  .vf-col-head { font-size: 8.5px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.06em; }
+  .vf-slot { height: 64px; border-radius: 7px; border: 1px dashed var(--border); }
+  .vf-card {
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    width: calc((100% - 2 * var(--gap)) / 3 - 12px);
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 7px;
+    border-radius: 7px;
+    border: 1px solid rgba(var(--accent-rgb), 0.6);
+    background: var(--surface-3);
+    box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.7);
+    font-size: 9.5px;
+    line-height: 1.2;
+    /* Estado base: en "Listo" */
+    transform: translateX(calc(2 * (100% + 12px + var(--gap))));
+    border-color: rgba(var(--signal-rgb), 0.55);
+  }
+  .vf-card .mono { font-size: 8.5px; color: var(--text-muted); }
+  .vf-avatar {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    display: grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 7px;
+    font-weight: 700;
+  }
+  .vf-events { display: flex; flex-direction: column; gap: 5px; }
+  .vf-ev {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    padding: 4px 9px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    font-size: 9.5px;
+    color: var(--text-muted);
+  }
+  .vf-ev--1 :global(svg) { color: var(--signal); }
+  .vf-ev--2 :global(svg) { color: var(--accent-text); }
+
+  :global(.is-playing) .vf-card { animation: vf-move 6s var(--ease-in-out) infinite; }
+  :global(.is-playing) .vf-ev--1 { animation: vf-ev1 6s var(--ease-out) infinite; }
+  :global(.is-playing) .vf-ev--2 { animation: vf-ev2 6s var(--ease-out) infinite; }
+  @keyframes vf-move {
+    0% { opacity: 0; transform: translateX(0) translateY(6px); border-color: rgba(var(--accent-rgb), 0.6); }
+    6%, 22% { opacity: 1; transform: translateX(0); border-color: rgba(var(--accent-rgb), 0.6); }
+    32%, 50% { transform: translateX(calc(100% + 12px + var(--gap))); border-color: rgba(var(--warning-rgb), 0.6); }
+    60%, 90% { opacity: 1; transform: translateX(calc(2 * (100% + 12px + var(--gap)))); border-color: rgba(var(--signal-rgb), 0.55); }
+    100% { opacity: 0; transform: translateX(calc(2 * (100% + 12px + var(--gap)))); }
+  }
+  @keyframes vf-ev1 {
+    0%, 32% { opacity: 0; transform: translateY(4px); }
+    38%, 92% { opacity: 1; transform: none; }
+    100% { opacity: 0; }
+  }
+  @keyframes vf-ev2 {
+    0%, 60% { opacity: 0; transform: translateY(4px); }
+    66%, 92% { opacity: 1; transform: none; }
+    100% { opacity: 0; }
+  }
+</style>

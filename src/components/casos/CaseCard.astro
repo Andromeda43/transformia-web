@@ -1,0 +1,201 @@
+---
+// src/components/casos/CaseCard.astro
+import type { CasoDeExito } from '../../data/casosDeExito';
+import CaseVisual from './CaseVisual.astro';
+import StatusChip from '../ui/StatusChip.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  caso: CasoDeExito;
+  size?: 'large' | 'default';
+  headingLevel?: 'h2' | 'h3';
+}
+const { caso, size = 'default', headingLevel: H = 'h3' } = Astro.props;
+const esPropuesta = caso.status === 'propuesta';
+---
+
+<article class:list={['case', 'spot', `case--${size}`]} data-spotlight data-reveal>
+  <a href={`/casos-de-exito/${caso.slug}`} class="case-link" aria-label={`Ver caso: ${caso.cliente}`}></a>
+  <div class="case-media">
+    <CaseVisual caso={caso} />
+  </div>
+  <div class="case-body">
+    <div class="case-meta">
+      <StatusChip tone={esPropuesta ? 'warning' : 'accent'}>{caso.tipo}</StatusChip>
+      <span class="case-industry">{caso.industria}</span>
+    </div>
+    <H class="case-title">{caso.cliente}</H>
+    <p class="case-lede">{caso.titular}</p>
+
+    {size === 'large' && (
+      <dl class="case-steps">
+        <div><dt>Dolor</dt><dd>{caso.dolor}</dd></div>
+        <div><dt>Solución</dt><dd>{caso.solucion}</dd></div>
+        <div><dt>Resultado</dt><dd>{caso.resultado}</dd></div>
+      </dl>
+    )}
+
+    <div class="case-foot">
+      {caso.metricas.length > 0 && (
+        <ul class="case-metrics" role="list">
+          {caso.metricas.map((m) => (
+            <li><b class="mono">{m.valor}</b><span>{m.label}</span></li>
+          ))}
+        </ul>
+      )}
+      <span class="case-cta">
+        {esPropuesta ? 'Ver propuesta' : 'Ver caso'} <Icon name="arrow" size={16} />
+      </span>
+    </div>
+  </div>
+</article>
+
+<style>
+  .case {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .case-link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+  }
+  .case-media {
+    aspect-ratio: 16 / 10;
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    overflow: hidden;
+  }
+  .case-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem 1.6rem 1.6rem;
+  }
+  .case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.9rem;
+  }
+  .case-industry {
+    font-size: 0.82rem;
+    color: var(--text-subtle);
+  }
+  .case-title {
+    font-size: 1.45rem;
+    letter-spacing: -0.02em;
+  }
+  .case-lede {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .case-steps {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .case-steps div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1rem;
+  }
+  .case-steps dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    padding-top: 0.2rem;
+  }
+  .case-steps dd {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+  }
+  .case-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+  .case-metrics {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .case-metrics li {
+    display: flex;
+    flex-direction: column;
+  }
+  .case-metrics b {
+    font-size: 1.25rem;
+    color: var(--text);
+  }
+  .case-metrics span {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .case-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .case-cta :global(svg) {
+    transition: transform var(--dur) var(--ease-out);
+  }
+  .case:hover .case-cta :global(svg) {
+    transform: translateX(4px);
+  }
+
+  .case--large {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+  .case--large .case-media {
+    aspect-ratio: auto;
+    border-bottom: 0;
+    border-right: 1px solid var(--border);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  }
+  .case--large :global(.cv--screenshot) {
+    align-items: center;
+    padding: 2.5rem;
+  }
+  .case--large :global(.cv-shot) {
+    border-radius: 10px;
+    border-bottom: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+  .case--large .case-body {
+    padding: 2rem;
+  }
+  .case--large .case-title {
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+  }
+
+  @media (max-width: 900px) {
+    .case--large {
+      display: flex;
+    }
+    .case--large .case-media {
+      aspect-ratio: 16 / 10;
+      border-right: 0;
+      border-bottom: 1px solid var(--border);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .case-steps div {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

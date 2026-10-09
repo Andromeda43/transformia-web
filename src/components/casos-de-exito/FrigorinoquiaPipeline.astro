@@ -1,5 +1,5 @@
 ---
-// src/components/casos-de-exito/FrigorinoquiaPipeline.astro
+// src/components/casos-de-exito/FrigorinoquiaPipeline.astro — las 6 apps de la suite, conectadas a una base de datos.
 const nodes = [
   { label: 'Apertura', desc: 'Apertura de lote' },
   { label: 'Presa', desc: 'Pesaje individual' },
@@ -10,137 +10,146 @@ const nodes = [
 ];
 ---
 
-<div class="pipeline" id="frigorinoquia-pipeline">
-  <svg class="pipeline-lines" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
-    <line x1="100" y1="20" x2="1100" y2="20" class="pipeline-line-track"></line>
-    <line x1="100" y1="20" x2="1100" y2="20" class="pipeline-line-draw"></line>
-  </svg>
-  <div class="pipeline-nodes">
-    {nodes.map((node) => (
-      <div class="pipeline-node">
-        <span class="node-dot"></span>
-        <span class="node-label">{node.label}</span>
-        <span class="node-desc">{node.desc}</span>
-      </div>
+<div class="pipe" data-pipe>
+  <ol class="pipe-nodes" role="list">
+    {nodes.map((node, i) => (
+      <li class="pipe-node" style={`--i:${i}`}>
+        <span class="pipe-port mono">:800{i + 1}</span>
+        <span class="pipe-label">{node.label}</span>
+        <span class="pipe-desc">{node.desc}</span>
+        <span class="pipe-wire" aria-hidden="true"></span>
+      </li>
     ))}
+  </ol>
+  <div class="pipe-bus" aria-hidden="true"><span></span></div>
+  <div class="pipe-db">
+    <span class="mono">Supabase · PostgreSQL</span>
+    <b>Una sola base de datos, trazabilidad de punta a punta</b>
   </div>
 </div>
 
 <style>
-  .pipeline {
-    position: relative;
-    padding: 3rem 0 1rem;
+  .pipe {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
   }
-
-  .pipeline-lines {
-    position: absolute;
-    top: 1.6rem;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    display: none;
-  }
-
-  .pipeline-line-track {
-    stroke: rgba(var(--neon-purple-rgb), 0.15);
-    stroke-width: 2;
-  }
-
-  .pipeline-line-draw {
-    stroke: var(--neon-purple);
-    stroke-width: 2;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-  }
-
-  .pipeline-nodes {
+  .pipe-nodes {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1rem;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.6rem;
   }
-
-  .pipeline-node {
+  .pipe-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.85rem 0.75rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    opacity: 0.35;
+    transform: translateY(8px);
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out), border-color 0.5s;
+    transition-delay: calc(var(--i) * 90ms);
+  }
+  .pipe-port {
+    font-size: 0.65rem;
+    color: var(--text-subtle);
+  }
+  .pipe-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .pipe-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+  }
+  .pipe-wire {
+    position: absolute;
+    left: 50%;
+    bottom: -1.6rem;
+    width: 1px;
+    height: 1.6rem;
+    background: var(--border-strong);
+  }
+  .pipe-bus {
+    position: relative;
+    height: 2px;
+    margin: 1.6rem 8% 0;
+    background: var(--border);
+  }
+  .pipe-bus span {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--accent), var(--signal));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.2s var(--ease-out) 0.5s;
+  }
+  .pipe-db {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.25rem;
+    width: fit-content;
+    margin: 1.25rem auto 0;
+    padding: 0.9rem 1.4rem;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-md);
+    background: var(--accent-soft);
     text-align: center;
-    gap: 0.4rem;
-    opacity: 0;
+  }
+  .pipe-db .mono {
+    font-size: 0.72rem;
+    color: var(--accent-text);
+  }
+  .pipe-db b {
+    font-weight: 500;
+    font-size: 0.95rem;
   }
 
-  .node-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--dark-bg);
-    border: 2px solid var(--neon-purple);
-    box-shadow: 0 0 10px rgba(var(--neon-purple-rgb), 0.5);
+  .pipe.is-in .pipe-node,
+  :global(html:not(.js)) .pipe-node {
+    opacity: 1;
+    transform: none;
+    border-color: rgba(var(--accent-rgb), 0.45);
+  }
+  .pipe.is-in .pipe-bus span,
+  :global(html:not(.js)) .pipe-bus span {
+    transform: scaleX(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pipe-node { opacity: 1; transform: none; }
+    .pipe-bus span { transform: scaleX(1); }
   }
 
-  .node-label {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: white;
-    font-weight: 600;
-  }
-
-  .node-desc {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  @media (min-width: 769px) {
-    .pipeline-lines {
-      display: block;
+  @media (max-width: 760px) {
+    .pipe-nodes {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-  }
-
-  @media (max-width: 768px) {
-    .pipeline-nodes {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+    .pipe-wire,
+    .pipe-bus {
+      display: none;
     }
   }
 </style>
 
 <script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('frigorinoquia-pipeline');
-    if (!container) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const nodes = container.querySelectorAll('.pipeline-node');
-    const line = container.querySelector('.pipeline-line-draw');
-
-    if (prefersReducedMotion) {
-      gsap.set(nodes, { opacity: 1 });
-      if (line) gsap.set(line, { strokeDashoffset: 0 });
-      return;
-    }
-
-    ScrollTrigger.create({
-      trigger: container,
-      start: 'top 75%',
-      once: true,
-      onEnter: () => {
-        if (line) {
-          gsap.to(line, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut' });
+  const pipe = document.querySelector<HTMLElement>('[data-pipe]');
+  if (pipe) {
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          pipe.classList.add('is-in');
+          io.disconnect();
         }
-        gsap.to(nodes, {
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.15,
-          ease: 'power2.out',
-          delay: 0.2,
-        });
       },
-    });
-  });
+      { threshold: 0.35 }
+    );
+    io.observe(pipe);
+  }
 </script>

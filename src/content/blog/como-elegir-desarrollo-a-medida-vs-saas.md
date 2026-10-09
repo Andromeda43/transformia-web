@@ -12,9 +12,9 @@ La mayoría de empresas arranca con un SaaS genérico porque es lo más rápido 
 
 ## Tres señales de que ya no te sirve un SaaS genérico
 
-1. **Estás pagando por módulos que no usás** para acceder a los dos o tres que sí necesitás.
-2. **Tu proceso real no cabe en el flujo que el SaaS asume** — terminás con hojas de cálculo paralelas para lo que el sistema no contempla.
-3. **Los datos de tu operación viven en una plataforma de un tercero**, sin API completa ni forma real de sacarlos si cambiás de proveedor.
+1. **Estás pagando por módulos que no usas** para acceder a los dos o tres que sí necesitas.
+2. **Tu proceso real no cabe en el flujo que el SaaS asume** — terminas con hojas de cálculo paralelas para lo que el sistema no contempla.
+3. **Los datos de tu operación viven en una plataforma de un tercero**, sin API completa ni forma real de sacarlos si cambias de proveedor.
 
 ## Cuándo sí conviene desarrollo a medida
 

@@ -144,15 +144,14 @@ Transformia garantiza el correcto funcionamiento del sistema desarrollado durant
 
 ## Aceptación
 
-Para proceder con el inicio del proyecto, favor de enviar esta cotización firmada junto con la orden de compra correspondiente al correo contacto@transformia.com.
+Para proceder con el inicio del proyecto, favor de enviar esta cotización firmada junto con la orden de compra correspondiente al correo info@transformia.dev.
 
 ---
 
 **Por Transformia:**
 
-Carlos Hernández  
-Director de Proyectos  
-carlos.hernandez@transformia.com
+Transformia Zomac SAS · NIT 901868040  
+info@transformia.dev · +57 300 823 4881
 
 ---
 

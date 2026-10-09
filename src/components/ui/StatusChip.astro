@@ -1,0 +1,54 @@
+---
+// src/components/ui/StatusChip.astro — estado con punto de color.
+interface Props {
+  tone?: 'signal' | 'warning' | 'accent' | 'neutral';
+  pulse?: boolean;
+}
+const { tone = 'neutral', pulse = false } = Astro.props;
+---
+
+<span class:list={['chip', `chip--${tone}`]}>
+  {tone !== 'neutral' && <span class:list={['chip-dot', { 'chip-dot--pulse': pulse }]} aria-hidden="true"></span>}
+  <slot />
+</span>
+
+<style>
+  .chip {
+    --chip-color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.02);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .chip--signal { --chip-color: var(--signal); }
+  .chip--warning { --chip-color: var(--warning); color: var(--warning); border-color: rgba(var(--warning-rgb), 0.35); }
+  .chip--accent { --chip-color: var(--accent-text); color: var(--accent-text); border-color: rgba(var(--accent-rgb), 0.35); }
+  .chip-dot {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--chip-color);
+  }
+  .chip-dot--pulse::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--chip-color);
+    animation: chip-pulse 2s var(--ease-out) infinite;
+  }
+  @keyframes chip-pulse {
+    from { opacity: 0.9; transform: scale(0.4); }
+    to { opacity: 0; transform: scale(1.6); }
+  }
+</style>

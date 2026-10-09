@@ -1,0 +1,118 @@
+---
+// IA aplicada: un comprobante se escanea, se extraen los campos y se valida. Solo CSS.
+import Icon from '../../ui/Icon.astro';
+const campos = [
+  { k: 'Monto', v: '$ 180.000' },
+  { k: 'Banco', v: 'Nequi' },
+  { k: 'Referencia', v: 'M8341…27' },
+];
+---
+
+<div class="va">
+  <div class="va-doc">
+    <span class="va-doc-head mono">comprobante.jpg</span>
+    <span class="va-line" style="--w:70%"></span>
+    <span class="va-amount mono">$ 180.000</span>
+    <span class="va-line" style="--w:55%"></span>
+    <span class="va-line" style="--w:80%"></span>
+    <span class="va-line" style="--w:40%"></span>
+    <span class="va-scan"></span>
+  </div>
+  <div class="va-side">
+    <ul class="va-fields" role="list">
+      {campos.map((c, i) => (
+        <li style={`--i:${i}`}>
+          <span class="va-k">{c.k}</span>
+          <b class="mono">{c.v}</b>
+          <Icon name="check" size={12} strokeWidth={2.6} />
+        </li>
+      ))}
+    </ul>
+    <span class="va-badge"><Icon name="sparkles" size={13} /> Validado</span>
+  </div>
+</div>
+
+<style>
+  .va {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    align-items: center;
+  }
+  .va-doc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 12px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    background: var(--surface-2);
+    overflow: hidden;
+  }
+  .va-doc-head { font-size: 8.5px; color: var(--text-subtle); }
+  .va-line { width: var(--w); height: 5px; border-radius: 3px; background: var(--surface-3); }
+  .va-amount { font-size: 12px; font-weight: 700; }
+  .va-scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 30%;
+    background: linear-gradient(180deg, transparent, rgba(var(--accent-rgb), 0.35) 85%, var(--accent-text) 100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .va-side { display: flex; flex-direction: column; gap: 8px; }
+  .va-fields { display: flex; flex-direction: column; gap: 5px; }
+  .va-fields li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 6px;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-1);
+  }
+  .va-k { font-size: 8.5px; color: var(--text-subtle); }
+  .va-fields b { grid-column: 1; font-size: 10px; }
+  .va-fields :global(svg) { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--signal); }
+  .va-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 10px;
+    border-radius: 99px;
+    background: rgba(var(--signal-rgb), 0.14);
+    border: 1px solid rgba(var(--signal-rgb), 0.45);
+    color: var(--signal);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* Ciclo de 5 s mientras la celda está en pantalla */
+  :global(.is-playing) .va-scan { animation: va-scan 5s var(--ease-in-out) infinite; }
+  :global(.is-playing) .va-fields li { animation: va-field 5s var(--ease-out) infinite; animation-delay: calc(var(--i) * 0.25s); }
+  :global(.is-playing) .va-badge { animation: va-badge 5s var(--ease-out) infinite; }
+  @keyframes va-scan {
+    0% { opacity: 0; transform: translateY(-100%); }
+    6% { opacity: 1; }
+    38% { opacity: 1; transform: translateY(260%); }
+    44%, 100% { opacity: 0; transform: translateY(260%); }
+  }
+  @keyframes va-field {
+    0%, 36% { opacity: 0; transform: translateX(8px); }
+    44%, 90% { opacity: 1; transform: none; }
+    100% { opacity: 0; }
+  }
+  @keyframes va-badge {
+    0%, 58% { opacity: 0; transform: scale(0.85); }
+    64% { opacity: 1; transform: scale(1.06); }
+    68%, 90% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; }
+  }
+</style>

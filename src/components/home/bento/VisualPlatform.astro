@@ -1,0 +1,202 @@
+---
+// Plataforma web + app móvil sincronizadas: entra un pedido nuevo en la tabla y el teléfono lo notifica.
+const filas = [
+  { id: '#1042', cliente: 'Distribuidora Andina', estado: 'En ruta', tono: 'run' },
+  { id: '#1041', cliente: 'Agro del Llano', estado: 'Entregado', tono: 'ok' },
+  { id: '#1040', cliente: 'Ferretería La 30', estado: 'Pendiente', tono: 'wait' },
+  { id: '#1039', cliente: 'Logística Central', estado: 'Entregado', tono: 'ok' },
+];
+---
+
+<div class="vp" data-vp>
+  <div class="vp-win">
+    <div class="vp-bar"><i></i><i></i><i></i><span class="mono">app.tuempresa.co/pedidos</span></div>
+    <div class="vp-app">
+      <aside class="vp-side"><span class="vp-logo"></span><span class="is-on"></span><span></span><span></span><span></span></aside>
+      <div class="vp-main">
+        <div class="vp-head"><b>Pedidos</b><span class="vp-btn">+ Nuevo</span></div>
+        <div class="vp-kpis">
+          <div><span>Hoy</span><b class="mono" data-vp-kpi>42</b></div>
+          <div><span>En ruta</span><b class="mono">18</b></div>
+          <div><span>A tiempo</span><b class="mono">96%</b></div>
+        </div>
+        <div class="vp-rows" data-vp-rows>
+          {filas.map((f) => (
+            <div class="vp-row">
+              <span class="mono">{f.id}</span>
+              <span class="vp-name">{f.cliente}</span>
+              <span class:list={['vp-pill', `vp-pill--${f.tono}`]}>{f.estado}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-phone">
+    <span class="vp-notch"></span>
+    <b class="vp-ph-title">Pedidos</b>
+    <div class="vp-toast" data-vp-toast><i></i><span data-vp-toast-text>Nuevo pedido #1042</span></div>
+    <span class="vp-ph-line"></span>
+    <span class="vp-ph-line vp-ph-line--short"></span>
+    <span class="vp-ph-card"></span>
+    <span class="vp-ph-card vp-ph-card--b"></span>
+  </div>
+</div>
+
+<style>
+  .vp {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    height: 100%;
+    font-size: 11px;
+  }
+  .vp-win {
+    position: absolute;
+    left: 0;
+    right: 22%;
+    top: 0;
+    bottom: -10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px 12px 0 0;
+    background: var(--bg-elevated);
+    overflow: hidden;
+  }
+  .vp-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .vp-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); }
+  .vp-bar span { margin-left: 10px; font-size: 9px; color: var(--text-subtle); }
+  .vp-app { display: flex; height: 100%; }
+  .vp-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 34px;
+    padding-top: 10px;
+    border-right: 1px solid var(--border);
+  }
+  .vp-side span { width: 14px; height: 14px; border-radius: 4px; background: var(--surface-3); }
+  .vp-side .vp-logo { background: var(--accent); }
+  .vp-side .is-on { background: var(--accent-soft); box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), 0.6); }
+  .vp-main { flex: 1; min-width: 0; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .vp-head { display: flex; justify-content: space-between; align-items: center; }
+  .vp-head b { font-size: 12px; }
+  .vp-btn { padding: 2px 8px; border-radius: 6px; background: var(--accent); color: #fff; font-size: 9px; }
+  .vp-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .vp-kpis div { padding: 5px 7px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface-1); }
+  .vp-kpis span { display: block; font-size: 8.5px; color: var(--text-subtle); }
+  .vp-kpis b { font-size: 13px; }
+  .vp-rows { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; }
+  .vp-row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border-top: 1px solid var(--border);
+    font-size: 10px;
+    overflow: hidden;
+  }
+  .vp-row:first-child { border-top: 0; }
+  .vp-row .mono { color: var(--text-subtle); font-size: 9px; }
+  .vp-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .vp-row.is-new { background: rgba(var(--signal-rgb), 0.09); }
+  .vp-pill { padding: 1px 7px; border-radius: 99px; font-size: 9px; }
+  .vp-pill--ok { background: rgba(var(--signal-rgb), 0.12); color: var(--signal); }
+  .vp-pill--run { background: var(--accent-soft); color: var(--accent-text); }
+  .vp-pill--wait { background: rgba(var(--warning-rgb), 0.12); color: var(--warning); }
+
+  .vp-phone {
+    position: absolute;
+    right: 0;
+    top: 22px;
+    width: 25%;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 24px 9px 9px;
+    border-radius: 22px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-1);
+    box-shadow: -18px 0 40px rgba(0, 0, 0, 0.45);
+  }
+  .vp-notch { position: absolute; top: 8px; left: 50%; width: 34%; height: 9px; border-radius: 9px; background: #000; transform: translateX(-50%); }
+  .vp-ph-title { font-size: 11px; }
+  .vp-toast {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 7px;
+    border-radius: 9px;
+    border: 1px solid rgba(var(--signal-rgb), 0.4);
+    background: rgba(var(--signal-rgb), 0.1);
+    font-size: 9px;
+    line-height: 1.2;
+  }
+  .vp-toast i { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--signal); }
+  .vp-ph-line { height: 6px; border-radius: 3px; background: var(--surface-3); }
+  .vp-ph-line--short { width: 60%; }
+  .vp-ph-card { height: 40px; border-radius: 9px; background: linear-gradient(135deg, #3b2a5c, var(--accent)); opacity: 0.85; }
+  .vp-ph-card--b { background: linear-gradient(135deg, #1f3b35, var(--signal)); opacity: 0.7; }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const clientes = ['Comercial Yopal', 'Lácteos del Meta', 'Clínica San Rafael', 'Agroinsumos Casanare', 'Constructora Oriente', 'Café La Sierra'];
+  const estados = [
+    ['Pendiente', 'wait'],
+    ['En ruta', 'run'],
+  ];
+
+  document.querySelectorAll<HTMLElement>('[data-vp]').forEach((root) => {
+    const tile = root.closest<HTMLElement>('[data-tile]');
+    const rows = root.querySelector<HTMLElement>('[data-vp-rows]');
+    const kpi = root.querySelector<HTMLElement>('[data-vp-kpi]');
+    const toast = root.querySelector<HTMLElement>('[data-vp-toast]');
+    const toastText = root.querySelector<HTMLElement>('[data-vp-toast-text]');
+    if (!tile || !rows || !kpi || !toast || !toastText) return;
+
+    let n = 1042;
+    let count = 42;
+    let timer = 0;
+
+    const step = () => {
+      n += 1;
+      count += 1;
+      const [estado, tono] = estados[n % estados.length];
+      const row = document.createElement('div');
+      row.className = 'vp-row is-new';
+      // Copia el atributo de alcance de Astro para que apliquen los estilos del componente.
+      const scope = Array.from(rows.firstElementChild?.attributes ?? []).find((a) => a.name.startsWith('data-astro-cid'));
+      const html = `<span class="mono">#${n}</span><span class="vp-name">${clientes[n % clientes.length]}</span><span class="vp-pill vp-pill--${tono}">${estado}</span>`;
+      row.innerHTML = html;
+      if (scope) {
+        row.setAttribute(scope.name, '');
+        row.querySelectorAll('span').forEach((s) => s.setAttribute(scope.name, ''));
+      }
+      rows.prepend(row);
+      rows.lastElementChild?.remove();
+      rows.querySelectorAll('.is-new').forEach((r) => r !== row && r.classList.remove('is-new'));
+
+      gsap.from(row, { height: 0, paddingTop: 0, paddingBottom: 0, opacity: 0, duration: 0.5, ease: 'power3.out' });
+      kpi.textContent = String(count);
+      toastText.textContent = `Nuevo pedido #${n}`;
+      gsap.fromTo(toast, { y: -8, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.8)', delay: 0.25 });
+    };
+
+    tile.addEventListener('tile:play', () => {
+      window.clearInterval(timer);
+      timer = window.setInterval(step, 2600);
+    });
+    tile.addEventListener('tile:pause', () => window.clearInterval(timer));
+  });
+</script>

@@ -1,0 +1,129 @@
+---
+// Offline-first: sin señal se guardan registros en el teléfono; al volver la señal, se sincronizan.
+// Estado base (sin animación): todo sincronizado.
+import Icon from '../../ui/Icon.astro';
+const registros = ['Lote A-2041 · 24 u', 'Lote A-2042 · 18 u', 'Lote A-2043 · 31 u'];
+---
+
+<div class="vo is-online is-synced" data-vo>
+  <div class="vo-phone">
+    <div class="vo-status mono">
+      <span>9:41</span>
+      <span class="vo-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    </div>
+    <div class="vo-banner">
+      <span class="vo-dot"></span>
+      <span data-vo-text>Todo sincronizado</span>
+    </div>
+    <span class="vo-progress"><i data-vo-progress></i></span>
+    <ul class="vo-list" role="list">
+      {registros.map((r) => (
+        <li class="vo-item" data-vo-item>
+          <span class="mono">{r}</span>
+          <span class="vo-state">
+            <span class="vo-pending"><Icon name="clock" size={11} /></span>
+            <span class="vo-done"><Icon name="check" size={11} strokeWidth={2.6} /></span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .vo { display: grid; place-items: center; width: 100%; height: 100%; }
+  .vo-phone {
+    width: 178px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 10px;
+    border-radius: 22px 22px 0 0;
+    border: 1px solid var(--border-strong);
+    border-bottom: 0;
+    background: var(--surface-1);
+  }
+  .vo-status { display: flex; justify-content: space-between; align-items: center; font-size: 9px; color: var(--text-muted); }
+  .vo-signal { display: flex; align-items: flex-end; gap: 2px; height: 10px; }
+  .vo-signal i { width: 3px; border-radius: 1px; background: var(--border-strong); transition: background 0.4s; }
+  .vo-signal i:nth-child(1) { height: 30%; }
+  .vo-signal i:nth-child(2) { height: 55%; }
+  .vo-signal i:nth-child(3) { height: 80%; }
+  .vo-signal i:nth-child(4) { height: 100%; }
+  .vo.is-online .vo-signal i { background: var(--signal); }
+  .vo-banner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(var(--warning-rgb), 0.4);
+    background: rgba(var(--warning-rgb), 0.08);
+    font-size: 9.5px;
+    line-height: 1.25;
+    color: var(--warning);
+    transition: color 0.4s, border-color 0.4s, background 0.4s;
+  }
+  .vo-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .vo.is-online .vo-banner { color: var(--accent-text); border-color: rgba(var(--accent-rgb), 0.4); background: var(--accent-soft); }
+  .vo.is-synced .vo-banner { color: var(--signal); border-color: rgba(var(--signal-rgb), 0.4); background: rgba(var(--signal-rgb), 0.08); }
+  .vo-progress { height: 3px; border-radius: 2px; background: var(--surface-3); overflow: hidden; }
+  .vo-progress i { display: block; height: 100%; background: var(--accent); transform: scaleX(1); transform-origin: left; }
+  .vo.is-synced .vo-progress i { background: var(--signal); }
+  .vo-list { display: flex; flex-direction: column; gap: 6px; }
+  .vo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-2);
+    font-size: 9.5px;
+  }
+  .vo-state { display: grid; }
+  .vo-pending, .vo-done { grid-area: 1 / 1; display: grid; place-items: center; transition: opacity 0.3s, transform 0.3s; }
+  .vo-pending { color: var(--warning); opacity: 0; }
+  .vo-done { color: var(--signal); }
+  .vo-item.is-pending .vo-pending { opacity: 1; }
+  .vo-item.is-pending .vo-done { opacity: 0; transform: scale(0.5); }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  document.querySelectorAll<HTMLElement>('[data-vo]').forEach((root) => {
+    const tile = root.closest<HTMLElement>('[data-tile]');
+    const text = root.querySelector<HTMLElement>('[data-vo-text]');
+    const progress = root.querySelector<HTMLElement>('[data-vo-progress]');
+    const items = Array.from(root.querySelectorAll<HTMLElement>('[data-vo-item]'));
+    if (!tile || !text || !progress) return;
+
+    const tl = gsap.timeline({ paused: true, repeat: -1, repeatDelay: 0.4 });
+    tl.call(() => {
+      root.classList.remove('is-online', 'is-synced');
+      text.textContent = 'Sin señal · guardando en el teléfono';
+      items.forEach((it) => it.classList.add('is-pending'));
+    })
+      .set(progress, { scaleX: 0 })
+      .set(items, { opacity: 0, y: 8 })
+      .to(items, { opacity: 1, y: 0, duration: 0.4, stagger: 0.6, ease: 'power2.out' }, 0.4)
+      .call(() => {
+        root.classList.add('is-online');
+        text.textContent = 'Señal recuperada · sincronizando…';
+      }, [], 2.6)
+      .to(progress, { scaleX: 1, duration: 1.1, ease: 'power1.inOut' }, 2.7)
+      .call(() => items[0]?.classList.remove('is-pending'), [], 3.1)
+      .call(() => items[1]?.classList.remove('is-pending'), [], 3.4)
+      .call(() => items[2]?.classList.remove('is-pending'), [], 3.7)
+      .call(() => {
+        root.classList.add('is-synced');
+        text.textContent = 'Todo sincronizado';
+      }, [], 3.9)
+      .to({}, { duration: 1.8 });
+
+    tile.addEventListener('tile:play', () => tl.play());
+    tile.addEventListener('tile:pause', () => tl.pause());
+  });
+</script>

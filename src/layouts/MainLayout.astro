@@ -1,7 +1,12 @@
 ---
-// MainLayout.astro - Componente de layout principal que contiene elementos comunes
-
+// src/layouts/MainLayout.astro — layout base de todas las páginas.
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
 import '../styles/tokens.css';
+import '../styles/base.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
@@ -16,182 +21,47 @@ export interface Props {
   jsonLd?: Record<string, unknown>[];
 }
 
-const {
-  title,
-  description,
-  image,
-  type,
-  noindex = false,
-  jsonLd = [],
-} = Astro.props;
+const { title, description, image, type, noindex = false, jsonLd = [] } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0b12" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <!-- Activa el revelado progresivo solo si hay JS; si el motor no arranca en 2.5 s, se muestra todo. -->
+    <script is:inline>
+      if (!/[?&]sinmovimiento/.test(location.search)) document.documentElement.classList.add('js');
+      setTimeout(function () {
+        if (!document.documentElement.classList.contains('motion-ready')) {
+          document.documentElement.classList.remove('js');
+        }
+      }, 2500);
+    </script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      noindex={noindex}
+      jsonLd={[organizationSchema(), ...jsonLd]}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <Navbar />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
 
-  <!-- Global styles -->
-  <link rel="stylesheet" href="/styles/global.css">
-
-  <!-- SEO -->
-  <SEO
-    title={title}
-    description={description}
-    image={image}
-    type={type}
-    noindex={noindex}
-    jsonLd={[organizationSchema(), ...jsonLd]}
-  />
-  
-  <!-- Estilos básicos para asegurar que no haya márgenes extra -->
-  <style>
-    /* Reset básico para eliminar márgenes y padding por defecto */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: #0a0a14;
-      color: white;
-      overflow-x: hidden;
-      width: 100%;
-    }
-    
-    main {
-      width: 100%;
-      display: block;
-    }
-    
-    /* Variables CSS globales (paleta y tipografía compartidas vienen de tokens.css) */
-
-    /* Estilo de scrollbar personalizada - estética cibernética */
-    /* Webkit browsers (Chrome, Safari, Opera) */
-    ::-webkit-scrollbar {
-      width: 10px;
-      background-color: var(--darker-bg);
-    }
-    
-    ::-webkit-scrollbar-track {
-      background-color: rgba(10, 10, 20, 0.8);
-      border-radius: 10px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, var(--neon-purple), var(--neon-blue));
-      border-radius: 10px;
-      border: 2px solid rgba(10, 10, 20, 0.8);
-      box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, var(--neon-pink), var(--neon-purple));
-    }
-    
-    /* Firefox */
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: var(--neon-purple) var(--darker-bg);
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <Navbar />
-  
-  <!-- Main content -->
-  <main>
-    <slot />
-  </main>
-  
-  <!-- Footer -->
-  <Footer />
-  
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Smooth scroll para enlaces internos
-      document.querySelectorAll('a[href^="#"]').forEach((anchor: Element) => {
-        anchor.addEventListener('click', (e: Event) => {
-          e.preventDefault();
-          
-          const element = e.currentTarget as HTMLAnchorElement;
-          const targetId = element.getAttribute('href');
-          
-          if (!targetId || targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            const headerOffset = 80; // Ajustar por la altura del navbar
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-            
-            // Cerrar menú móvil si está abierto
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && mobileMenu.classList.contains('active')) {
-              mobileMenu.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          }
-        });
-      });
-      
-      // Animación para elementos al hacer scroll
-      const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.animate-on-scroll');
-        
-        elements.forEach(element => {
-          const elementPosition = element.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          
-          if (elementPosition < windowHeight * 0.85) {
-            element.classList.add('animated');
-          }
-        });
-      };
-      
-      // Inicializar animaciones al cargar
-      setTimeout(animateOnScroll, 100);
-      
-      // Event listener para animaciones al hacer scroll
-      window.addEventListener('scroll', animateOnScroll);
-      
-      // Detectar dispositivos táctiles y desactivar algunos efectos
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      
-      if (isTouchDevice) {
-        document.body.classList.add('touch-device');
-      }
-
-      // Asegurarse de que las animaciones también funcionen después de la navegación
-      // Verificar animaciones después de cada click en enlaces del navbar
-      const navLinks = document.querySelectorAll('.navbar-link, .menu-link, .mobile-menu-link');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          // Dar tiempo para que el scroll termine
-          setTimeout(animateOnScroll, 800);
-        });
-      });
-    });
-  </script>
-</body>
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
 </html>

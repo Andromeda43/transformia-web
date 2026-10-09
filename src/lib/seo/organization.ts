@@ -1,19 +1,25 @@
 // src/lib/seo/organization.ts
+import { contacto, empresa } from '../../data/site';
+
 export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Transformia',
-    url: 'https://transformia.dev',
-    description:
-      'Transformia diseña y desarrolla software a medida para empresas en LatAm, con especialización en inteligencia artificial aplicada y un equipo boutique enfocado en velocidad de entrega.',
-    email: 'transformia.desarrollo@gmail.com',
-    telephone: '+57-321-259-6437',
+    name: empresa.nombre,
+    legalName: empresa.razonSocial,
+    taxID: empresa.nit,
+    slogan: empresa.eslogan,
+    url: empresa.url,
+    logo: `${empresa.url}/favicon.svg`,
+    description: empresa.descripcion,
+    email: contacto.email,
+    telephone: contacto.telefonoE164,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Tauramena',
-      addressRegion: 'Casanare',
-      addressCountry: 'CO',
+      addressLocality: empresa.ubicacion.ciudad,
+      addressRegion: empresa.ubicacion.region,
+      addressCountry: empresa.ubicacion.pais,
     },
+    areaServed: ['CO', 'LatAm'],
   };
 }

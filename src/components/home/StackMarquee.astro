@@ -1,0 +1,70 @@
+---
+// src/components/home/StackMarquee.astro — cinta infinita con el stack que usamos (solo CSS).
+const stack = [
+  'React', 'TypeScript', 'Astro', 'React Native', 'Expo', 'Python', 'FastAPI', 'Supabase',
+  'PostgreSQL', 'Cloudflare', 'Node.js', 'GSAP', 'Claude', 'WhatsApp API', 'Google Apps Script', 'Looker Studio',
+];
+---
+
+<section class="marquee-section" aria-label="Tecnologías con las que trabajamos">
+  <p class="marquee-label mono">Stack con el que construimos</p>
+  <div class="marquee">
+    {[0, 1].map((copy) => (
+      <ul class="marquee-track" role="list" aria-hidden={copy === 1 ? 'true' : undefined}>
+        {stack.map((tech) => <li>{tech}</li>)}
+      </ul>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee-section {
+    padding: 2.25rem 0;
+    border-block: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .marquee-label {
+    margin-bottom: 1.1rem;
+    text-align: center;
+    font-size: var(--text-label);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-subtle);
+  }
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    gap: 3rem;
+    padding-right: 3rem;
+    list-style: none;
+    animation: marquee 48s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-track li {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .marquee-track li::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--border-strong);
+  }
+  @keyframes marquee {
+    to { transform: translateX(-100%); }
+  }
+</style>

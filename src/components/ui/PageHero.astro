@@ -1,0 +1,88 @@
+---
+// src/components/ui/PageHero.astro — encabezado de páginas internas con migas de pan.
+interface Crumb {
+  name: string;
+  path: string;
+}
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  crumbs?: Crumb[];
+  narrow?: boolean;
+}
+const { eyebrow, title, lead, crumbs = [], narrow = false } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="blueprint"></div>
+  <div class:list={['container', 'page-hero-inner', { 'container--narrow': narrow }]}>
+    {crumbs.length > 1 && (
+      <nav class="crumbs mono" aria-label="Migas de pan" data-reveal>
+        <ol role="list">
+          {crumbs.map((c, i) => (
+            <li>
+              {i < crumbs.length - 1 ? <a href={c.path}>{c.name}</a> : <span aria-current="page">{c.name}</span>}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    {eyebrow && <p class="eyebrow" data-reveal>{eyebrow}</p>}
+    <h1 class="h1 page-hero-title" data-split>{title}</h1>
+    {lead && <p class="lead" data-reveal>{lead}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: calc(var(--nav-height) + clamp(3.5rem, 2.5rem + 4vw, 6.5rem)) 0 clamp(3rem, 2rem + 3vw, 5rem);
+    overflow: hidden;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    width: 80vw;
+    height: 80vw;
+    max-width: 1100px;
+    max-height: 1100px;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(var(--accent-rgb), 0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .page-hero-title {
+    max-width: 18ch;
+  }
+  .container--narrow .page-hero-title {
+    max-width: none;
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .crumbs li + li::before {
+    content: '/';
+    margin-right: 0.4rem;
+    color: var(--border-strong);
+  }
+  .crumbs a:hover {
+    color: var(--text);
+  }
+  .crumbs [aria-current] {
+    color: var(--text-muted);
+  }
+</style>

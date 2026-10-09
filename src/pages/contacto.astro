@@ -1,12 +1,18 @@
 ---
-// src/pages/contacto.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import ContactoForm from '../components/ContactoForm.astro';
+import { breadcrumbSchema } from '../lib/seo/breadcrumb';
+
+const crumbs = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Contacto', path: '/contacto' },
+];
 ---
 
 <MainLayout
   title="Contacto | Transformia"
-  description="Escribinos para contar tu proyecto de software. Transformia responde por WhatsApp, teléfono o correo — sin formularios eternos ni intermediarios."
+  description="Cuéntanos tu proyecto de software. Agenda un diagnóstico de 30 minutos sin costo por WhatsApp, correo o teléfono."
+  jsonLd={[breadcrumbSchema(crumbs, Astro.site!)]}
 >
   <ContactoForm />
 </MainLayout>

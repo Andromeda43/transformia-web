@@ -2,88 +2,44 @@
 // src/components/home/BlogTeaser.astro
 import { getCollection } from 'astro:content';
 import SectionHeader from '../ui/SectionHeader.astro';
-import GridBackground from '../ui/GridBackground.astro';
-import GlowOrbs from '../ui/GlowOrbs.astro';
 import BlogPostCard from '../BlogPostCard.astro';
+import Icon from '../ui/Icon.astro';
 
-const latest = (await getCollection('blog', ({ data }) => !data.draft))
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 ---
 
-{latest.length > 0 && (
-  <section class="blog-teaser">
-    <div class="section-transition"></div>
-    <GridBackground opacity={0.25} />
-    <GlowOrbs count={2} />
+{posts.length > 0 && (
+  <section class="section section--tight">
     <div class="container">
-      <SectionHeader
-        title="DEL BLOG"
-        badge="IDEAS Y APRENDIZAJES"
-        subtitle="Notas de proyectos reales de desarrollo de software e inteligencia artificial aplicada."
-      />
-      <div class="posts-grid">
-        {latest.map((entry) => <BlogPostCard entry={entry} />)}
+      <div class="blog-head">
+        <SectionHeader eyebrow="06 — Blog" title="Lo que aprendemos construyendo." />
+        <a href="/blog" class="link-arrow blog-all" data-reveal>Ver todos los artículos <Icon name="arrow" /></a>
       </div>
-      <a href="/blog" class="teaser-cta">Ver todos los artículos →</a>
+      <div>
+        {posts.map((entry) => <BlogPostCard entry={entry} />)}
+      </div>
     </div>
   </section>
 )}
 
 <style>
-  .blog-teaser {
-    position: relative;
-    width: 100%;
-    background-color: var(--dark-purple);
-    color: white;
-    padding: 6rem 0;
-    overflow: hidden;
-  }
-
-  .section-transition {
-    position: absolute;
-    top: -60px;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to bottom, transparent, var(--dark-purple));
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .container {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: var(--container-max);
-    margin: 0 auto;
+  .blog-head {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
   }
-
-  .posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.75rem;
-    width: 100%;
-    margin-top: 1rem;
+  .blog-all {
+    flex-shrink: 0;
+    margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
   }
-
-  .teaser-cta {
-    margin-top: 3rem;
-    color: var(--neon-purple);
-    font-family: var(--font-mono);
-    text-decoration: none;
-  }
-
-  .teaser-cta:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 768px) {
-    .blog-teaser {
-      padding: 4rem 0;
+  @media (max-width: 720px) {
+    .blog-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
     }
   }
 </style>

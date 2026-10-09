@@ -1,38 +1,185 @@
 ---
-// src/pages/nosotros.astro
+// src/pages/nosotros.astro — la empresa, sus principios y su método (siempre en voz de empresa).
 import MainLayout from '../layouts/MainLayout.astro';
-import QuienesSomos from '../components/QuienesSomos.astro';
-import QueHacemos from '../components/QueHacemos.astro';
-import MetodologiaTrabajo from '../components/MetodologiaTrabajo.astro';
-import PorQueElegirnos from '../components/PorQueElegirnos.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import ScrollHighlight from '../components/ui/ScrollHighlight.astro';
+import Icon from '../components/ui/Icon.astro';
+import ProcessStack from '../components/home/ProcessStack.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { empresa } from '../data/site';
 import { breadcrumbSchema } from '../lib/seo/breadcrumb';
 
-const breadcrumbItems = [
+const crumbs = [
   { name: 'Inicio', path: '/' },
   { name: 'Nosotros', path: '/nosotros' },
 ];
+
+const principios = [
+  { icon: 'layers', t: 'Evidencia antes que promesas', d: 'Mostramos sistemas funcionando, no presentaciones. Si no lo podemos demostrar, no lo prometemos.' },
+  { icon: 'blueprint', t: 'Arquitectura antes que código', d: 'Modelamos datos, roles e integraciones antes de construir, para no pagar dos veces el mismo error.' },
+  { icon: 'sparkles', t: 'IA donde suma', d: 'La usamos sobre tareas concretas que hoy se hacen a mano, con una persona aprobando lo que importa.' },
+  { icon: 'shield', t: 'Precio fijo, sin letra pequeña', d: 'Fases con inversión cerrada, pagos por hitos y siempre por escrito lo que no incluye.' },
+  { icon: 'database', t: 'Decisiones que no salen caras después', d: 'Multi-empresa y operación sin conexión se piensan desde el día uno, cuando cuestan poco.' },
+  { icon: 'whatsapp', t: 'Cerca de tu equipo', d: 'Equipo boutique: hablas directo con quien construye tu sistema, sin capas de intermediarios.' },
+] as const;
 ---
 
 <MainLayout
   title="Nosotros | Transformia"
-  description="Transformia es un equipo boutique especializado en inteligencia artificial aplicada y desarrollo de software a medida. Conocé quiénes somos, cómo trabajamos y por qué elegirnos."
-  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+  description="Transformia es una empresa colombiana de software e inteligencia artificial. Equipo boutique, método por fases con precio fijo y sistemas que se quedan funcionando."
+  jsonLd={[breadcrumbSchema(crumbs, Astro.site!)]}
 >
-  <div class="nosotros-spacer"></div>
-  <QuienesSomos />
-  <QueHacemos />
-  <MetodologiaTrabajo />
-  <PorQueElegirnos />
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Nosotros"
+    title="Pequeños a propósito. Serios en lo que entregamos."
+    lead="Transformia es una empresa colombiana de software e inteligencia artificial. Desde 2024 construimos sistemas a la medida para operaciones que no pueden darse el lujo de fallar."
+  />
+
+  <section class="section section--tight">
+    <div class="container manifesto">
+      <p class="eyebrow">Lo que creemos</p>
+      <ScrollHighlight
+        text="El buen software no se nota: simplemente hace que la operación funcione. Por eso empezamos por entender el proceso, diseñamos antes de construir y no damos un proyecto por terminado hasta que tu equipo lo usa todos los días."
+        highlight={['operación', 'funcione.', 'todos', 'días.']}
+      />
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <SectionHeader eyebrow="Principios" title="Cómo tomamos decisiones." />
+      <ul class="principles" role="list">
+        {principios.map((p, i) => (
+          <li class="principle spot" data-spotlight data-reveal>
+            <div class="principle-top">
+              <span class="principle-icon"><Icon name={p.icon} size={18} /></span>
+              <span class="mono principle-num">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <h3 class="h3">{p.t}</h3>
+            <p>{p.d}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container facts">
+      <div class="fact" data-reveal>
+        <span class="fact-value mono">2024</span>
+        <span class="fact-label">Año de fundación</span>
+      </div>
+      <div class="fact" data-reveal>
+        <span class="fact-value mono">CO · AU</span>
+        <span class="fact-label">Proyectos entregados en Colombia y Australia</span>
+      </div>
+      <div class="fact" data-reveal>
+        <span class="fact-value mono">2</span>
+        <span class="fact-label">Productos propios en operación</span>
+      </div>
+      <div class="fact" data-reveal>
+        <span class="fact-value mono">7</span>
+        <span class="fact-label">Líneas de servicio, un solo equipo</span>
+      </div>
+    </div>
+    <p class="container legal mono" data-reveal>{empresa.razonSocial} · NIT {empresa.nit} · {empresa.ubicacion.ciudad}, {empresa.ubicacion.region}, Colombia</p>
+  </section>
+
+  <ProcessStack eyebrow="Método" />
+  <CallToAction />
 </MainLayout>
 
 <style>
-  .nosotros-spacer {
-    height: 5rem;
+  .manifesto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
-
-  @media (max-width: 768px) {
-    .nosotros-spacer {
-      height: 3rem;
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .principle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.75rem;
+  }
+  .principle p {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .principle-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .principle-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+  .principle-num {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 2rem 1.5rem;
+    border-left: 1px solid var(--border);
+  }
+  .fact:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .fact-value {
+    font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .fact-label {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .legal {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  @media (max-width: 960px) {
+    .principles {
+      grid-template-columns: 1fr 1fr;
+    }
+    .facts {
+      grid-template-columns: 1fr 1fr;
+    }
+    .fact:nth-child(3) {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .fact:nth-child(n + 3) {
+      border-top: 1px solid var(--border);
+    }
+  }
+  @media (max-width: 600px) {
+    .principles {
+      grid-template-columns: 1fr;
     }
   }
 </style>

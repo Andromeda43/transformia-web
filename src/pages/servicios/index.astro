@@ -1,71 +1,168 @@
 ---
 // src/pages/servicios/index.astro
 import MainLayout from '../../layouts/MainLayout.astro';
-import GridBackground from '../../components/ui/GridBackground.astro';
-import SectionHeader from '../../components/ui/SectionHeader.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Icon from '../../components/ui/Icon.astro';
+import ProcessStack from '../../components/home/ProcessStack.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import { grupos, serviciosPorGrupo } from '../../data/servicios';
 import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 
-const services = [
-  { slug: 'desarrollo', title: 'Desarrollo de Software a Medida', description: 'Aplicaciones web, móviles y sistemas de gestión construidos para tu operación específica, no para un caso de uso genérico.' },
-  { slug: 'transformacion', title: 'Transformación Digital y Automatización', description: 'Digitalizamos procesos analógicos y automatizamos flujos repetitivos con tecnología a la medida de tu operación.' },
-  { slug: 'ia', title: 'Inteligencia Artificial y Data Analytics', description: 'IA aplicada a un cuello de botella operativo concreto, no un chatbot genérico — con datos reales y un humano en el loop donde importa.' },
-  { slug: 'asesoria', title: 'Asesoría en Optimización de Procesos', description: 'Identificamos cuellos de botella operativos y proponemos soluciones tecnológicas concretas para eliminarlos.' },
-  { slug: 'iot', title: 'Internet of Things y Sistemas Físicos', description: 'Conectamos hardware — sensores, básculas, impresoras — con software que captura datos en tiempo real desde el mundo físico.' },
-  { slug: 'arquitectura', title: 'Arquitectura de Software', description: 'Diseño técnico, modelado de casos de uso y decisiones de arquitectura antes de escribir una línea de código de producción.' },
-  { slug: 'database', title: 'Gestión de Bases de Datos', description: 'Diseño, implementación y optimización de bases de datos SQL y NoSQL para operaciones que necesitan rendimiento y trazabilidad reales.' },
-];
-
-const breadcrumbItems = [
+const crumbs = [
   { name: 'Inicio', path: '/' },
   { name: 'Servicios', path: '/servicios' },
 ];
 ---
 
 <MainLayout
-  title="Servicios | Transformia"
-  description="Desarrollo de software a medida, inteligencia artificial aplicada, IoT, arquitectura y bases de datos. Las 7 líneas de trabajo de Transformia."
-  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+  title="Servicios de desarrollo de software e IA | Transformia"
+  description="Software a la medida, IA aplicada, automatización, integraciones, bases de datos, arquitectura y asesoría. Siete servicios en cuatro frentes, con un mismo método por fases."
+  jsonLd={[breadcrumbSchema(crumbs, Astro.site!)]}
 >
-  <section class="servicios-hub">
-    <GridBackground opacity={0.3} />
-    <div class="container">
-      <SectionHeader
-        title="SERVICIOS"
-        badge="ALTA TECNOLOGÍA"
-        subtitle="Siete líneas de trabajo, un mismo equipo boutique especializado en inteligencia artificial aplicada."
-      />
-      <div class="services-grid">
-        {services.map((service) => <ServiceCard {...service} />)}
-      </div>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Servicios"
+    title="Todo lo que tu operación necesita, en un solo equipo."
+    lead="Siete servicios organizados en cuatro frentes. Puedes contratar uno o combinarlos: el método es el mismo, por fases y con precio fijo."
+  />
+
+  <section class="section section--tight">
+    <div class="container groups">
+      {grupos.map((g, gi) => (
+        <div class="group">
+          <div class="group-head" data-reveal>
+            <span class="group-num mono">{String(gi + 1).padStart(2, '0')}</span>
+            <span class="group-icon"><Icon name={g.icon} size={20} /></span>
+            <h2 class="h3">{g.nombre}</h2>
+            <p class="muted">{g.resumen}</p>
+          </div>
+          <div class="group-services">
+            {serviciosPorGrupo(g.id).map((s) => (
+              <a href={`/servicios/${s.slug}`} class="svc spot" data-spotlight data-reveal>
+                <div class="svc-top">
+                  <span class="svc-icon"><Icon name={s.icon} size={18} /></span>
+                  <Icon name="arrow-up-right" size={20} class="svc-arrow" />
+                </div>
+                <h3 class="svc-title">{s.nombre}</h3>
+                <p class="svc-text">{s.resumen}</p>
+                <ul class="svc-tags" role="list">
+                  {s.ejemplos.slice(0, 3).map((e) => <li>{e}</li>)}
+                </ul>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
+
+  <ProcessStack eyebrow="Cómo trabajamos" />
+  <CallToAction />
 </MainLayout>
 
 <style>
-  .servicios-hub {
-    position: relative;
-    padding: 10rem 0 6rem;
-    color: white;
+  .groups {
+    display: flex;
+    flex-direction: column;
   }
-
-  .container {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-  }
-
-  .services-grid {
+  .group {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.75rem;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
+    gap: 2.5rem;
+    padding-block: 3rem;
+    border-top: 1px solid var(--border);
   }
-
-  @media (max-width: 768px) {
-    .servicios-hub {
-      padding: 8rem 0 4rem;
+  .group-head {
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .group-num {
+    font-size: 0.75rem;
+    color: var(--accent-text);
+  }
+  .group-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+    color: var(--accent-text);
+  }
+  .group-services {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .group-services:has(> :only-child) {
+    grid-template-columns: 1fr;
+  }
+  .svc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.6rem;
+  }
+  .svc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .svc-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+  .svc :global(.svc-arrow) {
+    color: var(--text-subtle);
+    transition: transform var(--dur) var(--ease-out), color var(--dur);
+  }
+  .svc:hover :global(.svc-arrow) {
+    color: var(--accent-text);
+    transform: translate(3px, -3px);
+  }
+  .svc-title {
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .svc-text {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .svc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+  .svc-tags li {
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  @media (max-width: 900px) {
+    .group {
+      grid-template-columns: 1fr;
+    }
+    .group-head {
+      position: static;
+    }
+  }
+  @media (max-width: 600px) {
+    .group-services {
+      grid-template-columns: 1fr;
     }
   }
 </style>

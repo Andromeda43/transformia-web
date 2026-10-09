@@ -1,0 +1,133 @@
+---
+// src/components/home/bento/Tile.astro — celda del bento "Qué construimos".
+// La visualización (slot) solo se anima mientras la celda está en pantalla: el script de Capabilities
+// agrega .is-playing y emite los eventos "tile:play" / "tile:pause" sobre el <article>.
+import Icon, { type IconName } from '../../ui/Icon.astro';
+
+interface Props {
+  title: string;
+  text: string;
+  icon: IconName;
+  span: 2 | 3 | 4;
+  tag?: string;
+  links: { href: string; label: string }[];
+}
+const { title, text, icon, span, tag, links } = Astro.props;
+---
+
+<article class:list={['spot', 'tile', `tile--${span}`]} data-spotlight data-reveal data-tile>
+  <div class="tile-visual" aria-hidden="true">
+    <slot />
+  </div>
+  <div class="tile-copy">
+    <div class="tile-head">
+      <span class="tile-icon"><Icon name={icon} size={18} /></span>
+      {tag && <span class="tile-tag mono">{tag}</span>}
+    </div>
+    <h3 class="tile-title">{title}</h3>
+    <p class="tile-text">{text}</p>
+    <ul class="tile-links" role="list">
+      {links.map((l) => (
+        <li>
+          <a href={l.href}>{l.label}<Icon name="arrow" size={14} /></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</article>
+
+<style>
+  .tile {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .tile--2 { grid-column: span 2; }
+  .tile--3 { grid-column: span 3; }
+  .tile--4 { grid-column: span 4; }
+
+  .tile-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 236px;
+    padding: 1.5rem 1.5rem 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background: radial-gradient(90% 80% at 50% 0%, rgba(var(--accent-rgb), 0.07), transparent 70%);
+  }
+  .tile-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1.4rem 1.6rem 1.6rem;
+  }
+  .tile-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .tile-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+    color: var(--accent-text);
+  }
+  .tile-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .tile-title {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .tile-text {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+  .tile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+  .tile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    transition: border-color var(--dur-fast), background var(--dur-fast);
+  }
+  .tile-links a:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .tile-links :global(svg) {
+    color: var(--accent-text);
+  }
+
+  @media (max-width: 1080px) {
+    .tile--2,
+    .tile--3 { grid-column: span 3; }
+    .tile--4 { grid-column: span 6; }
+  }
+  @media (max-width: 680px) {
+    .tile--2,
+    .tile--3,
+    .tile--4 { grid-column: span 6; }
+    .tile-visual { height: 220px; padding-inline: 1rem; }
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+// src/pages/productos.astro — productos propios de Transformia.
+import MainLayout from '../layouts/MainLayout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import ProductCard from '../components/productos/ProductCard.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { productos } from '../data/productos';
+import { breadcrumbSchema } from '../lib/seo/breadcrumb';
+
+const crumbs = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Productos', path: '/productos' },
+];
+---
+
+<MainLayout
+  title="Productos propios: Vera y FeriaApp | Transformia"
+  description="Vera valida comprobantes de pago Bre-B por WhatsApp en menos de 10 segundos. FeriaApp es el marketplace ganadero de la Orinoquía. Productos construidos y operados por Transformia."
+  jsonLd={[breadcrumbSchema(crumbs, Astro.site!)]}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Productos propios"
+    title="Software que construimos y operamos nosotros mismos."
+    lead="Además de proyectos a la medida, creamos productos para problemas que vemos repetirse. Operarlos nos obliga a cuidar lo que de verdad importa: que funcione todos los días."
+  />
+
+  <section class="section section--tight">
+    <div class="container products">
+      {productos.map((p) => <ProductCard producto={p} headingLevel="h2" />)}
+    </div>
+  </section>
+
+  <CallToAction
+    title="¿Tienes una idea de producto?"
+    text="Te ayudamos a pasar de la idea a un producto en operación: alcance mínimo, arquitectura que escale y lanzamiento por fases."
+  />
+</MainLayout>
+
+<style>
+  .products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .products {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

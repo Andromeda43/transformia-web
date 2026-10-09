@@ -1,0 +1,158 @@
+---
+// src/components/home/Capabilities.astro — "Qué construimos": bento de 9 capacidades, cada una con su animación.
+// Las animaciones solo corren mientras la celda está en pantalla (ver script al final).
+import SectionHeader from '../ui/SectionHeader.astro';
+import Tile from './bento/Tile.astro';
+import SystemDiagram from './SystemDiagram.astro';
+import VisualPlatform from './bento/VisualPlatform.astro';
+import VisualAI from './bento/VisualAI.astro';
+import VisualOffline from './bento/VisualOffline.astro';
+import VisualFlow from './bento/VisualFlow.astro';
+import VisualDashboard from './bento/VisualDashboard.astro';
+import VisualRoles from './bento/VisualRoles.astro';
+import VisualArchitecture from './bento/VisualArchitecture.astro';
+import VisualWeb from './bento/VisualWeb.astro';
+
+const s = (slug: string, label: string) => ({ href: `/servicios/${slug}`, label });
+---
+
+<section class="section caps">
+  <div class="container">
+    <SectionHeader
+      eyebrow="01 — Qué construimos"
+      title="Si tu operación lo necesita, lo construimos."
+      lead="Plataformas, apps, IA, automatizaciones, integraciones, datos y sitios web. Un solo equipo que diseña, construye y pone en marcha: la herramienta se elige según el problema, no al revés."
+    />
+
+    <div class="bento">
+      <Tile
+        span={4}
+        icon="layout"
+        tag="Web + móvil"
+        title="Plataformas web y apps móviles"
+        text="Sistemas de gestión, portales y marketplaces: la misma plataforma en el navegador y en el teléfono, con los datos siempre sincronizados."
+        links={[s('desarrollo', 'Software a la medida')]}
+      >
+        <VisualPlatform />
+      </Tile>
+
+      <Tile
+        span={2}
+        icon="sparkles"
+        tag="Visión + lenguaje"
+        title="IA que lee, valida y decide"
+        text="Documentos, pagos y solicitudes revisados en segundos, con una persona aprobando los casos dudosos."
+        links={[s('ia', 'IA aplicada')]}
+      >
+        <VisualAI />
+      </Tile>
+
+      <Tile
+        span={2}
+        icon="smartphone"
+        tag="Offline-first"
+        title="Apps que funcionan sin señal"
+        text="En campo, planta o bodega: todo se guarda en el dispositivo y se sincroniza solo cuando vuelve la conexión."
+        links={[s('desarrollo', 'Apps móviles'), s('arquitectura', 'Arquitectura')]}
+      >
+        <VisualOffline />
+      </Tile>
+
+      <Tile
+        span={2}
+        icon="route"
+        tag="Flujos"
+        title="Procesos que avanzan solos"
+        text="Solicitudes, aprobaciones y avisos automáticos, sin perseguir a nadie por WhatsApp."
+        links={[s('transformacion', 'Automatización')]}
+      >
+        <VisualFlow />
+      </Tile>
+
+      <Tile
+        span={2}
+        icon="database"
+        tag="Datos"
+        title="Tableros en tiempo real"
+        text="Indicadores que se actualizan mientras la operación ocurre, no al cierre del mes."
+        links={[s('database', 'Bases de datos'), s('transformacion', 'Reportes')]}
+      >
+        <VisualDashboard />
+      </Tile>
+
+      <Tile
+        span={3}
+        icon="plug"
+        tag="APIs + hardware"
+        title="Todo conectado a un mismo sistema"
+        text="Excel, APIs, WhatsApp y dispositivos físicos alimentan la misma fuente de verdad, sin transcribir nada a mano."
+        links={[s('iot', 'Integraciones'), s('database', 'Bases de datos')]}
+      >
+        <SystemDiagram />
+      </Tile>
+
+      <Tile
+        span={3}
+        icon="shield"
+        tag="Seguridad"
+        title="Cada rol ve solo lo suyo"
+        text="Permisos por rol aplicados en la base de datos, no solo en la pantalla: cada persona hace exactamente lo que le corresponde."
+        links={[s('database', 'Bases de datos'), s('arquitectura', 'Arquitectura')]}
+      >
+        <VisualRoles />
+      </Tile>
+
+      <Tile
+        span={3}
+        icon="blueprint"
+        tag="Diseño técnico"
+        title="Arquitectura antes que código"
+        text="Modelamos datos, módulos e integraciones antes de construir. Multi-empresa y sin conexión se deciden desde el día uno."
+        links={[s('arquitectura', 'Arquitectura'), s('asesoria', 'Asesoría')]}
+      >
+        <VisualArchitecture />
+      </Tile>
+
+      <Tile
+        span={3}
+        icon="compass"
+        tag="Astro + SEO"
+        title="Sitios rápidos que se encuentran"
+        text="Sitios web veloces, accesibles y bien posicionados, con diseño y animación a la medida de cada marca."
+        links={[s('desarrollo', 'Sitios web')]}
+      >
+        <VisualWeb />
+      </Tile>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+</style>
+
+<script>
+  import { reduceMotion } from '../../scripts/env';
+
+  // Cada celda se anima solo mientras está visible: .is-playing activa sus animaciones CSS y los eventos
+  // tile:play / tile:pause controlan las que usan JS. Las animaciones SVG (SMIL) se pausan fuera de pantalla.
+  if (!reduceMotion) {
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach(({ target, isIntersecting }) => {
+          const tile = target as HTMLElement;
+          tile.classList.toggle('is-playing', isIntersecting);
+          tile.dispatchEvent(new CustomEvent(isIntersecting ? 'tile:play' : 'tile:pause'));
+          tile.querySelectorAll('svg').forEach((svg) => (isIntersecting ? svg.unpauseAnimations() : svg.pauseAnimations()));
+        }),
+      { threshold: 0.35 }
+    );
+    document.querySelectorAll<HTMLElement>('[data-tile]').forEach((tile) => io.observe(tile));
+  } else {
+    document.querySelectorAll<SVGSVGElement>('[data-tile] svg').forEach((svg) => svg.pauseAnimations());
+  }
+</script>

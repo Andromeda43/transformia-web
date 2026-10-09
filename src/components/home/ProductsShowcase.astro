@@ -1,0 +1,32 @@
+---
+// src/components/home/ProductsShowcase.astro
+import SectionHeader from '../ui/SectionHeader.astro';
+import ProductCard from '../productos/ProductCard.astro';
+import { productos } from '../../data/productos';
+---
+
+<section class="section section--surface">
+  <div class="container">
+    <SectionHeader
+      eyebrow="04 — Productos propios"
+      title="También construimos y operamos producto."
+      lead="Lo que aprendemos operando nuestros propios productos llega a cada proyecto que hacemos para clientes."
+    />
+    <div class="products-grid">
+      {productos.map((p) => <ProductCard producto={p} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+// src/components/home/SystemDiagram.astro
+// Diagrama de integración: fuentes → tu sistema → salidas. Paquetes animados con SMIL (sin JS).
+const inputs = ['Excel', 'API', 'WhatsApp', 'Dispositivo'];
+const outputs = ['Panel web', 'App móvil', 'Alertas'];
+const inY = [22, 62, 102, 142];
+const outY = [42, 82, 122];
+---
+
+<svg class="sysdiag" viewBox="0 0 340 164" fill="none" role="img" aria-label="Fuentes de datos conectadas a un sistema central que alimenta panel web, app móvil y alertas">
+  <defs>
+    {inY.map((y, i) => <path id={`sd-in-${i}`} d={`M78 ${y} C 120 ${y}, 120 82, 140 82`} />)}
+    {outY.map((y, i) => <path id={`sd-out-${i}`} d={`M200 82 C 222 82, 222 ${y}, 262 ${y}`} />)}
+  </defs>
+
+  {inY.map((_, i) => <use href={`#sd-in-${i}`} class="sd-line" />)}
+  {outY.map((_, i) => <use href={`#sd-out-${i}`} class="sd-line" />)}
+
+  {inputs.map((label, i) => (
+    <g>
+      <rect x="4" y={inY[i] - 11} width="74" height="22" rx="6" class="sd-node" />
+      <text x="41" y={inY[i] + 4} text-anchor="middle" class="sd-label">{label}</text>
+    </g>
+  ))}
+
+  <rect x="140" y="58" width="60" height="48" rx="10" class="sd-core" />
+  <text x="170" y="79" text-anchor="middle" class="sd-core-label">Tu</text>
+  <text x="170" y="92" text-anchor="middle" class="sd-core-label">sistema</text>
+
+  {outputs.map((label, i) => (
+    <g>
+      <rect x="262" y={outY[i] - 11} width="74" height="22" rx="6" class="sd-node sd-node--out" />
+      <text x="299" y={outY[i] + 4} text-anchor="middle" class="sd-label">{label}</text>
+    </g>
+  ))}
+
+  <g class="sd-packets">
+    {inY.map((_, i) => (
+      <circle r="2.6" class="sd-packet">
+        <animateMotion dur="2.2s" repeatCount="indefinite" begin={`-${i * 0.55}s`} calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.2 1">
+          <mpath href={`#sd-in-${i}`} />
+        </animateMotion>
+      </circle>
+    ))}
+    {outY.map((_, i) => (
+      <circle r="2.6" class="sd-packet sd-packet--out">
+        <animateMotion dur="1.8s" repeatCount="indefinite" begin={`-${0.3 + i * 0.6}s`} calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.2 1">
+          <mpath href={`#sd-out-${i}`} />
+        </animateMotion>
+      </circle>
+    ))}
+  </g>
+</svg>
+
+<style>
+  .sysdiag {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    overflow: visible;
+  }
+  .sd-line {
+    stroke: var(--border-strong);
+    stroke-width: 1;
+    stroke-dasharray: 3 4;
+  }
+  .sd-node {
+    fill: var(--surface-2);
+    stroke: var(--border-strong);
+  }
+  .sd-node--out {
+    stroke: rgba(var(--accent-rgb), 0.45);
+  }
+  .sd-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    fill: var(--text-muted);
+  }
+  .sd-core {
+    fill: var(--accent-soft);
+    stroke: var(--accent);
+  }
+  .sd-core-label {
+    font-size: 10px;
+    font-weight: 600;
+    fill: var(--text);
+  }
+  .sd-packet {
+    fill: var(--signal);
+  }
+  .sd-packet--out {
+    fill: var(--accent-text);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sd-packets {
+      display: none;
+    }
+  }
+</style>

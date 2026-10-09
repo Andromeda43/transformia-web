@@ -1,687 +1,291 @@
 ---
-// Navbar.astro - Barra de navegación con diseño cyberpunk
+// src/components/Navbar.astro — barra flotante: se oculta al bajar y reaparece al subir.
+import Logo from './ui/Logo.astro';
+import Icon from './ui/Icon.astro';
+import { navegacion, contacto, whatsappLink } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
 ---
 
-<header id="header" class="site-header">
-  <!-- Fondo con efecto blur para navbar -->
-  <div class="header-background"></div>
-  
-  <!-- Línea de escáner -->
-  <div class="scan-line"></div>
-  
-  <!-- Barra de navegación principal -->
-  <nav class="main-navbar">
-    <div class="container">
-      <div class="navbar-content">
-        <!-- Logo -->
-        <a href="/" class="navbar-logo">
-          <div class="logo-container">
-            <span class="logo-text">TRANSFORMIA</span>
-          </div>
-        </a>
-        
-        <!-- Menú de navegación -->
-        <div class="navbar-menu" id="navbar-menu">
-          <ul class="menu-items">
-            <li class="menu-item">
-              <a href="/servicios" class="menu-link">
-                <span class="link-number">01</span>
-                <span class="link-text">Servicios</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="/casos-de-exito" class="menu-link">
-                <span class="link-number">02</span>
-                <span class="link-text">Casos de Éxito</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="/nosotros" class="menu-link">
-                <span class="link-number">03</span>
-                <span class="link-text">Nosotros</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="/blog" class="menu-link">
-                <span class="link-number">04</span>
-                <span class="link-text">Blog</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+<header class="nav" data-nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Transformia, ir al inicio">
+      <Logo />
+    </a>
 
-        <!-- Botón de contacto -->
-        <a href="/contacto" class="contact-button">
-          <span class="button-text">CONTACTAR</span>
-          <span class="button-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </span>
+    <nav class="nav-links" aria-label="Principal">
+      {navegacion.map((item) => (
+        <a href={item.href} class:list={['nav-link', { 'is-active': isActive(item.href) }]} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.label}
         </a>
-        
-        <!-- Botón menú móvil -->
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-          <div class="toggle-line"></div>
-          <div class="toggle-line"></div>
-          <div class="toggle-line"></div>
-        </button>
-      </div>
-    </div>
-  </nav>
-  
-  <!-- Menú móvil -->
-  <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-header">
-      <span class="mobile-menu-title">MENÚ</span>
-      <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Cerrar menú">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+      ))}
+    </nav>
+
+    <div class="nav-actions">
+      <a href="/contacto" class="btn btn--primary nav-cta">Agenda un diagnóstico</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú" data-nav-toggle>
+        <span></span><span></span>
       </button>
     </div>
-    
-    <ul class="mobile-menu-items">
-      <li class="mobile-menu-item">
-        <a href="/servicios" class="mobile-menu-link">
-          <span class="link-number">01</span>
-          <span class="link-text">Servicios</span>
-        </a>
-      </li>
-      <li class="mobile-menu-item">
-        <a href="/casos-de-exito" class="mobile-menu-link">
-          <span class="link-number">02</span>
-          <span class="link-text">Casos de Éxito</span>
-        </a>
-      </li>
-      <li class="mobile-menu-item">
-        <a href="/nosotros" class="mobile-menu-link">
-          <span class="link-number">03</span>
-          <span class="link-text">Nosotros</span>
-        </a>
-      </li>
-      <li class="mobile-menu-item">
-        <a href="/blog" class="mobile-menu-link">
-          <span class="link-number">04</span>
-          <span class="link-text">Blog</span>
-        </a>
-      </li>
-    </ul>
+  </div>
 
-    <div class="mobile-contact">
-      <a href="/contacto" class="mobile-contact-button">CONTACTAR AHORA</a>
-      
-      <div class="mobile-contact-info">
-        <div class="contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-          </svg>
-          <span>+57 321 259 6437</span>
-        </div>
-        
-        <div class="contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-          <span>transformia.desarrollo@gmail.com</span>
-        </div>
-      </div>
+  <div class="nav-menu" id="nav-menu" data-nav-menu hidden>
+    <nav class="nav-menu-links" aria-label="Menú móvil">
+      {[{ href: '/', label: 'Inicio' }, ...navegacion, { href: '/contacto', label: 'Contacto' }].map((item, i) => (
+        <a href={item.href} class="nav-menu-link" style={`--i:${i}`}>
+          <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="nav-menu-foot">
+      <a href={whatsappLink()} class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+        <Icon name="whatsapp" /> Escríbenos por WhatsApp
+      </a>
+      <a href={`mailto:${contacto.email}`} class="nav-menu-mail mono">{contacto.email}</a>
     </div>
   </div>
 </header>
 
 <style>
-  /* Variables específicas del navbar (colores compartidos vienen de tokens.css) */
-  :root {
-    --header-bg: rgba(10, 10, 20, 0.85);
-    --header-height: 80px;
-  }
-  
-  .site-header {
+  .nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    font-family: 'Space Grotesk', sans-serif;
+    inset: 0 0 auto;
+    z-index: 100;
+    padding: 14px var(--gutter) 0;
+    transition: transform 0.45s var(--ease-out);
+    pointer-events: none;
   }
-  
-  .container {
-    width: 90%;
-    max-width: 1280px;
-    margin: 0 auto;
-    height: 100%;
+  .nav.is-hidden {
+    transform: translateY(-120%);
   }
-  
-  /* Fondo con efecto blur */
-  .header-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--header-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    z-index: -1;
-    border-bottom: 1px solid rgba(var(--neon-purple-rgb), 0.25);
-    transition: background 0.3s ease;
-  }
-  
-  /* Línea de escaneo */
-  .scan-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, 
-      transparent, 
-      var(--neon-purple), 
-      var(--neon-blue),
-      var(--neon-purple),
-      transparent
-    );
-    opacity: 0;
-    z-index: 1;
-    animation: scan-animation 3s ease-in-out infinite;
-  }
-  
-  @keyframes scan-animation {
-    0%, 100% {
-      top: 0;
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    50% {
-      top: calc(var(--header-height) + var(--status-bar-height));
-      opacity: 1;
-    }
-    90% {
-      opacity: 0;
-    }
-  }
-  
-  /* Barra de navegación principal */
-  .main-navbar {
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-content {
+  .nav-inner {
+    pointer-events: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Logo */
-  .navbar-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .logo-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .logo-text {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    letter-spacing: 1px;
-    position: relative;
-  }
-  
-  .logo-text::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, var(--neon-purple), transparent);
-  }
-  
-  /* Menú de navegación */
-  .navbar-menu {
-    height: 100%;
-  }
-  
-  .menu-items {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-  }
-  
-  .menu-item {
-    height: 100%;
-    position: relative;
-  }
-  
-  .menu-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 0 1.5rem;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  
-  .link-number {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--neon-purple);
-    margin-bottom: 0.25rem;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-  }
-  
-  .link-text {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-  }
-  
-  .menu-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background: var(--neon-purple);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-    opacity: 0;
-  }
-  
-  .menu-link:hover {
-    color: var(--neon-purple);
-  }
-  
-  .menu-link:hover .link-number {
-    opacity: 1;
-    transform: translateY(-2px);
-  }
-  
-  .menu-link:hover .link-text {
-    transform: translateY(2px);
-  }
-  
-  .menu-link:hover::after {
-    width: 60%;
-    opacity: 1;
-    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
-  }
-  
-  /* Botón de contacto */
-  .contact-button {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    background: rgba(176, 66, 255, 0.1);
-    border: 1px solid var(--neon-purple);
-    border-radius: 4px;
-    color: white;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  .button-text {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .button-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-    transition: transform 0.3s ease;
-  }
-  
-  .contact-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
-    opacity: 0;
-    z-index: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .contact-button:hover {
-    border-color: transparent;
-    box-shadow: 0 5px 15px rgba(176, 66, 255, 0.3);
-    transform: translateY(-2px);
-  }
-  
-  .contact-button:hover::before {
-    opacity: 1;
-  }
-  
-  .contact-button:hover .button-icon {
-    transform: translateX(3px);
-  }
-  
-  /* Botón menú móvil */
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 10;
-  }
-  
-  .toggle-line {
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transition: all 0.3s ease;
-  }
-  
-  /* Menú móvil */
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    max-width: 400px;
-    height: 100vh;
-    background: rgba(15, 12, 30, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 1001;
-    padding: 1rem;
-    transition: right 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    border-left: 1px solid rgba(176, 66, 255, 0.3);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
-  }
-  
-  .mobile-menu.active {
-    right: 0;
-  }
-  
-  .mobile-menu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-  }
-  
-  .mobile-menu-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--neon-purple);
-    letter-spacing: 2px;
-  }
-  
-  .mobile-menu-close {
-    background: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    transition: all 0.3s ease;
-  }
-  
-  .mobile-menu-close:hover {
-    color: var(--neon-purple);
-    transform: rotate(90deg);
-  }
-  
-  .mobile-menu-items {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem;
-  }
-  
-  .mobile-menu-item {
-    margin-bottom: 1.5rem;
-  }
-  
-  .mobile-menu-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    padding: 0.5rem 0;
-  }
-  
-  .mobile-menu-link .link-number {
-    font-size: 0.8rem;
-    margin-bottom: 0;
-  }
-  
-  .mobile-menu-link .link-text {
-    font-size: 1.1rem;
-  }
-  
-  .mobile-menu-link:hover {
-    color: var(--neon-purple);
-    transform: translateX(10px);
-  }
-  
-  .mobile-contact {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
     gap: 1.5rem;
+    max-width: var(--container-max);
+    height: 58px;
+    margin-inline: auto;
+    padding: 0 0.5rem 0 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    transition: background var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
+      backdrop-filter var(--dur) var(--ease-out);
   }
-  
-  .mobile-contact-button {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-family: 'Space Mono', monospace;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    transition: all 0.3s ease;
+  .nav.is-scrolled .nav-inner,
+  .nav.is-open .nav-inner {
+    background: rgba(15, 15, 24, 0.72);
+    border-color: var(--border);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
   }
-  
-  .mobile-contact-button:hover {
-    box-shadow: 0 5px 15px rgba(176, 66, 255, 0.3);
-    transform: translateY(-2px);
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
   }
-  
-  .mobile-contact-info {
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: color var(--dur-fast), background var(--dur-fast);
+  }
+  .nav-link:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .nav-link.is-active {
+    color: var(--text);
+  }
+  .nav-link.is-active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateX(-50%);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-cta {
+    min-height: 42px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.92rem;
+  }
+
+  .nav-toggle {
+    display: none;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+  }
+  .nav-toggle span {
+    position: absolute;
+    left: 13px;
+    width: 18px;
+    height: 1.5px;
+    background: var(--text);
+    transition: transform var(--dur) var(--ease-out), top var(--dur) var(--ease-out);
+  }
+  .nav-toggle span:first-child { top: 18px; }
+  .nav-toggle span:last-child { top: 25px; }
+  .nav.is-open .nav-toggle span:first-child { top: 21px; transform: rotate(45deg); }
+  .nav.is-open .nav-toggle span:last-child { top: 21px; transform: rotate(-45deg); }
+
+  .nav-menu {
+    pointer-events: auto;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: calc(var(--nav-height) + 3rem) var(--gutter) 2.5rem;
+    background: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--dur) var(--ease-out), visibility 0s linear var(--dur);
+  }
+  /* `display: flex` anula el atributo hidden: sin esto el menú cerrado tapa la página y se roba los clics. */
+  .nav-menu[hidden] {
+    display: none;
+  }
+  .nav.is-open .nav-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity var(--dur) var(--ease-out), visibility 0s;
+  }
+  .nav-menu-links {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-menu-link {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    transition-delay: calc(var(--i) * 45ms + 80ms);
+  }
+  .nav-menu-link .mono {
+    font-size: 0.75rem;
+    color: var(--accent-text);
+  }
+  .nav.is-open .nav-menu-link {
+    opacity: 1;
+    transform: none;
+  }
+  .nav-menu-foot {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
-  
-  .mobile-contact-info .contact-item {
-    font-size: 0.9rem;
+  .nav-menu-mail {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
   }
-  
-  /* Estilos para navbar scrolled */
-  .site-header.scrolled .header-background {
-    background: rgba(10, 10, 20, 0.95);
-  }
-  
-  .site-header.scrolled .main-navbar {
-    height: 70px;
-  }
-  
-  /* Menu link active state */
-  .menu-link.active {
-    color: var(--neon-purple);
-  }
-  
-  .menu-link.active::after {
-    width: 60%;
-    opacity: 1;
-    box-shadow: 0 0 10px rgba(176, 66, 255, 0.5);
-  }
-  
-  /* Media queries */
-  @media (max-width: 1200px) {
-    .menu-link {
-      padding: 0 1rem;
-    }
-  }
-  
-  @media (max-width: 992px) {
-    .menu-link {
-      padding: 0 0.75rem;
-    }
-    
-    .link-text {
-      font-size: 0.85rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .navbar-menu {
-      display: none;
-    }
-    
-    .contact-button {
-      display: none;
-    }
-    
-    .menu-toggle {
-      display: flex;
-    }
-    
-    .mobile-menu {
-      right: -100%;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .mobile-menu {
-      max-width: -100%;
-      right: -200%;
 
-    }
-    
-    .main-navbar {
-      height: 70px;
-    }
-    
-    .logo-text {
-      font-size: 1.3rem;
-    }
-    
-    .mobile-menu-link .link-text {
-      font-size: 1rem;
-    }
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+  }
+  @media (min-width: 961px) {
+    .nav-menu { display: none; }
+  }
+  @media (max-width: 520px) {
+    .nav-cta { display: none; }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Variables
-    const header = document.getElementById('header');
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-    
-    // Función para manejar el scroll
-    function handleScroll() {
-      if (header && window.scrollY > 10) {
-        header.classList.add('scrolled');
-      } else if (header) {
-        header.classList.remove('scrolled');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-nav-menu]');
+
+  if (nav && toggle && menu) {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const update = () => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      nav.classList.toggle('is-scrolled', y > 24);
+      // Solo cambia con un desplazamiento claro (ignora el rebote del trackpad y micro-movimientos).
+      if (!nav.classList.contains('is-open') && Math.abs(delta) > 12) {
+        nav.classList.toggle('is-hidden', delta > 0 && y > 320);
+        lastY = y;
+      } else if (y < 320) {
+        nav.classList.remove('is-hidden');
+        lastY = y;
       }
-    }
-    
-    // Evento de scroll
-    window.addEventListener('scroll', handleScroll);
-    
-    // Evento inicial para comprobar el estado del scroll
-    handleScroll();
-    
-    // Funcionalidad del menú móvil
-    if (menuToggle && mobileMenu) {
-      menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Evitar scroll en el body
-      });
-    }
-    
-    if (mobileMenuClose && mobileMenu) {
-      mobileMenuClose.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = ''; // Restaurar scroll
-      });
-    }
-    
-    // Cerrar menú al hacer clic en un enlace
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (mobileMenu) {
-          mobileMenu.classList.remove('active');
-          document.body.style.overflow = ''; // Restaurar scroll
+      ticking = false;
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
         }
-      });
+      },
+      { passive: true }
+    );
+    update();
+
+    let isOpen = false;
+    let closeTimer = 0;
+
+    const setOpen = (open: boolean) => {
+      isOpen = open;
+      window.clearTimeout(closeTimer);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        menu.hidden = false;
+        nav.classList.remove('is-hidden');
+        void menu.offsetWidth; // fuerza el estilo inicial para que la transición de entrada se ejecute
+        nav.classList.add('is-open');
+      } else {
+        nav.classList.remove('is-open');
+        closeTimer = window.setTimeout(() => {
+          if (!isOpen) menu.hidden = true;
+        }, 320);
+      }
+    };
+
+    toggle.addEventListener('click', () => setOpen(!isOpen));
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
     });
-    
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', (e) => {
-      if (mobileMenu && mobileMenu.classList.contains('active')) {
-        const target = e.target as Node;
-        const menuToggleElement = menuToggle as Node;
-        
-        if (!mobileMenu.contains(target) && 
-            !menuToggleElement.contains(target)) {
-          mobileMenu.classList.remove('active');
-          document.body.style.overflow = ''; // Restaurar scroll
-        }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        setOpen(false);
+        toggle.focus();
       }
     });
-  });
+  }
 </script>

@@ -1,0 +1,50 @@
+---
+// src/components/ui/ScrollHighlight.astro — párrafo cuyas palabras se iluminan con el scroll.
+interface Props {
+  text: string;
+  highlight?: string[];
+}
+const { text, highlight = [] } = Astro.props;
+const words = text.split(' ');
+const clean = (w: string) => w.toLowerCase().replace(/[.,:;]/g, '');
+const isKey = (w: string) => highlight.some((h) => clean(w) === clean(h));
+---
+
+<p class="sh" data-scroll-highlight>
+  {words.map((w) => <span class:list={['sh-word', { 'sh-key': isKey(w) }]}>{w} </span>)}
+</p>
+
+<style>
+  .sh {
+    font-size: clamp(1.6rem, 1.1rem + 2.2vw, 3rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    max-width: 28ch;
+  }
+  .sh-key {
+    color: var(--accent-text);
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { reduceMotion } from '../../scripts/env';
+
+  gsap.registerPlugin(ScrollTrigger);
+  if (!reduceMotion) {
+    document.querySelectorAll<HTMLElement>('[data-scroll-highlight]').forEach((el) => {
+      gsap.fromTo(
+        el.querySelectorAll('.sh-word'),
+        { opacity: 0.16 },
+        {
+          opacity: 1,
+          ease: 'none',
+          stagger: 0.1,
+          scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true },
+        }
+      );
+    });
+  }
+</script>

@@ -1,0 +1,102 @@
+---
+// Roles y permisos: al cambiar de rol se encienden solo los módulos permitidos.
+import Icon, { type IconName } from '../../ui/Icon.astro';
+
+const roles = ['Administrador', 'Técnico', 'Soporte'];
+const modulos: { n: string; icon: IconName; roles: number[] }[] = [
+  { n: 'Clientes', icon: 'layers', roles: [0, 2] },
+  { n: 'Órdenes', icon: 'layout', roles: [0, 1, 2] },
+  { n: 'Inventario', icon: 'database', roles: [0, 1] },
+  { n: 'Facturación', icon: 'shield', roles: [0] },
+  { n: 'Reportes', icon: 'route', roles: [0, 2] },
+  { n: 'Configuración', icon: 'blueprint', roles: [0] },
+];
+---
+
+<div class="vr" data-vr>
+  <div class="vr-tabs">
+    {roles.map((r, i) => <span class:list={['vr-tab', { 'is-on': i === 0 }]} data-vr-tab={i}>{r}</span>)}
+  </div>
+  <div class="vr-grid">
+    {modulos.map((m) => (
+      <div class="vr-mod is-on" data-vr-mod={m.roles.join(',')}>
+        <span class="vr-icon"><Icon name={m.icon} size={13} /></span>
+        <span class="vr-name">{m.n}</span>
+        <span class="vr-lock" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+        </span>
+      </div>
+    ))}
+  </div>
+  <p class="vr-note mono"><i></i> Permisos aplicados en la base de datos</p>
+</div>
+
+<style>
+  .vr { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 400px; }
+  .vr-tabs { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-1); }
+  .vr-tab {
+    flex: 1;
+    padding: 5px 6px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-subtle);
+    transition: background 0.35s, color 0.35s;
+  }
+  .vr-tab.is-on { background: var(--accent); color: #fff; }
+  .vr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .vr-mod {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 8px;
+    border: 1px dashed var(--border);
+    border-radius: 9px;
+    background: transparent;
+    font-size: 10px;
+    color: var(--text-subtle);
+    transition: background 0.35s, border-color 0.35s, color 0.35s, opacity 0.35s;
+    opacity: 0.55;
+  }
+  .vr-icon { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: var(--surface-2); flex: none; }
+  .vr-lock { position: absolute; right: 6px; top: 6px; color: var(--text-subtle); transition: opacity 0.3s; }
+  .vr-mod.is-on {
+    opacity: 1;
+    border-style: solid;
+    border-color: rgba(var(--accent-rgb), 0.45);
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .vr-mod.is-on .vr-icon { background: var(--accent-soft); color: var(--accent-text); }
+  .vr-mod.is-on .vr-lock { opacity: 0; }
+  .vr-note { display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--text-subtle); }
+  .vr-note i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-vr]').forEach((root) => {
+    const tile = root.closest<HTMLElement>('[data-tile]');
+    const tabs = Array.from(root.querySelectorAll<HTMLElement>('[data-vr-tab]'));
+    const mods = Array.from(root.querySelectorAll<HTMLElement>('[data-vr-mod]'));
+    if (!tile) return;
+    let role = 0;
+    let timer = 0;
+
+    const setRole = (r: number) => {
+      role = r;
+      tabs.forEach((t, i) => t.classList.toggle('is-on', i === r));
+      mods.forEach((m, i) => {
+        const allowed = (m.dataset.vrMod ?? '').split(',').map(Number).includes(r);
+        // Pequeño escalonado para que el cambio se lea como un barrido.
+        window.setTimeout(() => m.classList.toggle('is-on', allowed), i * 45);
+      });
+    };
+
+    tile.addEventListener('tile:play', () => {
+      window.clearInterval(timer);
+      timer = window.setInterval(() => setRole((role + 1) % tabs.length), 2300);
+    });
+    tile.addEventListener('tile:pause', () => window.clearInterval(timer));
+  });
+</script>

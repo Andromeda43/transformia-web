@@ -1,24 +1,27 @@
 ---
-import Layout from '../layouts/MainLayout.astro';
-import Hero from '../components/Hero.astro';
-import ServiciosTeaser from '../components/home/ServiciosTeaser.astro';
-import CasosDeExitoTeaser from '../components/home/CasosDeExitoTeaser.astro';
-import PorQueElegirnosTeaser from '../components/home/PorQueElegirnosTeaser.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import HomeHero from '../components/home/HomeHero.astro';
+import StackMarquee from '../components/home/StackMarquee.astro';
+import Capabilities from '../components/home/Capabilities.astro';
+import Traceability from '../components/home/Traceability.astro';
+import CasesShowcase from '../components/home/CasesShowcase.astro';
+import ProductsShowcase from '../components/home/ProductsShowcase.astro';
+import ProcessStack from '../components/home/ProcessStack.astro';
 import BlogTeaser from '../components/home/BlogTeaser.astro';
 import CallToAction from '../components/CallToAction.astro';
 ---
 
-<Layout
-  title="Transformia - Software a medida e Inteligencia Artificial aplicada"
-  description="Transformia diseña y desarrolla software a medida para empresas en LatAm, con especialización en inteligencia artificial aplicada y un equipo boutique enfocado en velocidad de entrega."
+<MainLayout
+  title="Transformia — Software a la medida e inteligencia artificial aplicada"
+  description="Construimos el software que tu operación necesita: plataformas web, apps móviles, automatización e IA aplicada para empresas en Colombia y LatAm. Especialistas en trazabilidad."
 >
-  <Hero />
-  <ServiciosTeaser />
-  <CasosDeExitoTeaser />
-  <PorQueElegirnosTeaser />
+  <HomeHero />
+  <StackMarquee />
+  <Capabilities />
+  <Traceability />
+  <CasesShowcase />
+  <ProductsShowcase />
+  <ProcessStack />
   <BlogTeaser />
-
-  <section id="contactanos">
-    <CallToAction />
-  </section>
-</Layout>
+  <CallToAction />
+</MainLayout>

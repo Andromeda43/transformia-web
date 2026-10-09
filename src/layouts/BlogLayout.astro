@@ -1,8 +1,9 @@
 ---
-// src/layouts/BlogLayout.astro
-import { render, type CollectionEntry } from 'astro:content';
+// src/layouts/BlogLayout.astro — artículo del blog con barra de progreso de lectura.
+import { render, getCollection, type CollectionEntry } from 'astro:content';
 import MainLayout from './MainLayout.astro';
-import GridBackground from '../components/ui/GridBackground.astro';
+import Icon from '../components/ui/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
 import { breadcrumbSchema } from '../lib/seo/breadcrumb';
 import { articleSchema } from '../lib/seo/article';
 
@@ -11,18 +12,19 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, updatedDate } = entry.data;
+const { title, description, pubDate, updatedDate, tags } = entry.data;
 const { Content } = await render(entry);
 
-const formattedDate = pubDate.toLocaleDateString('es-CO', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  timeZone: 'UTC',
-});
+const fecha = pubDate.toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const palabras = (entry.body ?? '').split(/\s+/).length;
+const minutos = Math.max(1, Math.round(palabras / 220));
+
+const otros = (await getCollection('blog', ({ data, id }) => !data.draft && id !== entry.id))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
 
 const url = new URL(`/blog/${entry.id}`, Astro.site).toString();
-const breadcrumbItems = [
+const crumbs = [
   { name: 'Inicio', path: '/' },
   { name: 'Blog', path: '/blog' },
   { name: title, path: `/blog/${entry.id}` },
@@ -34,84 +36,155 @@ const breadcrumbItems = [
   description={description}
   type="article"
   jsonLd={[
-    breadcrumbSchema(breadcrumbItems, Astro.site!),
+    breadcrumbSchema(crumbs, Astro.site!),
     articleSchema({ title, description, pubDate, updatedDate, url, image: new URL('/og-default.jpg', Astro.site).toString() }),
   ]}
 >
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+
   <article class="post">
-    <GridBackground opacity={0.25} />
-    <div class="container">
-      <span class="post-date">{formattedDate}</span>
-      <h1 class="post-title">{title}</h1>
-      <div class="post-body">
+    <header class="post-head container container--narrow">
+      <a href="/blog" class="back mono" data-reveal><Icon name="arrow" size={14} class="back-icon" /> Blog</a>
+      <h1 class="h1" data-split>{title}</h1>
+      <p class="lead" data-reveal>{description}</p>
+      <div class="post-meta mono" data-reveal>
+        <time datetime={pubDate.toISOString()}>{fecha}</time>
+        <span>·</span>
+        <span>{minutos} min de lectura</span>
+        {tags.length > 0 && <span>·</span>}
+        {tags.map((t) => <span class="tag">{t}</span>)}
+      </div>
+    </header>
+
+    <div class="container container--narrow">
+      <div class="prose post-body" data-post-body>
         <Content />
       </div>
-      <a href="/blog" class="back-link">← Ver todos los artículos</a>
     </div>
   </article>
+
+  {otros.length > 0 && (
+    <section class="section section--tight">
+      <div class="container container--narrow">
+        <p class="eyebrow eyebrow--plain">Sigue leyendo</p>
+        <ul class="more" role="list">
+          {otros.map((o) => (
+            <li>
+              <a href={`/blog/${o.id}`}>
+                <span>{o.data.title}</span>
+                <Icon name="arrow" size={18} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <CallToAction />
 </MainLayout>
 
 <style>
+  .progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 101;
+    height: 2px;
+  }
+  .progress span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--signal));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
   .post {
-    position: relative;
-    padding: 10rem 0 6rem;
-    color: white;
+    padding-top: calc(var(--nav-height) + clamp(3rem, 2rem + 4vw, 5.5rem));
   }
-
-  .container {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: 720px;
-    margin: 0 auto;
+  .post-head {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
   }
-
-  .post-date {
-    font-family: var(--font-mono);
-    color: var(--neon-blue);
-    font-size: 0.9rem;
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: fit-content;
+    font-size: 0.8rem;
+    color: var(--text-muted);
   }
-
-  .post-title {
-    font-family: var(--font-body);
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    margin: 1rem 0 2rem;
+  .back :global(.back-icon) {
+    transform: rotate(180deg);
   }
-
+  .back:hover {
+    color: var(--accent-text);
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .tag {
+    color: var(--accent-text);
+  }
   .post-body {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.8;
+    padding-bottom: 2rem;
   }
-
-  .post-body :global(h2) {
-    font-family: var(--font-body);
-    color: var(--neon-purple);
-    font-size: 1.4rem;
-    margin: 2rem 0 1rem;
+  .post-body :global(h2:first-child) {
+    margin-top: 0;
   }
-
-  .post-body :global(p) {
-    margin-bottom: 1.25rem;
+  .more {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
   }
-
-  .post-body :global(ul),
-  .post-body :global(ol) {
-    margin: 0 0 1.25rem 1.5rem;
+  .more a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border);
+    font-size: 1.15rem;
+    font-weight: 500;
+    transition: color var(--dur-fast);
   }
-
-  .post-body :global(li) {
-    margin-bottom: 0.5rem;
+  .more li:last-child a {
+    border-bottom: 1px solid var(--border);
   }
-
-  .back-link {
-    display: inline-block;
-    margin-top: 3rem;
-    color: var(--neon-purple);
-    font-family: var(--font-mono);
-    text-decoration: none;
-  }
-
-  .back-link:hover {
-    text-decoration: underline;
+  .more a:hover {
+    color: var(--accent-text);
   }
 </style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-progress]');
+  const body = document.querySelector<HTMLElement>('[data-post-body]');
+  if (bar && body) {
+    let ticking = false;
+    const update = () => {
+      const r = body.getBoundingClientRect();
+      const total = r.height - window.innerHeight * 0.6;
+      const p = Math.min(1, Math.max(0, -r.top / Math.max(total, 1)));
+      bar.style.transform = `scaleX(${p})`;
+      ticking = false;
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    update();
+  }
+</script>

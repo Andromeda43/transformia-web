@@ -1,0 +1,158 @@
+---
+// src/components/casos/ScreenshotGallery.astro — galería de capturas con visor ampliado (<dialog> nativo).
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from '../ui/Icon.astro';
+
+interface Shot {
+  src: ImageMetadata;
+  alt: string;
+  label: string;
+}
+interface Props {
+  shots: Shot[];
+}
+const { shots } = Astro.props;
+const full = await Promise.all(shots.map((s) => getImage({ src: s.src, width: 1600 })));
+---
+
+<div class="gallery" data-gallery>
+  {shots.map((shot, i) => (
+    <figure class:list={['shot', { 'shot--wide': i === 0 }]} data-reveal>
+      <button type="button" class="shot-btn" data-full={full[i].src} data-alt={shot.alt} aria-label={`Ampliar: ${shot.label}`}>
+        <div class="shot-bar"><i></i><i></i><i></i><span class="mono">{shot.label}</span></div>
+        <Image src={shot.src} alt={shot.alt} widths={[480, 900, 1300]} sizes={i === 0 ? '(max-width: 900px) 100vw, 860px' : '(max-width: 900px) 100vw, 430px'} loading="lazy" />
+        <span class="shot-zoom"><Icon name="external" size={16} /></span>
+      </button>
+    </figure>
+  ))}
+
+  <dialog class="viewer" data-viewer aria-label="Captura ampliada">
+    <button type="button" class="viewer-close" data-viewer-close aria-label="Cerrar"><Icon name="close" size={22} /></button>
+    <img alt="" data-viewer-img />
+  </dialog>
+</div>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .shot--wide {
+    grid-column: 1 / -1;
+  }
+  .shot-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-1);
+    overflow: hidden;
+    text-align: left;
+    cursor: zoom-in;
+    transition: border-color var(--dur), transform var(--dur) var(--ease-out);
+  }
+  .shot-btn:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+  }
+  .shot-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+  .shot-bar i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border-strong);
+  }
+  .shot-bar span {
+    margin-left: 0.6rem;
+    font-size: 0.7rem;
+    color: var(--text-subtle);
+  }
+  .shot-btn :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .shot-zoom {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(11, 11, 18, 0.8);
+    color: var(--text);
+    opacity: 0;
+    transition: opacity var(--dur);
+  }
+  .shot-btn:hover .shot-zoom,
+  .shot-btn:focus-visible .shot-zoom {
+    opacity: 1;
+  }
+  .viewer {
+    max-width: min(1400px, 94vw);
+    max-height: 92vh;
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .viewer::backdrop {
+    background: rgba(5, 5, 10, 0.85);
+    backdrop-filter: blur(6px);
+  }
+  .viewer img {
+    display: block;
+    max-width: 100%;
+    max-height: 92vh;
+    object-fit: contain;
+  }
+  .viewer-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(11, 11, 18, 0.85);
+    color: var(--text);
+  }
+  @media (max-width: 700px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+    const viewer = gallery.querySelector<HTMLDialogElement>('[data-viewer]');
+    const img = gallery.querySelector<HTMLImageElement>('[data-viewer-img]');
+    if (!viewer || !img) return;
+    gallery.querySelectorAll<HTMLButtonElement>('[data-full]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        img.src = btn.dataset.full ?? '';
+        img.alt = btn.dataset.alt ?? '';
+        viewer.showModal();
+      })
+    );
+    gallery.querySelector('[data-viewer-close]')?.addEventListener('click', () => viewer.close());
+    viewer.addEventListener('click', (e) => {
+      if (e.target === viewer) viewer.close();
+    });
+  });
+</script>

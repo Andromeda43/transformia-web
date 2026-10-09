@@ -1,0 +1,318 @@
+---
+// src/components/productos/ProductCard.astro — tarjeta de producto propio con mock ilustrativo.
+import type { Producto } from '../../data/productos';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  producto: Producto;
+  headingLevel?: 'h2' | 'h3';
+}
+const { producto: p, headingLevel: H = 'h3' } = Astro.props;
+---
+
+<article class:list={['product', 'spot', `product--${p.id}`]} data-spotlight data-reveal>
+  <div class="product-visual" aria-hidden="true">
+    {p.id === 'vera' ? (
+      <div class="vera">
+        <div class="vera-head">
+          <span class="vera-av">V</span>
+          <div><b>Vera</b><span>verificación de pagos</span></div>
+        </div>
+        <div class="vera-body">
+          <span class="vb vb--out"><Icon name="layers" size={12} /> comprobante_nequi.jpg</span>
+          <span class="vb vb--in">Revisando contra el SMS del banco…</span>
+          <span class="vb vb--in vb--ok"><Icon name="check" size={12} strokeWidth={2.6} /> Pago verificado · $ 95.000</span>
+          <span class="vb vb--out">comprobante_2.jpg</span>
+          <span class="vb vb--in vb--warn">Sin coincidencia · enviado a revisión</span>
+        </div>
+      </div>
+    ) : (
+      <div class="feria">
+        <div class="feria-phone">
+          <span class="feria-notch"></span>
+          <div class="feria-top"><b>FeriaApp</b><span>Casanare</span></div>
+          <div class="feria-chips"><span class="is-on">Bovinos</span><span>Novillos</span><span>Vacas</span></div>
+          <div class="feria-item">
+            <span class="feria-img"></span>
+            <div><b>Lote 25 novillos</b><span>Yopal · ★ 4,9</span></div>
+          </div>
+          <div class="feria-item">
+            <span class="feria-img feria-img--b"></span>
+            <div><b>Toro Brahman</b><span>Maní · ★ 4,8</span></div>
+          </div>
+          <div class="feria-item">
+            <span class="feria-img feria-img--c"></span>
+            <div><b>Vacas paridas</b><span>Aguazul · ★ 4,7</span></div>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <div class="product-body">
+    <p class="eyebrow eyebrow--plain">{p.categoria}</p>
+    <H class="product-name">{p.nombre}</H>
+    <p class="product-title">{p.titular}</p>
+    <p class="product-desc">{p.descripcion}</p>
+    <ul class="product-points" role="list">
+      {p.puntos.map((pt) => (
+        <li><Icon name="check" size={16} strokeWidth={2.2} /> {pt}</li>
+      ))}
+    </ul>
+    <div class="product-actions">
+      <Button href={p.url} variant="secondary" icon="arrow-up-right" external>Visitar {p.dominio}</Button>
+      {p.casoSlug && <a href={`/casos-de-exito/${p.casoSlug}`} class="link-arrow">Cómo lo construimos <Icon name="arrow" /></a>}
+    </div>
+  </div>
+</article>
+
+<style>
+  .product {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+  }
+  .product-visual {
+    display: grid;
+    place-items: center;
+    height: 300px;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    overflow: hidden;
+  }
+  .product--vera .product-visual {
+    background: radial-gradient(100% 90% at 50% 0%, rgba(var(--signal-rgb), 0.14), transparent 65%), var(--bg-elevated);
+  }
+  .product--feriaapp .product-visual {
+    background: radial-gradient(100% 90% at 50% 0%, rgba(var(--accent-rgb), 0.16), transparent 65%), var(--bg-elevated);
+  }
+  .product-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.75rem 1.9rem 2rem;
+  }
+  .product-name {
+    font-size: clamp(1.8rem, 1.5rem + 1vw, 2.3rem);
+  }
+  .product-title {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .product-desc {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .product-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+    margin-top: 0.25rem;
+  }
+  .product-points li {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .product-points :global(svg) {
+    flex: none;
+    margin-top: 0.2rem;
+    color: var(--signal);
+  }
+  .product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+
+  /* Vera */
+  .vera {
+    width: 100%;
+    max-width: 330px;
+    border-radius: 16px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-1);
+    overflow: hidden;
+    transition: transform 0.6s var(--ease-out);
+  }
+  .product:hover .vera,
+  .product:hover .feria-phone {
+    transform: translateY(-6px);
+  }
+  .vera-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .vera-head div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .vera-head span:not(.vera-av) {
+    font-size: 0.72rem;
+    color: var(--signal);
+  }
+  .vera-av {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--signal);
+    color: #06140e;
+    font-weight: 700;
+  }
+  .vera-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 0.9rem;
+  }
+  .vb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    max-width: 88%;
+    padding: 0.45rem 0.7rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    opacity: 0;
+    animation: vb-in 9s var(--ease-out) infinite;
+  }
+  .vb:nth-child(2) { animation-delay: 0.7s; }
+  .vb:nth-child(3) { animation-delay: 1.6s; }
+  .vb:nth-child(4) { animation-delay: 3.2s; }
+  .vb:nth-child(5) { animation-delay: 4.2s; }
+  .vb--out {
+    align-self: flex-end;
+    background: #1f4b3a;
+    font-family: var(--font-mono);
+  }
+  .vb--in {
+    align-self: flex-start;
+    background: var(--surface-3);
+    color: var(--text-muted);
+  }
+  .vb--ok {
+    color: var(--signal);
+    font-weight: 600;
+  }
+  .vb--warn {
+    color: var(--warning);
+  }
+  @keyframes vb-in {
+    0% { opacity: 0; transform: translateY(6px); }
+    5%, 88% { opacity: 1; transform: none; }
+    96%, 100% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vb { opacity: 1; animation: none; }
+  }
+
+  /* FeriaApp */
+  .feria-phone {
+    position: relative;
+    width: 200px;
+    height: 330px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 34px 12px 12px;
+    border-radius: 30px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg);
+    box-shadow: 0 0 0 6px var(--surface-2), var(--shadow-lg);
+    transition: transform 0.6s var(--ease-out);
+  }
+  .feria-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 60px;
+    height: 14px;
+    border-radius: 99px;
+    background: #000;
+    transform: translateX(-50%);
+  }
+  .feria-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.85rem;
+  }
+  .feria-top span {
+    font-size: 0.68rem;
+    color: var(--text-subtle);
+  }
+  .feria-chips {
+    display: flex;
+    gap: 0.35rem;
+  }
+  .feria-chips span {
+    padding: 0.2rem 0.5rem;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+  }
+  .feria-chips .is-on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .feria-item {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 0.45rem;
+    border-radius: 12px;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+  }
+  .feria-item div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+  .feria-item b {
+    font-size: 0.72rem;
+  }
+  .feria-item span:not(.feria-img) {
+    font-size: 0.62rem;
+    color: var(--text-subtle);
+  }
+  .feria-img {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #3b2a5c, var(--accent));
+  }
+  .feria-img--b {
+    background: linear-gradient(135deg, #4a3b1d, var(--warning));
+  }
+  .feria-img--c {
+    background: linear-gradient(135deg, #1f3b35, var(--signal));
+  }
+
+  @media (max-width: 560px) {
+    .product-points {
+      grid-template-columns: 1fr;
+    }
+    .product-body {
+      padding: 1.5rem 1.25rem 1.6rem;
+    }
+  }
+</style>

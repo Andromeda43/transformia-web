@@ -1,0 +1,57 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<MainLayout title="Página no encontrada | Transformia" description="La página que buscas no existe o cambió de dirección." noindex>
+  <section class="nf">
+    <div class="blueprint"></div>
+    <div class="container nf-inner">
+      <p class="nf-code mono" data-reveal>404</p>
+      <h1 class="h1">Esta ruta no está en el sistema.</h1>
+      <p class="lead">La página que buscas no existe o cambió de dirección. Desde aquí puedes volver a terreno conocido.</p>
+      <div class="nf-actions">
+        <Button href="/" icon="arrow">Ir al inicio</Button>
+        <Button href="/casos-de-exito" variant="secondary">Ver casos</Button>
+        <Button href="/contacto" variant="ghost">Contacto</Button>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .nf {
+    position: relative;
+    min-height: 80svh;
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-height) + 3rem) 0 4rem;
+    overflow: hidden;
+  }
+  .nf-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+  .nf-code {
+    font-size: clamp(5rem, 3rem + 10vw, 10rem);
+    font-weight: 700;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--border-strong);
+  }
+  .nf .lead {
+    margin-inline: auto;
+  }
+  .nf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+</style>

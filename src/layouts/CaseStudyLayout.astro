@@ -1,9 +1,13 @@
 ---
-// src/layouts/CaseStudyLayout.astro
+// src/layouts/CaseStudyLayout.astro — plantilla de caso: dolor → solución → capacidades → resultado.
+// Las páginas pasan el texto largo; tipo, métricas y portada salen de src/data/casosDeExito.ts.
+// Slots opcionales: "solucion-extra" (debajo de la solución) y "evidencia" (sección propia antes del resultado).
 import MainLayout from './MainLayout.astro';
-import SectionHeader from '../components/ui/SectionHeader.astro';
-import GridBackground from '../components/ui/GridBackground.astro';
-import TechBadge from '../components/ui/TechBadge.astro';
+import CaseVisual from '../components/casos/CaseVisual.astro';
+import StatusChip from '../components/ui/StatusChip.astro';
+import Icon from '../components/ui/Icon.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { casosDeExito, getCaso } from '../data/casosDeExito';
 import { breadcrumbSchema } from '../lib/seo/breadcrumb';
 
 interface Props {
@@ -16,151 +20,414 @@ interface Props {
   stack: string[];
   resultado: string;
   status: 'ejecutado' | 'propuesta';
+  description?: string;
 }
 
-const { slug, cliente, industria, dolor, solucion, capacidades, stack, resultado, status } = Astro.props;
+const { slug, cliente, industria, dolor, solucion, capacidades, stack, resultado, status, description } = Astro.props;
+const caso = getCaso(slug);
+const esPropuesta = status === 'propuesta';
+const hasEvidence = Astro.slots.has('evidencia');
 
-const pageTitle = `${cliente} — ${status === 'propuesta' ? 'Propuesta Técnica' : 'Caso de Éxito'} | Transformia`;
-const description = `${cliente} (${industria})${status === 'propuesta' ? ' — propuesta técnica no ejecutada' : ''}: ${dolor.slice(0, 140)}...`;
-const breadcrumbItems = [
+const idx = casosDeExito.findIndex((c) => c.slug === slug);
+const siguiente = casosDeExito[(idx + 1) % casosDeExito.length];
+
+const pageTitle = `${caso?.nombreCorto ?? cliente} — ${esPropuesta ? 'Propuesta técnica' : 'Caso de éxito'} | Transformia`;
+const metaDescription =
+  description ?? `${caso?.titular ?? ''} ${esPropuesta ? 'Propuesta técnica no ejecutada.' : `Caso de éxito de Transformia en ${industria.toLowerCase()}.`}`.trim();
+const crumbs = [
   { name: 'Inicio', path: '/' },
-  { name: 'Casos de éxito', path: '/casos-de-exito' },
-  { name: cliente, path: `/casos-de-exito/${slug}` },
+  { name: 'Casos', path: '/casos-de-exito' },
+  { name: caso?.nombreCorto ?? cliente, path: `/casos-de-exito/${slug}` },
 ];
+const n = (i: number) => String(i).padStart(2, '0');
 ---
 
-<MainLayout
-  title={pageTitle}
-  description={description}
-  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
->
-  <article class="case-study">
-    <GridBackground opacity={0.3} />
-    <div class="container">
-      {status === 'propuesta' && (
-        <div class="status-badge">Propuesta técnica — no ejecutada</div>
+<MainLayout title={pageTitle} description={metaDescription} jsonLd={[breadcrumbSchema(crumbs, Astro.site!)]}>
+  <section class="case-hero">
+    <div class="blueprint"></div>
+    <div class="container case-hero-inner">
+      <nav class="crumbs mono" aria-label="Migas de pan" data-reveal>
+        <ol role="list">
+          {crumbs.map((c, i) => (
+            <li>{i < crumbs.length - 1 ? <a href={c.path}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
+          ))}
+        </ol>
+      </nav>
+      <div class="case-chips" data-reveal>
+        {caso && <StatusChip tone={esPropuesta ? 'warning' : 'accent'}>{caso.tipo}</StatusChip>}
+        <StatusChip tone={esPropuesta ? 'warning' : 'signal'} pulse={!esPropuesta}>
+          {esPropuesta ? 'Propuesta técnica · no ejecutada' : 'En operación'}
+        </StatusChip>
+      </div>
+      <h1 class="h1 case-title" data-split>{cliente}</h1>
+      {caso && <p class="lead case-lead" data-reveal>{caso.titular}</p>}
+      {caso && caso.metricas.length > 0 && (
+        <dl class="case-metrics" data-reveal>
+          {caso.metricas.map((m) => (
+            <div><dt>{m.label}</dt><dd class="mono">{m.valor}</dd></div>
+          ))}
+        </dl>
       )}
-      <SectionHeader
-        title={cliente}
-        subtitle={industria}
-        badge={status === 'ejecutado' ? 'CASO DE ÉXITO' : 'PROPUESTA TÉCNICA'}
-      />
-
-      <section class="block">
-        <h2>El punto de partida</h2>
-        <p>{dolor}</p>
-      </section>
-
-      <section class="block">
-        <h2>La solución</h2>
-        <p>{solucion}</p>
-      </section>
-
-      <section class="block">
-        <h2>Capacidades</h2>
-        <ul class="capacidades-list">
-          {capacidades.map((c) => <li>{c}</li>)}
-        </ul>
-      </section>
-
-      <section class="block">
-        <h2>Stack</h2>
-        <div class="stack-tags">
-          {stack.map((tech) => <TechBadge label={tech} />)}
-        </div>
-      </section>
-
-      <section class="block">
-        <h2>{status === 'propuesta' ? 'Resultado esperado (no verificado)' : 'El resultado'}</h2>
-        <p>{resultado}</p>
-      </section>
-
-      <a href="/casos-de-exito" class="back-link">← Ver todos los casos de éxito</a>
     </div>
-  </article>
+    {caso && (
+      <div class="container">
+        <div class="case-cover" data-reveal>
+          <CaseVisual caso={caso} />
+        </div>
+      </div>
+    )}
+  </section>
+
+  <section class="section">
+    <div class="container case-grid">
+      <aside class="case-aside" data-reveal>
+        <dl>
+          <div><dt>Cliente</dt><dd>{caso?.relacion === 'producto' ? `${cliente} · producto propio` : cliente}</dd></div>
+          <div><dt>Industria</dt><dd>{industria}</dd></div>
+          {caso && <div><dt>Tipo de software</dt><dd>{caso.tipo}</dd></div>}
+          <div>
+            <dt>Stack</dt>
+            <dd><ul class="stack" role="list">{stack.map((t) => <li class="mono">{t}</li>)}</ul></dd>
+          </div>
+        </dl>
+        {caso?.urlExterna && (
+          <a href={caso.urlExterna} class="btn btn--secondary aside-link" target="_blank" rel="noopener noreferrer">
+            Visitar {new URL(caso.urlExterna).hostname.replace('www.', '')} <Icon name="arrow-up-right" />
+          </a>
+        )}
+      </aside>
+
+      <div class="case-content">
+        {esPropuesta && (
+          <div class="notice" role="note" data-reveal>
+            <Icon name="shield" size={20} />
+            <p>
+              Este proyecto <strong>no fue financiado ni ejecutado</strong>. Lo publicamos por transparencia, como muestra de
+              la arquitectura que diseñamos. Ninguna cifra de impacto está verificada en campo.
+            </p>
+          </div>
+        )}
+
+        <article class="chapter">
+          <p class="chapter-num mono" data-reveal>{n(1)} — El punto de partida</p>
+          <p class="chapter-text" data-reveal>{dolor}</p>
+        </article>
+
+        <article class="chapter">
+          <p class="chapter-num mono" data-reveal>{n(2)} — {esPropuesta ? 'La solución propuesta' : 'La solución'}</p>
+          <p class="chapter-text" data-reveal>{solucion}</p>
+          <slot name="solucion-extra" />
+        </article>
+
+        <article class="chapter">
+          <p class="chapter-num mono" data-reveal>{n(3)} — {esPropuesta ? 'Qué haría el sistema' : 'Qué hace el sistema'}</p>
+          <ul class="caps" role="list">
+            {capacidades.map((c) => (
+              <li data-reveal><Icon name="check" size={16} strokeWidth={2.2} /><span>{c}</span></li>
+            ))}
+          </ul>
+        </article>
+
+        {hasEvidence && (
+          <article class="chapter">
+            <p class="chapter-num mono" data-reveal>{n(4)} — El sistema en operación</p>
+            <slot name="evidencia" />
+          </article>
+        )}
+
+        <article class:list={['chapter', 'result', { 'result--proposal': esPropuesta }]} data-reveal>
+          <p class="chapter-num mono">{n(hasEvidence ? 5 : 4)} — {esPropuesta ? 'Resultado esperado (no verificado)' : 'El resultado'}</p>
+          <p class="result-text">{resultado}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {siguiente && siguiente.slug !== slug && (
+    <section class="container next-wrap">
+      <a href={`/casos-de-exito/${siguiente.slug}`} class="next" data-reveal>
+        <span class="mono next-label">Siguiente caso</span>
+        <span class="next-name">{siguiente.nombreCorto ?? siguiente.cliente}</span>
+        <span class="next-type">{siguiente.tipo}</span>
+        <span class="next-arrow"><Icon name="arrow" size={22} /></span>
+      </a>
+    </section>
+  )}
+
+  <CallToAction title="¿Tu operación tiene un problema parecido?" />
 </MainLayout>
 
 <style>
-  .case-study {
+  .case-hero {
     position: relative;
-    padding: 10rem 0 6rem;
-    color: white;
+    padding: calc(var(--nav-height) + clamp(3rem, 2rem + 4vw, 5.5rem)) 0 0;
+    overflow: hidden;
   }
-
-  .container {
+  .case-hero-inner {
     position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: 860px;
-    margin: 0 auto;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
   }
-
-  .status-badge {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background: rgba(var(--neon-yellow-rgb), 0.12);
-    border: 1px solid var(--neon-yellow);
-    color: var(--neon-yellow);
-  }
-
-  .block {
-    margin-bottom: 2.5rem;
-  }
-
-  .block h2 {
-    font-family: var(--font-body);
-    font-size: 1.5rem;
-    color: var(--neon-purple);
-    margin-bottom: 0.75rem;
-  }
-
-  .block p {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.7;
-  }
-
-  .capacidades-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 0.6rem;
-  }
-
-  .capacidades-list li {
-    padding-left: 1.5rem;
-    position: relative;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-  }
-
-  .capacidades-list li::before {
-    content: '▹';
-    position: absolute;
-    left: 0;
-    color: var(--neon-purple);
-  }
-
-  .stack-tags {
+  .crumbs ol {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .crumbs li + li::before {
+    content: '/';
+    margin-right: 0.4rem;
+    color: var(--border-strong);
+  }
+  .crumbs a:hover {
+    color: var(--text);
+  }
+  .case-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .case-title {
+    max-width: 20ch;
+  }
+  .case-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 3rem;
+    margin-top: 0.75rem;
+  }
+  .case-metrics div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .case-metrics dd {
+    font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .case-metrics dt {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+  }
+  .case-cover {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(2.5rem, 2rem + 3vw, 4rem);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 16 / 7;
+  }
+  .case-cover :global(.cv) {
+    min-height: 100%;
+  }
+  .case-cover :global(.cv--screenshot) {
+    align-items: end;
+    padding: 2.5rem 8% 0;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.38fr) minmax(0, 1fr);
+    gap: clamp(2rem, 1rem + 4vw, 5rem);
+    align-items: start;
+  }
+  .case-aside {
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .case-aside dl {
+    display: flex;
+    flex-direction: column;
+  }
+  .case-aside dl > div {
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .case-aside dt {
+    margin-bottom: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .case-aside dd {
+    font-size: 0.95rem;
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+  }
+  .stack li {
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .aside-link {
+    align-self: flex-start;
+  }
+
+  .case-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 2rem + 3vw, 4.5rem);
+    min-width: 0;
+  }
+  .notice {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid rgba(var(--warning-rgb), 0.4);
+    border-radius: var(--radius-md);
+    background: rgba(var(--warning-rgb), 0.07);
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .notice :global(svg) {
+    flex: none;
+    color: var(--warning);
+    margin-top: 0.15rem;
+  }
+  .chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .chapter-num {
+    font-size: var(--text-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .chapter-text {
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .caps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
   }
-
-  .back-link {
-    display: inline-block;
-    margin-top: 2rem;
-    color: var(--neon-purple);
-    font-family: var(--font-mono);
-    text-decoration: none;
+  .caps li {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-1);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .caps :global(svg) {
+    flex: none;
+    margin-top: 0.2rem;
+    color: var(--signal);
+  }
+  .result {
+    padding: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+    border: 1px solid rgba(var(--accent-rgb), 0.35);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, rgba(var(--accent-rgb), 0.12), var(--surface-1) 65%);
+  }
+  .result--proposal {
+    border-color: rgba(var(--warning-rgb), 0.35);
+    background: linear-gradient(160deg, rgba(var(--warning-rgb), 0.08), var(--surface-1) 65%);
+  }
+  .result--proposal .chapter-num {
+    color: var(--warning);
+  }
+  .result-text {
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+    line-height: 1.6;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
-  .back-link:hover {
-    text-decoration: underline;
+  .next-wrap {
+    padding-bottom: 1rem;
+  }
+  .next {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'label label arrow' 'name type arrow';
+    align-items: end;
+    gap: 0.5rem 1.5rem;
+    padding: 2rem 0;
+    border-block: 1px solid var(--border);
+  }
+  .next-label {
+    grid-area: label;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .next-name {
+    grid-area: name;
+    font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    transition: color var(--dur);
+  }
+  .next-type {
+    grid-area: type;
+    padding-bottom: 0.5rem;
+    color: var(--text-subtle);
+  }
+  .next-arrow {
+    grid-area: arrow;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    transition: background var(--dur), border-color var(--dur), transform var(--dur) var(--ease-out);
+  }
+  .next:hover .next-name {
+    color: var(--accent-text);
+  }
+  .next:hover .next-arrow {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 960px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+    }
+    .case-aside {
+      position: static;
+    }
+    .case-cover {
+      aspect-ratio: 4 / 3;
+    }
+  }
+  @media (max-width: 640px) {
+    .caps {
+      grid-template-columns: 1fr;
+    }
+    .next {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: 'label arrow' 'name arrow' 'type arrow';
+    }
+    .next-arrow {
+      width: 52px;
+      height: 52px;
+    }
   }
 </style>

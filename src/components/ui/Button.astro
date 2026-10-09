@@ -1,0 +1,36 @@
+---
+// src/components/ui/Button.astro
+import Icon, { type IconName } from './Icon.astro';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  icon?: IconName;
+  iconStart?: IconName;
+  external?: boolean;
+  magnetic?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  icon,
+  iconStart,
+  external = false,
+  magnetic = false,
+  class: className,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['btn', `btn--${variant}`, className]}
+  data-magnetic={magnetic ? '0.25' : undefined}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  {iconStart && <Icon name={iconStart} />}
+  <span><slot /></span>
+  {icon && <Icon name={icon} class={icon === 'arrow' ? 'icon-arrow' : undefined} />}
+</a>

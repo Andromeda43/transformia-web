@@ -1,0 +1,84 @@
+---
+// Tablero en tiempo real: la curva del día se dibuja y el indicador sube.
+const line = 'M0 62 C 18 58, 26 48, 40 50 S 64 34, 80 38 S 104 22, 120 28 S 146 14, 162 18 S 186 8, 200 10';
+const area = `${line} L200 80 L0 80 Z`;
+---
+
+<div class="vd" data-vd>
+  <div class="vd-head">
+    <div>
+      <span class="vd-label">Despachos hoy</span>
+      <b class="mono" data-vd-num>128</b>
+    </div>
+    <span class="vd-live mono"><i></i> en vivo</span>
+  </div>
+  <svg class="vd-chart" viewBox="0 0 200 80" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="vd-fill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.35" />
+        <stop offset="100%" stop-color="var(--accent)" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <path d="M0 20 H200 M0 40 H200 M0 60 H200" class="vd-grid" />
+    <path d={area} fill="url(#vd-fill)" class="vd-area" data-vd-area />
+    <path d={line} class="vd-line" data-vd-line />
+  </svg>
+  <div class="vd-axis mono"><span>06:00</span><span>10:00</span><span>14:00</span><span>18:00</span></div>
+</div>
+
+<style>
+  .vd {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-1);
+  }
+  .vd-head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .vd-label { display: block; font-size: 9.5px; color: var(--text-subtle); }
+  .vd-head b { font-size: 22px; letter-spacing: -0.02em; }
+  .vd-live { display: inline-flex; align-items: center; gap: 5px; font-size: 9px; color: var(--signal); }
+  .vd-live i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); }
+  .vd-chart { width: 100%; height: 92px; overflow: visible; }
+  .vd-grid { stroke: var(--border); stroke-width: 0.6; vector-effect: non-scaling-stroke; }
+  .vd-line {
+    fill: none;
+    stroke: var(--accent-text);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+  }
+  .vd-axis { display: flex; justify-content: space-between; font-size: 8px; color: var(--text-subtle); }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  document.querySelectorAll<HTMLElement>('[data-vd]').forEach((root) => {
+    const tile = root.closest<HTMLElement>('[data-tile]');
+    const line = root.querySelector<SVGPathElement>('[data-vd-line]');
+    const area = root.querySelector<SVGPathElement>('[data-vd-area]');
+    const num = root.querySelector<HTMLElement>('[data-vd-num]');
+    if (!tile || !line || !area || !num) return;
+
+    // Largo real de la curva: el trazo se "dibuja" desplazando un guion del mismo largo.
+    const len = Math.ceil(line.getTotalLength()) + 2;
+    const state = { v: 0 };
+    const tl = gsap.timeline({ paused: true, repeat: -1, repeatDelay: 0.3 });
+    tl.set(line, { strokeDasharray: len, strokeDashoffset: len })
+      .set(area, { opacity: 0 })
+      .set(state, { v: 0 })
+      .to(line, { strokeDashoffset: 0, duration: 2.2, ease: 'power1.inOut' }, 0)
+      .to(area, { opacity: 1, duration: 1, ease: 'power1.out' }, 1.2)
+      .to(state, { v: 128, duration: 2.2, ease: 'power2.out', onUpdate: () => (num.textContent = String(Math.round(state.v))) }, 0)
+      .to({}, { duration: 2.2 })
+      .to([line, area], { opacity: 0, duration: 0.4 })
+      .set(line, { opacity: 1 });
+
+    tile.addEventListener('tile:play', () => tl.play());
+    tile.addEventListener('tile:pause', () => tl.pause());
+  });
+</script>

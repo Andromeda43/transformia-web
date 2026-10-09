@@ -1,0 +1,231 @@
+---
+// src/components/home/ProcessStack.astro — "Cómo trabajamos": fases en tarjetas que se apilan con el scroll.
+import SectionHeader from '../ui/SectionHeader.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  eyebrow?: string;
+}
+const { eyebrow = '05 — Cómo trabajamos' } = Astro.props;
+
+const fases = [
+  {
+    titulo: 'Diagnóstico',
+    claim: 'Entendemos tu proceso real antes de proponer nada.',
+    puntos: ['Conversación y observación del flujo actual', 'Dónde se pierde tiempo, plata o trazabilidad', 'Si no necesitas software, te lo decimos'],
+    entregable: 'Propuesta con alcance, fases, inversión y lo que no incluye',
+  },
+  {
+    titulo: 'Arquitectura y prototipo',
+    claim: 'Diseñamos antes de construir.',
+    puntos: ['Modelo de datos, roles y permisos', 'Multi-empresa y operación sin conexión cuando aplica', 'Prototipo navegable para validar con tu equipo'],
+    entregable: 'Arquitectura documentada y prototipo aprobado',
+  },
+  {
+    titulo: 'Construcción por fases',
+    claim: 'Avance visible en cada hito.',
+    puntos: ['Precio fijo por fase, pagos contra entregables', 'Demos con funcionalidades reales, no presentaciones', 'Cambios de alcance siempre por escrito'],
+    entregable: 'Módulos funcionando en tu ambiente',
+  },
+  {
+    titulo: 'Entrega y operación',
+    claim: 'Lo dejamos funcionando, no solo entregado.',
+    puntos: ['Migración de tus datos históricos', 'Capacitación por rol y manuales de usuario', 'Acompañamiento en las primeras semanas'],
+    entregable: 'Sistema en operación con tu equipo capacitado',
+  },
+];
+
+const compromisos = [
+  { icon: 'layers', text: 'Precio fijo por fase' },
+  { icon: 'check', text: 'Pagos por hitos cumplidos' },
+  { icon: 'shield', text: '“No incluye” siempre por escrito' },
+  { icon: 'whatsapp', text: 'Hablas directo con quien construye' },
+] as const;
+---
+
+<section class="section process">
+  <div class="container process-grid">
+    <div class="process-side">
+      <SectionHeader
+        eyebrow={eyebrow}
+        title="Sin sorpresas, de principio a fin."
+        lead="El mismo método con el que armamos cada propuesta: fases claras, inversión fija y entregables que puedes ver."
+      />
+      <ul class="commitments" role="list" data-reveal>
+        {compromisos.map((c) => (
+          <li><span class="commit-icon"><Icon name={c.icon} size={16} /></span>{c.text}</li>
+        ))}
+      </ul>
+    </div>
+
+    <ol class="stack" role="list">
+      {fases.map((f, i) => (
+        <li class="stack-card" style={`--i:${i}`} data-stack-card>
+          <div class="stack-top">
+            <span class="stack-num mono">Fase {String(i + 1).padStart(2, '0')}</span>
+            <span class="stack-of mono">{i + 1}/{fases.length}</span>
+          </div>
+          <h3 class="stack-title">{f.titulo}</h3>
+          <p class="stack-claim">{f.claim}</p>
+          <ul class="stack-points" role="list">
+            {f.puntos.map((p) => <li><Icon name="check" size={15} strokeWidth={2.2} />{p}</li>)}
+          </ul>
+          <p class="stack-deliverable"><span class="mono">Entregable</span>{f.entregable}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 1rem + 5vw, 6rem);
+    align-items: start;
+  }
+  .process-side {
+    position: sticky;
+    top: calc(var(--nav-height) + 3rem);
+  }
+  .commitments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .commitments li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-1);
+    font-size: 0.92rem;
+  }
+  .commit-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+  }
+  .stack-card {
+    position: sticky;
+    top: calc(var(--nav-height) + 2.5rem + var(--i) * 1.4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-height: 360px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+    box-shadow: 0 -20px 50px -20px rgba(0, 0, 0, 0.7);
+    transform-origin: center top;
+  }
+  .stack-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .stack-num {
+    color: var(--accent-text);
+  }
+  .stack-of {
+    color: var(--text-subtle);
+  }
+  .stack-title {
+    font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+  }
+  .stack-claim {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+  .stack-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: 0.4rem;
+  }
+  .stack-points li {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+  }
+  .stack-points :global(svg) {
+    flex: none;
+    margin-top: 0.25rem;
+    color: var(--signal);
+  }
+  .stack-deliverable {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-strong);
+    font-size: 0.95rem;
+  }
+  .stack-deliverable .mono {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+
+  @media (max-width: 960px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+    .process-side {
+      position: static;
+    }
+    .stack-card {
+      min-height: 0;
+    }
+  }
+  @media (max-width: 520px) {
+    .commitments {
+      grid-template-columns: 1fr;
+    }
+    .stack-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+  import { reduceMotion as reduce } from '../../scripts/env';
+
+  if (!reduce) {
+    const cards = gsap.utils.toArray<HTMLElement>('[data-stack-card]');
+    // Cada tarjeta se encoge levemente cuando la siguiente la cubre.
+    cards.forEach((card, i) => {
+      const next = cards[i + 1];
+      if (!next) return;
+      gsap.to(card, {
+        scale: 0.94,
+        opacity: 0.55,
+        ease: 'none',
+        scrollTrigger: { trigger: next, start: 'top 85%', end: 'top 25%', scrub: true },
+      });
+    });
+  }
+</script>

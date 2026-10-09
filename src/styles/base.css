@@ -1,0 +1,235 @@
+/* src/styles/base.css — reset, tipografía y utilidades globales */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+@view-transition { navigation: auto; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--nav-height) + 1.5rem);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+img, svg, video, picture { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+a { color: inherit; text-decoration: none; }
+ul[role='list'], ol[role='list'] { list-style: none; }
+/* El atributo hidden siempre gana, aunque un componente declare display. */
+[hidden] { display: none !important; }
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+p { text-wrap: pretty; }
+
+::selection { background: rgba(var(--accent-rgb), 0.45); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Scrollbar */
+* { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-width: calc(820px + var(--gutter) * 2); }
+
+.section { position: relative; padding-block: var(--section-y); }
+.section--tight { padding-block: calc(var(--section-y) * 0.6); }
+.section--surface { background: var(--bg-elevated); border-block: 1px solid var(--border); }
+
+.page-top { padding-top: calc(var(--nav-height) + clamp(3rem, 2rem + 4vw, 6rem)); }
+
+.skip-link {
+  position: absolute; left: 1rem; top: -100px; z-index: 1000;
+  background: var(--accent); color: #fff; padding: 0.6rem 1rem; border-radius: var(--radius-sm);
+}
+.skip-link:focus { top: 1rem; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Tipografía utilitaria ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-text);
+}
+.eyebrow::before {
+  content: '';
+  width: 18px; height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+.eyebrow--plain::before { display: none; }
+
+.display { font-size: var(--text-display); line-height: 1; letter-spacing: -0.035em; }
+.h1 { font-size: var(--text-h1); }
+.h2 { font-size: var(--text-h2); }
+.h3 { font-size: var(--text-h3); line-height: 1.25; letter-spacing: -0.01em; }
+.lead { font-size: var(--text-lead); color: var(--text-muted); line-height: 1.6; max-width: 62ch; }
+.muted { color: var(--text-muted); }
+.mono { font-family: var(--font-mono); }
+.text-accent { color: var(--accent-text); }
+
+.gradient-text {
+  background: linear-gradient(100deg, #fff 10%, var(--accent-text) 55%, #fff 95%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--text);
+  --btn-border: var(--border-strong);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 500;
+  font-size: 0.98rem;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+  will-change: transform;
+}
+.btn svg { width: 18px; height: 18px; flex: none; transition: transform var(--dur) var(--ease-out); }
+.btn:hover svg.icon-arrow { transform: translateX(3px); }
+.btn--primary {
+  --btn-bg: var(--accent);
+  --btn-fg: #fff;
+  --btn-border: transparent;
+  box-shadow: var(--glow-accent);
+}
+.btn--primary:hover { --btn-bg: var(--accent-strong); }
+.btn--secondary:hover { --btn-border: var(--text-muted); background: rgba(255, 255, 255, 0.04); }
+.btn--ghost { --btn-border: transparent; padding-inline: 0.6rem; }
+.btn--ghost:hover { color: var(--accent-text); }
+
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  color: var(--accent-text); font-weight: 500;
+}
+.link-arrow svg { width: 16px; height: 16px; transition: transform var(--dur) var(--ease-out); }
+.link-arrow:hover svg { transform: translateX(3px); }
+
+/* ---------- Tarjeta con spotlight (borde y brillo siguen al cursor; ver data-spotlight) ---------- */
+.spot {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+}
+.spot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(380px circle at var(--mx, 50%) var(--my, -20%), rgba(var(--accent-rgb), 0.7), transparent 45%),
+    linear-gradient(var(--border), var(--border));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.spot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, -20%), rgba(var(--accent-rgb), 0.08), transparent 45%);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+  pointer-events: none;
+}
+.spot:hover::after { opacity: 1; }
+
+/* ---------- Fondo de plano técnico ---------- */
+.blueprint {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 75%);
+}
+
+/* ---------- Prosa (blog, legales) ---------- */
+.prose { color: var(--text-muted); font-size: 1.075rem; line-height: 1.8; }
+.prose > * + * { margin-top: 1.25em; }
+.prose h2 { color: var(--text); font-size: 1.6rem; margin-top: 2.4em; }
+.prose h3 { color: var(--text); font-size: 1.25rem; margin-top: 2em; }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.prose ul, .prose ol { padding-left: 1.3em; }
+.prose li + li { margin-top: 0.5em; }
+.prose li::marker { color: var(--accent-text); }
+.prose blockquote { border-left: 2px solid var(--accent); padding-left: 1.2em; color: var(--text); }
+.prose code { font-family: var(--font-mono); font-size: 0.9em; background: var(--surface-2); padding: 0.15em 0.4em; border-radius: 5px; }
+
+/* ---------- Revelado progresivo (solo con JS y sin reduced-motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Solo afecta a lo que aún no se ha revelado: al terminar, el JS marca data-revealed / data-split-done. */
+  .js [data-reveal]:not([data-revealed]) { opacity: 0; transform: translateY(12px); }
+  .js [data-split]:not([data-split-done]) { visibility: hidden; }
+}
+
+/* ---------- Accesibilidad de movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  @view-transition { navigation: none; }
+}

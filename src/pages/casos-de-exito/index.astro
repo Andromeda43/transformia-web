@@ -1,97 +1,70 @@
 ---
 // src/pages/casos-de-exito/index.astro
 import MainLayout from '../../layouts/MainLayout.astro';
-import GridBackground from '../../components/ui/GridBackground.astro';
+import PageHero from '../../components/ui/PageHero.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
-import CaseStudyCard from '../../components/CaseStudyCard.astro';
-import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import CaseCard from '../../components/casos/CaseCard.astro';
+import CallToAction from '../../components/CallToAction.astro';
 import { casosDeExito } from '../../data/casosDeExito';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
 
 const ejecutados = casosDeExito.filter((c) => c.status === 'ejecutado');
+const [principal, ...resto] = ejecutados;
 const propuestas = casosDeExito.filter((c) => c.status === 'propuesta');
-
-const breadcrumbItems = [
+const crumbs = [
   { name: 'Inicio', path: '/' },
-  { name: 'Casos de éxito', path: '/casos-de-exito' },
+  { name: 'Casos', path: '/casos-de-exito' },
 ];
 ---
 
 <MainLayout
-  title="Casos de Éxito | Transformia"
-  description="Proyectos reales de Transformia: sistemas de trazabilidad, gestión operativa y marketplaces construidos a medida para clientes en Colombia y LatAm."
-  jsonLd={[breadcrumbSchema(breadcrumbItems, Astro.site!)]}
+  title="Casos de éxito | Transformia"
+  description="Proyectos reales de Transformia: trazabilidad industrial, apps móviles, plataformas y sitios web construidos a la medida para empresas en Colombia y el exterior."
+  jsonLd={[breadcrumbSchema(crumbs, Astro.site!)]}
 >
-  <section class="casos-section">
-    <GridBackground opacity={0.3} />
-    <div class="container">
-      <SectionHeader
-        title="CASOS DE ÉXITO"
-        badge="PROYECTOS REALES"
-        subtitle="Sistemas que ya están resolviendo problemas operativos concretos para nuestros clientes."
-      />
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Casos de éxito"
+    title="Proyectos reales, problemas reales."
+    lead="Cada caso cuenta lo mismo que contamos en una propuesta: de dónde partimos, qué construimos y qué cambió en la operación."
+  />
 
-      <div class="cards-grid">
-        {ejecutados.map((c) => <CaseStudyCard {...c} />)}
+  <section class="section section--tight">
+    <div class="container list">
+      {principal && <CaseCard caso={principal} size="large" headingLevel="h2" />}
+      <div class="grid">
+        {resto.map((c) => <CaseCard caso={c} headingLevel="h2" />)}
       </div>
-
-      {propuestas.length > 0 && (
-        <div class="propuestas-block">
-          <h2 class="propuestas-title">Propuestas técnicas</h2>
-          <p class="propuestas-subtitle">
-            Proyectos formulados por Transformia que aún no fueron financiados o ejecutados. Se documentan por transparencia, no como resultados entregados.
-          </p>
-          <div class="cards-grid">
-            {propuestas.map((c) => <CaseStudyCard {...c} />)}
-          </div>
-        </div>
-      )}
     </div>
   </section>
+
+  {propuestas.length > 0 && (
+    <section class="section section--tight">
+      <div class="container">
+        <SectionHeader
+          eyebrow="Propuestas técnicas"
+          title="Diseñado, aún no ejecutado."
+          lead="Proyectos que formulamos y no fueron financiados. Los mostramos por transparencia, nunca como resultados entregados."
+        />
+        <div class="grid">
+          {propuestas.map((c) => <CaseCard caso={c} headingLevel="h3" />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CallToAction title="El próximo caso puede ser el tuyo." />
 </MainLayout>
 
 <style>
-  .casos-section {
-    position: relative;
-    padding: 10rem 0 6rem;
-    color: white;
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
-
-  .container {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-  }
-
-  .cards-grid {
+  .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.75rem;
-  }
-
-  .propuestas-block {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(var(--neon-purple-rgb), 0.2);
-  }
-
-  .propuestas-title {
-    font-family: var(--font-body);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .propuestas-subtitle {
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 640px;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 768px) {
-    .casos-section {
-      padding: 8rem 0 4rem;
-    }
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 1rem;
   }
 </style>

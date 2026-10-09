@@ -1,142 +1,111 @@
 ---
-// src/components/BlogPostCard.astro
+// src/components/BlogPostCard.astro — fila de artículo (lista editorial, no tarjeta).
 import type { CollectionEntry } from 'astro:content';
+import Icon from './ui/Icon.astro';
 
 interface Props {
   entry: CollectionEntry<'blog'>;
+  headingLevel?: 'h2' | 'h3';
 }
-
-const { entry } = Astro.props;
+const { entry, headingLevel: H = 'h3' } = Astro.props;
 const { title, description, pubDate, tags } = entry.data;
-
-const formattedDate = pubDate.toLocaleDateString('es-CO', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  timeZone: 'UTC',
-});
+const fecha = pubDate.toLocaleDateString('es-CO', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 ---
 
-<a href={`/blog/${entry.id}`} class="post-card">
-  <div class="post-card-accent"></div>
-  <div class="post-card-body">
-    <div class="post-card-meta">
-      <svg class="post-card-meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-        <line x1="16" y1="2" x2="16" y2="6"></line>
-        <line x1="8" y1="2" x2="8" y2="6"></line>
-        <line x1="3" y1="10" x2="21" y2="10"></line>
-      </svg>
-      <span class="post-card-date">{formattedDate}</span>
+<article class="post-row" data-reveal>
+  <a href={`/blog/${entry.id}`} class="post-row-link">
+    <time class="post-date mono" datetime={pubDate.toISOString()}>{fecha}</time>
+    <div class="post-main">
+      <H class="post-title">{title}</H>
+      <p class="post-desc">{description}</p>
+      {tags.length > 0 && (
+        <ul class="post-tags" role="list">
+          {tags.map((t) => <li class="mono">{t}</li>)}
+        </ul>
+      )}
     </div>
-    <h3 class="post-card-title">{title}</h3>
-    <p class="post-card-description">{description}</p>
-    <div class="post-card-tags">
-      {tags.map((tag) => (
-        <span class="post-card-tag">
-          <span class="post-card-tag-dot"></span>
-          {tag}
-        </span>
-      ))}
-    </div>
-    <span class="post-card-link">Leer artículo →</span>
-  </div>
-</a>
+    <span class="post-arrow"><Icon name="arrow-up-right" size={22} /></span>
+  </a>
+</article>
 
 <style>
-  .post-card {
-    display: flex;
-    flex-direction: column;
-    background: rgba(26, 20, 45, 0.6);
-    border: 1px solid rgba(var(--neon-purple-rgb), 0.25);
-    border-radius: var(--radius-card);
-    text-decoration: none;
-    color: white;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    overflow: hidden;
+  .post-row {
+    border-top: 1px solid var(--border);
   }
-
-  .post-card:hover {
-    border-color: var(--neon-blue);
-    box-shadow: 0 10px 30px rgba(var(--neon-blue-rgb), 0.18);
-    transform: translateY(-4px);
+  .post-row:last-child {
+    border-bottom: 1px solid var(--border);
   }
-
-  .post-card-accent {
-    height: 4px;
-    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  .post-row-link {
+    display: grid;
+    grid-template-columns: 9rem 1fr auto;
+    gap: 2rem;
+    padding: 2rem 0.5rem;
+    transition: background var(--dur) var(--ease-out);
   }
-
-  .post-card-body {
+  .post-row-link:hover {
+    background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.06), transparent);
+  }
+  .post-date {
+    padding-top: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--text-subtle);
+  }
+  .post-main {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    padding: 1.75rem;
-    flex: 1;
   }
-
-  .post-card-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
+  .post-title {
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+    letter-spacing: -0.02em;
+    transition: color var(--dur-fast);
   }
-
-  .post-card-meta-icon {
-    width: 14px;
-    height: 14px;
-    color: var(--neon-blue);
+  .post-row-link:hover .post-title {
+    color: var(--accent-text);
   }
-
-  .post-card-date {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--neon-blue);
+  .post-desc {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+    max-width: 68ch;
   }
-
-  .post-card-title {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-  }
-
-  .post-card-description {
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
-
-  .post-card-tags {
+  .post-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: auto;
-    padding-top: 0.5rem;
   }
-
-  .post-card-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 0.2rem 0.65rem 0.2rem 0.5rem;
+  .post-tags li {
+    font-size: 0.7rem;
+    color: var(--text-subtle);
   }
-
-  .post-card-tag-dot {
-    width: 5px;
-    height: 5px;
+  .post-tags li + li::before {
+    content: '·';
+    margin-right: 0.5rem;
+  }
+  .post-arrow {
+    align-self: center;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: var(--neon-purple);
-    flex-shrink: 0;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    transition: background var(--dur), color var(--dur), border-color var(--dur), transform var(--dur) var(--ease-out);
   }
-
-  .post-card-link {
-    margin-top: 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--neon-blue);
+  .post-row-link:hover .post-arrow {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    transform: rotate(45deg);
+  }
+  @media (max-width: 720px) {
+    .post-row-link {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 1.5rem 0;
+    }
+    .post-arrow {
+      display: none;
+    }
   }
 </style>

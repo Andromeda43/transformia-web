@@ -1,0 +1,86 @@
+---
+// Arquitectura: modelo de datos con la llave de empresa (multi-tenant) resaltada y relaciones que se dibujan.
+const tags = ['multi-empresa', 'sin conexión', 'auditoría'];
+---
+
+<div class="vx">
+  <svg class="vx-erd" viewBox="0 0 300 150" fill="none">
+    <g class="vx-ent" style="--i:0">
+      <rect x="4" y="8" width="84" height="64" rx="7" />
+      <path d="M4 25h84" class="vx-sep" />
+      <text x="12" y="20" class="vx-title">empresa</text>
+      <text x="12" y="38" class="vx-key">id</text>
+      <text x="12" y="51" class="vx-col">nombre</text>
+      <text x="12" y="64" class="vx-col">plan</text>
+    </g>
+    <g class="vx-ent" style="--i:1">
+      <rect x="110" y="84" width="84" height="62" rx="7" class="vx-main" />
+      <path d="M110 101h84" class="vx-sep" />
+      <text x="118" y="96" class="vx-title">orden</text>
+      <text x="118" y="114" class="vx-tenant">empresa_id</text>
+      <text x="118" y="127" class="vx-col">usuario_id</text>
+      <text x="118" y="140" class="vx-col">estado</text>
+    </g>
+    <g class="vx-ent" style="--i:2">
+      <rect x="212" y="8" width="84" height="64" rx="7" />
+      <path d="M212 25h84" class="vx-sep" />
+      <text x="220" y="20" class="vx-title">usuario</text>
+      <text x="220" y="38" class="vx-tenant">empresa_id</text>
+      <text x="220" y="51" class="vx-col">rol</text>
+      <text x="220" y="64" class="vx-col">correo</text>
+    </g>
+    <path d="M88 36 H 130 V 84" pathLength="1" class="vx-link" style="--i:0" />
+    <path d="M212 36 H 172 V 84" pathLength="1" class="vx-link" style="--i:1" />
+    <path d="M88 36 H 150 C 170 36, 190 36, 212 36" pathLength="1" class="vx-link vx-link--soft" style="--i:2" />
+  </svg>
+  <div class="vx-tags">
+    {tags.map((t, i) => <span class="mono" style={`--i:${i}`}>{t}</span>)}
+  </div>
+</div>
+
+<style>
+  .vx { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; max-width: 420px; }
+  .vx-erd { width: 100%; height: auto; }
+  .vx-ent rect { fill: var(--surface-2); stroke: var(--border-strong); }
+  .vx-ent .vx-main { fill: var(--accent-soft); stroke: var(--accent); }
+  .vx-sep { stroke: var(--border-strong); }
+  .vx-title { font-family: var(--font-mono); font-size: 9px; fill: var(--text); }
+  .vx-col { font-family: var(--font-mono); font-size: 8px; fill: var(--text-subtle); }
+  .vx-key { font-family: var(--font-mono); font-size: 8px; fill: var(--warning); }
+  .vx-tenant { font-family: var(--font-mono); font-size: 8px; fill: var(--accent-text); }
+  .vx-link { stroke: var(--accent-text); stroke-width: 1.2; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .vx-link--soft { stroke: var(--border-strong); stroke-dasharray: 0.02 0.02; }
+  .vx-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .vx-tags span {
+    padding: 3px 9px;
+    border: 1px solid rgba(var(--accent-rgb), 0.35);
+    border-radius: 99px;
+    font-size: 9px;
+    color: var(--accent-text);
+  }
+
+  :global(.is-playing) .vx-ent { animation: vx-ent 7s var(--ease-out) infinite; animation-delay: calc(var(--i) * 0.2s); }
+  :global(.is-playing) .vx-link:not(.vx-link--soft) { animation: vx-draw 7s var(--ease-in-out) infinite; animation-delay: calc(var(--i) * 0.25s); }
+  :global(.is-playing) .vx-tenant { animation: vx-pulse 7s ease-in-out infinite; }
+  :global(.is-playing) .vx-tags span { animation: vx-tag 7s var(--ease-out) infinite; animation-delay: calc(var(--i) * 0.15s); }
+  @keyframes vx-ent {
+    0% { opacity: 0; transform: translateY(6px); }
+    8%, 92% { opacity: 1; transform: none; }
+    100% { opacity: 0; }
+  }
+  @keyframes vx-draw {
+    0%, 12% { stroke-dashoffset: 1; }
+    30%, 92% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+  @keyframes vx-pulse {
+    0%, 35% { fill: var(--accent-text); }
+    42% { fill: #fff; }
+    50%, 100% { fill: var(--accent-text); }
+  }
+  @keyframes vx-tag {
+    0%, 40% { opacity: 0; transform: translateY(4px); }
+    48%, 92% { opacity: 1; transform: none; }
+    100% { opacity: 0; }
+  }
+</style>

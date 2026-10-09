@@ -1,29 +1,75 @@
-/* src/styles/tokens.css */
+/* src/styles/tokens.css
+   Sistema de diseño Transformia — "software en operación".
+   Única fuente de verdad para color, tipografía, espaciado y movimiento.
+   No declarar colores hexadecimales en componentes: usar estos tokens. */
+
 :root {
-  /* Paleta Transformia — única fuente de verdad, no redeclarar en componentes */
-  --neon-purple: #b042ff;
-  --neon-blue: #4287ff;
-  --neon-pink: #ff42b0;
-  --neon-green: #42ff66;
-  --neon-yellow: #e8ff42;
-  --dark-bg: #0a0a14;
-  --darker-bg: #070710;
-  --dark-purple: #1a142d;
+  color-scheme: dark;
+
+  /* Superficies */
+  --bg: #0b0b12;
+  --bg-elevated: #0f0f18;
+  --surface-1: #13131c;
+  --surface-2: #1b1b27;
+  --surface-3: #232332;
+  --border: #2a2a3a;
+  --border-strong: #3a3a4e;
+
+  /* Texto */
+  --text: #ececf2;
+  --text-muted: #a0a0b4;
+  --text-subtle: #6e6e84;
+
+  /* Marca y estados */
+  --accent: #b042ff;
+  --accent-strong: #9a2ef0;
+  --accent-text: #c98bff;
+  --accent-soft: rgba(176, 66, 255, 0.12);
+  --accent-rgb: 176, 66, 255;
+  --signal: #3ddc97;
+  --signal-rgb: 61, 220, 151;
+  --warning: #f5b841;
+  --warning-rgb: 245, 184, 65;
+  --danger: #ff5c7a;
 
   /* Tipografía */
-  --font-mono: 'Space Mono', monospace;
-  --font-body: 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
 
-  /* Layout */
-  --section-padding-y: 7rem;
-  --section-padding-y-mobile: 4rem;
-  --radius-card: 12px;
-  --container-max: 1280px;
+  --text-display: clamp(2.6rem, 1.6rem + 4.4vw, 5.25rem);
+  --text-h1: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --text-h2: clamp(1.85rem, 1.4rem + 2vw, 3rem);
+  --text-h3: clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+  --text-lead: clamp(1.075rem, 1rem + 0.35vw, 1.25rem);
+  --text-body: 1.0625rem;
+  --text-small: 0.9375rem;
+  --text-label: 0.8125rem;
 
-  /* RGB para usar en rgba() dinámicos */
-  --neon-purple-rgb: 176, 66, 255;
-  --neon-blue-rgb: 66, 135, 255;
-  --neon-pink-rgb: 255, 66, 176;
-  --neon-green-rgb: 66, 255, 102;
-  --neon-yellow-rgb: 232, 255, 66;
+  /* Espaciado y layout */
+  --container-max: 1200px;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  --section-y: clamp(5rem, 3.5rem + 6vw, 9rem);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --nav-height: 72px;
+
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur: 320ms;
+  --dur-slow: 640ms;
+
+  /* Sombras */
+  --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border);
+  --glow-accent: 0 0 0 1px rgba(var(--accent-rgb), 0.5), 0 10px 40px -10px rgba(var(--accent-rgb), 0.65);
+
+  /* Legado: solo para /cotizacion mientras se rediseña */
+  --neon-purple: var(--accent);
+  --neon-purple-rgb: var(--accent-rgb);
+  --neon-blue: #6e8bff;
+  --neon-red: var(--danger);
+  --dark-bg: var(--bg);
 }

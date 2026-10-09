@@ -1,0 +1,262 @@
+---
+// src/pages/servicios/[slug].astro — plantilla única para los 7 servicios (datos en src/data/servicios.ts).
+import MainLayout from '../../layouts/MainLayout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+import CaseCard from '../../components/casos/CaseCard.astro';
+import ProductCard from '../../components/productos/ProductCard.astro';
+import { productos } from '../../data/productos';
+import CallToAction from '../../components/CallToAction.astro';
+import { servicios, grupos, type Servicio } from '../../data/servicios';
+import { casosDeExito } from '../../data/casosDeExito';
+import { whatsappLink } from '../../data/site';
+import { breadcrumbSchema } from '../../lib/seo/breadcrumb';
+import { serviceSchema } from '../../lib/seo/service';
+
+export function getStaticPaths() {
+  return servicios.map((servicio) => ({ params: { slug: servicio.slug }, props: { servicio } }));
+}
+
+interface Props {
+  servicio: Servicio;
+}
+const { servicio: s } = Astro.props;
+const grupo = grupos.find((g) => g.id === s.grupo)!;
+const relacionados = s.casos.map((slug) => casosDeExito.find((c) => c.slug === slug)).filter((c) => c !== undefined);
+const productosRel = productos.filter((p) => s.productos?.includes(p.id));
+const otros = servicios.filter((o) => o.slug !== s.slug);
+const url = new URL(`/servicios/${s.slug}`, Astro.site).toString();
+const crumbs = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: s.nombre, path: `/servicios/${s.slug}` },
+];
+---
+
+<MainLayout
+  title={s.seoTitle}
+  description={s.seoDescription}
+  jsonLd={[breadcrumbSchema(crumbs, Astro.site!), serviceSchema({ name: s.nombre, description: s.seoDescription, url })]}
+>
+  <PageHero crumbs={crumbs} eyebrow={grupo.nombre} title={s.nombre} lead={s.resumen}>
+    <div class="hero-actions" data-reveal>
+      <Button href="/contacto" icon="arrow" magnetic>Agenda un diagnóstico</Button>
+      <Button href={whatsappLink(`Hola, me interesa el servicio de ${s.nombreCorto.toLowerCase()}.`)} variant="secondary" iconStart="whatsapp" external>
+        Escríbenos por WhatsApp
+      </Button>
+    </div>
+  </PageHero>
+
+  <section class="section section--tight">
+    <div class="container two-col">
+      <article class="block" data-reveal>
+        <p class="eyebrow eyebrow--plain">El problema</p>
+        <p class="block-text">{s.problema}</p>
+      </article>
+      <article class="block block--accent" data-reveal>
+        <p class="eyebrow eyebrow--plain">Cómo lo resolvemos</p>
+        <p class="block-text">{s.enfoque}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container includes">
+      <SectionHeader eyebrow="Alcance" title="Qué incluye" lead="Cada propuesta detalla también lo que no incluye, para que sepas exactamente qué recibes." />
+      <ol class="include-list" role="list">
+        {s.incluye.map((item, i) => (
+          <li data-reveal>
+            <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container meta-grid">
+      <div data-reveal>
+        <p class="eyebrow eyebrow--plain">Lo que construimos</p>
+        <ul class="chip-list" role="list">
+          {s.ejemplos.map((e) => <li><Icon name="check" size={14} strokeWidth={2.2} />{e}</li>)}
+        </ul>
+      </div>
+      <div data-reveal>
+        <p class="eyebrow eyebrow--plain">Tecnologías habituales</p>
+        <ul class="chip-list chip-list--mono" role="list">
+          {s.tecnologias.map((t) => <li>{t}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {(relacionados.length > 0 || productosRel.length > 0) && (
+    <section class="section section--tight">
+      <div class="container">
+        <SectionHeader eyebrow="En la práctica" title={relacionados.length > 0 ? 'Casos relacionados' : 'Lo aplicamos en nuestros productos'} />
+        <div class="related">
+          {relacionados.map((c) => <CaseCard caso={c} />)}
+          {productosRel.map((p) => <ProductCard producto={p} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow eyebrow--plain others-title">Otros servicios</p>
+      <ul class="others" role="list">
+        {otros.map((o) => (
+          <li>
+            <a href={`/servicios/${o.slug}`}>
+              <Icon name={o.icon} size={18} />
+              <span>{o.nombreCorto}</span>
+              <Icon name="arrow" size={16} class="others-arrow" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CallToAction />
+</MainLayout>
+
+<style>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .block--accent {
+    border-color: rgba(var(--accent-rgb), 0.35);
+    background: linear-gradient(160deg, rgba(var(--accent-rgb), 0.1), var(--surface-1) 60%);
+  }
+  .block-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .includes {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+  .include-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .include-list li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding: 1.15rem 0;
+    border-top: 1px solid var(--border);
+    font-size: 1.05rem;
+  }
+  .include-list li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .include-list .mono {
+    color: var(--accent-text);
+    font-size: 0.8rem;
+    padding-top: 0.2rem;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+  .chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .chip-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--surface-1);
+    font-size: 0.9rem;
+  }
+  .chip-list li :global(svg) {
+    color: var(--signal);
+  }
+  .chip-list--mono li {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .related {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+  .others-title {
+    margin-bottom: 1rem;
+  }
+  .others {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .others a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    transition: border-color var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+  }
+  .others a:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: var(--accent-soft);
+  }
+  .others :global(.others-arrow) {
+    margin-left: auto;
+  }
+  @media (max-width: 900px) {
+    .two-col,
+    .includes,
+    .meta-grid {
+      grid-template-columns: 1fr;
+    }
+    .others {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .others {
+      grid-template-columns: 1fr;
+    }
+    .hero-actions :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>
