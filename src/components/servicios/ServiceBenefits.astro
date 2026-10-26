@@ -1,0 +1,94 @@
+---
+// src/components/servicios/ServiceBenefits.astro — "¿Para qué sirve?": beneficios concretos.
+import SectionHeader from '../ui/SectionHeader.astro';
+import Icon from '../ui/Icon.astro';
+import type { Beneficio } from '../../data/serviciosContenido';
+
+interface Props {
+  lead: string;
+  beneficios: Beneficio[];
+}
+const { lead, beneficios } = Astro.props;
+---
+
+<section class="section section--surface">
+  <div class="container">
+    <SectionHeader eyebrow="¿Para qué sirve?" title="Lo que cambia en tu día a día." lead={lead} />
+    <ul class="benefits" role="list">
+      {beneficios.map((b, i) => (
+        <li class="benefit spot" data-spotlight data-reveal style={`--i:${i}`}>
+          <span class="benefit-icon">
+            <span class="benefit-orbit" aria-hidden="true"></span>
+            <Icon name={b.icon} size={22} />
+          </span>
+          <span class="benefit-num mono">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="benefit-title">{b.titulo}</h3>
+          <p>{b.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .benefit {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1.75rem 1.5rem;
+  }
+  .benefit-icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 0.75rem;
+    border-radius: 16px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+  .benefit-orbit {
+    position: absolute;
+    inset: -7px;
+    border-radius: 20px;
+    border: 1px dashed rgba(var(--accent-rgb), 0.4);
+    opacity: 0;
+    transition: opacity var(--dur), transform 0.8s var(--ease-out);
+  }
+  .benefit:hover .benefit-orbit {
+    opacity: 1;
+    transform: rotate(8deg) scale(1.05);
+  }
+  .benefit-num {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .benefit-title {
+    font-size: 1.15rem;
+    letter-spacing: -0.015em;
+  }
+  .benefit p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+  @media (max-width: 1000px) {
+    .benefits {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 560px) {
+    .benefits {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

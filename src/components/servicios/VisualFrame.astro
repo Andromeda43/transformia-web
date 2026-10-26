@@ -1,0 +1,76 @@
+---
+// src/components/servicios/VisualFrame.astro — marco común de las animaciones del hero de cada servicio.
+interface Props {
+  label: string;
+  status?: string;
+}
+const { label, status } = Astro.props;
+---
+
+<div class="vframe" aria-hidden="true">
+  <div class="vframe-glow"></div>
+  <div class="vframe-card">
+    <div class="vframe-bar">
+      <span class="vframe-dots"><i></i><i></i><i></i></span>
+      <span class="vframe-label mono">{label}</span>
+      {status && <span class="vframe-status mono"><i></i>{status}</span>}
+    </div>
+    <div class="vframe-body">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .vframe {
+    position: relative;
+    width: 100%;
+  }
+  .vframe-glow {
+    position: absolute;
+    inset: 8% 0 0 8%;
+    background: radial-gradient(closest-side, rgba(var(--accent-rgb), 0.26), transparent 75%);
+    filter: blur(30px);
+    pointer-events: none;
+  }
+  .vframe-card {
+    position: relative;
+    border-radius: 20px;
+    background: linear-gradient(180deg, var(--surface-2), var(--surface-1) 45%);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .vframe-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .vframe-dots { display: flex; gap: 6px; }
+  .vframe-dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--border-strong); }
+  .vframe-label { min-width: 0; font-size: 0.72rem; color: var(--text-subtle); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .vframe-status {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border: 1px solid rgba(var(--signal-rgb), 0.4);
+    border-radius: 99px;
+    font-size: 0.68rem;
+    color: var(--signal);
+    white-space: nowrap;
+    flex: none;
+  }
+  .vframe-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); }
+  .vframe-body {
+    position: relative;
+    height: 400px;
+    padding: 18px;
+    overflow: hidden;
+  }
+  @media (max-width: 560px) {
+    .vframe-body { height: 360px; padding: 14px; }
+  }
+</style>

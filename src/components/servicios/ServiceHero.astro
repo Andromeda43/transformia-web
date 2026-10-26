@@ -1,0 +1,96 @@
+---
+// src/components/servicios/ServiceHero.astro — encabezado de servicio: texto a la izquierda, animación propia a la derecha.
+interface Crumb {
+  name: string;
+  path: string;
+}
+interface Props {
+  crumbs: Crumb[];
+  eyebrow: string;
+  title: string;
+  lead: string;
+}
+const { crumbs, eyebrow, title, lead } = Astro.props;
+---
+
+<section class="sh-hero">
+  <div class="blueprint"></div>
+  <div class="container sh-grid">
+    <div class="sh-copy">
+      <nav class="crumbs mono" aria-label="Migas de pan" data-reveal>
+        <ol role="list">
+          {crumbs.map((c, i) => (
+            <li>{i < crumbs.length - 1 ? <a href={c.path}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
+          ))}
+        </ol>
+      </nav>
+      <p class="eyebrow" data-reveal>{eyebrow}</p>
+      <h1 class="h1 sh-title" data-split>{title}</h1>
+      <p class="lead" data-reveal>{lead}</p>
+      <slot name="actions" />
+    </div>
+    <div class="sh-visual" data-reveal data-reveal-delay="0.15">
+      <slot name="visual" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .sh-hero {
+    position: relative;
+    padding: calc(var(--nav-height) + clamp(3rem, 2rem + 4vw, 5.5rem)) 0 clamp(3rem, 2rem + 3vw, 5rem);
+    overflow: hidden;
+  }
+  .sh-hero::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 70vw;
+    height: 70vw;
+    max-width: 1000px;
+    max-height: 1000px;
+    background: radial-gradient(closest-side, rgba(var(--accent-rgb), 0.13), transparent 70%);
+    pointer-events: none;
+  }
+  .sh-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  }
+  .sh-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .sh-title {
+    max-width: 16ch;
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .crumbs li + li::before {
+    content: '/';
+    margin-right: 0.4rem;
+    color: var(--border-strong);
+  }
+  .crumbs a:hover {
+    color: var(--text);
+  }
+  @media (max-width: 1000px) {
+    .sh-grid {
+      grid-template-columns: 1fr;
+    }
+    .sh-visual {
+      max-width: 620px;
+      width: 100%;
+    }
+  }
+</style>

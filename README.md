@@ -18,7 +18,7 @@ Sitio de Transformia Zomac SAS. Astro 5 estático, CSS con tokens propios y GSAP
 - `src/styles/tokens.css` — color, tipografía, espaciado y movimiento. No declarar colores hexadecimales en componentes.
 - `src/styles/base.css` — reset, utilidades (`.btn`, `.eyebrow`, `.spot`, `.prose`, `.blueprint`).
 - `src/scripts/motion.ts` — motor de animación global por atributos `data-*` (`data-reveal`, `data-split`, `data-count`, `data-magnetic`, `data-spotlight`, `data-rotate`).
-- `src/pages/servicios/[slug].astro` — una sola plantilla para los 7 servicios.
+- `src/pages/servicios/[slug].astro` — una sola plantilla para los 8 servicios. El texto para público general (qué es, beneficios, ejemplos por negocio, pasos, preguntas frecuentes) vive en `src/data/serviciosContenido.ts`, y cada servicio tiene su animación de hero en `src/components/servicios/visuals/` (bucles con `src/scripts/loop.ts`).
 - `src/layouts/CaseStudyLayout.astro` — plantilla de casos; slots `solucion-extra` y `evidencia` para casos con material propio.
 
 ## Reglas

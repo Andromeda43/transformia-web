@@ -1,0 +1,109 @@
+---
+// Arquitectura: los planos del sistema se dibujan, se anotan las decisiones clave y se aprueban.
+import VisualFrame from '../VisualFrame.astro';
+
+const cajas = [
+  { x: 14, y: 22, w: 78, h: 36, t: 'App web', s: 'navegador' },
+  { x: 14, y: 132, w: 78, h: 36, t: 'App móvil', s: 'sin conexión' },
+  { x: 132, y: 77, w: 70, h: 36, t: 'API', s: 'roles y reglas' },
+  { x: 242, y: 22, w: 84, h: 36, t: 'Base de datos', s: 'multi-empresa' },
+  { x: 242, y: 132, w: 84, h: 36, t: 'Integraciones', s: 'WhatsApp · equipos' },
+];
+const lineas = [
+  'M92 40 C 112 40, 112 95, 132 95',
+  'M92 150 C 112 150, 112 95, 132 95',
+  'M202 95 C 222 95, 222 40, 242 40',
+  'M202 95 C 222 95, 222 150, 242 150',
+];
+const notas = [
+  { x: 132, y: 34, t: 'Seguridad por rol' },
+  { x: 132, y: 160, t: 'Offline-first' },
+];
+---
+
+<VisualFrame label="arquitectura · v1" status="aprobada">
+  <div class="hx" data-hx>
+    <svg class="hx-svg" viewBox="0 0 340 200" fill="none">
+      <defs>
+        <pattern id="hx-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M10 0H0V10" stroke="rgba(110,160,255,0.08)" stroke-width="0.5" />
+        </pattern>
+      </defs>
+      <rect width="340" height="200" fill="url(#hx-grid)" />
+      {lineas.map((d) => <path d={d} pathLength="1" class="hx-line" data-hx-line />)}
+      {cajas.map((c) => (
+        <g data-hx-box>
+          <rect x={c.x} y={c.y} width={c.w} height={c.h} rx="6" pathLength="1" class="hx-box" data-hx-rect />
+          <text x={c.x + 8} y={c.y + 15} class="hx-t">{c.t}</text>
+          <text x={c.x + 8} y={c.y + 27} class="hx-s">{c.s}</text>
+        </g>
+      ))}
+      {notas.map((n) => (
+        <g data-hx-note>
+          <rect x={n.x - 4} y={n.y - 9} width={n.t.length * 4.6 + 8} height="13" rx="6.5" class="hx-note-bg" />
+          <text x={n.x} y={n.y} class="hx-note">{n.t}</text>
+        </g>
+      ))}
+    </svg>
+    <div class="hx-stamp mono" data-hx-stamp>✓ Aprobado · listo para construir</div>
+    <ul class="hx-legend" role="list">
+      <li><i class="hx-dot"></i>Módulos</li>
+      <li><i class="hx-dot hx-dot--note"></i>Decisiones clave</li>
+    </ul>
+  </div>
+</VisualFrame>
+
+<style>
+  .hx { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 12px; height: 100%; }
+  .hx-svg { width: 100%; height: auto; max-height: 82%; border: 1px solid rgba(110, 160, 255, 0.18); border-radius: 12px; background: #0b1020; }
+  .hx-line { stroke: rgba(150, 190, 255, 0.75); stroke-width: 1.1; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .hx-box { stroke: rgba(150, 190, 255, 0.85); stroke-width: 1; fill: rgba(80, 120, 220, 0.08); stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .hx-t { font-family: var(--font-body); font-size: 9.5px; font-weight: 600; fill: #dbe7ff; }
+  .hx-s { font-family: var(--font-mono); font-size: 6.8px; fill: rgba(170, 200, 255, 0.7); }
+  .hx-note-bg { fill: var(--accent-soft); stroke: rgba(var(--accent-rgb), 0.6); stroke-width: 0.6; }
+  .hx-note { font-family: var(--font-mono); font-size: 7px; fill: var(--accent-text); }
+  .hx-stamp {
+    position: absolute;
+    right: 6px;
+    bottom: 0;
+    padding: 5px 11px;
+    border: 1.5px solid var(--signal);
+    border-radius: 7px;
+    color: var(--signal);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transform: rotate(-6deg);
+    background: rgba(11, 11, 18, 0.85);
+  }
+  .hx-legend { display: flex; gap: 16px; font-size: 10.5px; color: var(--text-muted); }
+  .hx-legend li { display: flex; align-items: center; gap: 6px; }
+  .hx-dot { width: 9px; height: 9px; border-radius: 3px; border: 1px solid rgba(150, 190, 255, 0.85); }
+  .hx-dot--note { border-radius: 50%; border-color: var(--accent); background: var(--accent-soft); }
+</style>
+
+<script>
+  import { loopWhenVisible } from '../../../scripts/loop';
+
+  document.querySelectorAll<HTMLElement>('[data-hx]').forEach((root) => {
+    const rects = root.querySelectorAll('[data-hx-rect]');
+    const texts = root.querySelectorAll('[data-hx-box] text');
+    const lines = root.querySelectorAll('[data-hx-line]');
+    const notes = root.querySelectorAll('[data-hx-note]');
+    const stamp = root.querySelector('[data-hx-stamp]');
+
+    loopWhenVisible(root, (tl) => {
+      tl.to({}, { duration: 1.4 })
+        .to([stamp, notes, texts], { autoAlpha: 0, duration: 0.3 })
+        .to([rects, lines], { strokeDashoffset: 1, duration: 0.4 }, '<')
+        // Se dibujan los módulos y sus conexiones
+        .to(rects, { strokeDashoffset: 0, duration: 0.7, stagger: 0.18, ease: 'power2.inOut' })
+        .to(texts, { autoAlpha: 1, duration: 0.3, stagger: 0.06 }, '-=0.6')
+        .to(lines, { strokeDashoffset: 0, duration: 0.6, stagger: 0.15, ease: 'power2.inOut' })
+        // Decisiones clave y aprobación
+        .fromTo(notes, { autoAlpha: 0, y: 4 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.2, ease: 'back.out(2)', immediateRender: false })
+        .fromTo(stamp, { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.2)', immediateRender: false }, '+=0.2')
+        .to({}, { duration: 2.2 });
+    });
+  });
+</script>

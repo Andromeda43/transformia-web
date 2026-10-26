@@ -1,0 +1,287 @@
+---
+// src/components/servicios/ScenarioExplorer.astro — "¿Cómo podría funcionarte?": ejemplos por tipo de negocio.
+// Pestañas accesibles (flechas del teclado). Cada ejemplo muestra Hoy → Con Transformia → Resultado y una pantalla.
+import SectionHeader from '../ui/SectionHeader.astro';
+import Icon from '../ui/Icon.astro';
+import type { Escenario } from '../../data/serviciosContenido';
+
+interface Props {
+  id: string;
+  escenarios: Escenario[];
+}
+const { id, escenarios } = Astro.props;
+const pasos = [
+  { k: 'hoy', label: 'Hoy', icon: 'alert' },
+  { k: 'solucion', label: 'Con Transformia', icon: 'zap' },
+  { k: 'resultado', label: 'Resultado', icon: 'check' },
+] as const;
+---
+
+<section class="section scen" data-scen>
+  <div class="container">
+    <SectionHeader
+      eyebrow="¿Cómo podría funcionarte?"
+      title="Ejemplos de negocios como el tuyo."
+      lead="Elige el que más se parezca a tu empresa y mira cómo se vería en la práctica."
+    />
+
+    <div class="scen-tabs" role="tablist" aria-label="Tipos de negocio" data-reveal>
+      {escenarios.map((e, i) => (
+        <button
+          type="button"
+          role="tab"
+          class="scen-tab"
+          id={`${id}-tab-${i}`}
+          aria-controls={`${id}-panel-${i}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          data-scen-tab
+        >
+          <Icon name={e.icon} size={16} />
+          {e.negocio}
+        </button>
+      ))}
+    </div>
+
+    <div class="scen-stage spot" data-spotlight data-reveal>
+      {escenarios.map((e, i) => (
+        <div
+          class="scen-panel"
+          role="tabpanel"
+          id={`${id}-panel-${i}`}
+          aria-labelledby={`${id}-tab-${i}`}
+          hidden={i !== 0}
+          data-scen-panel
+        >
+          <ol class="scen-story" role="list">
+            {pasos.map((p) => (
+              <li class:list={['scen-step', `scen-step--${p.k}`]} data-scen-anim>
+                <span class="scen-step-icon"><Icon name={p.icon} size={16} strokeWidth={2} /></span>
+                <div>
+                  <span class="scen-step-label mono">{p.label}</span>
+                  <p>{e[p.k]}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div class="scen-screen" data-scen-anim>
+            <div class="scen-screen-bar">
+              <span><i></i><i></i><i></i></span>
+              <b>{e.pantalla.titulo}</b>
+              <em class="mono">ejemplo</em>
+            </div>
+            <ul class="scen-items" role="list">
+              {e.pantalla.items.map((it) => (
+                <li data-scen-item>
+                  <span>{it.label}</span>
+                  <b class:list={['mono', it.tono && `tono-${it.tono}`]}>{it.valor}</b>
+                </li>
+              ))}
+            </ul>
+            <div class="scen-screen-foot">
+              <span class="scen-live"><i></i> así se vería en tu operación</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scen-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .scen-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    transition: background var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast);
+  }
+  .scen-tab:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+  }
+  .scen-tab[aria-selected='true'] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .scen-stage {
+    padding: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+  }
+  .scen-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(1.5rem, 1rem + 3vw, 3.5rem);
+    align-items: center;
+  }
+  .scen-panel[hidden] {
+    display: none;
+  }
+
+  /* Historia: Hoy → Con Transformia → Resultado */
+  .scen-story {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  .scen-story::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(var(--warning-rgb), 0.6), var(--accent), var(--signal));
+  }
+  .scen-step {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+  }
+  .scen-step-icon {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+  }
+  .scen-step--hoy .scen-step-icon { color: var(--warning); border-color: rgba(var(--warning-rgb), 0.5); }
+  .scen-step--solucion .scen-step-icon { color: var(--accent-text); border-color: rgba(var(--accent-rgb), 0.6); background: var(--accent-soft); }
+  .scen-step--resultado .scen-step-icon { color: var(--signal); border-color: rgba(var(--signal-rgb), 0.5); }
+  .scen-step-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .scen-step p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+  .scen-step--hoy p { color: var(--text-muted); }
+  .scen-step--resultado p { font-weight: 600; }
+
+  /* Pantalla de ejemplo */
+  .scen-screen {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .scen-screen-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+  .scen-screen-bar span { display: flex; gap: 5px; }
+  .scen-screen-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
+  .scen-screen-bar b { font-size: 0.95rem; font-weight: 600; }
+  .scen-screen-bar em { margin-left: auto; font-style: normal; font-size: 0.68rem; color: var(--text-subtle); }
+  .scen-items {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+  }
+  .scen-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+  .scen-items li:first-child { border-top: 0; }
+  .scen-items span { color: var(--text-muted); }
+  .scen-items b { font-size: 0.85rem; font-weight: 400; padding: 0.2rem 0.6rem; border-radius: 99px; background: var(--surface-2); }
+  .tono-ok { color: var(--signal); background: rgba(var(--signal-rgb), 0.12) !important; }
+  .tono-run { color: var(--accent-text); background: var(--accent-soft) !important; }
+  .tono-warn { color: var(--warning); background: rgba(var(--warning-rgb), 0.12) !important; }
+  .scen-screen-foot {
+    padding: 0.7rem 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+  }
+  .scen-live { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .scen-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px rgba(var(--signal-rgb), 0.15); }
+
+  @media (max-width: 900px) {
+    .scen-panel {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .scen-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      margin-inline: calc(var(--gutter) * -1);
+      padding-inline: var(--gutter);
+      scrollbar-width: none;
+    }
+    .scen-tab {
+      flex: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { reduceMotion } from '../../scripts/env';
+
+  document.querySelectorAll<HTMLElement>('[data-scen]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-scen-tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-scen-panel]'));
+    let current = 0;
+
+    const select = (i: number, focus = false) => {
+      if (i === current) return;
+      tabs.forEach((t, j) => {
+        t.setAttribute('aria-selected', String(j === i));
+        t.tabIndex = j === i ? 0 : -1;
+      });
+      panels[current].hidden = true;
+      panels[i].hidden = false;
+      current = i;
+      if (focus) tabs[i].focus();
+      if (!reduceMotion) {
+        const p = panels[i];
+        gsap.fromTo(p.querySelectorAll('[data-scen-anim]'), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.08, ease: 'power3.out' });
+        gsap.fromTo(p.querySelectorAll('[data-scen-item]'), { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.4, stagger: 0.08, delay: 0.25, ease: 'power3.out' });
+      }
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(i));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          select((current + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length, true);
+        }
+      });
+    });
+  });
+</script>

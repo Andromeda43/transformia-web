@@ -1,0 +1,134 @@
+---
+// Software a la medida: los módulos de tu operación se ensamblan uno a uno en una sola plataforma.
+import VisualFrame from '../VisualFrame.astro';
+import Icon, { type IconName } from '../../ui/Icon.astro';
+
+const modulos: { n: string; icon: IconName }[] = [
+  { n: 'Panel', icon: 'layout' },
+  { n: 'Pedidos', icon: 'cart' },
+  { n: 'Inventario', icon: 'database' },
+  { n: 'Clientes', icon: 'users' },
+  { n: 'Reportes', icon: 'trending' },
+];
+const barras = [42, 58, 50, 74, 66, 88, 80];
+---
+
+<VisualFrame label="tu-plataforma · a-la-medida" status="5 módulos">
+  <div class="hs" data-hs>
+    <div class="hs-app">
+      <aside class="hs-side">
+        <span class="hs-logo"></span>
+        {modulos.map((m, i) => (
+          <span class:list={['hs-mod', { 'is-on': i === 0 }]} data-hs-mod>
+            <Icon name={m.icon} size={14} /> <em>{m.n}</em>
+          </span>
+        ))}
+      </aside>
+      <div class="hs-main">
+        <div class="hs-top" data-hs-w><b>Panel general</b><span class="hs-user"><i></i> Gerencia</span></div>
+        <div class="hs-kpis" data-hs-w>
+          <div><span>Pedidos hoy</span><b class="mono">42</b></div>
+          <div><span>Ventas del mes</span><b class="mono">$ 86 M</b></div>
+          <div><span>Inventario</span><b class="mono">1.204 u</b></div>
+        </div>
+        <div class="hs-chart" data-hs-w>
+          <span class="hs-chart-t">Ventas por semana</span>
+          <div class="hs-bars">{barras.map((h) => <i style={`--h:${h}%`} data-hs-bar></i>)}</div>
+        </div>
+        <div class="hs-rows" data-hs-w>
+          <div><span class="mono">#1043</span><span>Distribuidora Andina</span><em class="ok">Despachado</em></div>
+          <div><span class="mono">#1042</span><span>Agro del Llano</span><em class="run">En ruta</em></div>
+        </div>
+      </div>
+    </div>
+    <div class="hs-phone" data-hs-w>
+      <span class="hs-notch"></span>
+      <b>Pedidos</b>
+      <span class="hs-ph-card"><em>#1043</em> Despachado</span>
+      <span class="hs-ph-card hs-ph-card--b"><em>#1042</em> En ruta</span>
+      <span class="hs-ph-line"></span>
+    </div>
+  </div>
+</VisualFrame>
+
+<style>
+  .hs { position: relative; height: 100%; font-size: 11px; }
+  .hs-app { display: flex; height: 100%; margin-right: 22%; border: 1px solid var(--border-strong); border-radius: 14px; background: var(--bg-elevated); overflow: hidden; }
+  .hs-side { display: flex; flex-direction: column; gap: 6px; width: 30%; max-width: 132px; padding: 12px 8px; border-right: 1px solid var(--border); }
+  .hs-logo { width: 22px; height: 22px; margin: 0 4px 8px; border-radius: 7px; background: var(--accent); }
+  .hs-mod { display: flex; align-items: center; gap: 7px; padding: 7px 8px; border-radius: 8px; color: var(--text-muted); white-space: nowrap; }
+  .hs-mod em { font-style: normal; overflow: hidden; text-overflow: ellipsis; }
+  .hs-mod.is-on { background: var(--accent-soft); color: var(--accent-text); }
+  .hs-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; padding: 12px; }
+  .hs-top { display: flex; justify-content: space-between; align-items: center; }
+  .hs-top b { font-size: 13px; }
+  .hs-user { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 99px; color: var(--text-muted); font-size: 10px; }
+  .hs-user i { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); }
+  .hs-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .hs-kpis div { padding: 7px 8px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-1); min-width: 0; }
+  .hs-kpis span { display: block; font-size: 9px; color: var(--text-subtle); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hs-kpis b { font-size: 13px; }
+  .hs-chart { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-1); min-height: 0; }
+  .hs-chart-t { font-size: 9.5px; color: var(--text-subtle); }
+  .hs-bars { flex: 1; display: flex; align-items: flex-end; gap: 6px; min-height: 50px; }
+  .hs-bars i { flex: 1; height: var(--h); border-radius: 4px 4px 0 0; background: linear-gradient(180deg, var(--accent-text), var(--accent)); transform-origin: bottom; }
+  .hs-rows { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; }
+  .hs-rows div { display: grid; grid-template-columns: 40px 1fr auto; gap: 8px; align-items: center; padding: 6px 9px; border-top: 1px solid var(--border); font-size: 10px; }
+  .hs-rows div:first-child { border-top: 0; }
+  .hs-rows span:nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hs-rows .mono { color: var(--text-subtle); font-size: 9px; }
+  .hs-rows em { font-style: normal; padding: 1px 7px; border-radius: 99px; font-size: 9px; }
+  .ok { background: rgba(var(--signal-rgb), 0.12); color: var(--signal); }
+  .run { background: var(--accent-soft); color: var(--accent-text); }
+
+  .hs-phone {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    width: 26%;
+    height: 72%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 26px 9px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 22px;
+    background: var(--surface-1);
+    box-shadow: -18px 0 40px rgba(0, 0, 0, 0.5);
+    font-size: 10.5px;
+  }
+  .hs-notch { position: absolute; top: 9px; left: 50%; width: 34%; height: 9px; border-radius: 9px; background: #000; transform: translateX(-50%); }
+  .hs-ph-card { display: flex; flex-direction: column; padding: 7px; border-radius: 9px; background: rgba(var(--signal-rgb), 0.1); border: 1px solid rgba(var(--signal-rgb), 0.35); color: var(--signal); font-size: 9.5px; }
+  .hs-ph-card em { font-style: normal; font-family: var(--font-mono); color: var(--text-muted); font-size: 9px; }
+  .hs-ph-card--b { background: var(--accent-soft); border-color: rgba(var(--accent-rgb), 0.4); color: var(--accent-text); }
+  .hs-ph-line { height: 6px; border-radius: 3px; background: var(--surface-3); width: 70%; }
+</style>
+
+<script>
+  import { loopWhenVisible } from '../../../scripts/loop';
+
+  document.querySelectorAll<HTMLElement>('[data-hs]').forEach((root) => {
+    const mods = Array.from(root.querySelectorAll<HTMLElement>('[data-hs-mod]'));
+    const widgets = Array.from(root.querySelectorAll<HTMLElement>('[data-hs-w]'));
+    const bars = root.querySelectorAll('[data-hs-bar]');
+
+    loopWhenVisible(root, (tl) => {
+      tl.to({}, { duration: 1.4 })
+        .to(widgets, { autoAlpha: 0, y: 10, duration: 0.3, stagger: 0.04 })
+        .to(mods, { autoAlpha: 0, x: -24, duration: 0.3, stagger: 0.04 }, '<')
+        // Cada módulo entra a la barra lateral y su pieza aparece en el panel
+        .to(mods[0], { autoAlpha: 1, x: 0, duration: 0.4, ease: 'back.out(1.7)' })
+        .to(widgets[0], { autoAlpha: 1, y: 0, duration: 0.35 }, '<0.1')
+        .to(mods[1], { autoAlpha: 1, x: 0, duration: 0.4, ease: 'back.out(1.7)' })
+        .to(widgets[1], { autoAlpha: 1, y: 0, duration: 0.35 }, '<0.1')
+        .to(mods[2], { autoAlpha: 1, x: 0, duration: 0.4, ease: 'back.out(1.7)' })
+        .to(widgets[2], { autoAlpha: 1, y: 0, duration: 0.35 }, '<0.1')
+        .fromTo(bars, { scaleY: 0 }, { scaleY: 1, duration: 0.6, stagger: 0.05, ease: 'power3.out', immediateRender: false }, '<')
+        .to(mods[3], { autoAlpha: 1, x: 0, duration: 0.4, ease: 'back.out(1.7)' })
+        .to(widgets[3], { autoAlpha: 1, y: 0, duration: 0.35 }, '<0.1')
+        .to(mods[4], { autoAlpha: 1, x: 0, duration: 0.4, ease: 'back.out(1.7)' })
+        .to(widgets[4], { autoAlpha: 1, y: 0, x: 0, duration: 0.5, ease: 'power3.out' }, '<0.1')
+        .to({}, { duration: 2.2 });
+    });
+  });
+</script>

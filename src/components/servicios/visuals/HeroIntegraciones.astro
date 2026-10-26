@@ -1,0 +1,127 @@
+---
+// Integraciones: equipos y plataformas alrededor de tu sistema, enviando datos en vivo.
+import VisualFrame from '../VisualFrame.astro';
+import Icon, { type IconName } from '../../ui/Icon.astro';
+
+// Posiciones en el escenario 140×100 (misma proporción que el contenedor, 7:5).
+const nodos: { icon: IconName; n: string; v: string; x: number; y: number; vals: string[] }[] = [
+  { icon: 'factory', n: 'Báscula', v: '248,6 kg', x: 28, y: 16, vals: ['248,6 kg', '251,2 kg', '246,9 kg', '249,4 kg'] },
+  { icon: 'layers', n: 'Lector', v: 'LOTE A-2041', x: 112, y: 16, vals: ['LOTE A-2041', 'LOTE A-2042', 'LOTE A-2043', 'LOTE A-2044'] },
+  { icon: 'thermometer', n: 'Sensor', v: '2,4 °C', x: 22, y: 50, vals: ['2,4 °C', '2,6 °C', '2,3 °C', '2,5 °C'] },
+  { icon: 'cart', n: 'Tienda web', v: 'pedido #5521', x: 118, y: 50, vals: ['pedido #5521', 'pedido #5522', 'pedido #5523', 'pedido #5524'] },
+  { icon: 'file', n: 'Excel', v: '1.204 filas', x: 28, y: 84, vals: ['1.204 filas', '1.205 filas', '1.207 filas', '1.208 filas'] },
+  { icon: 'layout', n: 'Impresora', v: 'etiqueta ✓', x: 112, y: 84, vals: ['etiqueta ✓', 'etiqueta ✓', 'etiqueta ✓', 'etiqueta ✓'] },
+];
+---
+
+<VisualFrame label="integraciones · en-vivo" status="6 conectados">
+  <div class="hn" data-hn>
+    <div class="hn-stage">
+      <svg class="hn-wires" viewBox="0 0 140 100">
+        {nodos.map((n, i) => (
+          <path id={`hn-w-${i}`} d={`M${n.x} ${n.y} Q ${(n.x + 70) / 2} ${n.y < 50 ? n.y + 18 : n.y > 50 ? n.y - 18 : n.y}, 70 50`} class="hn-wire" />
+        ))}
+        <g class="hn-packets">
+          {nodos.map((_, i) => (
+            <circle r="1.4" class:list={['hn-packet', { 'hn-packet--out': i === 5 }]}>
+              <animateMotion dur={`${1.6 + (i % 3) * 0.3}s`} repeatCount="indefinite" begin={`-${i * 0.4}s`} keyPoints={i === 5 ? '1;0' : '0;1'} keyTimes="0;1" calcMode="linear">
+                <mpath href={`#hn-w-${i}`} />
+              </animateMotion>
+            </circle>
+          ))}
+        </g>
+      </svg>
+
+      <div class="hn-hub">
+        <span class="hn-hub-ring"></span>
+        <b>Tu sistema</b>
+        <span class="mono">sincronizado</span>
+      </div>
+
+      {nodos.map((n) => (
+        <div class="hn-node" style={`--x:${(n.x / 140) * 100}%; --y:${n.y}%`} data-hn-node data-vals={JSON.stringify(n.vals)}>
+          <span class="hn-ico"><Icon name={n.icon} size={13} /></span>
+          <span class="hn-txt"><b>{n.n}</b><em class="mono" data-hn-val>{n.v}</em></span>
+        </div>
+      ))}
+    </div>
+  </div>
+</VisualFrame>
+
+<style>
+  .hn { container-type: size; width: 100%; height: 100%; display: grid; place-items: center; font-size: 11px; }
+  .hn-stage { position: relative; width: min(100cqw, 140cqh); aspect-ratio: 7 / 5; }
+  .hn-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .hn-wire { fill: none; stroke: var(--border-strong); stroke-width: 0.4; stroke-dasharray: 1.2 1.6; }
+  .hn-packet { fill: var(--signal); }
+  .hn-packet--out { fill: var(--accent-text); }
+  .hn-hub {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 26%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-content: center;
+    gap: 2px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.3), var(--surface-2) 72%);
+    box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.35);
+  }
+  .hn-hub b { font-size: 12.5px; }
+  @container (max-width: 380px) {
+    .hn-node { padding: 4px 7px 4px 4px; gap: 5px; }
+    .hn-ico { width: 20px; height: 20px; }
+    .hn-txt b { font-size: 9.5px; }
+    .hn-txt em { font-size: 8.5px; }
+    .hn-hub b { font-size: 10.5px; }
+  }
+  .hn-hub .mono { font-size: 8.5px; color: var(--signal); }
+  .hn-hub-ring { position: absolute; inset: -12%; border-radius: 50%; border: 1px dashed rgba(var(--accent-rgb), 0.45); animation: hn-spin 12s linear infinite; }
+  @keyframes hn-spin { to { rotate: 360deg; } }
+  .hn-node {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 9px 6px 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: 11px;
+    background: var(--surface-1);
+    white-space: nowrap;
+  }
+  .hn-ico { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; background: var(--accent-soft); color: var(--accent-text); flex: none; }
+  .hn-txt { display: flex; flex-direction: column; line-height: 1.2; }
+  .hn-txt b { font-size: 10.5px; font-weight: 600; }
+  .hn-txt em { font-style: normal; font-size: 9.5px; color: var(--signal); }
+  .hn-node.is-pulse { border-color: rgba(var(--signal-rgb), 0.6); box-shadow: 0 0 0 3px rgba(var(--signal-rgb), 0.12); }
+  @media (prefers-reduced-motion: reduce) {
+    .hn-packets { display: none; }
+  }
+</style>
+
+<script>
+  import { loopWhenVisible } from '../../../scripts/loop';
+
+  document.querySelectorAll<HTMLElement>('[data-hn]').forEach((root) => {
+    const nodes = Array.from(root.querySelectorAll<HTMLElement>('[data-hn-node]'));
+    let tick = 0;
+    loopWhenVisible(root, (tl) => {
+      // Cada 1,2 s un equipo reporta un dato nuevo.
+      tl.call(() => {
+        tick += 1;
+        const node = nodes[tick % nodes.length];
+        const vals: string[] = JSON.parse(node.dataset.vals ?? '[]');
+        const val = node.querySelector<HTMLElement>('[data-hn-val]');
+        if (val && vals.length) val.textContent = vals[tick % vals.length];
+        nodes.forEach((n) => n.classList.toggle('is-pulse', n === node));
+      }).to({}, { duration: 1.2 });
+    }, { repeatDelay: 0 });
+  });
+</script>

@@ -84,6 +84,32 @@ export const servicios: Servicio[] = [
       'Plataformas web, apps móviles y sistemas de gestión construidos a la medida de tu operación. Desarrollo por fases con precio fijo en Transformia.',
   },
   {
+    slug: 'sitios-web',
+    nombre: 'Sitios web',
+    nombreCorto: 'Sitios web',
+    grupo: 'producto',
+    icon: 'globe',
+    resumen: 'Páginas web rápidas, claras y fáciles de encontrar en Google, pensadas para que quien te visita termine escribiéndote.',
+    problema:
+      'Hoy casi todos tus clientes te buscan en internet antes de llamarte. Si no te encuentran, o encuentran una página lenta, desactualizada o que no se ve bien en el celular, se van con la competencia sin que te enteres.',
+    enfoque:
+      'Diseñamos tu sitio alrededor de una pregunta: qué tiene que hacer quien entra. Textos claros, diseño a la medida de tu marca, carga rápida, botones directos a WhatsApp y todo lo técnico para que Google te muestre.',
+    ejemplos: ['Sitios corporativos', 'Páginas de aterrizaje', 'Catálogos', 'Blogs', 'Reservas en línea'],
+    incluye: [
+      'Estructura y textos pensados para tu cliente',
+      'Diseño y animación a la medida de tu marca',
+      'Versión para celular, tablet y computador',
+      'SEO técnico: velocidad, metadatos y mapa del sitio',
+      'Botones a WhatsApp, formularios y mapas',
+      'Dominio, publicación y capacitación para actualizarlo',
+    ],
+    tecnologias: ['Astro', 'TypeScript', 'GSAP', 'Cloudflare', 'Google Search Console'],
+    casos: ['portafolio-interlink'],
+    seoTitle: 'Diseño de páginas web para empresas | Transformia',
+    seoDescription:
+      'Diseñamos páginas web rápidas, a la medida de tu marca y listas para Google, con botones directos a WhatsApp para convertir visitas en clientes.',
+  },
+  {
     slug: 'ia',
     nombre: 'Inteligencia artificial aplicada',
     nombreCorto: 'IA aplicada',

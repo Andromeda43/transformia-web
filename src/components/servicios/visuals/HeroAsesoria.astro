@@ -1,0 +1,138 @@
+---
+// Asesoría: se recorre el proceso, aparece el cuello de botella y se priorizan las mejoras.
+import VisualFrame from '../VisualFrame.astro';
+import Icon from '../../ui/Icon.astro';
+
+const pasos = [
+  { t: 'Pedido', d: '10 min' },
+  { t: 'Revisión', d: '2 h' },
+  { t: 'Aprobación', d: '3 días', cuello: true },
+  { t: 'Compra', d: '4 h' },
+  { t: 'Recepción', d: '1 h' },
+  { t: 'Pago', d: '1 día' },
+];
+const recomendaciones = [
+  { p: 'Alta', t: 'Aprobaciones desde el celular, con aviso automático' },
+  { p: 'Media', t: 'Recepción con lector de código de barras' },
+  { p: 'Baja', t: 'Conciliar pagos con el banco automáticamente' },
+];
+---
+
+<VisualFrame label="diagnostico · proceso-de-compras" status="3 mejoras">
+  <div class="ho" data-ho>
+    <div class="ho-map">
+      <span class="ho-lens" data-ho-lens></span>
+      {pasos.map((p, i) => (
+        <div class:list={['ho-step', { 'is-neck': p.cuello }]} data-ho-step>
+          <span class="mono ho-n">{String(i + 1).padStart(2, '0')}</span>
+          <b>{p.t}</b>
+          <span class="mono ho-d">{p.d}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="ho-callout" data-ho-callout>
+      <Icon name="alert" size={15} />
+      <p><b>Cuello de botella:</b> las aprobaciones esperan días en el correo del gerente.</p>
+    </div>
+
+    <div class="ho-recs">
+      <p class="ho-h mono">Recomendaciones priorizadas</p>
+      {recomendaciones.map((r) => (
+        <div class="ho-rec" data-ho-rec>
+          <span class:list={['ho-prio', `ho-prio--${r.p.toLowerCase()}`]}>{r.p}</span>
+          <span>{r.t}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</VisualFrame>
+
+<style>
+  .ho { display: flex; flex-direction: column; gap: 12px; height: 100%; font-size: 11px; }
+  .ho-map { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ho-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-1);
+  }
+  .ho-step b { font-size: 11.5px; font-weight: 500; }
+  .ho-n { font-size: 8.5px; color: var(--text-subtle); }
+  .ho-d { font-size: 9.5px; color: var(--text-muted); }
+  .ho-step.is-neck { border-color: rgba(var(--warning-rgb), 0.7); background: rgba(var(--warning-rgb), 0.08); box-shadow: 0 0 0 3px rgba(var(--warning-rgb), 0.12); }
+  .ho-step.is-neck .ho-d { color: var(--warning); font-weight: 700; }
+  .ho-lens {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    border: 1.5px solid var(--accent-text);
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15), 0 0 24px rgba(var(--accent-rgb), 0.35);
+    pointer-events: none;
+    opacity: 0;
+  }
+  .ho-callout {
+    display: flex;
+    gap: 9px;
+    padding: 9px 12px;
+    border: 1px solid rgba(var(--warning-rgb), 0.45);
+    border-radius: 10px;
+    background: rgba(var(--warning-rgb), 0.07);
+    color: var(--warning);
+  }
+  .ho-callout :global(svg) { flex: none; margin-top: 1px; }
+  .ho-callout p { color: var(--text); font-size: 11px; line-height: 1.4; }
+  .ho-callout b { color: var(--warning); }
+  .ho-recs { display: flex; flex-direction: column; gap: 7px; }
+  .ho-h { font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-subtle); }
+  .ho-rec { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-1); }
+  .ho-prio { flex: none; width: 46px; text-align: center; padding: 2px 0; border-radius: 99px; font-size: 9px; font-weight: 700; font-family: var(--font-mono); }
+  .ho-prio--alta { background: rgba(var(--signal-rgb), 0.14); color: var(--signal); }
+  .ho-prio--media { background: var(--accent-soft); color: var(--accent-text); }
+  .ho-prio--baja { background: var(--surface-3); color: var(--text-muted); }
+</style>
+
+<script>
+  import { loopWhenVisible } from '../../../scripts/loop';
+
+  document.querySelectorAll<HTMLElement>('[data-ho]').forEach((root) => {
+    const steps = Array.from(root.querySelectorAll<HTMLElement>('[data-ho-step]'));
+    const neck = root.querySelector<HTMLElement>('.is-neck')!;
+    const lens = root.querySelector<HTMLElement>('[data-ho-lens]')!;
+    const callout = root.querySelector('[data-ho-callout]');
+    const recs = root.querySelectorAll('[data-ho-rec]');
+    const box = (el: HTMLElement) => ({
+      x: () => el.offsetLeft - 3,
+      y: () => el.offsetTop - 3,
+      width: () => el.offsetWidth + 6,
+      height: () => el.offsetHeight + 6,
+    });
+
+    loopWhenVisible(root, (tl) => {
+      tl.to({}, { duration: 1.4 })
+        .to([callout, recs], { autoAlpha: 0, y: 8, duration: 0.3, stagger: 0.04 })
+        .call(() => neck.classList.remove('is-neck'))
+        .set(lens, { ...box(steps[0]), autoAlpha: 1 });
+      // La lupa recorre el proceso paso a paso
+      steps.forEach((step, i) => {
+        if (i > 0) tl.to(lens, { ...box(step), duration: 0.4, ease: 'power2.inOut' });
+        if (step === neck) {
+          tl.call(() => neck.classList.add('is-neck'))
+            .to(neck, { scale: 1.05, duration: 0.18, yoyo: true, repeat: 3 })
+            .to(callout, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'back.out(1.6)' });
+        } else {
+          tl.to({}, { duration: 0.15 });
+        }
+      });
+      tl.to(lens, { autoAlpha: 0, duration: 0.3 })
+        .to(recs, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.2, ease: 'back.out(1.6)' })
+        .to({}, { duration: 2.2 });
+    });
+  });
+</script>

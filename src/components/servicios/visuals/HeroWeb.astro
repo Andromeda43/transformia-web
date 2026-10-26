@@ -1,0 +1,197 @@
+---
+// Sitios web: "de una búsqueda a un cliente". Alguien busca en Google, entra al sitio y escribe por WhatsApp.
+import VisualFrame from '../VisualFrame.astro';
+import Icon from '../../ui/Icon.astro';
+const query = 'restaurante llanero en Yopal';
+---
+
+<VisualFrame label="de-una-busqueda-a-un-cliente" status="sitio en línea">
+  <div class="hw" data-hw>
+    <div class="hw-search">
+      <Icon name="search" size={15} />
+      <span class="hw-query" data-hw-query>{query}</span>
+      <span class="hw-caret"></span>
+    </div>
+
+    <div class="hw-stage" data-hw-stage>
+      <div class="hw-results" data-hw-results>
+        <div class="hw-result hw-result--target" data-hw-target>
+          <span class="hw-fav">LC</span>
+          <div>
+            <span class="hw-url mono">lacasona.co</span>
+            <b>La Casona · Cocina llanera en Yopal</b>
+            <span class="hw-stars">★★★★★ <em>4,9 · Reservas por WhatsApp</em></span>
+          </div>
+        </div>
+        <div class="hw-result hw-result--dim"><i></i><i></i><i></i></div>
+        <div class="hw-result hw-result--dim"><i></i><i></i></div>
+      </div>
+
+      <div class="hw-site" data-hw-site>
+        <div class="hw-site-bar"><span class="hw-lock">🔒</span><span class="mono">lacasona.co</span></div>
+        <div class="hw-site-nav" data-hw-part><b>La Casona</b><span>Menú</span><span>Horarios</span><span>Ubicación</span></div>
+        <div class="hw-site-hero" data-hw-part>
+          <b>Cocina llanera de verdad</b>
+          <span>Mamona, hayacas y el mejor café del llano.</span>
+          <span class="hw-wa" data-hw-wa><Icon name="whatsapp" size={13} /> Reservar por WhatsApp</span>
+        </div>
+        <div class="hw-cards" data-hw-part>
+          <span class="hw-card hw-card--a"><em>Menú del día</em></span>
+          <span class="hw-card hw-card--b"><em>Abierto hoy</em></span>
+          <span class="hw-card hw-card--c"><em>Cómo llegar</em></span>
+        </div>
+      </div>
+
+      <div class="hw-chat" data-hw-chat>
+        <div class="hw-chat-head"><span class="hw-chat-av">LC</span><b>La Casona</b><span class="hw-new">Nuevo cliente</span></div>
+        <p class="hw-bubble">Hola, quiero reservar mesa para 4 este sábado 🙌</p>
+      </div>
+
+      <svg class="hw-cursor" data-hw-cursor viewBox="0 0 24 24" width="22" height="22">
+        <path d="M4 2l15 9-6.5 1.5L9 19z" fill="#fff" stroke="#0b0b12" stroke-width="1.4" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </div>
+</VisualFrame>
+
+<style>
+  .hw { display: flex; flex-direction: column; gap: 14px; height: 100%; font-size: 12px; }
+  .hw-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 99px;
+    background: var(--bg);
+    color: var(--text-muted);
+  }
+  .hw-query { color: var(--text); font-size: 12.5px; }
+  .hw-caret { width: 1.5px; height: 15px; background: var(--accent-text); margin-left: -6px; animation: hw-blink 1s steps(1) infinite; }
+  @keyframes hw-blink { 50% { opacity: 0; } }
+
+  .hw-stage { position: relative; flex: 1; }
+
+  /* Resultados de búsqueda (ocultos en el estado final) */
+  .hw-results { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px; opacity: 0; visibility: hidden; }
+  .hw-result { display: flex; gap: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-1); }
+  .hw-result--target { border-color: rgba(var(--accent-rgb), 0.55); background: var(--surface-2); }
+  .hw-result div { display: flex; flex-direction: column; gap: 2px; }
+  .hw-result b { font-size: 13px; color: var(--accent-text); }
+  .hw-url { font-size: 10px; color: var(--text-subtle); }
+  .hw-stars { color: var(--warning); font-size: 11px; }
+  .hw-stars em { font-style: normal; color: var(--text-subtle); }
+  .hw-fav { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 8px; background: #3a2416; color: #ffb36b; font-weight: 700; font-size: 11px; }
+  .hw-result--dim { flex-direction: column; gap: 6px; }
+  .hw-result--dim i { height: 7px; border-radius: 4px; background: var(--surface-3); width: 80%; }
+  .hw-result--dim i:first-child { width: 40%; }
+
+  /* Sitio */
+  .hw-site { position: absolute; inset: 0 0 auto 0; border: 1px solid var(--border-strong); border-radius: 14px; background: #120e0b; overflow: hidden; }
+  .hw-site-bar { display: flex; align-items: center; gap: 8px; padding: 7px 12px; background: var(--surface-2); border-bottom: 1px solid var(--border); font-size: 10px; color: var(--text-subtle); }
+  .hw-lock { font-size: 9px; }
+  .hw-site-nav { display: flex; align-items: center; gap: 14px; padding: 10px 14px; font-size: 10.5px; color: #d9c7b4; }
+  .hw-site-nav b { margin-right: auto; font-size: 13px; color: #ffb36b; letter-spacing: -0.01em; }
+  .hw-site-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 14px 20px;
+    background: radial-gradient(120% 120% at 100% 0%, rgba(255, 140, 60, 0.28), transparent 60%), linear-gradient(180deg, #1d140e, #120e0b);
+  }
+  .hw-site-hero b { font-size: 20px; line-height: 1.1; color: #fff2e3; letter-spacing: -0.02em; }
+  .hw-site-hero > span:not(.hw-wa) { color: #c9b39c; font-size: 11.5px; }
+  .hw-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    margin-top: 6px;
+    padding: 7px 13px;
+    border-radius: 99px;
+    background: #25d366;
+    color: #06240f;
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+  .hw-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px 14px 14px; }
+  .hw-card { display: flex; align-items: flex-end; height: 56px; padding: 7px; border-radius: 9px; font-size: 10px; color: #fff; }
+  .hw-card em { font-style: normal; }
+  .hw-card--a { background: linear-gradient(135deg, #5b2c12, #c0612b); }
+  .hw-card--b { background: linear-gradient(135deg, #2d3a14, #6f8f2a); }
+  .hw-card--c { background: linear-gradient(135deg, #1b2b3a, #3b6d93); }
+
+  /* Chat de WhatsApp */
+  .hw-chat {
+    position: absolute;
+    right: -4px;
+    bottom: 4px;
+    width: 64%;
+    max-width: 280px;
+    border-radius: 14px;
+    border: 1px solid rgba(37, 211, 102, 0.4);
+    background: rgba(13, 26, 19, 0.96);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .hw-chat-head { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid rgba(37, 211, 102, 0.2); font-size: 11px; }
+  .hw-chat-av { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #3a2416; color: #ffb36b; font-size: 8.5px; font-weight: 700; }
+  .hw-new { margin-left: auto; padding: 2px 7px; border-radius: 99px; background: #25d366; color: #06240f; font-size: 9px; font-weight: 700; }
+  .hw-bubble { margin: 10px; padding: 8px 10px; border-radius: 10px 10px 10px 2px; background: #1f2c25; font-size: 11.5px; line-height: 1.35; }
+
+  .hw-cursor { position: absolute; left: 0; top: 0; z-index: 5; pointer-events: none; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)); opacity: 0; }
+
+  @media (max-width: 560px) {
+    .hw-site-hero { padding: 14px 12px 16px; }
+    .hw-site-hero b { font-size: 16px; }
+    .hw-cards,
+    .hw-site-hero > span:not(.hw-wa) { display: none; }
+    .hw-bubble { margin: 8px; }
+    .hw-chat { width: 86%; right: 0; bottom: 0; }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { loopWhenVisible, centerIn, typeText } from '../../../scripts/loop';
+
+  document.querySelectorAll<HTMLElement>('[data-hw]').forEach((root) => {
+    const $ = <T extends Element = HTMLElement>(s: string) => root.querySelector(s) as T;
+    const stage = $('[data-hw-stage]');
+    const query = $('[data-hw-query]');
+    const results = $('[data-hw-results]');
+    const target = $('[data-hw-target]');
+    const site = $('[data-hw-site]');
+    const parts = root.querySelectorAll('[data-hw-part]');
+    const wa = $('[data-hw-wa]');
+    const chat = $('[data-hw-chat]');
+    const cursor = $('[data-hw-cursor]');
+    const text = query.textContent ?? '';
+    const at = (el: Element, dx = -4, dy = -2) => ({ x: () => centerIn(stage, el).x + dx, y: () => centerIn(stage, el).y + dy });
+
+    loopWhenVisible(root, (tl) => {
+      tl.to({}, { duration: 1.4 })
+        // Desarma: se vuelve a la búsqueda
+        .to([chat, site], { autoAlpha: 0, y: 10, duration: 0.35, ease: 'power2.in' })
+        .set(cursor, { autoAlpha: 1, x: () => stage.clientWidth * 0.75, y: () => stage.clientHeight * 0.85 })
+        .add(typeText(query, text, 1.1))
+        .set(results, { autoAlpha: 1 })
+        .from(results.children, { autoAlpha: 0, y: 8, stagger: 0.12, duration: 0.35, immediateRender: false })
+        // Clic en el resultado
+        .to(cursor, { ...at(target, 40, 4), duration: 0.7, ease: 'power2.inOut' })
+        .to(cursor, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 })
+        .to(target, { scale: 0.98, duration: 0.1, yoyo: true, repeat: 1 }, '<')
+        .to(results, { autoAlpha: 0, duration: 0.25 })
+        // Carga el sitio
+        .to(site, { autoAlpha: 1, y: 0, duration: 0.35 })
+        .from(parts, { autoAlpha: 0, y: 12, stagger: 0.15, duration: 0.45, ease: 'power3.out', immediateRender: false }, '<0.1')
+        // Clic en WhatsApp
+        .to(cursor, { ...at(wa, 10, 4), duration: 0.8, ease: 'power2.inOut' }, '+=0.3')
+        .to(cursor, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 })
+        .to(wa, { scale: 0.94, duration: 0.1, yoyo: true, repeat: 1 }, '<')
+        .to(chat, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'back.out(1.6)' }, '+=0.1')
+        .to(cursor, { autoAlpha: 0, duration: 0.3 }, '+=0.6')
+        .to({}, { duration: 2 });
+    });
+  });
+</script>

@@ -1,0 +1,131 @@
+---
+// Automatización: una solicitud recorre el flujo sola y cada paso queda registrado.
+import VisualFrame from '../VisualFrame.astro';
+import Icon, { type IconName } from '../../ui/Icon.astro';
+
+const pasos: { icon: IconName; t: string; h: string }[] = [
+  { icon: 'zap', t: 'Llega una solicitud de compra', h: '08:01:02' },
+  { icon: 'database', t: 'Queda registrada en el sistema', h: '08:01:03' },
+  { icon: 'users', t: 'Gerencia aprueba desde el celular', h: '08:14:40' },
+  { icon: 'whatsapp', t: 'Compras recibe el aviso por WhatsApp', h: '08:14:41' },
+  { icon: 'trending', t: 'El reporte se actualiza solo', h: '08:14:41' },
+];
+---
+
+<VisualFrame label="flujo · solicitud-de-compra" status="automático">
+  <div class="ha" data-ha>
+    <div class="ha-flow">
+      <span class="ha-rail"><i data-ha-fill></i></span>
+      <span class="ha-token" data-ha-token></span>
+      {pasos.map((p, i) => (
+        <div class="ha-step is-done" data-ha-step>
+          <span class="ha-ico"><Icon name={p.icon} size={15} /></span>
+          <div class="ha-text">
+            <b>{p.t}</b>
+            <span class="mono">{i === 0 ? 'disparador' : 'automático'} · {p.h}</span>
+          </div>
+          <span class="ha-check"><Icon name="check" size={13} strokeWidth={2.6} /></span>
+        </div>
+      ))}
+    </div>
+    <div class="ha-foot">
+      <span>Pasos hechos a mano</span>
+      <b class="mono">0</b>
+      <span class="ha-sep"></span>
+      <span>Solicitudes procesadas hoy</span>
+      <b class="mono" data-ha-count>37</b>
+    </div>
+  </div>
+</VisualFrame>
+
+<style>
+  .ha { display: flex; flex-direction: column; gap: 14px; height: 100%; font-size: 11.5px; }
+  .ha-flow { position: relative; display: flex; flex-direction: column; justify-content: space-between; flex: 1; padding-left: 4px; }
+  .ha-rail { position: absolute; left: 21px; top: 20px; bottom: 20px; width: 2px; background: var(--border); }
+  .ha-rail i { position: absolute; inset: 0; background: linear-gradient(180deg, var(--accent), var(--signal)); transform-origin: top; }
+  .ha-token { position: absolute; left: 16px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-text); box-shadow: 0 0 14px var(--accent); opacity: 0; z-index: 2; }
+  .ha-step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px 8px 0;
+    opacity: 0.38;
+    transition: opacity 0.35s;
+  }
+  .ha-ico {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+    color: var(--text-muted);
+    transition: all 0.35s;
+  }
+  .ha-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .ha-text b { font-size: 12px; font-weight: 500; }
+  .ha-text .mono { font-size: 9.5px; color: var(--text-subtle); }
+  .ha-check { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(var(--signal-rgb), 0.14); color: var(--signal); opacity: 0; transform: scale(0.5); transition: all 0.35s var(--ease-out); }
+  .ha-step.is-done { opacity: 1; }
+  .ha-step.is-done .ha-ico { border-color: rgba(var(--accent-rgb), 0.6); background: var(--accent-soft); color: var(--accent-text); }
+  .ha-step.is-done .ha-check { opacity: 1; transform: none; }
+  .ha-foot {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font-size: 10.5px;
+  }
+  .ha-foot b { font-size: 14px; color: var(--signal); }
+  .ha-sep { width: 1px; height: 14px; background: var(--border-strong); margin: 0 4px; }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { loopWhenVisible, centerIn } from '../../../scripts/loop';
+
+  document.querySelectorAll<HTMLElement>('[data-ha]').forEach((root) => {
+    const steps = Array.from(root.querySelectorAll<HTMLElement>('[data-ha-step]'));
+    const flow = root.querySelector<HTMLElement>('.ha-flow')!;
+    const token = root.querySelector<HTMLElement>('[data-ha-token]')!;
+    const fill = root.querySelector<HTMLElement>('[data-ha-fill]')!;
+    const count = root.querySelector<HTMLElement>('[data-ha-count]')!;
+    const rail = root.querySelector<HTMLElement>('.ha-rail')!;
+    const yOf = (el: Element) => centerIn(flow, el.querySelector('.ha-ico')!).y - 6;
+
+    loopWhenVisible(root, (tl) => {
+      tl.to({}, { duration: 1.4 })
+        .call(() => {
+          steps.forEach((s) => s.classList.remove('is-done'));
+          count.textContent = '36';
+        })
+        .set(fill, { scaleY: 0 })
+        .set(token, { autoAlpha: 1, y: () => yOf(steps[0]) });
+      steps.forEach((step, i) => {
+        if (i > 0) {
+          tl.to(token, { y: () => yOf(step), duration: 0.55, ease: 'power2.inOut' }).to(
+            fill,
+            { scaleY: () => (yOf(step) + 6 - rail.offsetTop) / rail.offsetHeight, duration: 0.55, ease: 'power2.inOut' },
+            '<'
+          );
+        }
+        tl.call(() => step.classList.add('is-done')).to({}, { duration: i === 2 ? 0.7 : 0.25 });
+      });
+      tl.set(fill, { scaleY: 1 })
+        .to(token, { autoAlpha: 0, duration: 0.3 })
+        .call(() => (count.textContent = '37'))
+        .fromTo(count, { scale: 1.4 }, { scale: 1, duration: 0.4, ease: 'back.out(2)', immediateRender: false })
+        .to({}, { duration: 2 });
+    });
+  });
+</script>

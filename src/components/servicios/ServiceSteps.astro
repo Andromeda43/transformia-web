@@ -1,0 +1,141 @@
+---
+// src/components/servicios/ServiceSteps.astro — "Cómo lo hacemos": pasos con una línea que se llena con el scroll.
+import SectionHeader from '../ui/SectionHeader.astro';
+import type { Paso } from '../../data/serviciosContenido';
+
+interface Props {
+  lead: string;
+  pasos: Paso[];
+}
+const { lead, pasos } = Astro.props;
+---
+
+<section class="section steps-sec" data-steps>
+  <div class="container">
+    <SectionHeader eyebrow="Cómo lo hacemos" title="Paso a paso, sin sorpresas." lead={lead} />
+    <div class="steps-wrap">
+      <span class="steps-line" aria-hidden="true"><i data-steps-fill></i></span>
+      <ol class="steps" role="list">
+        {pasos.map((p, i) => (
+          <li class="step is-on" data-step>
+            <span class="step-dot mono">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="step-title">{p.titulo}</h3>
+            <p>{p.texto}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps-wrap {
+    position: relative;
+  }
+  .steps-line {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    right: 22px;
+    height: 2px;
+    background: var(--border);
+  }
+  .steps-line i {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--accent), var(--signal));
+    transform-origin: left;
+  }
+  .steps {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .step-dot {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: var(--bg);
+    font-size: 0.8rem;
+    color: var(--text-subtle);
+    transition: all 0.4s var(--ease-out);
+  }
+  .step.is-on .step-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.15);
+  }
+  .step-title {
+    font-size: 1.15rem;
+    letter-spacing: -0.015em;
+  }
+  .step p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+  @media (max-width: 900px) {
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      column-gap: 1.1rem;
+    }
+    .step-dot {
+      grid-row: span 2;
+      margin: 0;
+    }
+    .steps-line {
+      top: 22px;
+      bottom: 22px;
+      left: 21px;
+      right: auto;
+      width: 2px;
+      height: auto;
+    }
+    .steps-line i {
+      transform-origin: top;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { reduceMotion } from '../../scripts/env';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (!reduceMotion) {
+    document.querySelectorAll<HTMLElement>('[data-steps]').forEach((root) => {
+      const fill = root.querySelector<HTMLElement>('[data-steps-fill]')!;
+      const steps = Array.from(root.querySelectorAll<HTMLElement>('[data-step]'));
+      const vertical = () => window.matchMedia('(max-width: 900px)').matches;
+      steps.forEach((s) => s.classList.remove('is-on'));
+      ScrollTrigger.create({
+        trigger: root.querySelector('.steps-wrap'),
+        start: 'top 75%',
+        end: 'bottom 55%',
+        scrub: 0.4,
+        onUpdate: (self) => {
+          const p = self.progress;
+          gsap.set(fill, vertical() ? { scaleY: p, scaleX: 1 } : { scaleX: p, scaleY: 1 });
+          steps.forEach((s, i) => s.classList.toggle('is-on', p >= i / (steps.length - 1) - 0.02));
+        },
+      });
+    });
+  }
+</script>
