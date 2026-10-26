@@ -1,0 +1,1 @@
+import{g as t}from"./index.Da40SJzp.js";import{S as o}from"./ScrollTrigger.CezCZ8EY.js";import{r as e}from"./env.Dq8KP-ak.js";t.registerPlugin(o);e||document.querySelectorAll("[data-what-text]").forEach(r=>{t.fromTo(r.children,{opacity:.18},{opacity:1,ease:"none",stagger:.1,scrollTrigger:{trigger:r,start:"top 82%",end:"bottom 50%",scrub:!0}})});
